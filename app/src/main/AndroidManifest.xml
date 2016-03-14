@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.weebly.smarthusgruppen.shk_applikasjon">
 
+    <uses-sdk android:minSdkVersion="15"
+        android:targetSdkVersion="20"
+        android:maxSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
