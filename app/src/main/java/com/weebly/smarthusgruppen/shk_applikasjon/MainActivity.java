@@ -16,9 +16,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import static java.lang.System.out;
 
 public class MainActivity extends AppCompatActivity {
-
+    int portNumber = 4004;
+    String hostName= "127.0.0.1";
+    String textToSend = "Heisann Henrik";
+    String userInput;
+    Socket myClient;
+    BufferedWriter output;
+    BufferedReader input;
+    BufferedReader sysIn;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -37,42 +45,56 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void connectToServer() {
-        int portNumber = 4004;
-        String hostName= "127.0.0.1";
-        String textToSend = "Heisann Henrik";
-        Socket myClient;
-        BufferedWriter output;
-        BufferedReader input;
-
-
         try {
             myClient = new Socket(hostName, portNumber);
             output = new BufferedWriter(new OutputStreamWriter(
                     myClient.getOutputStream()));
             input = new BufferedReader(new InputStreamReader(
                     myClient.getInputStream()));
+            sysIn = new BufferedReader(new InputStreamReader(System.in));
+            // Creating socket and checking for exceptions
+            // Creating output stream to send information
+            // Creating input stream to receive information
 
-            output.write(textToSend);
-            output.newLine();
-            output.flush();
+            sendToServer(textToSend);
+            receiveFromServer();
 
             output.close();
             input.close();
             myClient.close();
-        } catch (IOException e) {
-            System.out.println(e);
+            // closing connections and socket after use
         }
-        // Creating socket and checking for exceptions
-        // Creating output stream to send information
-        // Creating input stream to receive information
-        // closing sockets and socket after use
+        catch (IOException ioe) {
+            System.out.println(ioe);
+        }
 
-        /*String hostName = args[0];
-        int portNumber = Integer.parseInt(args[1]); */
+        // Sending string to target host
 
 
     }
+    private void sendToServer(String textToSend) {
+        try {
+            output.write(textToSend);
+            output.newLine();
+            output.flush();
+            // Sending string to target host
+        }
+        catch(IOException ioe) {
+            System.out.println(ioe);
+        }
+    }
 
+    private void receiveFromServer() {
+        try {
+            while ((userInput = sysIn.readLine()) != null) {
+                out.println(userInput);
+                System.out.println("echo" + input.read());
+                // Receiving and printing response from the server
+            }
+        } catch (IOException ioe) {
+            System.out.println(ioe);
+        }
+    }
 
     @Override
     public void onStart() {
