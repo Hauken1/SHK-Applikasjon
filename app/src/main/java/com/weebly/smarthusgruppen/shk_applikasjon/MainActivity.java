@@ -22,12 +22,12 @@ import java.net.Socket;
 import static java.lang.System.out;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
 
-=======
+
+
     int portNumber = 1234;
     String hostName= "10.0.2.2";
->>>>>>> origin/master
+
     String textToSend = "Heisann Henrik";
     String userInput;
     Socket myClient;
@@ -48,12 +48,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
+        
 
-        connectToServer();
 
-=======
->>>>>>> origin/master
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
