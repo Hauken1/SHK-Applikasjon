@@ -10,8 +10,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -19,7 +17,7 @@ import java.net.Socket;
 import static java.lang.System.out;
 
 public class MainActivity extends AppCompatActivity {
-    int portNumber = 4004;
+    int portNumber = 6881;
     String hostName= "127.0.0.1";
     String textToSend = "Heisann Henrik";
     String userInput;
@@ -37,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         connectToServer();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
