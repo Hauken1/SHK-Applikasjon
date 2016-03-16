@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SHK-Applikasjon</string>
+    <string name="connect_button">Connect</string>
+    <string name="send_obj">Send object</string>
 </resources>
