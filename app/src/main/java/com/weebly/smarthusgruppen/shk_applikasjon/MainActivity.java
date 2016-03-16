@@ -8,19 +8,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -135,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                         socket.send(sendPacket);
                         startMessageListener();
                         Log.d("ClientActivity", "C: Sent.");
+
                     } catch (Exception e) {
                         Log.e("ClientActivity", "S: Error", e);
                     }
@@ -155,17 +157,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Sending string to target host
-        }
-        private void sendToServer(String textToSend) {
-            try {
-                output.write(textToSend);
-                output.newLine();
-                output.flush();
-                // Sending string to target host
-            }
-            catch(IOException ioe) {
-                System.out.println(ioe);
-            }
         }
 
         private void receiveFromServer() {
@@ -226,5 +217,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 }
 
