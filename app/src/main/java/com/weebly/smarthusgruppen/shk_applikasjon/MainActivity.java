@@ -1,11 +1,13 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -14,28 +16,35 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
-import static java.lang.System.out;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 
 public class MainActivity extends AppCompatActivity {
-
-
 
     int portNumber = 1234;
     String hostName= "10.0.2.2";
 
     String textToSend = "Heisann Henrik";
+    private DatagramSocket socket;
     String userInput;
-    Socket myClient;
+  //  Socket myClient;
     BufferedWriter output;
     BufferedReader input;
     BufferedReader sysIn;
     Button connectBtn;
+    TextView receivedText;
+
+    OutputStream os;
+    ObjectOutputStream oos;
     boolean connected = false;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -61,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
     protected View.OnClickListener connectListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (!connected) {
+            connected = true;
+            if (connected) {
                 Thread cThread = new Thread(new ClientThread());
                 cThread.start();
             }
@@ -108,65 +118,36 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
 
-    public class Packet{
-        int packet_type;
-
-    }
-
     public class ClientThread implements Runnable {
 
         public void run() {
             try {
-                //InetAddress serverAddr = InetAddress.getByName(hostName);
                 Log.d("ClientActivity", "C: Connecting...");
-                //myClient = new Socket(serverAddr, portNumber);
                 connectToServer();
-                connected = true;
-                int test = 0;
-                while (test < 10) {
                     try {
                         Log.d("ClientActivity", "C: Sending command.");
-                        sendToServer(textToSend);
-                        /*
-                        PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(myClient
-                                .getOutputStream())), true);
-                         */
-                        // WHERE YOU ISSUE THE COMMANDS
-                        //out.println("Hey Server!");
+                        String message = "Hei, dette er en test \n";
+
+                        byte[] data = message.getBytes();
+
+                        DatagramPacket sendPacket = new DatagramPacket(data,
+                                data.length, InetAddress.getByName(hostName), 1234);
+                        socket.send(sendPacket);
+                        startMessageListener();
                         Log.d("ClientActivity", "C: Sent.");
-                        test++;
                     } catch (Exception e) {
                         Log.e("ClientActivity", "S: Error", e);
                     }
-                }
-                myClient.close();
-                output.close();
-                input.close();
+                socket.close();
                 Log.d("ClientActivity", "C: Closed.");
             } catch (Exception e) {
                 Log.e("ClientActivity", "C: Error", e);
-                connected = false;
             }
         }
 
         private void connectToServer() {
             try {
-                myClient = new Socket(hostName, portNumber);
-                output = new BufferedWriter(new OutputStreamWriter(
-                        myClient.getOutputStream()));
-                input = new BufferedReader(new InputStreamReader(
-                        myClient.getInputStream()));
-                sysIn = new BufferedReader(new InputStreamReader(System.in));
-                // Creating socket and checking for exceptions
-                // Creating output stream to send information
-                // Creating input stream to receive information
-
-               // sendToServer(textToSend);
-                //receiveFromServer();
-
-
-                //myClient.close();
-                // closing connections and socket after use
+                socket = new DatagramSocket();
             }
             catch (IOException ioe) {
                 System.out.println(ioe);
@@ -174,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // Sending string to target host
-
         }
         private void sendToServer(String textToSend) {
             try {
@@ -191,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         private void receiveFromServer() {
             try {
                 while ((userInput = sysIn.readLine()) != null) {
-                    out.println(userInput);
+                   // out.println(userInput);
                     System.out.println("echo" + input.read());
                     // Receiving and printing response from the server
                 }
@@ -199,6 +179,51 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(ioe);
             }
         }
+        private void startMessageListener() {
+            Thread mThread = new Thread(new Runnable() {
+                public void run() {
+                    while (true) {
+                        Random rnd = new Random();
+                        try {
+                            byte[] data = new byte[100];
+                            DatagramPacket receivePacket = new DatagramPacket(data,
+                                    data.length);
+
+                            socket.receive(receivePacket);
+
+                            displayMessage("\nPacket received:"
+                                    + "\nFrom host: "
+                                    + receivePacket.getAddress()
+                                    + "\nHost port: "
+                                    + receivePacket.getPort()
+                                    + "\nLength: "
+                                    + receivePacket.getLength()
+                                    + "\nContaining: "
+                                    + new String(receivePacket.getData(), 0,
+                                    receivePacket.getLength()));
+                        } catch (Exception e) {
+                            System.out.println("Feil med object");
+                            e.printStackTrace();
+                        }
+                        try {
+                            TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                ;
+            });
+        }
+
+        private void displayMessage(String text) {
+           receivedText.append(text);
+           // SwingUtilities.invokeLater(() -> receivedText.append(text));
+        }
+
+
 
     }
 }
