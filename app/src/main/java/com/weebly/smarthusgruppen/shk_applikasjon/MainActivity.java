@@ -6,29 +6,30 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import static java.lang.System.out;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     int portNumber = 1234;
     String hostName= "10.0.2.2";
-
-    String textToSend = "Heisann Henrik";
+    byte[] denBufferen = new byte[3];
+    denBufferen[0] = "0xAAAA";    // leadingCode er 43690
+    denBufferen[1] = "0x0001";    // Subnet er 1
+    denBufferen[2] = "0x0014";    // devID er 20
     String userInput;
     Socket myClient;
     BufferedWriter output;
@@ -120,21 +121,22 @@ public class MainActivity extends AppCompatActivity {
                 //InetAddress serverAddr = InetAddress.getByName(hostName);
                 Log.d("ClientActivity", "C: Connecting...");
                 //myClient = new Socket(serverAddr, portNumber);
-                connectToServer();
-                connected = true;
+                connectAndSendToServer(byte[] denBufferen);
+             /*   connected = true;
                 int test = 0;
                 while (test < 10) {
                     try {
                         Log.d("ClientActivity", "C: Sending command.");
-                        sendToServer(textToSend);
+                        sendToServer(denBufferen);
                         /*
                         PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(myClient
                                 .getOutputStream())), true);
-                         */
+
                         // WHERE YOU ISSUE THE COMMANDS
                         //out.println("Hey Server!");
                         Log.d("ClientActivity", "C: Sent.");
                         test++;
+                */
                     } catch (Exception e) {
                         Log.e("ClientActivity", "S: Error", e);
                     }
@@ -149,9 +151,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        private void connectToServer() {
+        private void connectAndSendToServer(byte[] denBufferen) {
             try {
-                myClient = new Socket(hostName, portNumber);
+
+                DatagramSocket socket = new DatagramSocket(portNumber, hostName);
+                DatagramPacket packet = new DatagramPacket
+                        (denBufferen, denBufferen.length, hostName, portNumber);
+                socket.send(packet);
+               /*myClient = new Socket(hostName, portNumber);
                 output = new BufferedWriter(new OutputStreamWriter(
                         myClient.getOutputStream()));
                 input = new BufferedReader(new InputStreamReader(
@@ -167,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //myClient.close();
                 // closing connections and socket after use
+                */
             }
             catch (IOException ioe) {
                 System.out.println(ioe);
@@ -176,12 +184,17 @@ public class MainActivity extends AppCompatActivity {
             // Sending string to target host
 
         }
-        private void sendToServer(String textToSend) {
+        private void sendToServer(byte[] denBufferen) {
             try {
+                DatagramPacket denPakken = new DatagramPacket(denBufferen, 0, denBufferen.length,);
+
+
+
+               /*
                 output.write(textToSend);
                 output.newLine();
                 output.flush();
-                // Sending string to target host
+                // Sending string to target host*/
             }
             catch(IOException ioe) {
                 System.out.println(ioe);
