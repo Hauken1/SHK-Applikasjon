@@ -15,25 +15,29 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
+import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
+import java.io.OutputStreamWriter;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    int portNumber = 1234;
+    int serverPort = 12345;
     String hostName= "10.0.2.2";
 
     String textToSend = "Heisann Henrik";
-    private DatagramSocket socket;
+    //private DatagramSocket socket;
+    private Socket connection;
     String userInput;
   //  Socket myClient;
     BufferedWriter output;
@@ -127,20 +131,15 @@ public class MainActivity extends AppCompatActivity {
                 connectToServer();
                     try {
                         Log.d("ClientActivity", "C: Sending command.");
-                        String message = "Hei, dette er en test \n";
+                        String message = "Test fra mobil app";
+                        sendText(message);
 
-                        byte[] data = message.getBytes();
-
-                        DatagramPacket sendPacket = new DatagramPacket(data,
-                                data.length, InetAddress.getByName(hostName), 1234);
-                        socket.send(sendPacket);
-                        startMessageListener();
                         Log.d("ClientActivity", "C: Sent.");
 
                     } catch (Exception e) {
                         Log.e("ClientActivity", "S: Error", e);
                     }
-                socket.close();
+               // socket.close();
                 Log.d("ClientActivity", "C: Closed.");
             } catch (Exception e) {
                 Log.e("ClientActivity", "C: Error", e);
@@ -149,15 +148,28 @@ public class MainActivity extends AppCompatActivity {
 
         private void connectToServer() {
             try {
-                socket = new DatagramSocket();
-            }
-            catch (IOException ioe) {
-                System.out.println(ioe);
-                System.out.println("Feil ved tilkobling");
-            }
+                //socket = new DatagramSocket();
+                connection = new Socket(InetAddress.getByName(hostName), serverPort);
+                Log.d("ClientActivity", "C: Connected to server.");
+                output = new BufferedWriter(new OutputStreamWriter(
+                        connection.getOutputStream()));
+                input = new BufferedReader(new InputStreamReader(
+                        connection.getInputStream()));
 
-            // Sending string to target host
+            } catch (UnknownHostException e) {
+
+            } catch (IOException e) {
+            }
         }
+        public void sendText(String textToSend) {
+            try {
+                output.write(textToSend);
+                output.newLine();
+                output.flush();
+            } catch (IOException ioe) {
+            }
+        }
+
 
         private void receiveFromServer() {
             try {
@@ -180,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                             DatagramPacket receivePacket = new DatagramPacket(data,
                                     data.length);
 
-                            socket.receive(receivePacket);
+                            //socket.receive(receivePacket);
 
                             displayMessage("\nPacket received:"
                                     + "\nFrom host: "
