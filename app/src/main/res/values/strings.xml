@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">SHK-Applikasjon</string>
     <string name="connect_button">Connect</string>
-    <string name="send_obj">Send object</string>
+    <string name="light_control_button">Lysstyring</string>
+    <string name="light_1">Lys 1</string>
+    <string name="light_2">Lys 2</string>
+    <string name="light_3">Lys 3</string>
+    <string name="light_4">Lys 4</string>
+    <string name="kitchen">Kjøkken</string>
+    <string name="bedroom_1">Soverom 1</string>
+    <string name="bedroom_2">Soverom 2</string>
+    <string name="bedroom_3">Soverom 3</string>
+    <string name="living_room">Stue</string>
+    <string name="bathroom">Bad</string>
+    <string name="hallway">Gang</string>
+    <string name="title_activity_lighting">Lysstyring</string>
 </resources>
