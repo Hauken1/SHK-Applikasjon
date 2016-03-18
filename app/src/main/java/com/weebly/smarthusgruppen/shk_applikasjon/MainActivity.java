@@ -1,6 +1,7 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     int serverPort = 12345;
@@ -45,10 +48,14 @@ public class MainActivity extends AppCompatActivity {
     BufferedReader sysIn;
     Button connectBtn;
     TextView receivedText;
+    Button lightBtn;
+    Button climateBtn;
 
     OutputStream os;
     ObjectOutputStream oos;
     boolean connected = false;
+    ClientMessage cm = new ClientMessage();
+
 
 
     /**
@@ -56,21 +63,34 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         connectBtn = (Button) findViewById(R.id.connectButton);
         connectBtn.setOnClickListener(connectListener);
+
+        // light control button
+        lightBtn = (Button) findViewById(R.id.lightButton);
+        lightBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToRoomView();
+            }
+        });
+        // climate button
+        climateBtn = (Button) findViewById(R.id.climateButton);
+        climateBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToClimateView();
+            }
+        });
+
+
     }
 
     protected View.OnClickListener connectListener = new View.OnClickListener() {
@@ -122,6 +142,15 @@ public class MainActivity extends AppCompatActivity {
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+    }
+    public void goToRoomView() {
+        Intent intent = new Intent(this, RoomList.class);
+        startActivity(intent);
+    }
+
+    public void goToClimateView() {
+        Intent intent = new Intent(this, Climate.class);
+        startActivity(intent);
     }
 
     public class ClientThread implements Runnable {
