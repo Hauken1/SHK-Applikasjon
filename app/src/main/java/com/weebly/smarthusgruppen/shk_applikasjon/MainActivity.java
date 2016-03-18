@@ -149,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
 
         private void connectToServer() {
             try {
-                //socket = new DatagramSocket();
                 connection = new Socket(InetAddress.getByName(hostName), serverPort);
                 Log.d("ClientActivity", "C: Connected to server.");
                 output = new BufferedWriter(new OutputStreamWriter(
@@ -183,18 +182,21 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(ioe);
             }
         }
+
         private void startMessageListener() {
             Thread mThread = new Thread(new Runnable() {
                 public void run() {
                     while (true) {
                         Random rnd = new Random();
                         try {
+
+
+
+                            /*
                             byte[] data = new byte[100];
                             DatagramPacket receivePacket = new DatagramPacket(data,
                                     data.length);
-
                             //socket.receive(receivePacket);
-
                             displayMessage("\nPacket received:"
                                     + "\nFrom host: "
                                     + receivePacket.getAddress()
@@ -205,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                                     + "\nContaining: "
                                     + new String(receivePacket.getData(), 0,
                                     receivePacket.getLength()));
+                            */
+
                         } catch (Exception e) {
                             System.out.println("Feil med object");
                             e.printStackTrace();
