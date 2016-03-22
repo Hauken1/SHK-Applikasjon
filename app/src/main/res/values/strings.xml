@@ -15,7 +15,7 @@
     <string name="bathroom">Bad</string>
     <string name="hallway">Gang</string>
     <string name="office">Kontor</string>
-    <string name="room_view">Romoversikt</string>
+    <string name="room_view_light">Romoversikt - lysstyring</string>
     <string name="climate_view">Klima</string>
     <string name="heating_view">Temperatur</string>
     <string name="ventilation_view">Ventilasjon</string>
