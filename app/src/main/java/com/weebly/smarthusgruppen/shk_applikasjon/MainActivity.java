@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private Socket connection;
     String userInput;
   //  Socket myClient;
-    BufferedWriter output;
-    BufferedReader input;
+
+    static BufferedWriter output;
+    static BufferedReader input;
     BufferedReader sysIn;
     Button connectBtn;
     TextView receivedText;
@@ -153,6 +154,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public static void sendText(String textToSend) {
+        try {
+            output.write(textToSend);
+            output.newLine();
+            output.flush();
+        } catch (IOException ioe) {
+        }
+    }
     public class ClientThread implements Runnable {
 
         public void run() {
@@ -162,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         Log.d("ClientActivity", "C: Sending command.");
                         String message = "Test fra mobil app";
-                        sendText(message);
+                        //sendText(message);
 
                         Log.d("ClientActivity", "C: Sent.");
 
@@ -190,14 +199,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
             }
         }
-        public void sendText(String textToSend) {
-            try {
-                output.write(textToSend);
-                output.newLine();
-                output.flush();
-            } catch (IOException ioe) {
-            }
-        }
+
 
 
         private void receiveFromServer() {
