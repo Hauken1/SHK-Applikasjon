@@ -43,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private Socket connection;
     String userInput;
   //  Socket myClient;
-    BufferedWriter output;
-    BufferedReader input;
+
+    static BufferedWriter output;
+    static BufferedReader input;
     BufferedReader sysIn;
     Button connectBtn;
     TextView receivedText;
@@ -153,6 +154,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public static void sendText(String textToSend) {
+        try {
+            output.write(textToSend);
+            output.newLine();
+            output.flush();
+        } catch (IOException ioe) {
+        }
+    }
     public class ClientThread implements Runnable {
 
         public void run() {
@@ -162,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         Log.d("ClientActivity", "C: Sending command.");
                         String message = "Test fra mobil app";
-                        sendText(message);
+                        //sendText(message);
 
                         Log.d("ClientActivity", "C: Sent.");
 
@@ -178,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
 
         private void connectToServer() {
             try {
-                //socket = new DatagramSocket();
                 connection = new Socket(InetAddress.getByName(hostName), serverPort);
                 Log.d("ClientActivity", "C: Connected to server.");
                 output = new BufferedWriter(new OutputStreamWriter(
@@ -191,14 +199,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
             }
         }
-        public void sendText(String textToSend) {
-            try {
-                output.write(textToSend);
-                output.newLine();
-                output.flush();
-            } catch (IOException ioe) {
-            }
-        }
+
 
 
         private void receiveFromServer() {
@@ -212,18 +213,21 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(ioe);
             }
         }
+
         private void startMessageListener() {
             Thread mThread = new Thread(new Runnable() {
                 public void run() {
                     while (true) {
                         Random rnd = new Random();
                         try {
+
+
+
+                            /*
                             byte[] data = new byte[100];
                             DatagramPacket receivePacket = new DatagramPacket(data,
                                     data.length);
-
                             //socket.receive(receivePacket);
-
                             displayMessage("\nPacket received:"
                                     + "\nFrom host: "
                                     + receivePacket.getAddress()
@@ -234,6 +238,8 @@ public class MainActivity extends AppCompatActivity {
                                     + "\nContaining: "
                                     + new String(receivePacket.getData(), 0,
                                     receivePacket.getLength()));
+                            */
+
                         } catch (Exception e) {
                             System.out.println("Feil med object");
                             e.printStackTrace();
