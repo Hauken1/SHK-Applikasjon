@@ -36,13 +36,14 @@
 
         <activity
             android:name=".RoomList"
-            android:label="@string/room_view">
+            android:label="@string/room_view_light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Climate"
             android:label="@string/climate_view">
