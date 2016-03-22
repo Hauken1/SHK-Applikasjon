@@ -37,7 +37,7 @@ public class Climate extends AppCompatActivity {
     }
 
     public void goToTemperatureView() {
-        Intent intent = new Intent(this, Temperature.class);
+        Intent intent = new Intent(this, RoomListTemp.class);
         startActivity(intent);
     }
 
