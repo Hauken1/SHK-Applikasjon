@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void goToClimateView() {
         Intent intent = new Intent(this, Climate.class);
         startActivity(intent);
