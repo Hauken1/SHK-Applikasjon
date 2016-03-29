@@ -9,39 +9,90 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.weebly.smarthusgruppen.shk_applikasjon.LightingHallway">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_1"
-        android:id="@+id/light_roof_button"
+        android:id="@+id/home_button"
+        android:src="@mipmap/home_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_2"
-        android:id="@+id/light_wall_button1"
-        android:layout_below="@+id/light_roof_button"
-        android:layout_centerHorizontal="true" />
+        android:textOff="0%"
+        android:textOn="På"
+        android:id="@+id/toggle_0"
+        android:checked="true"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_3"
-        android:id="@+id/light_ground_button"
-        android:layout_below="@+id/light_wall_button1"
-        android:layout_centerHorizontal="true" />
+        android:textOff="30%"
+        android:textOn="30%"
+        android:id="@+id/toggle_30"
+        android:checked="false"
+        android:layout_alignTop="@+id/toggle_70"
+        android:layout_toRightOf="@+id/toggle_0"
+        android:layout_toEndOf="@+id/toggle_0" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_4"
-        android:id="@+id/light_all_button"
-        android:layout_below="@+id/light_ground_button"
-        android:layout_centerHorizontal="true" />
+        android:textOff="70%"
+        android:textOn="På"
+        android:id="@+id/toggle_70"
+        android:checked="false"
+        android:layout_alignTop="@+id/toggle_100"
+        android:layout_toRightOf="@+id/toggle_30"
+        android:layout_toEndOf="@+id/toggle_30" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="100%"
+        android:textOn="På"
+        android:id="@+id/toggle_100"
+        android:checked="false"
+        android:layout_alignTop="@+id/toggle_0"
+        android:layout_toRightOf="@+id/toggle_70"
+        android:layout_toEndOf="@+id/toggle_70" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Taklampe"
+        android:id="@+id/textView3"
+        android:textColor="#090909"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/home_button"
+        android:layout_alignStart="@+id/home_button" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/light_all_toggle_button"
+        android:textOff="Alt lys på"
+        android:textOn="Lys er på"
+        android:layout_below="@+id/home_button"
+        android:layout_toLeftOf="@+id/home_button"
+        android:layout_toStartOf="@+id/home_button"
+        android:checked="false" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:textOff="Alt lys av"
+        android:textOn="Lys er av"
+        android:id="@+id/light_off_toggle_button"
+        android:layout_alignBottom="@+id/light_all_toggle_button"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3"
+        android:checked="false" />
 </RelativeLayout>

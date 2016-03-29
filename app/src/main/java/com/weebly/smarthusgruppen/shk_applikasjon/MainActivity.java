@@ -36,7 +36,8 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
 
     int serverPort = 12345;
-    String hostName= "10.0.2.2";
+    String hostName= "128.39.81.160";
+    // 128.39.81.160 10.0.2.2
 
     String textToSend = "Heisann Henrik";
     //private DatagramSocket socket;
