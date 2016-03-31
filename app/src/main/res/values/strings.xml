@@ -6,7 +6,8 @@
     <string name="light_1">Taklampe</string>
     <string name="light_2">Vegglampe</string>
     <string name="light_3">Gulvlampe</string>
-    <string name="light_4">Alt lys</string>
+    <string name="light_4">Alt lys på</string>
+    <string name="light_off">Alt lys av</string>
     <string name="kitchen">Kjøkken</string>
     <string name="bedroom_1">Soverom 1</string>
     <string name="bedroom_2">Soverom 2</string>

@@ -193,7 +193,7 @@
         </intent-filter>
         </activity>
         <activity android:name=".TempKitchen"
-                  android:label="@string/lighting_kitchen">
+                  android:label="@string/temp_kitchen">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -209,7 +209,7 @@
         </intent-filter>
         </activity>
         <activity android:name=".TempOffice"
-            android:label="@string/lighting_office">
+            android:label="@string/temp_office">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

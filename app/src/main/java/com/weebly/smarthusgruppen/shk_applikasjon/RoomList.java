@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class RoomList extends AppCompatActivity {
 
@@ -18,6 +19,7 @@ public class RoomList extends AppCompatActivity {
     Button kitchenBtn;
     Button officeBtn;
     Button livingRoomBtn;
+    ImageButton homeBtn;
 
 
 
@@ -34,6 +36,7 @@ public class RoomList extends AppCompatActivity {
                 goToKitchenLights();
             }
         });
+
         // bathroom button
         bathroomBtn = (Button) findViewById(R.id.room2_button);
         bathroomBtn.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +53,7 @@ public class RoomList extends AppCompatActivity {
                 goToLivingRoomLights();
             }
         });
+
         // bedroom 1 button
         bed1Btn = (Button) findViewById(R.id.room4_button);
         bed1Btn.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +94,14 @@ public class RoomList extends AppCompatActivity {
             }
         });
 
+        //home button
+        homeBtn = (ImageButton) findViewById(R.id.home_button);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToHome();
+            }
+        });
+
 
 
         }
@@ -125,6 +137,10 @@ public class RoomList extends AppCompatActivity {
     }
     public void goToHallwayLights() {
         Intent intent = new Intent(this, LightingHallway.class);
+        startActivity(intent);
+    }
+    public void goToHome() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
