@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.TempHallway">
+    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Measurement">
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -16,5 +16,6 @@
         android:src="@mipmap/home_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

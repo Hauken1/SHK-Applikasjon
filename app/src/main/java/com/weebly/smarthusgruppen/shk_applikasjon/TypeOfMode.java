@@ -6,23 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class TempBedroom2 extends AppCompatActivity {
+public class TypeOfMode extends AppCompatActivity {
     ImageButton homeBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_temp_bedroom2);
+        setContentView(R.layout.activity_type_of_mode);
 
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
         homeBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)  {
+            public void onClick(View v) {
                 goToHome();
             }
         });
     }
-
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

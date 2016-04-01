@@ -20,8 +20,8 @@
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="0%"
-        android:textOn="På"
+        android:textOff="Av"
+        android:textOn="Av"
         android:id="@+id/toggle_0"
         android:checked="true"
         android:layout_below="@+id/textView3"
@@ -31,8 +31,8 @@
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="30%"
-        android:textOn="30%"
+        android:textOff="Min"
+        android:textOn="Min"
         android:id="@+id/toggle_30"
         android:checked="false"
         android:layout_alignTop="@+id/toggle_70"
@@ -42,8 +42,8 @@
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="70%"
-        android:textOn="På"
+        android:textOff="Med"
+        android:textOn="Med"
         android:id="@+id/toggle_70"
         android:checked="false"
         android:layout_alignTop="@+id/toggle_100"
@@ -53,8 +53,8 @@
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="100%"
-        android:textOn="På"
+        android:textOff="Max"
+        android:textOn="Max"
         android:id="@+id/toggle_100"
         android:checked="false"
         android:layout_alignTop="@+id/toggle_0"
@@ -66,33 +66,11 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Taklampe"
+        android:layout_marginTop="10dp"
         android:id="@+id/textView3"
         android:textColor="#090909"
-        android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/home_button"
-        android:layout_alignStart="@+id/home_button" />
+        android:layout_alignStart="@+id/home_button"
+        android:layout_below="@+id/home_button" />
 
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New ToggleButton"
-        android:id="@+id/light_all_toggle_button"
-        android:textOff="Alt lys på"
-        android:textOn="Lys er på"
-        android:layout_below="@+id/home_button"
-        android:layout_toLeftOf="@+id/home_button"
-        android:layout_toStartOf="@+id/home_button"
-        android:checked="false" />
-
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New ToggleButton"
-        android:textOff="Alt lys av"
-        android:textOn="Lys er av"
-        android:id="@+id/light_off_toggle_button"
-        android:layout_alignBottom="@+id/light_all_toggle_button"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
-        android:checked="false" />
 </RelativeLayout>

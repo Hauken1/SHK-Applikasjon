@@ -1,6 +1,6 @@
 <resources>
-    >
-    <string name="app_name">SHK-Applikasjon</string>
+
+    <string name="app_name">SHK</string>
     <string name="connect_button">Connect</string>
     <string name="light_control_button">Lysstyring</string>
     <string name="light_1">Taklampe</string>
@@ -37,7 +37,32 @@
     <string name="temp_bed3">Temperatur - Soverom 3</string>
     <string name="temp_office">Temperatur - Kontor</string>
     <string name="temp_hallway">Temperatur - Gang</string>
-
-
+    <string name="off">Av</string>
+    <string name="lvl1">Trinn 1</string>
+    <string name="lvl2">Trinn 2</string>
+    <string name="lvl3">Trinn 3</string>
+    <string name="Login">Logg inn</string>
+    <string name="login_page">Logg inn</string>
+    <string name="ask_username">Skriv inn brukernamn</string>
+    <string name="ask_pw">Skriv inn passord</string>
+    <string name="windows">Takvinduer</string>
+    <string name="window_1">Vindu kjøkken</string>
+    <string name="window_2">Vindu gang</string>
+    <string name="window_3">Vindu stue</string>
+    <string name="open">Åpent</string>
+    <string name="closed">Lukket</string>
+    <string name="stop">Stoppet</string>
+    <string name="open2">Åpne</string>
+    <string name="close">Lukke</string>
+    <string name="stop2">Stoppe</string>
+    <string name="window">Vindu</string>
+    <string name="measure1">Oversikt</string>
+    <string name="modes">Moduser</string>
     <string name="title_activity_lighting">Lysstyring</string>
+    <string name="ph">PLACEHOLDER</string>
+
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

@@ -1,11 +1,10 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,18 +14,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-
-import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-
-import java.io.OutputStreamWriter;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -34,28 +24,20 @@ import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    int serverPort = 12345;
-    String hostName= "128.39.81.160";
-    // 128.39.81.160 10.0.2.2
-
-    String textToSend = "Heisann Henrik";
-    //private DatagramSocket socket;
-    private Socket connection;
     String userInput;
-  //  Socket myClient;
-
     static BufferedWriter output;
     static BufferedReader input;
     BufferedReader sysIn;
-    Button connectBtn;
     TextView receivedText;
     Button lightBtn;
     Button climateBtn;
+    Button windowsBtn;
+    Button measureBtn;
+    Button modeBtn;
+    static Socket connection;
+
 
     OutputStream os;
-    ObjectOutputStream oos;
-    boolean connected = false;
     ClientMessage cm = new ClientMessage();
 
 
@@ -70,11 +52,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getConnection();
+
+
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        connectBtn = (Button) findViewById(R.id.connectButton);
-        connectBtn.setOnClickListener(connectListener);
+       /* connectBtn = (Button) findViewById(R.id.connectButton);
+        connectBtn.setOnClickListener(connectListener);*/
 
         // light control button
         lightBtn = (Button) findViewById(R.id.lightButton);
@@ -92,19 +78,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        windowsBtn = (Button) findViewById(R.id.windowButton);
+        windowsBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToWindowView();
+            }
+        });
+
+        measureBtn = (Button) findViewById(R.id.measureButton);
+        measureBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMeasurementView();
+            }
+        });
+
+        modeBtn = (Button) findViewById(R.id.modeButton);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToModeView();
+            }
+        });
+
 
     }
-
-    protected View.OnClickListener connectListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            connected = true;
-            if (connected) {
-                Thread cThread = new Thread(new ClientThread());
-                cThread.start();
-            }
-        }
-    };
 
     @Override
     public void onStart() {
@@ -156,51 +152,22 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public static void sendText(String textToSend) {
-        try {
-            output.write(textToSend);
-            output.newLine();
-            output.flush();
-        } catch (IOException ioe) {
-        }
+    public void goToWindowView() {
+        Intent intent = new Intent(this, Windows.class);
+        startActivity(intent);
     }
-    public class ClientThread implements Runnable {
 
-        public void run() {
-            try {
-                Log.d("ClientActivity", "C: Connecting...");
-                connectToServer();
-                    try {
-                        Log.d("ClientActivity", "C: Sending command.");
-                        String message = "Test fra mobil app";
-                        //sendText(message);
+    public void goToMeasurementView() {
+        Intent intent = new Intent(this, Measurement.class);
+        startActivity(intent);
+    }
+    public void goToModeView() {
+        Intent intent = new Intent(this, TypeOfMode.class);
+        startActivity(intent);
+    }
 
-                        Log.d("ClientActivity", "C: Sent.");
 
-                    } catch (Exception e) {
-                        Log.e("ClientActivity", "S: Error", e);
-                    }
-               // socket.close();
-                Log.d("ClientActivity", "C: Closed.");
-            } catch (Exception e) {
-                Log.e("ClientActivity", "C: Error", e);
-            }
-        }
 
-        private void connectToServer() {
-            try {
-                connection = new Socket(InetAddress.getByName(hostName), serverPort);
-                Log.d("ClientActivity", "C: Connected to server.");
-                output = new BufferedWriter(new OutputStreamWriter(
-                        connection.getOutputStream()));
-                input = new BufferedReader(new InputStreamReader(
-                        connection.getInputStream()));
-
-            } catch (UnknownHostException e) {
-
-            } catch (IOException e) {
-            }
-        }
 
 
 
@@ -255,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                ;
+
             });
         }
 
@@ -266,7 +233,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public static void sendText(String textToSend) {
+        try {
+            output.write(textToSend);
+            output.newLine();
+            output.flush();
+        } catch (IOException ioe) {
+        }
     }
+
+    public static void getConnection() {
+        connection = LoginClient.returnConnection();
+        output = LoginClient.returnwriter();
+        input = LoginClient.returnReader();
+    }
+
 
 }
 
