@@ -6,17 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class TempLivingRoom extends AppCompatActivity {
+public class Measurement extends AppCompatActivity {
     ImageButton homeBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_temp_living_room);
+        setContentView(R.layout.activity_measurement);
 
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
         homeBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)  {
+            public void onClick(View v) {
                 goToHome();
             }
         });

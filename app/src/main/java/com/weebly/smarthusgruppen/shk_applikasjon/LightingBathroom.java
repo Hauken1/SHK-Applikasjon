@@ -6,17 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ToggleButton;
 
 public class LightingBathroom extends AppCompatActivity {
-    boolean connected;
     boolean lmin = false;
     boolean lmed = false;
     boolean lmax = false;
 
-    Button lightOffBtn;
-    Button lightMinBtn;
-    Button lightMedBtn;
-    Button lightMaxBtn;
+    ToggleButton lightOffBtn;
+    ToggleButton lightMinBtn;
+    ToggleButton lightMedBtn;
+    ToggleButton lightMaxBtn;
     ImageButton homeBtn;
 
     @Override
@@ -24,16 +24,16 @@ public class LightingBathroom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_bathroom);
 
-        lightOffBtn = (Button) findViewById(R.id.light_off_toggle_button);
+        lightOffBtn = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn.setOnClickListener(light_all__off_Listener);
 
-        lightMinBtn = (Button) findViewById(R.id.toggle_30);
+        lightMinBtn = (ToggleButton) findViewById(R.id.toggle_30);
         lightMinBtn.setOnClickListener(light_all_min);
 
-        lightMedBtn = (Button) findViewById(R.id.toggle_70);
+        lightMedBtn = (ToggleButton) findViewById(R.id.toggle_70);
         lightMedBtn.setOnClickListener(light_all_med);
 
-        lightMaxBtn = (Button) findViewById(R.id.toggle_100);
+        lightMaxBtn = (ToggleButton) findViewById(R.id.toggle_100);
         lightMaxBtn.setOnClickListener(light_all_Listener);
 
         //home button
@@ -50,12 +50,15 @@ public class LightingBathroom extends AppCompatActivity {
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            connected = true;
-            if ((lmin == true) || (lmed == true) || (lmax == true)) {
+            if (lmin || lmed || lmax) {
                 MainActivity.sendText("Command:000002117,1,0");
                 lmin = false;
                 lmed = false;
                 lmax = false;
+
+                lightMinBtn.setChecked(false);
+                lightMedBtn.setChecked(false);
+                lightMaxBtn.setChecked(false);
             }
         }
     };
@@ -64,17 +67,20 @@ public class LightingBathroom extends AppCompatActivity {
     protected View.OnClickListener light_all_min = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            connected = true;
-            if (lmin == false) {
+            if (!lmin) {
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin = true;
                 lmed = false;
                 lmax = false;
-            } else if (lmin == true) {
+
+                lightMedBtn.setChecked(false);
+                lightMaxBtn.setChecked(false);
+                lightOffBtn.setChecked(false);
+            } else if (lmin) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
-                lmin = false;
-                lmed = false;
-                lmax = false;
+                allBoolFalse();
+                allButtonsOff();
+
             }
         }
     };
@@ -83,18 +89,20 @@ public class LightingBathroom extends AppCompatActivity {
     protected View.OnClickListener light_all_med = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            connected = true;
-            if (lmed == false) {
+            if (!lmed) {
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
                 lmin = false;
                 lmed = true;
                 lmax = false;
+
+                lightMinBtn.setChecked(false);
+                lightMaxBtn.setChecked(false);
+                lightOffBtn.setChecked(false);
             }
-            else if (lmed == true) {
+            else if (lmed) {
                 MainActivity.sendText("Command:000002117,1,0"); // all lights off
-                lmin = false;
-                lmed = false;
-                lmax = false;
+                allBoolFalse();
+                allButtonsOff();
             }
         }
     };
@@ -103,21 +111,37 @@ public class LightingBathroom extends AppCompatActivity {
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            connected = true;
-            if (lmax == false) {        //this method should only be called if there is a connection.
+            if (!lmax) {        //this method should only be called if there is a connection.
                 MainActivity.sendText("Command:000002117,1,3"); // all lights to max
                 lmin = false;
                 lmed = false;
                 lmax = true;
+
+                lightMinBtn.setChecked(false);
+                lightMedBtn.setChecked(false);
+                lightOffBtn.setChecked(false);
             }
-            else if (lmax == true) {
+            else if (lmax) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
-                lmin = false;
-                lmed = false;
-                lmax = false;
+                allBoolFalse();
+
+                allButtonsOff();
             }
         }
     };
+
+    public void allButtonsOff() {
+        lightMinBtn.setChecked(false);
+        lightMedBtn.setChecked(false);
+        lightMaxBtn.setChecked(false);
+        lightOffBtn.setChecked(false);
+    }
+
+    public void allBoolFalse()  {
+        lmin = false;
+        lmed = false;
+        lmax = false;
+    }
 
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
