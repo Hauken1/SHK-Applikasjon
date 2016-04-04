@@ -78,13 +78,12 @@ public class LoginClient extends AppCompatActivity {
             if (!username.isEmpty() && !password.isEmpty() && !login.isEmpty()) {
                 sendLogin(login, username, password);
                 try {
-                    //ID = Integer.valueOf(MainActivity.input.readLine());
+                    ID = Integer.valueOf(MainActivity.input.readLine());
 
                     // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
                     // sende med forskjellige ID
 
-                    if (ID == 1) {
-
+                    if (ID > 0) {
                         goToHome();
                     } else {
                         System.out.print("Feil passord eller brukernavn, prøv igjen");
@@ -132,6 +131,8 @@ public class LoginClient extends AppCompatActivity {
                 Log.d("ClientActivity", "C: Connecting...");
                 connectToServer();
                 try {
+
+
                     Log.d("ClientActivity", "C: Sending command.");
                     String message = "Test fra mobil app";
 
