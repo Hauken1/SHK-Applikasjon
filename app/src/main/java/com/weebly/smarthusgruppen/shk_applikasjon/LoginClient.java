@@ -19,13 +19,14 @@ import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     int serverPort = 12345;
-    String hostName= "128.39.82.65";
+    String hostName= "128.39.81.236";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -40,6 +41,7 @@ public class LoginClient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_client);
 
+        //connectToServer();
         Thread cThread = new Thread(new ClientThread());
         cThread.start();
 
@@ -72,29 +74,45 @@ public class LoginClient extends AppCompatActivity {
             EditText tempPw = (EditText) findViewById(R.id.edittext_password);
             username = tempUser.getText().toString();
             password = tempPw.getText().toString();
-            String login = "Login";
 
-            int ID = 1;
-            if (!username.isEmpty() && !password.isEmpty() && !login.isEmpty()) {
-                sendLogin(login, username, password);
-                try {
-                    ID = Integer.valueOf(MainActivity.input.readLine());
 
-                    // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
-                    // sende med forskjellige ID
 
-                    if (ID > 0) {
-                        goToHome();
-                    } else {
-                        System.out.print("Feil passord eller brukernavn, prøv igjen");
+            Thread thread = new Thread((new Runnable() {
+                @Override
+                public void run() {
+                    String login = "Login";
+                    if (!username.isEmpty() && !password.isEmpty() && !login.isEmpty()) {
+
+                        if (connection.isConnected()) {
+                            Random rnd = new Random();
+                            sendLogin(login, username, password);
+                            try {
+                                //TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
+                                int ID = Integer.valueOf(input.readLine());
+                                System.out.print(ID + " ID");
+                                Log.d("ClientActivity", "C: logging in..." + ID);
+                                if (ID > 0) {
+                                    goToHome();
+                                } else {
+                                    System.out.print("Feil passord eller brukernavn, prøv igjen");
+                                }
+
+                                // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
+                                // sende med forskjellige ID
+
+
+                            } catch (Exception e) {
+                                System.out.println(e);
+                            }
+                        }
+
                     }
-
-                } catch (Exception e) {
-                    System.out.println(e);
                 }
-            }
+            }));
 
+            thread.start();
         }
+
     };
 
 
