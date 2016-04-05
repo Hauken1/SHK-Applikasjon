@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Temperature">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/home_button"
+        android:src="@mipmap/home_button"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/bathroom"
+        android:id="@+id/textView3"
+        android:textColor="#090909"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/home_button"
+        android:layout_centerHorizontal="true" />
+
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textOn="@string/ph"
+        android:textOff="@string/ph"
+        android:id="@+id/ph_button"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_up"
+        android:layout_alignTop="@+id/ph_button"
+        android:layout_toRightOf="@+id/ph_button"
+        android:layout_toEndOf="@+id/ph_button"
+        android:src="@android:drawable/arrow_up_float" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_down"
+        android:layout_alignTop="@+id/adjust_up"
+        android:layout_toRightOf="@+id/adjust_up"
+        android:layout_toEndOf="@+id/adjust_up"
+        android:checked="false"
+        android:src="@android:drawable/arrow_down_float" />
+
+
+</RelativeLayout>

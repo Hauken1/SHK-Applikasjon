@@ -1,10 +1,10 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
-import android.app.Activity;
+
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,70 +14,93 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
-
-    int portNumber = 1234;
-    String hostName= "10.0.2.2";
-
-    String textToSend = "Heisann Henrik";
-    private DatagramSocket socket;
     String userInput;
-  //  Socket myClient;
-    BufferedWriter output;
-    BufferedReader input;
+    static BufferedWriter output;
+    static BufferedReader input;
     BufferedReader sysIn;
-    Button connectBtn;
     TextView receivedText;
+    Button lightBtn;
+    Button climateBtn;
+    Button windowsBtn;
+    Button measureBtn;
+    Button modeBtn;
+    static Socket connection;
+
 
     OutputStream os;
-    ObjectOutputStream oos;
-    boolean connected = false;
+    ClientMessage cm = new ClientMessage();
+
+
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+        getConnection();
+
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        connectBtn = (Button) findViewById(R.id.connectButton);
-        connectBtn.setOnClickListener(connectListener);
-    }
+       /* connectBtn = (Button) findViewById(R.id.connectButton);
+        connectBtn.setOnClickListener(connectListener);*/
 
-    protected View.OnClickListener connectListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            connected = true;
-            if (connected) {
-                Thread cThread = new Thread(new ClientThread());
-                cThread.start();
+        // light control button
+        lightBtn = (Button) findViewById(R.id.lightButton);
+        lightBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToRoomView();
             }
-        }
-    };
+        });
+        // climate button
+        climateBtn = (Button) findViewById(R.id.climateButton);
+        climateBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToClimateView();
+            }
+        });
+
+        windowsBtn = (Button) findViewById(R.id.windowButton);
+        windowsBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToWindowView();
+            }
+        });
+
+        measureBtn = (Button) findViewById(R.id.measureButton);
+        measureBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMeasurementView();
+            }
+        });
+
+        modeBtn = (Button) findViewById(R.id.modeButton);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToModeView();
+            }
+        });
+
+
+    }
 
     @Override
     public void onStart() {
@@ -118,46 +141,35 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
+    public void goToRoomView() {
+        Intent intent = new Intent(this, RoomList.class);
+        startActivity(intent);
+    }
 
-    public class ClientThread implements Runnable {
 
-        public void run() {
-            try {
-                Log.d("ClientActivity", "C: Connecting...");
-                connectToServer();
-                    try {
-                        Log.d("ClientActivity", "C: Sending command.");
-                        String message = "Hei, dette er en test \n";
+    public void goToClimateView() {
+        Intent intent = new Intent(this, Climate.class);
+        startActivity(intent);
+    }
 
-                        byte[] data = message.getBytes();
+    public void goToWindowView() {
+        Intent intent = new Intent(this, Windows.class);
+        startActivity(intent);
+    }
 
-                        DatagramPacket sendPacket = new DatagramPacket(data,
-                                data.length, InetAddress.getByName(hostName), 1234);
-                        socket.send(sendPacket);
-                        startMessageListener();
-                        Log.d("ClientActivity", "C: Sent.");
+    public void goToMeasurementView() {
+        Intent intent = new Intent(this, Measurement.class);
+        startActivity(intent);
+    }
+    public void goToModeView() {
+        Intent intent = new Intent(this, TypeOfMode.class);
+        startActivity(intent);
+    }
 
-                    } catch (Exception e) {
-                        Log.e("ClientActivity", "S: Error", e);
-                    }
-                socket.close();
-                Log.d("ClientActivity", "C: Closed.");
-            } catch (Exception e) {
-                Log.e("ClientActivity", "C: Error", e);
-            }
-        }
 
-        private void connectToServer() {
-            try {
-                socket = new DatagramSocket();
-            }
-            catch (IOException ioe) {
-                System.out.println(ioe);
-                System.out.println("Feil ved tilkobling");
-            }
 
-            // Sending string to target host
-        }
+
+
 
         private void receiveFromServer() {
             try {
@@ -170,18 +182,21 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(ioe);
             }
         }
+
         private void startMessageListener() {
             Thread mThread = new Thread(new Runnable() {
                 public void run() {
                     while (true) {
                         Random rnd = new Random();
                         try {
+
+
+
+                            /*
                             byte[] data = new byte[100];
                             DatagramPacket receivePacket = new DatagramPacket(data,
                                     data.length);
-
-                            socket.receive(receivePacket);
-
+                            //socket.receive(receivePacket);
                             displayMessage("\nPacket received:"
                                     + "\nFrom host: "
                                     + receivePacket.getAddress()
@@ -192,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                                     + "\nContaining: "
                                     + new String(receivePacket.getData(), 0,
                                     receivePacket.getLength()));
+                            */
+
                         } catch (Exception e) {
                             System.out.println("Feil med object");
                             e.printStackTrace();
@@ -205,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                ;
+
             });
         }
 
@@ -216,7 +233,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public static void sendText(String textToSend) {
+        try {
+            output.write(textToSend);
+            output.newLine();
+            output.flush();
+        } catch (IOException ioe) {
+        }
     }
+
+    public static void getConnection() {
+        connection = LoginClient.returnConnection();
+        output = LoginClient.returnwriter();
+        input = LoginClient.returnReader();
+    }
+
 
 }
 
