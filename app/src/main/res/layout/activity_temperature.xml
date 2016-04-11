@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Temperature">
 
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +27,12 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/home_button"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/Temp"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <ToggleButton
         android:layout_width="80dp"

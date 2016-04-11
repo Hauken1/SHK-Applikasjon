@@ -1,6 +1,7 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Button;
 
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -26,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     int serverPort = 12345;
-    String hostName= "128.39.81.236";
+    String hostName= "128.39.83.60";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -50,7 +53,6 @@ public class LoginClient extends AppCompatActivity {
 
 
     }
-
 
     protected static Socket returnConnection() {
         return connection;
@@ -135,6 +137,8 @@ public class LoginClient extends AppCompatActivity {
         }
     }
 
+
+
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -148,20 +152,10 @@ public class LoginClient extends AppCompatActivity {
             try {
                 Log.d("ClientActivity", "C: Connecting...");
                 connectToServer();
-                try {
 
-
-                    Log.d("ClientActivity", "C: Sending command.");
-                    String message = "Test fra mobil app";
-
-                    Log.d("ClientActivity", "C: Sent.");
-
-                } catch (Exception e) {
-                    Log.e("ClientActivity", "S: Error", e);
-                }
                 // socket.close();
-                Log.d("ClientActivity", "C: Closed.");
             } catch (Exception e) {
+                MainActivity.sendText("Disconnect");
                 Log.e("ClientActivity", "C: Error", e);
             }
         }
