@@ -25,7 +25,7 @@ import java.net.UnknownHostException;
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     int serverPort = 12345;
-    String hostName= "128.39.82.65";
+    String hostName= "128.39.81.236";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -40,8 +40,9 @@ public class LoginClient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_client);
 
-        Thread cThread = new Thread(new ClientThread());
-        cThread.start();
+       // connectToServer();
+        //Thread cThread = new Thread(new ClientThread());
+        //cThread.start();
 
         loginBtn = (Button) findViewById(R.id.login_button);
         loginBtn.setOnClickListener(userLogin);
@@ -78,7 +79,8 @@ public class LoginClient extends AppCompatActivity {
             if (!username.isEmpty() && !password.isEmpty() && !login.isEmpty()) {
                 sendLogin(login, username, password);
                 try {
-                    ID = Integer.valueOf(MainActivity.input.readLine());
+
+                    ID = Integer.valueOf(input.readLine());
 
                     // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
                     // sende med forskjellige ID
