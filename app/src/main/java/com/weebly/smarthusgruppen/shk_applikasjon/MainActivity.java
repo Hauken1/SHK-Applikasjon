@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     Button modeBtn;
     static Socket connection;
 
+    Temperature temperature = new Temperature();
+
 
     OutputStream os;
     ClientMessage cm = new ClientMessage();
@@ -102,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         startMessageListener();
+
     }
 
     @Override
@@ -149,9 +152,7 @@ public class MainActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
 
-        Log.d("tiss", "");
         sendText("Disconnect");
-        // A little butter on flesk
         System.exit(1);
     }
     public void goToRoomView() {
@@ -257,14 +258,14 @@ public class MainActivity extends AppCompatActivity {
      * Sets the temperatures given from server
      * @param msg String containing temperatures
      */
-    public static void tempInfoController(String msg) {
+    public void tempInfoController(String msg) {
         // Sets the channel number
         int Channel = Integer.parseInt(msg.substring(1, 2));
         // Sets the mode number
         int Mode    = Integer.parseInt(msg.substring(2, 3));
         // If the temperature is less than 10, set temp like int after 0, else set
         // temp like int XX
-        int Normal = ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5)));
+        int Holiday = ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5)));
         // Will most likely be over 10
         int Day    = Integer.parseInt(msg.substring(5, 7));
         // Will most likely be over 10
@@ -273,6 +274,9 @@ public class MainActivity extends AppCompatActivity {
         int Away  = Integer.parseInt(msg.substring(9, 11));
         // Gets rest of the string, which will (presumably) be two integers.
         int CurrentTemp = Integer.parseInt(msg.substring(11));
+
+        temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
+        //Temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
 
     }
 
