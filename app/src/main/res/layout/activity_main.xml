@@ -12,35 +12,47 @@
     <TextView
         android:id="@+id/receivedText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    
-    <Button
-        android:id="@+id/connectButton"
-        android:text="@string/connect_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true" />
+        android:layout_height="wrap_content" />0o
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="@string/light_control_button"
         android:id="@+id/lightButton"
-        android:layout_alignTop="@+id/connectButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/receivedText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="@string/climate_view"
+        android:id="@+id/climateButton"
         android:layout_below="@+id/lightButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="77dp"
-        android:id="@+id/climateButton" />
+        android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="@string/window"
+        android:id="@+id/windowButton"
+        android:layout_below="@+id/climateButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="@string/measure1"
+        android:id="@+id/measureButton"
+        android:layout_below="@+id/windowButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="@string/modes"
+        android:id="@+id/modeButton"
+        android:layout_below="@+id/measureButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

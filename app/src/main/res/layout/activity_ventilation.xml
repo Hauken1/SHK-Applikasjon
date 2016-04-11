@@ -7,18 +7,58 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Ventilation">
+    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Ventilation"
+    android:contentDescription="home button">
 
-    <TextView
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Placeholder ventilation view "
-        android:id="@+id/textView2"
+        android:id="@+id/home_button"
+        android:src="@mipmap/home_button"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textOn="@string/lvl1"
+        android:textOff="@string/lvl1"
+        android:id="@+id/lvl1_button"
+        android:layout_marginTop="43dp"
+        android:layout_below="@+id/home_button"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="66dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="59dp" />
+        android:layout_alignParentStart="true" />
+
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textOff="@string/lvl2"
+        android:textOn="@string/lvl2"
+        android:id="@+id/lvl2_button"
+        android:layout_alignTop="@+id/lvl1_button"
+        android:layout_toRightOf="@+id/lvl1_button"
+        android:layout_toEndOf="@+id/lvl1_button" />
+
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/lvl3_button"
+        android:layout_alignTop="@+id/lvl2_button"
+        android:layout_toRightOf="@+id/lvl2_button"
+        android:layout_toEndOf="@+id/lvl2_button"
+        android:checked="false"
+        android:textOff="@string/lvl3"
+        android:textOn="@string/lvl3"/>
+
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/lvl4_button"
+        android:layout_alignTop="@+id/lvl3_button"
+        android:layout_toRightOf="@+id/lvl3_button"
+        android:layout_toEndOf="@+id/lvl3_button"
+        android:checked="false"
+        android:textOff="@string/off"
+        android:textOn="@string/off" />
+
 </RelativeLayout>

@@ -9,39 +9,68 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.weebly.smarthusgruppen.shk_applikasjon.LightingKitchen">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_1"
-        android:id="@+id/light_roof_button"
+        android:id="@+id/home_button"
+        android:src="@mipmap/home_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_2"
-        android:id="@+id/light_wall_button1"
-        android:layout_below="@+id/light_roof_button"
-        android:layout_centerHorizontal="true" />
+        android:textOff="Av"
+        android:textOn="Av"
+        android:id="@+id/toggle_0"
+        android:checked="true"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_3"
-        android:id="@+id/light_ground_button"
-        android:layout_below="@+id/light_wall_button1"
-        android:layout_centerHorizontal="true" />
+        android:textOff="Min"
+        android:textOn="Min"
+        android:id="@+id/toggle_30"
+        android:checked="false"
+        android:layout_alignTop="@+id/toggle_70"
+        android:layout_toRightOf="@+id/toggle_0"
+        android:layout_toEndOf="@+id/toggle_0" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_4"
-        android:id="@+id/light_all_button"
-        android:layout_below="@+id/light_ground_button"
-        android:layout_centerHorizontal="true" />
+        android:textOff="Med"
+        android:textOn="Med"
+        android:id="@+id/toggle_70"
+        android:checked="false"
+        android:layout_alignTop="@+id/toggle_100"
+        android:layout_toRightOf="@+id/toggle_30"
+        android:layout_toEndOf="@+id/toggle_30" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Max"
+        android:textOn="Max"
+        android:id="@+id/toggle_100"
+        android:checked="false"
+        android:layout_alignTop="@+id/toggle_0"
+        android:layout_toRightOf="@+id/toggle_70"
+        android:layout_toEndOf="@+id/toggle_70" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Taklampe"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView3"
+        android:textColor="#090909"
+        android:layout_alignLeft="@+id/home_button"
+        android:layout_alignStart="@+id/home_button"
+        android:layout_below="@+id/home_button" />
+
 </RelativeLayout>
