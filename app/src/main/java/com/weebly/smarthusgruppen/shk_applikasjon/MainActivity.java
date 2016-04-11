@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.nio.channels.Channel;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     Button measureBtn;
     Button modeBtn;
     static Socket connection;
+
+    Temperature temperature = new Temperature();
 
 
     OutputStream os;
@@ -99,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        startMessageListener();
 
     }
 
@@ -137,9 +142,18 @@ public class MainActivity extends AppCompatActivity {
                 Uri.parse("http://host/path"),
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://com.weebly.smarthusgruppen.shk_applikasjon/http/host/path")
+
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        sendText("Disconnect");
+        System.exit(1);
     }
     public void goToRoomView() {
         Intent intent = new Intent(this, RoomList.class);
@@ -189,9 +203,16 @@ public class MainActivity extends AppCompatActivity {
                     while (true) {
                         Random rnd = new Random();
                         try {
+                            String msg = input.readLine();
+                            Log.d("Stuff", ""+ msg);
 
+                            if(msg.startsWith("TempInfo:")) {
+                                tempInfoController(msg.substring(8, msg.length()));
+                            }
 
+                            else {
 
+                            }
                             /*
                             byte[] data = new byte[100];
                             DatagramPacket receivePacket = new DatagramPacket(data,
@@ -211,12 +232,13 @@ public class MainActivity extends AppCompatActivity {
 
                         } catch (Exception e) {
                             System.out.println("Feil med object");
-                            e.printStackTrace();
+                            //e.printStackTrace();
                         }
                         try {
                             TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
+                            MainActivity.sendText("Disconnect");
                             e.printStackTrace();
                         }
                     }
@@ -224,12 +246,39 @@ public class MainActivity extends AppCompatActivity {
 
 
             });
+            mThread.start();
         }
 
         private void displayMessage(String text) {
            receivedText.append(text);
            // SwingUtilities.invokeLater(() -> receivedText.append(text));
         }
+
+    /**
+     * Sets the temperatures given from server
+     * @param msg String containing temperatures
+     */
+    public void tempInfoController(String msg) {
+        // Sets the channel number
+        int Channel = Integer.parseInt(msg.substring(1, 2));
+        // Sets the mode number
+        int Mode    = Integer.parseInt(msg.substring(2, 3));
+        // If the temperature is less than 10, set temp like int after 0, else set
+        // temp like int XX
+        int Holiday = ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5)));
+        // Will most likely be over 10
+        int Day    = Integer.parseInt(msg.substring(5, 7));
+        // Will most likely be over 10
+        int Night = Integer.parseInt(msg.substring(7, 9));
+        // Will most likely be over 10
+        int Away  = Integer.parseInt(msg.substring(9, 11));
+        // Gets rest of the string, which will (presumably) be two integers.
+        int CurrentTemp = Integer.parseInt(msg.substring(11));
+
+        temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
+        //Temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
+
+    }
 
 
 

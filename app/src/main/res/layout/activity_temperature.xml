@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Temperature">
 
+
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,9 +17,11 @@
         android:src="@mipmap/home_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="85dp"
+        android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/bathroom"
         android:id="@+id/textView3"
@@ -27,34 +30,298 @@
         android:layout_below="@+id/home_button"
         android:layout_centerHorizontal="true" />
 
-    <ToggleButton
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:textOn="@string/ph"
-        android:textOff="@string/ph"
-        android:id="@+id/ph_button"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <ImageButton
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/adjust_up"
-        android:layout_alignTop="@+id/ph_button"
-        android:layout_toRightOf="@+id/ph_button"
-        android:layout_toEndOf="@+id/ph_button"
-        android:src="@android:drawable/arrow_up_float" />
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_alignTop="@+id/adjust_down"
+        android:layout_toLeftOf="@+id/adjust_down"
+        android:layout_toStartOf="@+id/adjust_down" />
 
     <ImageButton
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/adjust_down"
-        android:layout_alignTop="@+id/adjust_up"
-        android:layout_toRightOf="@+id/adjust_up"
-        android:layout_toEndOf="@+id/adjust_up"
         android:checked="false"
-        android:src="@android:drawable/arrow_down_float" />
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_below="@+id/textView3"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/current1_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_up" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/static1_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_down"
+        android:layout_toRightOf="@+id/adjust_down"
+        android:layout_toEndOf="@+id/adjust_down"
+        android:layout_marginLeft="10dp"/>
+
+
+    <TextView
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/kitchen"
+        android:id="@+id/kitchen_tv"
+        android:textColor="#090909"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/adjust_up"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_up1"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_below="@+id/kitchen_tv"
+        android:layout_toLeftOf="@+id/adjust_down1"
+        android:layout_toStartOf="@+id/adjust_down1" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_down1"
+        android:checked="false"
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_alignTop="@+id/adjust_up1"
+        android:layout_alignRight="@+id/kitchen_tv"
+        android:layout_alignEnd="@+id/kitchen_tv" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/current2_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_up1" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/static2_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_down1"
+        android:layout_toRightOf="@+id/adjust_down1"
+        android:layout_toEndOf="@+id/adjust_down1"
+        android:layout_marginLeft="10dp"/>
+
+
+
+
+    <TextView
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/living_room"
+        android:id="@+id/living_room_tv"
+        android:textColor="#090909"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/adjust_up1"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_up2"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_below="@+id/living_room_tv"
+        android:layout_toLeftOf="@+id/adjust_down2"
+        android:layout_toStartOf="@+id/adjust_down2" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_down2"
+        android:checked="false"
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_alignTop="@+id/adjust_up2"
+        android:layout_alignRight="@+id/home_button"
+        android:layout_alignEnd="@+id/home_button" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/current3_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_up2" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/static3_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_down2"
+        android:layout_toRightOf="@+id/adjust_down2"
+        android:layout_toEndOf="@+id/adjust_down2"
+        android:layout_marginLeft="10dp"/>
+
+
+
+    <TextView
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/bedroom_1"
+        android:id="@+id/bed1_tv"
+        android:textColor="#090909"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/adjust_up2"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_up3"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_below="@+id/living_room_tv"
+        android:layout_toLeftOf="@+id/adjust_down3"
+        android:layout_toStartOf="@+id/adjust_down3" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_down3"
+        android:checked="false"
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_alignTop="@+id/adjust_up3"
+        android:layout_alignRight="@+id/home_button"
+        android:layout_alignEnd="@+id/home_button" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/current4_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_up3" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/static4_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_down3"
+        android:layout_toRightOf="@+id/adjust_down3"
+        android:layout_toEndOf="@+id/adjust_down3"
+        android:layout_marginLeft="10dp"/>
+
+
+    <TextView
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/bedroom_2"
+        android:id="@+id/bed2_tv"
+        android:textColor="#090909"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/adjust_up3"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_up4"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_below="@+id/bed1_tv"
+        android:layout_toLeftOf="@+id/adjust_down4"
+        android:layout_toStartOf="@+id/adjust_down4" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_down4"
+        android:checked="false"
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_alignTop="@+id/adjust_up4"
+        android:layout_alignRight="@+id/home_button"
+        android:layout_alignEnd="@+id/home_button" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/current5_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_up4" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/static5_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_down4"
+        android:layout_toRightOf="@+id/adjust_down4"
+        android:layout_toEndOf="@+id/adjust_down4"
+        android:layout_marginLeft="10dp"/>
+
+
+
+    <TextView
+        android:layout_width="85dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/office"
+        android:id="@+id/office_tv"
+        android:textColor="#090909"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/adjust_up4"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_up5"
+        android:src="@android:drawable/arrow_up_float"
+        android:layout_below="@+id/bed2_tv"
+        android:layout_toLeftOf="@+id/adjust_down5"
+        android:layout_toStartOf="@+id/adjust_down5" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/adjust_down5"
+        android:checked="false"
+        android:src="@android:drawable/arrow_down_float"
+        android:layout_alignTop="@+id/adjust_up5"
+        android:layout_alignRight="@+id/home_button"
+        android:layout_alignEnd="@+id/home_button" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/current6_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_up5" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/static6_tv"
+        android:textColor="#090909"
+        android:layout_alignBottom="@+id/adjust_down5"
+        android:layout_toRightOf="@+id/adjust_down5"
+        android:layout_toEndOf="@+id/adjust_down5"
+        android:layout_marginLeft="10dp"/>
+
 
 
 </RelativeLayout>
