@@ -176,8 +176,9 @@
 
 
 
+
         <TextView
-            android:layout_width="85dp"
+            android:layout_width="90dp"
             android:layout_height="40dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/bedroom_1"
@@ -226,15 +227,17 @@
             android:layout_marginLeft="10dp"/>
 
 
+
+
         <TextView
-            android:layout_width="85dp"
+            android:layout_width="90dp"
             android:layout_height="40dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/bedroom_2"
             android:id="@+id/bed2_tv"
             android:textColor="#090909"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/adjust_up3"
+            android:layout_below="@+id/adjust_down3"
             android:layout_centerHorizontal="true" />
 
         <ImageButton

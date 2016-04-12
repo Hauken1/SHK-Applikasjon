@@ -3,6 +3,7 @@ package com.weebly.smarthusgruppen.shk_applikasjon;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -43,9 +44,6 @@ public class Temperature extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
 
-        int curr1 = 25;
-        TextView ctemp1 = (TextView) findViewById(R.id.current1_tv);
-        ctemp1.setText(curr1 +" °C");
 
     }
     public Temperature() {
@@ -57,8 +55,10 @@ public class Temperature extends AppCompatActivity {
         startActivity(intent);
     }
     void createTempZone(int ch, int mo, int cd, int cn, int cho, int ca, int ct) {
+        Log.d("Stuff", ""+ ch + " " + mo + " " + cho + " " + cd + " " + cn + " " + ca + " " + ct );
         TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
         tempZone.add(zone);
+
         switch (zone.channel) {
 
             case 1:
