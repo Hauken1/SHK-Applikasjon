@@ -1,5 +1,7 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -29,13 +31,14 @@ import java.util.concurrent.TimeUnit;
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     int serverPort = 12345;
-    String hostName= "128.39.81.156";
+    String hostName= "128.39.82.229";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
     String username;
-
     String password;
+    Boolean loggedIn;
+    Boolean connected;
     static Socket connection;
 
 
@@ -44,15 +47,29 @@ public class LoginClient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_client);
 
-        //connectToServer();
-        Thread cThread = new Thread(new ClientThread());
-        cThread.start();
+        if(savedInstanceState == null){
+            loggedIn = false;
+            connected = false;
+            connect();
 
-        loginBtn = (Button) findViewById(R.id.login_button);
-        loginBtn.setOnClickListener(userLogin);
+            loginBtn = (Button) findViewById(R.id.login_button);
+            loginBtn.setOnClickListener(userLogin);
 
+        }
 
     }
+
+    protected void onRestart() {
+        super.onRestart();
+        try {
+            sendDisconnect("Disconnect");
+            connected = false;
+            loggedIn = false;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     protected static Socket returnConnection() {
         return connection;
@@ -77,7 +94,9 @@ public class LoginClient extends AppCompatActivity {
             username = tempUser.getText().toString();
             password = tempPw.getText().toString();
 
-
+            if(connected == false) {
+                connect();
+            }
 
             Thread thread = new Thread((new Runnable() {
                 @Override
@@ -85,7 +104,10 @@ public class LoginClient extends AppCompatActivity {
                     String login = "Login";
                     if (!username.isEmpty() && !password.isEmpty() && !login.isEmpty()) {
 
+
                         if (connection.isConnected()) {
+
+                            Log.d("ClientActivity", "C: Trying to log in.");
                             Random rnd = new Random();
                             sendLogin(login, username, password);
                             try {
@@ -94,9 +116,19 @@ public class LoginClient extends AppCompatActivity {
                                 System.out.print(ID + " ID");
                                 Log.d("ClientActivity", "C: logging in..." + ID);
                                 if (ID > 0) {
+                                    loggedIn = true;
                                     goToHome();
                                 } else {
-                                    System.out.print("Feil passord eller brukernavn, prøv igjen");
+                                    new AlertDialog.Builder(LoginClient.this)
+                                            .setTitle("Failed login")
+                                            .setMessage("Wrong username or password")
+                                            .setCancelable(false)
+                                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                }
+                                            }).create().show();
                                 }
 
                                 // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
@@ -117,6 +149,17 @@ public class LoginClient extends AppCompatActivity {
 
     };
 
+
+    public void sendDisconnect(String msg) {
+        try {
+            output.write(msg);
+            output.newLine();
+            output.flush();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
     // sending login information to server
     public static void sendLogin(String code, String username, String password) {
@@ -144,38 +187,103 @@ public class LoginClient extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void connect() {
+        /*
+        Thread cThread = new Thread(new ClientThread());
+        cThread.start();
+        */
+        final Thread thread = new Thread((new Runnable() {
+            @Override
+            public void run() {
+                try {
 
+                    Log.d("ClientActivity", "C: Connecting...");
+                    while(!connected) {
+                        connectToServer();
+                        Thread.sleep(50);
+                    }
+                 } catch (InterruptedException e) {
 
-    public class ClientThread implements Runnable {
-
-        public void run() {
-            try {
-                Log.d("ClientActivity", "C: Connecting...");
-                connectToServer();
-
-                // socket.close();
-            } catch (Exception e) {
-                MainActivity.sendText("Disconnect");
-                Log.e("ClientActivity", "C: Error", e);
+                }
             }
-        }
+        }));
+        thread.start();
+
     }
 
-        private void connectToServer() {
-            try {
+    private void connectToServer() {
+        try {
                 connection = new Socket(InetAddress.getByName(hostName), serverPort);
                 Log.d("ClientActivity", "C: Connected to server.");
                 output = new BufferedWriter(new OutputStreamWriter(
                         connection.getOutputStream()));
                 input = new BufferedReader(new InputStreamReader(
                         connection.getInputStream()));
+                connected = true;
 
+        } catch (UnknownHostException e) {
+            new AlertDialog.Builder(LoginClient.this)
+                    .setTitle("Unable to connect to server")
+                    .setMessage("Check your internet connection")
+                    .setCancelable(false)
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    }).create().show();
+
+        } catch (IOException e) {
+        }
+    }
+/*
+    public class ClientThread implements Runnable {
+
+        public void run() {
+            try {
+                Log.d("ClientActivity", "C: Connecting...");
+                //while(!connected) {
+                    connectToServer();
+
+                // socket.close();
+                    Thread.sleep(50);
+                //}
+
+            } catch (Exception e) {
+                MainActivity.sendText("Disconnect");
+                Log.e("ClientActivity", "C: Error", e);
+            }
+        }
+    }
+/
+        private void connectToServer() {
+            try {
+
+                if(new Socket(InetAddress.getByName(hostName), serverPort).isConnected()) {
+                    connection = new Socket(InetAddress.getByName(hostName), serverPort);
+                    Log.d("ClientActivity", "C: Connected to server.");
+                    output = new BufferedWriter(new OutputStreamWriter(
+                            connection.getOutputStream()));
+                    input = new BufferedReader(new InputStreamReader(
+                            connection.getInputStream()));
+                    connected = true;
+                }
+                else {
+                    new AlertDialog.Builder(LoginClient.this)
+                            .setTitle("Unable to connect to server")
+                            .setMessage("Check your internet connection")
+                            .setCancelable(false)
+                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            }).create().show();
+                }
             } catch (UnknownHostException e) {
 
             } catch (IOException e) {
             }
         }
 
-
+*/
 
 }
