@@ -1,5 +1,6 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ public class Temperature extends AppCompatActivity {
     ImageButton homeBtn;
     ImageButton upBtn;
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,27 +48,74 @@ public class Temperature extends AppCompatActivity {
 
 
     }
-    public Temperature() {
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+            }
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    String channel = extras.getString("channel");
+                    String mode = extras.getString("mode");
+                    String holiday = extras.getString("holiday");
+                    String day = extras.getString("day");
+                    String night = extras.getString("night");
+                    String away = extras.getString("away");
+                    String currentTemp = extras.getString("currentTemp");
+                    Log.d("Stuff", "" + channel + " " + mode + " " + holiday + " " + day + " " + night + " " + away + " " + currentTemp);
+                    createTempZone(channel,mode,day,night,holiday,away,currentTemp);
+                   // String stredittext=data.getStringExtra("edittextvalue");
+            }
+        }
+    }
+/*
+    @Override
+    public void onReceive(Context context, Intent intent) {
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String channel = extras.getString("channel");
+            String mode = extras.getString("mode");
+            String holiday = extras.getString("holiday");
+            String day = extras.getString("day");
+            String night = extras.getString("night");
+            String away = extras.getString("away");
+            String currentTemp = extras.getString("currentTemp");
+            createTempZone(channel,mode,day,night,holiday,away,currentTemp);
+        }
+       // String phoneNumber = intent.getExtras().getString();
+
 
     }
-
+*/
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+<<<<<<< HEAD
     void createTempZone(int ch, int mo, int cd, int cn, int cho, int ca, int ct) {
         Log.d("Stuff", ""+ ch + " " + mo + " " + cho + " " + cd + " " + cn + " " + ca + " " + ct );
         TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
         tempZone.add(zone);
 
         switch (zone.channel) {
+=======
+    void createTempZone(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
+        TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
+        tempZone.add(zone);
+        int c = Integer.parseInt(ch);
+        int m = Integer.parseInt(mo);
+        switch (c) {
+>>>>>>> master
 
             case 1:
                  TextView ctemp1 = (TextView) findViewById(R.id.current1_tv);
                 ctemp1.setText(zone.currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
-                switch(zone.mode) {
+                switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static1_tv);
                         stemp1.setText(zone.currHoliday +" °C");
@@ -83,6 +132,8 @@ public class Temperature extends AppCompatActivity {
                         TextView stemp4 = (TextView) findViewById(R.id.static1_tv);
                         stemp4.setText(zone.currAway +" °C");
                         break;
+                    default:
+                        break;
                 }
 
 
@@ -92,7 +143,7 @@ public class Temperature extends AppCompatActivity {
                 ctemp3.setText(zone.currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
-                switch(zone.mode) {
+                switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static2_tv);
                         stemp1.setText(zone.currHoliday +" °C");
@@ -109,6 +160,8 @@ public class Temperature extends AppCompatActivity {
                         TextView stemp4 = (TextView) findViewById(R.id.static2_tv);
                         stemp4.setText(zone.currAway +" °C");
                         break;
+                    default:
+                        break;
                 }
 
                 break;
@@ -117,7 +170,7 @@ public class Temperature extends AppCompatActivity {
                 ctemp5.setText(zone.currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
-                switch(zone.mode) {
+                switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static3_tv);
                         stemp1.setText(zone.currHoliday +" °C");
@@ -134,6 +187,8 @@ public class Temperature extends AppCompatActivity {
                         TextView stemp4 = (TextView) findViewById(R.id.static3_tv);
                         stemp4.setText(zone.currAway +" °C");
                         break;
+                    default:
+                        break;
                 }
 
                 break;
@@ -142,7 +197,7 @@ public class Temperature extends AppCompatActivity {
                 ctemp7.setText(zone.currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
-                switch(zone.mode) {
+                switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static4_tv);
                         stemp1.setText(zone.currHoliday +" °C");
@@ -159,6 +214,8 @@ public class Temperature extends AppCompatActivity {
                         TextView stemp4 = (TextView) findViewById(R.id.static4_tv);
                         stemp4.setText(zone.currAway +" °C");
                         break;
+                    default:
+                        break;
                 }
 
                 break;
@@ -167,7 +224,7 @@ public class Temperature extends AppCompatActivity {
                 ctemp9.setText(zone.currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
-                switch(zone.mode) {
+                switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static5_tv);
                         stemp1.setText(zone.currHoliday +" °C");
@@ -184,6 +241,8 @@ public class Temperature extends AppCompatActivity {
                         TextView stemp4 = (TextView) findViewById(R.id.static5_tv);
                         stemp4.setText(zone.currAway +" °C");
                         break;
+                    default:
+                        break;
                 }
 
                 break;
@@ -192,7 +251,7 @@ public class Temperature extends AppCompatActivity {
                 ctemp11.setText(zone.currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
-                switch(zone.mode) {
+                switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static6_tv);
                         stemp1.setText(zone.currHoliday +" °C");
@@ -211,20 +270,22 @@ public class Temperature extends AppCompatActivity {
                         break;
                 }
                 break;
+            default:
+                break;
         }
 
     }
 
     static public class TemperatureInformation {
-        int currDay;
-        int currNight;
-        int currHoliday;
-        int currAway;
-        int currTemp;
-        int channel;
-        int mode;
+        String currDay;
+        String currNight;
+        String currHoliday;
+        String currAway;
+        String currTemp;
+        String channel;
+        String mode;
 
-        TemperatureInformation(int ch, int mo, int cd, int cn, int cho, int ca, int ct) {
+        TemperatureInformation(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
             channel = ch;
             mode = mo;
             currDay = cd;
