@@ -38,12 +38,8 @@ public class MainActivity extends AppCompatActivity {
     Button modeBtn;
     static Socket connection;
 
-    Temperature temperature = new Temperature();
-
-
     OutputStream os;
     ClientMessage cm = new ClientMessage();
-
 
 
     /**
@@ -275,13 +271,22 @@ public class MainActivity extends AppCompatActivity {
         // Gets rest of the string, which will (presumably) be two integers.
         int CurrentTemp = Integer.parseInt(msg.substring(11));
 
-        Log.d("Stuff", ""+ Channel + " " + Mode + " " + Holiday + " " + Day + " " + Night + " " + Away + " " + CurrentTemp );
-        temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
+        Log.d("Stuff", "" + Channel + " " + Mode + " " + Holiday + " " + Day + " " + Night + " " + Away + " " + CurrentTemp);
+        Intent i = new Intent(getApplicationContext(), Temperature.class);
+        i.putExtra("channel", msg.substring(2, 3));
+        i.putExtra("mode", msg.substring(1,2));
+        i.putExtra("holiday", ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5))));
+        i.putExtra("day", msg.substring(5, 7));
+        i.putExtra("night", msg.substring(7,9));
+        i.putExtra("away", msg.substring(9,11));
+        i.putExtra("currentTemp", msg.substring(11));
+        setResult(RESULT_OK,i);
+        startActivityForResult(i,1);
+
+        //temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
         //Temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
 
     }
-
-
 
     public static void sendText(String textToSend) {
         try {
