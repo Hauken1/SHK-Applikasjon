@@ -279,33 +279,43 @@ public class MainActivity extends AppCompatActivity {
 */
         // Sets the channel number
         String channel = msg.substring(1, 2);
+        Log.d("channel", channel);
         // Sets the mode number
         String mode = msg.substring(2, 3);
+        Log.d("mode", mode);
         // If the temperature is less than 10, set temp like int after 0, else set
         // temp like int XX
         String holiday = (msg.charAt(3) == 0) ? msg.substring(4, 5) : msg.substring(3, 5);
+        Log.d("holiday", holiday);
         // Will most likely be over 10
         String day = msg.substring(5, 7);
+        Log.d("day", day);
         // Will most likely be over 10
         String night = msg.substring(7, 9);
+        Log.d("night", night);
         // Will most likely be over 10
         String away = msg.substring(9, 11);
+        Log.d("away", away);
         // Gets rest of the string, which will (presumably) be two integers.
         String currentTemp = msg.substring(11);
+        Log.d("current temp", currentTemp);
 
         boolean existingZone = false;
 
         TemperatureInformation zone = new TemperatureInformation(channel,mode,day,night,holiday,away,currentTemp);
-        for(int i = 0; i < tempZone.size(); i++) {
-            if (tempZone.get(i).channel == channel) {
-                tempZone.set(i, zone);
-                existingZone = true;
+        if(!tempZone.isEmpty()) {
+            for (int i = 0; i < tempZone.size(); i++) {
+                if (tempZone.get(i).channel == channel) {
+                    tempZone.set(i, zone);
+                    existingZone = true;
+                }
             }
         }
         if(existingZone) {
             existingZone = false;
         }
         else tempZone.add(zone);
+        Log.d("Stuff", "" + zone.channel + " " + zone.mode + " " + zone.currHoliday + " " + zone.currDay + " " + zone.currNight+ " " + zone.currAway + " " + zone.currTemp);
 
         /*
         Log.d("Stuff", "" + Channel + " " + Mode + " " + Holiday + " " + Day + " " + Night + " " + Away + " " + CurrentTemp);
@@ -340,6 +350,14 @@ public class MainActivity extends AppCompatActivity {
         input = LoginClient.returnReader();
     }
 
+    public static TemperatureInformation returnTemperature(int n) {
+        return tempZone.get(n);
+    }
+
+    public static int returnTemperatureSize() {
+        return tempZone.size();
+    }
+
 
 
     static public class TemperatureInformation {
@@ -361,6 +379,10 @@ public class MainActivity extends AppCompatActivity {
             currTemp = ct;
 
         }
+    }
+
+    public static boolean TemperatureIsEmpty() {
+        return tempZone.isEmpty();
     }
 }
 
