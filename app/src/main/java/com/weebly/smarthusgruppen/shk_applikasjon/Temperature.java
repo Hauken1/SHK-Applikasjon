@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Temperature extends AppCompatActivity {
     ImageButton homeBtn;
     ImageButton upBtn;
-    static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
+    static public ArrayList<MainActivity.TemperatureInformation> tempZone = new ArrayList<>();
 
 
     @Override
@@ -38,20 +38,21 @@ public class Temperature extends AppCompatActivity {
             }
         });
 
-
+        getZoneTemp();
+        for(int i=0; i < tempZone.size(); ) {
+            createTempZone(i);
+        }
+/*      For later
         MainActivity.sendText("Command:007262112,1");
         MainActivity.sendText("Command:007262112,2");
         MainActivity.sendText("Command:007262112,3");
         MainActivity.sendText("Command:007262112,4");
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
-
-        int curr1 = 25;
-        TextView ctemp1 = (TextView) findViewById(R.id.current1_tv);
-        ctemp1.setText(curr1 +" °C");
+*/
 
     }
-
+/*
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -97,34 +98,46 @@ public class Temperature extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-    void createTempZone(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
-        TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
-        tempZone.add(zone);
-        int c = Integer.parseInt(ch);
-        int m = Integer.parseInt(mo);
+    public void getZoneTemp() {
+        for(int i = 0; i < MainActivity.tempZone.size(); i++) {
+            tempZone.add(MainActivity.tempZone.get(i));
+        }
+    }
+    void createTempZone(int i) {
+        //TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
+        //tempZone.add(zone);
+
+        int c = Integer.parseInt(tempZone.get(i).channel);
+        int m = Integer.parseInt(tempZone.get(i).mode);
+        String currHoliday = tempZone.get(i).currHoliday;
+        String currDay = tempZone.get(i).currDay;
+        String currNight = tempZone.get(i).currNight;
+        String currAway = tempZone.get(i).currAway;
+        String currTemp = tempZone.get(i).currTemp;
+
         switch (c) {
 
             case 1:
                  TextView ctemp1 = (TextView) findViewById(R.id.current1_tv);
-                ctemp1.setText(zone.currTemp +" °C");
+                ctemp1.setText(currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
                 switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static1_tv);
-                        stemp1.setText(zone.currHoliday +" °C");
+                        stemp1.setText(currHoliday +" °C");
                         break;
                     case 2:
                         TextView stemp2 = (TextView) findViewById(R.id.static1_tv);
-                        stemp2.setText(zone.currDay +" °C");
+                        stemp2.setText(currDay +" °C");
                         break;
                     case 3:
                         TextView stemp3 = (TextView) findViewById(R.id.static1_tv);
-                        stemp3.setText(zone.currNight +" °C");
+                        stemp3.setText(currNight +" °C");
                         break;
                     case 4:
                         TextView stemp4 = (TextView) findViewById(R.id.static1_tv);
-                        stemp4.setText(zone.currAway +" °C");
+                        stemp4.setText(currAway +" °C");
                         break;
                     default:
                         break;
@@ -134,25 +147,25 @@ public class Temperature extends AppCompatActivity {
                 break;
             case 2:
                 TextView ctemp3 = (TextView) findViewById(R.id.current2_tv);
-                ctemp3.setText(zone.currTemp +" °C");
+                ctemp3.setText(currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
                 switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static2_tv);
-                        stemp1.setText(zone.currHoliday +" °C");
+                        stemp1.setText(currHoliday +" °C");
                         break;
                     case 2:
                         TextView stemp2 = (TextView) findViewById(R.id.static2_tv);
-                        stemp2.setText(zone.currDay +" °C");
+                        stemp2.setText(currDay +" °C");
                         break;
                     case 3:
                         TextView stemp3 = (TextView) findViewById(R.id.static2_tv);
-                        stemp3.setText(zone.currNight +" °C");
+                        stemp3.setText(currNight +" °C");
                         break;
                     case 4:
                         TextView stemp4 = (TextView) findViewById(R.id.static2_tv);
-                        stemp4.setText(zone.currAway +" °C");
+                        stemp4.setText(currAway +" °C");
                         break;
                     default:
                         break;
@@ -161,25 +174,25 @@ public class Temperature extends AppCompatActivity {
                 break;
             case 3:
                 TextView ctemp5 = (TextView) findViewById(R.id.current3_tv);
-                ctemp5.setText(zone.currTemp +" °C");
+                ctemp5.setText(currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
                 switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static3_tv);
-                        stemp1.setText(zone.currHoliday +" °C");
+                        stemp1.setText(currHoliday +" °C");
                         break;
                     case 2:
                         TextView stemp2 = (TextView) findViewById(R.id.static3_tv);
-                        stemp2.setText(zone.currDay +" °C");
+                        stemp2.setText(currDay +" °C");
                         break;
                     case 3:
                         TextView stemp3 = (TextView) findViewById(R.id.static3_tv);
-                        stemp3.setText(zone.currNight +" °C");
+                        stemp3.setText(currNight +" °C");
                         break;
                     case 4:
                         TextView stemp4 = (TextView) findViewById(R.id.static3_tv);
-                        stemp4.setText(zone.currAway +" °C");
+                        stemp4.setText(currAway +" °C");
                         break;
                     default:
                         break;
@@ -188,25 +201,25 @@ public class Temperature extends AppCompatActivity {
                 break;
             case 4:
                 TextView ctemp7 = (TextView) findViewById(R.id.current4_tv);
-                ctemp7.setText(zone.currTemp +" °C");
+                ctemp7.setText(currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
                 switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static4_tv);
-                        stemp1.setText(zone.currHoliday +" °C");
+                        stemp1.setText(currHoliday +" °C");
                         break;
                     case 2:
                         TextView stemp2 = (TextView) findViewById(R.id.static4_tv);
-                        stemp2.setText(zone.currDay +" °C");
+                        stemp2.setText(currDay +" °C");
                         break;
                     case 3:
                         TextView stemp3 = (TextView) findViewById(R.id.static4_tv);
-                        stemp3.setText(zone.currNight +" °C");
+                        stemp3.setText(currNight +" °C");
                         break;
                     case 4:
                         TextView stemp4 = (TextView) findViewById(R.id.static4_tv);
-                        stemp4.setText(zone.currAway +" °C");
+                        stemp4.setText(currAway +" °C");
                         break;
                     default:
                         break;
@@ -215,25 +228,25 @@ public class Temperature extends AppCompatActivity {
                 break;
             case 5:
                 TextView ctemp9 = (TextView) findViewById(R.id.current5_tv);
-                ctemp9.setText(zone.currTemp +" °C");
+                ctemp9.setText(currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
                 switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static5_tv);
-                        stemp1.setText(zone.currHoliday +" °C");
+                        stemp1.setText(currHoliday +" °C");
                         break;
                     case 2:
                         TextView stemp2 = (TextView) findViewById(R.id.static5_tv);
-                        stemp2.setText(zone.currDay +" °C");
+                        stemp2.setText(currDay +" °C");
                         break;
                     case 3:
                         TextView stemp3 = (TextView) findViewById(R.id.static5_tv);
-                        stemp3.setText(zone.currNight +" °C");
+                        stemp3.setText(currNight +" °C");
                         break;
                     case 4:
                         TextView stemp4 = (TextView) findViewById(R.id.static5_tv);
-                        stemp4.setText(zone.currAway +" °C");
+                        stemp4.setText(currAway +" °C");
                         break;
                     default:
                         break;
@@ -242,25 +255,25 @@ public class Temperature extends AppCompatActivity {
                 break;
             case 6:
                 TextView ctemp11 = (TextView) findViewById(R.id.current6_tv);
-                ctemp11.setText(zone.currTemp +" °C");
+                ctemp11.setText(currTemp +" °C");
 
                 // setting static temp to show depending on which mode the house is in
                 switch(m) {
                     case 1:
                         TextView stemp1 = (TextView) findViewById(R.id.static6_tv);
-                        stemp1.setText(zone.currHoliday +" °C");
+                        stemp1.setText(currHoliday +" °C");
                         break;
                     case 2:
                         TextView stemp2 = (TextView) findViewById(R.id.static6_tv);
-                        stemp2.setText(zone.currDay +" °C");
+                        stemp2.setText(currDay +" °C");
                         break;
                     case 3:
                         TextView stemp3 = (TextView) findViewById(R.id.static6_tv);
-                        stemp3.setText(zone.currNight +" °C");
+                        stemp3.setText(currNight +" °C");
                         break;
                     case 4:
                         TextView stemp4 = (TextView) findViewById(R.id.static6_tv);
-                        stemp4.setText(zone.currAway +" °C");
+                        stemp4.setText(currAway +" °C");
                         break;
                 }
                 break;
@@ -269,7 +282,7 @@ public class Temperature extends AppCompatActivity {
         }
 
     }
-
+/*
     static public class TemperatureInformation {
         String currDay;
         String currNight;
@@ -291,7 +304,7 @@ public class Temperature extends AppCompatActivity {
 
         }
     }
-
+*/
     public void upTemp() {
         MainActivity.sendText("Command:007260112,1,0,0,1,28,27,26,25,1,15");
     }

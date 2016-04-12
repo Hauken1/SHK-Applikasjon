@@ -19,6 +19,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.channels.Channel;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     Button modeBtn;
     static Socket connection;
 
+    static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
+
     OutputStream os;
     ClientMessage cm = new ClientMessage();
 
@@ -53,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getConnection();
-
-
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -98,9 +99,13 @@ public class MainActivity extends AppCompatActivity {
                 goToModeView();
             }
         });
-
         startMessageListener();
-
+        MainActivity.sendText("Command:007262112,1");
+        MainActivity.sendText("Command:007262112,2");
+        MainActivity.sendText("Command:007262112,3");
+        MainActivity.sendText("Command:007262112,4");
+        MainActivity.sendText("Command:007262112,5");
+        MainActivity.sendText("Command:007262112,6");
     }
 
     @Override
@@ -255,22 +260,54 @@ public class MainActivity extends AppCompatActivity {
      * @param msg String containing temperatures
      */
     public void tempInfoController(String msg) {
+        /*
         // Sets the channel number
-        int Channel = Integer.parseInt(msg.substring(1, 2));
+        int channel = Integer.parseInt(msg.substring(1, 2));
         // Sets the mode number
-        int Mode    = Integer.parseInt(msg.substring(2, 3));
+        int mode    = Integer.parseInt(msg.substring(2, 3));
         // If the temperature is less than 10, set temp like int after 0, else set
         // temp like int XX
-        int Holiday = ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5)));
+        int holiday = ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5)));
         // Will most likely be over 10
-        int Day    = Integer.parseInt(msg.substring(5, 7));
+        int day    = Integer.parseInt(msg.substring(5, 7));
         // Will most likely be over 10
-        int Night = Integer.parseInt(msg.substring(7, 9));
+        int night = Integer.parseInt(msg.substring(7, 9));
         // Will most likely be over 10
-        int Away  = Integer.parseInt(msg.substring(9, 11));
+        int away  = Integer.parseInt(msg.substring(9, 11));
         // Gets rest of the string, which will (presumably) be two integers.
-        int CurrentTemp = Integer.parseInt(msg.substring(11));
+        int currentTemp = Integer.parseInt(msg.substring(11));
+*/
+        // Sets the channel number
+        String channel = msg.substring(1, 2);
+        // Sets the mode number
+        String mode = msg.substring(2, 3);
+        // If the temperature is less than 10, set temp like int after 0, else set
+        // temp like int XX
+        String holiday = (msg.charAt(3) == 0) ? msg.substring(4, 5) : msg.substring(3, 5);
+        // Will most likely be over 10
+        String day = msg.substring(5, 7);
+        // Will most likely be over 10
+        String night = msg.substring(7, 9);
+        // Will most likely be over 10
+        String away = msg.substring(9, 11);
+        // Gets rest of the string, which will (presumably) be two integers.
+        String currentTemp = msg.substring(11);
 
+        boolean existingZone = false;
+
+        TemperatureInformation zone = new TemperatureInformation(channel,mode,day,night,holiday,away,currentTemp);
+        for(int i = 0; i < tempZone.size(); i++) {
+            if (tempZone.get(i).channel == channel) {
+                tempZone.set(i, zone);
+                existingZone = true;
+            }
+        }
+        if(existingZone) {
+            existingZone = false;
+        }
+        else tempZone.add(zone);
+
+        /*
         Log.d("Stuff", "" + Channel + " " + Mode + " " + Holiday + " " + Day + " " + Night + " " + Away + " " + CurrentTemp);
         Intent i = new Intent(getApplicationContext(), Temperature.class);
         i.putExtra("channel", msg.substring(2, 3));
@@ -281,8 +318,8 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("away", msg.substring(9,11));
         i.putExtra("currentTemp", msg.substring(11));
         setResult(RESULT_OK,i);
-        startActivityForResult(i,1);
-
+        startActivityForResult(i, 1);
+        */
         //temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
         //Temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
 
@@ -304,5 +341,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    static public class TemperatureInformation {
+        String currDay;
+        String currNight;
+        String currHoliday;
+        String currAway;
+        String currTemp;
+        String channel;
+        String mode;
+
+        TemperatureInformation(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
+            channel = ch;
+            mode = mo;
+            currDay = cd;
+            currNight = cn;
+            currHoliday = cho;
+            currAway = ca;
+            currTemp = ct;
+
+        }
+    }
 }
 
