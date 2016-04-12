@@ -96,55 +96,58 @@ public class LoginClient extends AppCompatActivity {
 
             if(connected == false) {
                 connect();
+
             }
+            else {
 
-            Thread thread = new Thread((new Runnable() {
-                @Override
-                public void run() {
-                    String login = "Login";
-                    if (!username.isEmpty() && !password.isEmpty() && !login.isEmpty()) {
+                Thread thread = new Thread((new Runnable() {
+                    @Override
+                    public void run() {
+                        String login = "Login";
+                        if (!username.isEmpty() && !password.isEmpty() && !login.isEmpty()) {
 
 
-                        if (connection.isConnected()) {
+                            if (connection.isConnected()) {
 
-                            Log.d("ClientActivity", "C: Trying to log in.");
-                            Random rnd = new Random();
-                            sendLogin(login, username, password);
-                            try {
-                                //TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
-                                int ID = Integer.valueOf(input.readLine());
-                                System.out.print(ID + " ID");
-                                Log.d("ClientActivity", "C: logging in..." + ID);
-                                if (ID > 0) {
-                                    loggedIn = true;
-                                    goToHome();
-                                } else {
-                                    new AlertDialog.Builder(LoginClient.this)
-                                            .setTitle("Failed login")
-                                            .setMessage("Wrong username or password")
-                                            .setCancelable(false)
-                                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
+                                Log.d("ClientActivity", "C: Trying to log in.");
+                                Random rnd = new Random();
+                                sendLogin(login, username, password);
+                                try {
+                                    //TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
+                                    int ID = Integer.valueOf(input.readLine());
+                                    System.out.print(ID + " ID");
+                                    Log.d("ClientActivity", "C: logging in..." + ID);
+                                    if (ID > 0) {
+                                        loggedIn = true;
+                                        goToHome();
+                                    } else {
+                                        new AlertDialog.Builder(LoginClient.this)
+                                                .setTitle("Failed login")
+                                                .setMessage("Wrong username or password")
+                                                .setCancelable(false)
+                                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
 
-                                                }
-                                            }).create().show();
+                                                    }
+                                                }).create().show();
+                                    }
+
+                                    // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
+                                    // sende med forskjellige ID
+
+
+                                } catch (Exception e) {
+                                    System.out.println(e);
                                 }
-
-                                // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
-                                // sende med forskjellige ID
-
-
-                            } catch (Exception e) {
-                                System.out.println(e);
                             }
+
                         }
-
                     }
-                }
-            }));
+                }));
 
-            thread.start();
+                thread.start();
+            }
         }
 
     };
