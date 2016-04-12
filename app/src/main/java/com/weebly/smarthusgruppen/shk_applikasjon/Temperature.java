@@ -87,28 +87,28 @@ public class Temperature extends AppCompatActivity {
         }
        // String phoneNumber = intent.getExtras().getString();
 
-
     }
 */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-<<<<<<< HEAD
+
     void createTempZone(int ch, int mo, int cd, int cn, int cho, int ca, int ct) {
         Log.d("Stuff", ""+ ch + " " + mo + " " + cho + " " + cd + " " + cn + " " + ca + " " + ct );
         TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
         tempZone.add(zone);
 
         switch (zone.channel) {
-=======
+
     void createTempZone(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
         TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
         tempZone.add(zone);
         int c = Integer.parseInt(ch);
         int m = Integer.parseInt(mo);
         switch (c) {
->>>>>>> master
+
+ 
 
             case 1:
                  TextView ctemp1 = (TextView) findViewById(R.id.current1_tv);
