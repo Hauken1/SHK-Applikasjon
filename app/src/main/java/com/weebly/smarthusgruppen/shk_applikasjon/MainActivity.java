@@ -275,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
         // Gets rest of the string, which will (presumably) be two integers.
         int CurrentTemp = Integer.parseInt(msg.substring(11));
 
+        Log.d("Stuff", ""+ Channel + " " + Mode + " " + Holiday + " " + Day + " " + Night + " " + Away + " " + CurrentTemp );
         temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
         //Temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
 
