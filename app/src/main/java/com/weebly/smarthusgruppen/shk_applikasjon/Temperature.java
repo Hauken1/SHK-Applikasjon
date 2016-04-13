@@ -2,6 +2,7 @@ package com.weebly.smarthusgruppen.shk_applikasjon;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +13,21 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Temperature extends AppCompatActivity {
     ImageButton homeBtn;
     ImageButton upBtn;
     static public ArrayList<MainActivity.TemperatureInformation> tempZone = new ArrayList<>();
+
+    public static final String savedTemp1 = "1SavedTemperature" ;
+    public static final String savedTemp2 = "2SavedTemperature" ;
+    public static final String savedTemp3 = "3SavedTemperature" ;
+    public static final String savedTemp4 = "4SavedTemperature" ;
+    public static final String savedTemp5 = "5SavedTemperature" ;
+    public static final String savedTemp6 = "6SavedTemperature" ;
+
     TextView stemp1;
     TextView stemp2;
     TextView stemp3;
@@ -29,8 +40,6 @@ public class Temperature extends AppCompatActivity {
     TextView ctemp4;
     TextView ctemp5;
     TextView ctemp6;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,21 +62,6 @@ public class Temperature extends AppCompatActivity {
             }
         });
 
-        getZoneTemp();
-        for(int i=0; i < tempZone.size(); ) {
-            createTempZone(i);
-        }
-/*      For later
-        MainActivity.sendText("Command:007262112,1");
-        MainActivity.sendText("Command:007262112,2");
-        MainActivity.sendText("Command:007262112,3");
-        MainActivity.sendText("Command:007262112,4");
-        MainActivity.sendText("Command:007262112,5");
-        MainActivity.sendText("Command:007262112,6");
-
-
-*/
-
 
         stemp1 = (TextView) findViewById(R.id.static1_tv);
         stemp2 = (TextView) findViewById(R.id.static2_tv);
@@ -83,10 +77,286 @@ public class Temperature extends AppCompatActivity {
         ctemp5 = (TextView) findViewById(R.id.current5_tv);
         ctemp6 = (TextView) findViewById(R.id.current6_tv);
 
-
+        displayTemperature();
+        update();
 
     }
+
+    public void goToHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void update() {
+        Thread mThread = new Thread(new Runnable() {
+            public void run() {
+                while (true) {
+                    Random rnd = new Random();
+                    try {
+                        requestNewTemperature();
+                        try {
+                            TimeUnit.SECONDS.sleep(rnd.nextInt(100));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        displayTemperature();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        TimeUnit.SECONDS.sleep(rnd.nextInt(100));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        mThread.start();
+    }
+
+    public void requestNewTemperature() {
+        MainActivity.sendText("Command:007262112,1");
+        MainActivity.sendText("Command:007262112,2");
+        MainActivity.sendText("Command:007262112,3");
+        MainActivity.sendText("Command:007262112,4");
+        MainActivity.sendText("Command:007262112,5");
+        MainActivity.sendText("Command:007262112,6");
+    }
+
+    public void displayTemperature() {
+        for(int i=1; i <= 6;i++) {
+            switch (i){
+                case 1:
+                    try {
+                        SharedPreferences tempSettings = getSharedPreferences(savedTemp1, 0);
+                        if (tempSettings.contains("channel")) {
+                            String channel1 = tempSettings.getString("channel", "1");
+                            String mode1 = tempSettings.getString("mode", "1");
+                            String holiday1 = tempSettings.getString("holiday", "18") + " °C";
+                            String day1 = tempSettings.getString("day", "23") + " °C";
+                            String night1 = tempSettings.getString("night", "21") + " °C";
+                            String away1 = tempSettings.getString("away", "19") + " °C";
+                            String current1 = tempSettings.getString("current", "22") + " °C";
+
+                            ctemp1.setText(current1);
+                            int m = Integer.parseInt(mode1);
+                            switch (m) {
+                                case 1:
+                                    stemp1.setText(holiday1);
+                                    break;
+                                case 2:
+                                    stemp1.setText(day1);
+                                    break;
+                                case 3:
+                                    stemp1.setText(night1);
+                                    break;
+                                case 4:
+                                    stemp1.setText(away1);
+                                    break;
+                                default:
+                                    stemp1.setText(day1);
+                                    break;
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                case 2:
+                    try {
+                        SharedPreferences tempSettings = getSharedPreferences(savedTemp2, 0);
+                        if (tempSettings.contains("channel")) {
+                            String channel2 = tempSettings.getString("channel", "1");
+                            String mode2 = tempSettings.getString("mode", "1");
+                            String holiday2 = tempSettings.getString("holiday", "18") + " °C";
+                            String day2 = tempSettings.getString("day", "23") + " °C";
+                            String night2 = tempSettings.getString("night", "21") + " °C";
+                            String away2 = tempSettings.getString("away", "19") + " °C";
+                            String current2 = tempSettings.getString("current", "22") + " °C";
+
+                            ctemp2.setText(current2);
+                            int m = Integer.parseInt(mode2);
+                            switch (m) {
+                                case 1:
+                                    stemp2.setText(holiday2);
+                                    break;
+                                case 2:
+                                    stemp2.setText(day2);
+                                    break;
+                                case 3:
+                                    stemp2.setText(night2);
+                                    break;
+                                case 4:
+                                    stemp2.setText(away2);
+                                    break;
+                                default:
+                                    stemp2.setText(day2);
+                                    break;
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                case 3:
+                    try {
+                        SharedPreferences tempSettings = getSharedPreferences(savedTemp3, 0);
+                        if (tempSettings.contains("channel")) {
+                            String channel3 = tempSettings.getString("channel", "1");
+                            String mode3 = tempSettings.getString("mode", "1");
+                            String holiday3 = tempSettings.getString("holiday", "18") + " °C";
+                            String day3 = tempSettings.getString("day", "23") + " °C";
+                            String night3 = tempSettings.getString("night", "21") + " °C";
+                            String away3 = tempSettings.getString("away", "19") + " °C";
+                            String current3 = tempSettings.getString("current", "22") + " °C";
+
+                            ctemp3.setText(current3);
+                            int m = Integer.parseInt(mode3);
+                            switch (m) {
+                                case 1:
+                                    stemp3.setText(holiday3);
+                                    break;
+                                case 2:
+                                    stemp3.setText(day3);
+                                    break;
+                                case 3:
+                                    stemp3.setText(night3);
+                                    break;
+                                case 4:
+                                    stemp3.setText(away3);
+                                    break;
+                                default:
+                                    stemp3.setText(day3);
+                                    break;
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                case 4:
+                    try {
+                        SharedPreferences tempSettings = getSharedPreferences(savedTemp4, 0);
+                        if (tempSettings.contains("channel")) {
+                            String channel4 = tempSettings.getString("channel", "1");
+                            String mode4 = tempSettings.getString("mode", "1");
+                            String holiday4 = tempSettings.getString("holiday", "18") + " °C";
+                            String day4 = tempSettings.getString("day", "23") + " °C";
+                            String night4 = tempSettings.getString("night", "21") + " °C";
+                            String away4 = tempSettings.getString("away", "19") + " °C";
+                            String current4 = tempSettings.getString("current", "22") + " °C";
+
+                            ctemp4.setText(current4);
+                            int m = Integer.parseInt(mode4);
+                            switch (m) {
+                                case 1:
+                                    stemp4.setText(holiday4);
+                                    break;
+                                case 2:
+                                    stemp4.setText(day4);
+                                    break;
+                                case 3:
+                                    stemp4.setText(night4);
+                                    break;
+                                case 4:
+                                    stemp4.setText(away4);
+                                    break;
+                                default:
+                                    stemp4.setText(day4);
+                                    break;
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                case 5:
+                    try {
+                        SharedPreferences tempSettings = getSharedPreferences(savedTemp5, 0);
+                        if (tempSettings.contains("channel")) {
+                            String channel5 = tempSettings.getString("channel", "1");
+                            String mode5 = tempSettings.getString("mode", "1");
+                            String holiday5 = tempSettings.getString("holiday", "18") + " °C";
+                            String day5 = tempSettings.getString("day", "23") + " °C";
+                            String night5 = tempSettings.getString("night", "21") + " °C";
+                            String away5 = tempSettings.getString("away", "19") + " °C";
+                            String current5 = tempSettings.getString("current", "22") + " °C";
+
+                            ctemp5.setText(current5);
+                            int m = Integer.parseInt(mode5);
+                            switch (m) {
+                                case 1:
+                                    stemp5.setText(holiday5);
+                                    break;
+                                case 2:
+                                    stemp5.setText(day5);
+                                    break;
+                                case 3:
+                                    stemp5.setText(night5);
+                                    break;
+                                case 4:
+                                    stemp5.setText(away5);
+                                    break;
+                                default:
+                                    stemp5.setText(day5);
+                                    break;
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                case 6:
+                    try {
+                        SharedPreferences tempSettings = getSharedPreferences(savedTemp6, 0);
+                        if (tempSettings.contains("channel")) {
+                            String channel6 = tempSettings.getString("channel", "1");
+                            String mode6 = tempSettings.getString("mode", "1");
+                            String holiday6 = tempSettings.getString("holiday", "18") + " °C";
+                            String day6 = tempSettings.getString("day", "23") + " °C";
+                            String night6 = tempSettings.getString("night", "21") + " °C";
+                            String away6 = tempSettings.getString("away", "19") + " °C";
+                            String current6 = tempSettings.getString("current", "22") + " °C";
+
+                            ctemp6.setText(current6);
+                            int m = Integer.parseInt(mode6);
+                            switch (m) {
+                                case 1:
+                                    stemp6.setText(holiday6);
+                                    break;
+                                case 2:
+                                    stemp6.setText(day6);
+                                    break;
+                                case 3:
+                                    stemp6.setText(night6);
+                                    break;
+                                case 4:
+                                    stemp6.setText(away6);
+                                    break;
+                                default:
+                                    stemp6.setText(day6);
+                                    break;
+                            }
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    }
+
+    public void upTemp() {
+        MainActivity.sendText("Command:007260112,1,0,0,1,28,27,26,25,1,15");
+    }
+}
+
+//******************************UNUSED CODE****************************************
 /*
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -108,10 +378,9 @@ public class Temperature extends AppCompatActivity {
             }
         }
     }
-/*
+
     @Override
     public void onReceive(Context context, Intent intent) {
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String channel = extras.getString("channel");
@@ -124,28 +393,32 @@ public class Temperature extends AppCompatActivity {
             createTempZone(channel,mode,day,night,holiday,away,currentTemp);
         }
        // String phoneNumber = intent.getExtras().getString();
-
-
     }
-*/
-    public void goToHome() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-    public void getZoneTemp() {
-       /* for(int i = 0; i < MainActivity.tempZone.size(); i++) {
-            tempZone.add(MainActivity.tempZone.get(i));
-        }*/
 
-        if(!MainActivity.TemperatureIsEmpty()) {
-            for(int i=0; i < MainActivity.returnTemperatureSize(); i++) {
-                tempZone.add(MainActivity.returnTemperature(i));
-            }
-            Log.d("string", tempZone.get(2).currTemp);
+        getZoneTemp();
+        for(int i=0; i < tempZone.size(); ) {
+          //  createTempZone(i);
         }
 
-    }
-    void createTempZone(int i) {
+
+  public void getZoneTemp() {
+       /* for(int i = 0; i < MainActivity.tempZone.size(); i++) {
+            tempZone.add(MainActivity.tempZone.get(i));
+        }
+
+if(!MainActivity.TemperatureIsEmpty()) {
+        for(int i=0; i < MainActivity.returnTemperatureSize(); i++) {
+        tempZone.add(MainActivity.returnTemperature(i));
+
+        Log.d("string", tempZone.get(i).channel);
+        }
+
+        // Log.d("string", tempZone.get(0).channel);
+        }
+
+        }
+
+ void createTempZone(int i) {
         //TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
         //tempZone.add(zone);
 
@@ -158,10 +431,10 @@ public class Temperature extends AppCompatActivity {
         String currTemp = tempZone.get(i).currTemp;
 
 
-        /*Thread tempThread = new Thread (new Runnable() {
+        Thread tempThread = new Thread (new Runnable() {
 
             @Override
-            public void run() { */
+            public void run() {
                 try {
 
                     switch (c) {
@@ -335,14 +608,14 @@ public class Temperature extends AppCompatActivity {
                 catch (NullPointerException e) {
                     e.printStackTrace();
                 }
-        /*
+
             }
         });
         tempThread.start(); */
+    /*
 
     }
-/*
-    static public class TemperatureInformation {
+   static public class TemperatureInformation {
         String currDay;
         String currNight;
         String currHoliday;
@@ -363,10 +636,4 @@ public class Temperature extends AppCompatActivity {
 
         }
     }
-*/
-    public void upTemp() {
-        MainActivity.sendText("Command:007260112,1,0,0,1,28,27,26,25,1,15");
-    }
-}
-
-
+ */

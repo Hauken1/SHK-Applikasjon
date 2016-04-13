@@ -1,7 +1,9 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,9 +43,16 @@ public class MainActivity extends AppCompatActivity {
 
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
 
+    public static final String savedTemp1 = "1SavedTemperature";
+    public static final String savedTemp2 = "2SavedTemperature";
+    public static final String savedTemp3 = "3SavedTemperature";
+    public static final String savedTemp4 = "4SavedTemperature";
+    public static final String savedTemp5 = "5SavedTemperature";
+    public static final String savedTemp6 = "6SavedTemperature";
+
+    SharedPreferences sharedpreferences;
     OutputStream os;
     ClientMessage cm = new ClientMessage();
-
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -152,9 +161,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         sendText("Disconnect");
-        System.exit(1);
     }
     public void goToRoomView() {
         Intent intent = new Intent(this, RoomList.class);
@@ -181,31 +188,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
-
-
-
-        private void receiveFromServer() {
-            try {
-                while ((userInput = sysIn.readLine()) != null) {
-                   // out.println(userInput);
-                    System.out.println("echo" + input.read());
-                    // Receiving and printing response from the server
-                }
-            } catch (IOException ioe) {
-                System.out.println(ioe);
-            }
-        }
-
         private void startMessageListener() {
             Thread mThread = new Thread(new Runnable() {
                 public void run() {
                     while (true) {
                         Random rnd = new Random();
                         try {
+
                             String msg = input.readLine();
-                            Log.d("Stuff", ""+ msg);
+                            Log.d("msg", ""+ msg);
 
                             if(msg.startsWith("TempInfo:")) {
                                 tempInfoController(msg.substring(8, msg.length()));
@@ -214,25 +205,8 @@ public class MainActivity extends AppCompatActivity {
                             else {
 
                             }
-                            /*
-                            byte[] data = new byte[100];
-                            DatagramPacket receivePacket = new DatagramPacket(data,
-                                    data.length);
-                            //socket.receive(receivePacket);
-                            displayMessage("\nPacket received:"
-                                    + "\nFrom host: "
-                                    + receivePacket.getAddress()
-                                    + "\nHost port: "
-                                    + receivePacket.getPort()
-                                    + "\nLength: "
-                                    + receivePacket.getLength()
-                                    + "\nContaining: "
-                                    + new String(receivePacket.getData(), 0,
-                                    receivePacket.getLength()));
-                            */
-
                         } catch (Exception e) {
-                            System.out.println("Feil med object");
+                            System.out.println("Error when reading msg");
                             //e.printStackTrace();
                         }
                         try {
@@ -260,23 +234,6 @@ public class MainActivity extends AppCompatActivity {
      * @param msg String containing temperatures
      */
     public void tempInfoController(String msg) {
-        /*
-        // Sets the channel number
-        int channel = Integer.parseInt(msg.substring(1, 2));
-        // Sets the mode number
-        int mode    = Integer.parseInt(msg.substring(2, 3));
-        // If the temperature is less than 10, set temp like int after 0, else set
-        // temp like int XX
-        int holiday = ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5)));
-        // Will most likely be over 10
-        int day    = Integer.parseInt(msg.substring(5, 7));
-        // Will most likely be over 10
-        int night = Integer.parseInt(msg.substring(7, 9));
-        // Will most likely be over 10
-        int away  = Integer.parseInt(msg.substring(9, 11));
-        // Gets rest of the string, which will (presumably) be two integers.
-        int currentTemp = Integer.parseInt(msg.substring(11));
-*/
         // Sets the channel number
         String channel = msg.substring(1, 2);
         Log.d("channel", channel);
@@ -300,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
         String currentTemp = msg.substring(11);
         Log.d("current temp", currentTemp);
 
+        /*
         boolean existingZone = false;
 
         TemperatureInformation zone = new TemperatureInformation(channel,mode,day,night,holiday,away,currentTemp);
@@ -315,7 +273,93 @@ public class MainActivity extends AppCompatActivity {
             existingZone = false;
         }
         else tempZone.add(zone);
-        Log.d("Stuff", "" + zone.channel + " " + zone.mode + " " + zone.currHoliday + " " + zone.currDay + " " + zone.currNight+ " " + zone.currAway + " " + zone.currTemp);
+        */
+
+        int ch = Integer.parseInt(channel);
+        switch (ch) {
+            case 1:
+                sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor1 = sharedpreferences.edit();
+
+                editor1.putString("channel",channel);
+                editor1.putString("Mode",mode);
+                editor1.putString("holiday",holiday);
+                editor1.putString("day",day);
+                editor1.putString("night",night);
+                editor1.putString("away",away);
+                editor1.putString("current",currentTemp);
+                editor1.commit();
+                break;
+            case 2:
+                sharedpreferences = getSharedPreferences(savedTemp2, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor2 = sharedpreferences.edit();
+
+                editor2.putString("channel",channel);
+                editor2.putString("Mode",mode);
+                editor2.putString("holiday",holiday);
+                editor2.putString("day",day);
+                editor2.putString("night",night);
+                editor2.putString("away",away);
+                editor2.putString("current",currentTemp);
+                editor2.commit();
+                break;
+            case 3:
+                sharedpreferences = getSharedPreferences(savedTemp3, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor3 = sharedpreferences.edit();
+
+                editor3.putString("channel",channel);
+                editor3.putString("Mode",mode);
+                editor3.putString("holiday",holiday);
+                editor3.putString("day",day);
+                editor3.putString("night",night);
+                editor3.putString("away",away);
+                editor3.putString("current",currentTemp);
+                editor3.commit();
+                break;
+            case 4:
+                sharedpreferences = getSharedPreferences(savedTemp4, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor4 = sharedpreferences.edit();
+
+                editor4.putString("channel",channel);
+                editor4.putString("Mode",mode);
+                editor4.putString("holiday",holiday);
+                editor4.putString("day",day);
+                editor4.putString("night",night);
+                editor4.putString("away",away);
+                editor4.putString("current",currentTemp);
+                editor4.commit();
+                break;
+            case 5:
+                sharedpreferences = getSharedPreferences(savedTemp5, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor5 = sharedpreferences.edit();
+
+                editor5.putString("channel",channel);
+                editor5.putString("Mode",mode);
+                editor5.putString("holiday",holiday);
+                editor5.putString("day",day);
+                editor5.putString("night",night);
+                editor5.putString("away",away);
+                editor5.putString("current",currentTemp);
+                editor5.commit();
+                break;
+            case 6:
+                sharedpreferences = getSharedPreferences(savedTemp6, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor6 = sharedpreferences.edit();
+
+                editor6.putString("channel",channel);
+                editor6.putString("Mode",mode);
+                editor6.putString("holiday",holiday);
+                editor6.putString("day",day);
+                editor6.putString("night",night);
+                editor6.putString("away",away);
+                editor6.putString("current",currentTemp);
+                editor6.commit();
+                break;
+            default:
+                break;
+        }
+
+       // Log.d("Stuff", "" + zone.channel + " " + zone.mode + " " + zone.currHoliday + " " + zone.currDay + " " + zone.currNight+ " " + zone.currAway + " " + zone.currTemp);
 
         /*
         Log.d("Stuff", "" + Channel + " " + Mode + " " + Holiday + " " + Day + " " + Night + " " + Away + " " + CurrentTemp);
