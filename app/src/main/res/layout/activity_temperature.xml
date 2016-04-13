@@ -13,320 +13,367 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Temperature">
 
-
-        <ImageButton
+        <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/GridLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/home_button"
-            android:src="@mipmap/home_button"
+            android:columnCount="4"
+            android:rowCount="14"
+            android:orientation="vertical"
+            tools:context=".GridXMLActivity"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-
-        <TextView
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/bathroom"
-            android:id="@+id/textView3"
-            android:textColor="#090909"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/home_button"
-            android:layout_centerHorizontal="true" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_up"
-            android:src="@android:drawable/arrow_up_float"
-            android:layout_alignTop="@+id/adjust_down"
-            android:layout_toLeftOf="@+id/adjust_down"
-            android:layout_toStartOf="@+id/adjust_down" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_down"
-            android:checked="false"
-            android:src="@android:drawable/arrow_down_float"
-            android:layout_below="@+id/textView3"
-            android:layout_alignRight="@+id/textView3"
-            android:layout_alignEnd="@+id/textView3" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/current1_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_up" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/static1_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_down"
-            android:layout_toRightOf="@+id/adjust_down"
-            android:layout_toEndOf="@+id/adjust_down"
-            android:layout_marginLeft="10dp"/>
-
-
-        <TextView
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/kitchen"
-            android:id="@+id/kitchen_tv"
-            android:textColor="#090909"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/adjust_up"
-            android:layout_centerHorizontal="true" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_up1"
-            android:src="@android:drawable/arrow_up_float"
-            android:layout_below="@+id/kitchen_tv"
-            android:layout_toLeftOf="@+id/adjust_down1"
-            android:layout_toStartOf="@+id/adjust_down1" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_down1"
-            android:checked="false"
-            android:src="@android:drawable/arrow_down_float"
-            android:layout_alignTop="@+id/adjust_up1"
-            android:layout_alignRight="@+id/kitchen_tv"
-            android:layout_alignEnd="@+id/kitchen_tv" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/current2_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_up1" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/static2_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_down1"
-            android:layout_toRightOf="@+id/adjust_down1"
-            android:layout_toEndOf="@+id/adjust_down1"
-            android:layout_marginLeft="10dp"/>
+            android:layout_centerHorizontal="true">
 
 
 
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/home_button"
+                android:src="@mipmap/home_button"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnSpan="2"
+                />
 
-        <TextView
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/living_room"
-            android:id="@+id/living_room_tv"
-            android:textColor="#090909"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/adjust_up1"
-            android:layout_centerHorizontal="true" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_up2"
-            android:src="@android:drawable/arrow_up_float"
-            android:layout_below="@+id/living_room_tv"
-            android:layout_toLeftOf="@+id/adjust_down2"
-            android:layout_toStartOf="@+id/adjust_down2" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_down2"
-            android:checked="false"
-            android:src="@android:drawable/arrow_down_float"
-            android:layout_alignTop="@+id/adjust_up2"
-            android:layout_alignRight="@+id/home_button"
-            android:layout_alignEnd="@+id/home_button" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/current3_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_up2" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/static3_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_down2"
-            android:layout_toRightOf="@+id/adjust_down2"
-            android:layout_toEndOf="@+id/adjust_down2"
-            android:layout_marginLeft="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bathroom"
+                android:id="@+id/textView3"
+                android:textColor="#090909"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_columnSpan="2"/>
 
 
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/current1_tv"
+                android:textColor="#090909"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="2"
+                android:layout_column="0" />
 
-        <TextView
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/bedroom_1"
-            android:id="@+id/bed1_tv"
-            android:textColor="#090909"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/adjust_up2"
-            android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/curr_temp_tv"
+                android:text="@string/current_temp"
+                android:textColor="#090909"
+                android:layout_gravity="center"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_up3"
-            android:src="@android:drawable/arrow_up_float"
-            android:layout_below="@+id/living_room_tv"
-            android:layout_toLeftOf="@+id/adjust_down3"
-            android:layout_toStartOf="@+id/adjust_down3" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/static_temp_tv"
+                android:text="@string/static_temp"
+                android:textColor="#090909"
+                android:layout_gravity="center"
+                android:layout_row="1"
+                android:layout_column="3"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_down3"
-            android:checked="false"
-            android:src="@android:drawable/arrow_down_float"
-            android:layout_alignTop="@+id/adjust_up3"
-            android:layout_alignRight="@+id/home_button"
-            android:layout_alignEnd="@+id/home_button" />
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_up"
+                android:src="@android:drawable/arrow_up_float"
+                android:contentDescription="up"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="2"
+                android:layout_column="1" />
 
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/current4_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_up3" />
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_down"
+                android:checked="false"
+                android:src="@android:drawable/arrow_down_float"
+                android:contentDescription="down"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="2"
+                android:layout_column="2" />
 
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/static4_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_down3"
-            android:layout_toRightOf="@+id/adjust_down3"
-            android:layout_toEndOf="@+id/adjust_down3"
-            android:layout_marginLeft="10dp"/>
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/static1_tv"
+                android:textColor="#090909"
+                android:editable="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="2"
+                android:layout_column="3" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/kitchen"
+                android:textStyle="bold"
+                android:id="@+id/kitchen_tv"
+                android:layout_columnSpan="2"
+                android:textColor="#090909"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_row="3"
+                android:layout_column="1" />
 
-        <TextView
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/bedroom_2"
-            android:id="@+id/bed2_tv"
-            android:textColor="#090909"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/adjust_up3"
-            android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/current2_tv"
+                android:textColor="#090909"
+                android:layout_row="4"
+                android:layout_column="0" />
 
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_up4"
-            android:src="@android:drawable/arrow_up_float"
-            android:layout_below="@+id/bed1_tv"
-            android:layout_toLeftOf="@+id/adjust_down4"
-            android:layout_toStartOf="@+id/adjust_down4" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_down4"
-            android:checked="false"
-            android:src="@android:drawable/arrow_down_float"
-            android:layout_alignTop="@+id/adjust_up4"
-            android:layout_alignRight="@+id/home_button"
-            android:layout_alignEnd="@+id/home_button" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/current5_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_up4" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/static5_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_down4"
-            android:layout_toRightOf="@+id/adjust_down4"
-            android:layout_toEndOf="@+id/adjust_down4"
-            android:layout_marginLeft="10dp"/>
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_up1"
+                android:src="@android:drawable/arrow_up_float"
+                android:layout_row="4"
+                android:layout_column="1" />
 
 
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_down1"
+                android:checked="false"
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_row="4"
+                android:layout_column="2" />
 
-        <TextView
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/office"
-            android:id="@+id/office_tv"
-            android:textColor="#090909"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/adjust_up4"
-            android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/static2_tv"
+                android:textColor="#090909"
+                android:layout_marginLeft="10dp"
+                android:layout_row="4"
+                android:layout_column="3" />
 
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_up5"
-            android:src="@android:drawable/arrow_up_float"
-            android:layout_below="@+id/bed2_tv"
-            android:layout_toLeftOf="@+id/adjust_down5"
-            android:layout_toStartOf="@+id/adjust_down5" />
-
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/adjust_down5"
-            android:checked="false"
-            android:src="@android:drawable/arrow_down_float"
-            android:layout_alignTop="@+id/adjust_up5"
-            android:layout_alignRight="@+id/home_button"
-            android:layout_alignEnd="@+id/home_button" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/current6_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_up5" />
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/static6_tv"
-            android:textColor="#090909"
-            android:layout_alignBottom="@+id/adjust_down5"
-            android:layout_toRightOf="@+id/adjust_down5"
-            android:layout_toEndOf="@+id/adjust_down5"
-            android:layout_marginLeft="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/living_room"
+                android:textStyle="bold"
+                android:id="@+id/living_room_tv"
+                android:layout_gravity="center"
+                android:layout_columnSpan="2"
+                android:textColor="#090909"
+                android:layout_marginTop="20dp"
+                android:layout_row="5"
+                android:layout_column="1" />
 
 
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/current3_tv"
+                android:textColor="#090909"
+                android:layout_row="6"
+                android:layout_column="0" />
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_up2"
+                android:src="@android:drawable/arrow_up_float"
+                android:layout_row="6"
+                android:layout_column="1" />
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_down2"
+                android:checked="false"
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_row="6"
+                android:layout_column="2" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/static3_tv"
+                android:textColor="#090909"
+                android:layout_marginLeft="10dp"
+                android:layout_row="6"
+                android:layout_column="3" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/static4_tv"
+                android:textColor="#090909"
+                android:layout_marginLeft="10dp"
+                android:layout_row="8"
+                android:layout_column="3" />
+
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_up4"
+                android:src="@android:drawable/arrow_up_float"
+                android:layout_row="10"
+                android:layout_column="1" />
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_up3"
+                android:src="@android:drawable/arrow_up_float"
+                android:layout_row="8"
+                android:layout_column="1" />
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_up5"
+                android:src="@android:drawable/arrow_up_float"
+                android:layout_row="12"
+                android:layout_column="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bedroom_1"
+                android:textStyle="bold"
+                android:id="@+id/bed1_tv"
+                android:layout_columnSpan="2"
+                android:layout_gravity="center"
+                android:textColor="#090909"
+                android:layout_marginTop="20dp"
+                android:layout_row="7"
+                android:layout_column="1" />
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_down4"
+                android:checked="false"
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_row="10"
+                android:layout_column="2" />
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_down3"
+                android:checked="false"
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_row="8"
+                android:layout_column="2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/bedroom_2"
+                android:textStyle="bold"
+                android:id="@+id/bed2_tv"
+                android:layout_gravity="center"
+                android:layout_columnSpan="2"
+                android:textColor="#090909"
+                android:layout_marginTop="20dp"
+                android:layout_row="9"
+                android:layout_column="1" />
+
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/current4_tv"
+                android:textColor="#090909"
+                android:layout_row="8"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/static5_tv"
+                android:textColor="#090909"
+                android:layout_marginLeft="10dp"
+                android:layout_row="10"
+                android:layout_column="3" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/current5_tv"
+                android:textColor="#090909"
+                android:layout_row="10"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/office"
+                android:id="@+id/office_tv"
+                android:textStyle="bold"
+                android:textColor="#090909"
+                android:layout_columnSpan="2"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_row="11"
+                android:layout_column="1" />
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/adjust_down5"
+                android:checked="false"
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_row="12"
+                android:layout_column="2" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/current6_tv"
+                android:textColor="#090909"
+                android:layout_row="12"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/static6_tv"
+                android:textColor="#090909"
+                android:layout_marginLeft="10dp"
+                android:layout_row="12"
+                android:layout_column="3" />
+
+        </GridLayout>
 
     </RelativeLayout>
 </ScrollView>
