@@ -46,9 +46,6 @@ public class Temperature extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
 
-        int curr1 = 25;
-        TextView ctemp1 = (TextView) findViewById(R.id.current1_tv);
-        ctemp1.setText(curr1 +" °C");
 
     }
 
@@ -97,12 +94,19 @@ public class Temperature extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+
+  
+
+
     void createTempZone(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
         TemperatureInformation zone = new TemperatureInformation(ch,mo,cd,cn,cho,ca,ct);
         tempZone.add(zone);
         int c = Integer.parseInt(ch);
         int m = Integer.parseInt(mo);
         switch (c) {
+
+ 
 
             case 1:
                  TextView ctemp1 = (TextView) findViewById(R.id.current1_tv);

@@ -60,6 +60,8 @@
     <string name="modes">Moduser</string>
     <string name="title_activity_lighting">Lysstyring</string>
     <string name="ph">PLACEHOLDER</string>
+    <string name="current_temp">Nå</string>
+    <string name="static_temp">Styr denne</string>
 
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
