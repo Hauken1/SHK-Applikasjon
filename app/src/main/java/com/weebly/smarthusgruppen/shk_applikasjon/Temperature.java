@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -19,7 +20,17 @@ import java.util.concurrent.TimeUnit;
 public class Temperature extends AppCompatActivity {
     ImageButton homeBtn;
     ImageButton upBtn;
-    static public ArrayList<MainActivity.TemperatureInformation> tempZone = new ArrayList<>();
+    ImageButton upBtn1;
+    ImageButton upBtn2;
+    ImageButton upBtn3;
+    ImageButton upBtn4;
+    ImageButton upBtn5;
+    ImageButton downBtn;
+    ImageButton downBtn1;
+    ImageButton downBtn2;
+    ImageButton downBtn3;
+    ImageButton downBtn4;
+    ImageButton downBtn5;
 
     public static final String savedTemp1 = "1SavedTemperature" ;
     public static final String savedTemp2 = "2SavedTemperature" ;
@@ -46,6 +57,14 @@ public class Temperature extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature);
 
+
+        setUpTemperatureGUI();
+        displayTemperature();
+        update();
+
+    }
+
+    public void setUpTemperatureGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
         homeBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +80,74 @@ public class Temperature extends AppCompatActivity {
                 upTemp();
             }
         });
+        upBtn1 = (ImageButton) findViewById(R.id.adjust_up1);
+        upBtn1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                upTemp1();
+            }
+        });
+        upBtn2 = (ImageButton) findViewById(R.id.adjust_up2);
+        upBtn2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                upTemp2();
+            }
+        });
+        upBtn3 = (ImageButton) findViewById(R.id.adjust_up3);
+        upBtn3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                upTemp3();
+            }
+        });
+        upBtn4 = (ImageButton) findViewById(R.id.adjust_up4);
+        upBtn4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                upTemp4();
+            }
+        });
+        upBtn5 = (ImageButton) findViewById(R.id.adjust_up5);
+        upBtn5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                upTemp5();
+            }
+        });
 
+        // down temp button
+        downBtn = (ImageButton) findViewById(R.id.adjust_down);
+        downBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                downTemp();
+            }
+        });
+        downBtn1 = (ImageButton) findViewById(R.id.adjust_down1);
+        downBtn1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                downTemp1();
+            }
+        });
+        downBtn2 = (ImageButton) findViewById(R.id.adjust_down2);
+        downBtn2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                downTemp2();
+            }
+        });
+        downBtn3 = (ImageButton) findViewById(R.id.adjust_down3);
+        downBtn3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                downTemp3();
+            }
+        });
+        downBtn4 = (ImageButton) findViewById(R.id.adjust_down4);
+        downBtn4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                downTemp4();
+            }
+        });
+        downBtn5 = (ImageButton) findViewById(R.id.adjust_down5);
+        downBtn5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                downTemp5();
+            }
+        });
 
         stemp1 = (TextView) findViewById(R.id.static1_tv);
         stemp2 = (TextView) findViewById(R.id.static2_tv);
@@ -77,11 +163,7 @@ public class Temperature extends AppCompatActivity {
         ctemp5 = (TextView) findViewById(R.id.current5_tv);
         ctemp6 = (TextView) findViewById(R.id.current6_tv);
 
-        displayTemperature();
-        update();
-
     }
-
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -93,18 +175,14 @@ public class Temperature extends AppCompatActivity {
                 while (true) {
                     Random rnd = new Random();
                     try {
+                        TimeUnit.SECONDS.sleep(rnd.nextInt(1000));
                         requestNewTemperature();
-                        try {
-                            TimeUnit.SECONDS.sleep(rnd.nextInt(100));
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        displayTemperature();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     try {
-                        TimeUnit.SECONDS.sleep(rnd.nextInt(100));
+                        TimeUnit.SECONDS.sleep(rnd.nextInt(1000));
+                        displayTemperature();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -350,7 +428,1183 @@ public class Temperature extends AppCompatActivity {
     }
 
     public void upTemp() {
-        MainActivity.sendText("Command:007260112,1,0,0,1,28,27,26,25,1,15");
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp1, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1++;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                + "15");
+                holiday = holiday + " °C";
+                stemp1.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2++;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp1.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3++;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp1.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4++;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp1.setText(away);
+                break;
+            default:
+                break;
+        }
+    }
+    public void upTemp1() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp2, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1++;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp2.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2++;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp2.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3++;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp2.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4++;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp2.setText(away);
+                break;
+            default:
+                break;
+        }
+
+    }
+    public void upTemp2() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp3, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1++;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp3.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2++;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp3.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3++;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp3.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4++;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp3.setText(away);
+                break;
+            default:
+                break;
+        }
+        //MainActivity.sendText("Command:007260112,1,0,0,1,28,27,26,25,1,15");
+    }
+    public void upTemp3() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp4, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1++;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp4.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2++;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp4.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3++;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp4.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4++;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp4.setText(away);
+                break;
+            default:
+                break;
+        }
+    }
+    public void upTemp4() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp5, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1++;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp5.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2++;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp5.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3++;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp5.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4++;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp5.setText(away);
+                break;
+            default:
+                break;
+        }
+    }
+    public void upTemp5() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp6, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1++;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp6.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2++;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp6.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3++;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp6.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4++;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp6.setText(away);
+                break;
+            default:
+                break;
+        }
+
+    }
+    public void downTemp() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp1, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1--;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp1.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2--;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp1.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3--;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp1.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4--;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp1.setText(away);
+                break;
+            default:
+                break;
+        }
+    }
+    public void downTemp1() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp2, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1--;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp2.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2--;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp2.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3--;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp2.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4--;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp2.setText(away);
+                break;
+            default:
+                break;
+        }
+    }
+    public void downTemp2() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp3, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1--;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp3.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2--;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp3.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3--;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp3.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4--;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp3.setText(away);
+                break;
+            default:
+                break;
+        }
+    }
+    public void downTemp3() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp4, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1--;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp4.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2--;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp4.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3--;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp4.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4--;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp4.setText(away);
+                break;
+            default:
+                break;
+        }
+    }
+    public void downTemp4() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp5, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1--;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp5.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2--;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp5.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3--;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp5.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4--;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp5.setText(away);
+                break;
+            default:
+                break;
+        }
+    }
+    public void downTemp5() {
+        SharedPreferences changeTempSettings = getSharedPreferences(savedTemp6, 0);
+        SharedPreferences.Editor editor = changeTempSettings.edit();
+
+        String channel = changeTempSettings.getString("channel", "1");
+        String mode = changeTempSettings.getString("mode", "1");
+        String holiday = changeTempSettings.getString("holiday", "18");
+        String day = changeTempSettings.getString("day", "23");
+        String night = changeTempSettings.getString("night", "21");
+        String away = changeTempSettings.getString("away", "19");
+        String current = changeTempSettings.getString("current", "22");
+
+        int m = Integer.parseInt(mode);
+        switch (m) {
+            case 1:
+                int h1 = Integer.parseInt(holiday);
+                int c1 = Integer.parseInt(current);
+                String wateringFlag1;
+                h1--;
+                holiday = Integer.toString(h1);
+
+                editor.putString("holiday", holiday);
+                editor.commit();
+                if( h1 < c1) {
+                    wateringFlag1 = "1";
+                }
+                else wateringFlag1 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
+                        + "15");
+                holiday = holiday + " °C";
+                stemp6.setText(holiday);
+                break;
+            case 2:
+                int h2 = Integer.parseInt(day);
+                int c2 = Integer.parseInt(current);
+                String wateringFlag2;
+                h2--;
+                day = Integer.toString(h2);
+
+                editor.putString("day", day);
+                editor.commit();
+                if( h2 < c2) {
+                    wateringFlag2 = "1";
+                }
+                else wateringFlag2 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
+                        + "15");
+                day = day + " °C";
+                stemp6.setText(day);
+                break;
+            case 3:
+                int h3 = Integer.parseInt(night);
+                int c3 = Integer.parseInt(current);
+                String wateringFlag3;
+                h3--;
+                night = Integer.toString(h3);
+
+                editor.putString("night", night);
+                editor.commit();
+                if( h3 < c3) {
+                    wateringFlag3 = "1";
+                }
+                else wateringFlag3 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
+                        + "15");
+                night = night + " °C";
+                stemp6.setText(night);
+                break;
+            case 4:
+                int h4 = Integer.parseInt(away);
+                int c4 = Integer.parseInt(current);
+                String wateringFlag4;
+                h4--;
+                away = Integer.toString(h4);
+
+                editor.putString("away", away);
+                editor.commit();
+                if( h4 < c4) {
+                    wateringFlag4 = "1";
+                }
+                else wateringFlag4 = "0";
+
+                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                        + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
+                        + "15");
+                away = away + " °C";
+                stemp6.setText(away);
+                break;
+            default:
+                break;
+        }
     }
 }
 

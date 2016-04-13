@@ -101,7 +101,6 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:id="@+id/adjust_down"
-                android:checked="false"
                 android:src="@android:drawable/arrow_down_float"
                 android:contentDescription="down"
                 android:layout_gravity="center_horizontal"
