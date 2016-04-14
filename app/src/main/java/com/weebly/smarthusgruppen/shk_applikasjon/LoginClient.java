@@ -232,7 +232,7 @@ public class LoginClient extends AppCompatActivity {
             System.out.println(ioe);
         }
     }
-    
+
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
