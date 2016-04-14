@@ -70,13 +70,6 @@ public class RoomList extends AppCompatActivity {
             }
         });
 
-        // bedroom 3 button
-        bed3Btn = (Button) findViewById(R.id.room6_button);
-        bed3Btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)  {
-                goToBed3Lights();
-            }
-        });
 
         // office button
         officeBtn = (Button) findViewById(R.id.room7_button);
@@ -127,10 +120,8 @@ public class RoomList extends AppCompatActivity {
         Intent intent = new Intent(this, LightingBedroom2.class);
         startActivity(intent);
     }
-    public void goToBed3Lights() {
-        Intent intent = new Intent(this, LightingBedroom3.class);
-        startActivity(intent);
-    }
+
+
     public void goToOfficeLights() {
         Intent intent = new Intent(this, LightingOffice.class);
         startActivity(intent);

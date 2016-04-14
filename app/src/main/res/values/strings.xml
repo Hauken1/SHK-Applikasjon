@@ -66,6 +66,15 @@
     <string name="night">Natt</string>
     <string name="holiday">Ferie</string>
     <string name="away">Borte</string>
+    <string name="k_roof">Kjøkken - tak</string>
+    <string name="k_tpl">Kjøkken - takpunktlys</string>
+    <string name="sk_tpl">Stue v/kjøkken - takpunktlys</string>
+    <string name="sk_tplv">Stue v/kjøkken - takpunktlys Velux</string>
+    <string name="sk_roof1">Stue v/kjøkken - vegg v/gang</string>
+    <string name="sk_roof2">Stue v/kjøkken - tak</string>
+    <string name="sk_all">Stue v/kjøkken - alt lys</string>
+
+
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
