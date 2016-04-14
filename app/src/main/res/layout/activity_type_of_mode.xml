@@ -17,4 +17,49 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/day"
+        android:textOn="@string/day"
+        android:id="@+id/toggle_day"
+        android:checked="false"
+        android:layout_below="@+id/toggle_night"
+        android:layout_alignLeft="@+id/toggle_night"
+        android:layout_alignStart="@+id/toggle_night" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/night"
+        android:textOn="@string/night"
+        android:id="@+id/toggle_night"
+        android:checked="false"
+        android:layout_below="@+id/toggle_holiday"
+        android:layout_alignLeft="@+id/toggle_holiday"
+        android:layout_alignStart="@+id/toggle_holiday" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/holiday"
+        android:textOn="@string/holiday"
+        android:id="@+id/toggle_holiday"
+        android:checked="false"
+        android:layout_below="@+id/toggle_away"
+        android:layout_alignLeft="@+id/toggle_away"
+        android:layout_alignStart="@+id/toggle_away" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="@string/away"
+        android:textOn="@string/away"
+        android:id="@+id/toggle_away"
+        android:checked="false"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/home_button"
+        android:layout_alignRight="@+id/home_button"
+        android:layout_alignEnd="@+id/home_button" />
 </RelativeLayout>
