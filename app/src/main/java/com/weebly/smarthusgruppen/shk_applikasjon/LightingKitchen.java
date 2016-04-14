@@ -790,12 +790,12 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMedBtn4.setChecked(true);
                 lightMedBtn5.setChecked(true);
 
-                lmin = true;
-                lmin1 = true;
-                lmin2 = true;
-                lmin3 = true;
-                lmin4 = true;
-                lmin5 = true;
+                lmed = true;
+                lmed1 = true;
+                lmed2 = true;
+                lmed3 = true;
+                lmed4 = true;
+                lmed5 = true;
 
             }
             else if (lmed6) {
@@ -830,12 +830,12 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMaxBtn4.setChecked(true);
                 lightMaxBtn5.setChecked(true);
 
-                lmin = true;
-                lmin1 = true;
-                lmin2 = true;
-                lmin3 = true;
-                lmin4 = true;
-                lmin5 = true;
+                lmax = true;
+                lmax1 = true;
+                lmax2 = true;
+                lmax3 = true;
+                lmax4 = true;
+                lmax5 = true;
 
             }
             else if (lmax6) {

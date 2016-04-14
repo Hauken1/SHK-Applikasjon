@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor1 = sharedpreferences.edit();
 
                 editor1.putString("channel",channel);
-                editor1.putString("Mode",mode);
+                editor1.putString("mode",mode);
                 editor1.putString("holiday",holiday);
                 editor1.putString("day",day);
                 editor1.putString("night",night);
@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor2 = sharedpreferences.edit();
 
                 editor2.putString("channel",channel);
-                editor2.putString("Mode",mode);
+                editor2.putString("mode",mode);
                 editor2.putString("holiday",holiday);
                 editor2.putString("day",day);
                 editor2.putString("night",night);
@@ -308,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor3 = sharedpreferences.edit();
 
                 editor3.putString("channel",channel);
-                editor3.putString("Mode",mode);
+                editor3.putString("mode",mode);
                 editor3.putString("holiday",holiday);
                 editor3.putString("day",day);
                 editor3.putString("night",night);
@@ -321,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor4 = sharedpreferences.edit();
 
                 editor4.putString("channel",channel);
-                editor4.putString("Mode",mode);
+                editor4.putString("mode",mode);
                 editor4.putString("holiday",holiday);
                 editor4.putString("day",day);
                 editor4.putString("night",night);
@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor5 = sharedpreferences.edit();
 
                 editor5.putString("channel",channel);
-                editor5.putString("Mode",mode);
+                editor5.putString("mode",mode);
                 editor5.putString("holiday",holiday);
                 editor5.putString("day",day);
                 editor5.putString("night",night);
@@ -347,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor6 = sharedpreferences.edit();
 
                 editor6.putString("channel",channel);
-                editor6.putString("Mode",mode);
+                editor6.putString("mode",mode);
                 editor6.putString("holiday",holiday);
                 editor6.putString("day",day);
                 editor6.putString("night",night);
