@@ -45,7 +45,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
         if (sharedpreferences.contains("channel")) {
-            String currentMode = sharedpreferences.getString("Mode", "2");
+            String currentMode = sharedpreferences.getString("mode", "2");
             int cM = Integer.parseInt(currentMode);
             switch (cM) {
                 case 1:
@@ -133,7 +133,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor1 = sharedpreferences.edit();
-        editor1.putString("Mode",dayMode);
+        editor1.putString("mode",dayMode);
         editor1.commit();
 
         //Changing temperature for day mode for heating sone 1
@@ -157,7 +157,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp2, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor2 = sharedpreferences.edit();
-        editor2.putString("Mode", dayMode);
+        editor2.putString("mode", dayMode);
         editor2.commit();
         //Changing temperature for day mode for heating sone 2
         if (sharedpreferences.contains("channel")) {
@@ -180,7 +180,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp3, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor3 = sharedpreferences.edit();
-        editor3.putString("Mode",dayMode);
+        editor3.putString("mode",dayMode);
         editor3.commit();
         //Changing temperature for day mode for heating sone 3
         if (sharedpreferences.contains("channel")) {
@@ -202,7 +202,7 @@ public class TypeOfMode extends AppCompatActivity {
         }
         sharedpreferences = getSharedPreferences(savedTemp4, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor4 = sharedpreferences.edit();
-        editor4.putString("Mode",dayMode);
+        editor4.putString("mode",dayMode);
         editor4.commit();
         //Changing temperature for day mode for heating sone 4
         if (sharedpreferences.contains("channel")) {
@@ -225,7 +225,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp5, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor5 = sharedpreferences.edit();
-        editor5.putString("Mode",dayMode);
+        editor5.putString("mode",dayMode);
         editor5.commit();
         //Changing temperature for day mode for heating sone 5
         if (sharedpreferences.contains("channel")) {
@@ -248,7 +248,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp6, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor6 = sharedpreferences.edit();
-        editor6.putString("Mode",dayMode);
+        editor6.putString("mode",dayMode);
         editor6.commit();
         //Changing temperature for day mode for heating sone 6
         if (sharedpreferences.contains("channel")) {
@@ -282,7 +282,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor1 = sharedpreferences.edit();
-        editor1.putString("Mode",nightMode);
+        editor1.putString("mode",nightMode);
         editor1.commit();
 
         //Changing temperature for night mode for heating sone 1
@@ -306,7 +306,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp2, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor2 = sharedpreferences.edit();
-        editor2.putString("Mode", nightMode);
+        editor2.putString("mode", nightMode);
         editor2.commit();
         //Changing temperature for day mode for heating sone 2
         if (sharedpreferences.contains("channel")) {
@@ -329,7 +329,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp3, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor3 = sharedpreferences.edit();
-        editor3.putString("Mode",nightMode);
+        editor3.putString("mode",nightMode);
         editor3.commit();
         //Changing temperature for day mode for heating sone 3
         if (sharedpreferences.contains("channel")) {
@@ -352,7 +352,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp4, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor4 = sharedpreferences.edit();
-        editor4.putString("Mode",nightMode);
+        editor4.putString("mode",nightMode);
         editor4.commit();
         //Changing temperature for day mode for heating sone 4
         if (sharedpreferences.contains("channel")) {
@@ -375,7 +375,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp5, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor5 = sharedpreferences.edit();
-        editor5.putString("Mode",nightMode);
+        editor5.putString("mode",nightMode);
         editor5.commit();
         //Changing temperature for day mode for heating sone 5
         if (sharedpreferences.contains("channel")) {
@@ -398,7 +398,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp6, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor6 = sharedpreferences.edit();
-        editor6.putString("Mode",nightMode);
+        editor6.putString("mode",nightMode);
         editor6.commit();
         //Changing temperature for day mode for heating sone 6
         if (sharedpreferences.contains("channel")) {
@@ -433,7 +433,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor1 = sharedpreferences.edit();
-        editor1.putString("Mode",awayMode);
+        editor1.putString("mode",awayMode);
         editor1.commit();
 
         //Changing temperature for away mode for heating sone 1
@@ -457,7 +457,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp2, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor2 = sharedpreferences.edit();
-        editor2.putString("Mode", awayMode);
+        editor2.putString("mode", awayMode);
         editor2.commit();
         //Changing temperature for away mode for heating sone 2
         if (sharedpreferences.contains("channel")) {
@@ -480,7 +480,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp3, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor3 = sharedpreferences.edit();
-        editor3.putString("Mode",awayMode);
+        editor3.putString("mode",awayMode);
         editor3.commit();
         //Changing temperature for away mode for heating sone 3
         if (sharedpreferences.contains("channel")) {
@@ -503,7 +503,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp4, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor4 = sharedpreferences.edit();
-        editor4.putString("Mode",awayMode);
+        editor4.putString("mode",awayMode);
         editor4.commit();
         //Changing temperature for away mode for heating sone 4
         if (sharedpreferences.contains("channel")) {
@@ -526,7 +526,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp5, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor5 = sharedpreferences.edit();
-        editor5.putString("Mode",awayMode);
+        editor5.putString("mode",awayMode);
         editor5.commit();
         //Changing temperature for away mode for heating sone 5
         if (sharedpreferences.contains("channel")) {
@@ -549,7 +549,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp6, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor6 = sharedpreferences.edit();
-        editor6.putString("Mode",awayMode);
+        editor6.putString("mode",awayMode);
         editor6.commit();
         //Changing temperature for away mode for heating sone 6
         if (sharedpreferences.contains("channel")) {
@@ -582,7 +582,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor1 = sharedpreferences.edit();
-        editor1.putString("Mode",holidayMode);
+        editor1.putString("mode",holidayMode);
         editor1.commit();
 
         //Changing temperature for holiday mode for heating sone 1
@@ -606,7 +606,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp2, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor2 = sharedpreferences.edit();
-        editor2.putString("Mode", holidayMode);
+        editor2.putString("mode", holidayMode);
         editor2.commit();
         //Changing temperature for holiday mode for heating sone 2
         if (sharedpreferences.contains("channel")) {
@@ -629,7 +629,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp3, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor3 = sharedpreferences.edit();
-        editor3.putString("Mode",holidayMode);
+        editor3.putString("mode",holidayMode);
         editor3.commit();
         //Changing temperature for holiday mode for heating sone 3
         if (sharedpreferences.contains("channel")) {
@@ -652,7 +652,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp4, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor4 = sharedpreferences.edit();
-        editor4.putString("Mode",holidayMode);
+        editor4.putString("mode",holidayMode);
         editor4.commit();
         //Changing temperature for holiday mode for heating sone 4
         if (sharedpreferences.contains("channel")) {
@@ -675,7 +675,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp5, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor5 = sharedpreferences.edit();
-        editor5.putString("Mode",holidayMode);
+        editor5.putString("mode",holidayMode);
         editor5.commit();
         //Changing temperature for holiday mode for heating sone 5
         if (sharedpreferences.contains("channel")) {
@@ -698,7 +698,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(savedTemp6, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor6 = sharedpreferences.edit();
-        editor6.putString("Mode",holidayMode);
+        editor6.putString("mode",holidayMode);
         editor6.commit();
         //Changing temperature for holiday mode for heating sone 6
         if (sharedpreferences.contains("channel")) {
