@@ -26,7 +26,7 @@ public class TypeOfMode extends AppCompatActivity {
             }
         });
 
-        dayBtn = (ToggleButton) findViewById(R.id.toggle_day);
+       /* dayBtn = (ToggleButton) findViewById(R.id.toggle_day);
         dayBtn.setOnClickListener(light_all__off_Listener);
 
         nightBtn = (ToggleButton) findViewById(R.id.toggle_night);
@@ -37,6 +37,7 @@ public class TypeOfMode extends AppCompatActivity {
 
         holidayBtn = (ToggleButton) findViewById(R.id.toggle_holiday);
         holidayBtn.setOnClickListener(light_all__off_Listener);
+        */
     }
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);

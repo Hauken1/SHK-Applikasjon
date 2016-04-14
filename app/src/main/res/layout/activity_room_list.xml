@@ -11,89 +11,72 @@
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:text="@string/kitchen"
         android:id="@+id/room1_button"
+        android:layout_marginTop="12dp"
+        android:textSize="18sp"
         android:layout_below="@+id/home_button"
-        android:layout_toLeftOf="@+id/home_button"
-        android:layout_toStartOf="@+id/home_button" />
+         />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:text="@string/bathroom"
+        android:textSize="18sp"
         android:id="@+id/room2_button"
-        android:layout_above="@+id/room3_button"
-        android:layout_alignRight="@+id/room3_button"
-        android:layout_alignEnd="@+id/room3_button"
-        android:layout_toEndOf="@+id/home_button" />
+        android:layout_below="@+id/room1_button" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:text="@string/living_room"
-        android:layout_marginTop="10dp"
+        android:textSize="18sp"
         android:id="@+id/room3_button"
-        android:layout_below="@+id/room1_button"
-        android:layout_toRightOf="@+id/home_button"
-        android:layout_toEndOf="@+id/home_button" />
+        android:layout_below="@+id/room2_button"
+         />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:text="@string/bedroom_1"
-        android:layout_marginTop="9dp"
+        android:textSize="18sp"
         android:id="@+id/room4_button"
-        android:layout_alignStart="@+id/room1_button"
-        android:layout_below="@+id/room1_button"
-        android:layout_toRightOf="@+id/home_button" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:text="@string/bedroom_2"
-        android:layout_marginTop="10dp"
-        android:id="@+id/room5_button"
         android:layout_below="@+id/room3_button"
-        android:layout_alignLeft="@+id/room3_button"
-        android:layout_alignStart="@+id/room3_button" />
+        />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:text="@string/bedroom_3"
-        android:layout_marginTop="10dp"
-        android:id="@+id/room6_button"
-        android:layout_alignLeft="@+id/room4_button"
-        android:layout_alignStart="@+id/room4_button"
-        android:layout_below="@+id/room4_button" />
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="@string/bedroom_2"
+        android:textSize="18sp"
+        android:id="@+id/room5_button"
+        android:layout_below="@+id/room4_button"
+        />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:text="@string/office"
+        android:textSize="18sp"
         android:id="@+id/room7_button"
-        android:layout_alignTop="@+id/room8_button"
-        android:layout_alignLeft="@+id/room5_button"
-        android:layout_alignStart="@+id/room5_button" />
+        android:layout_below="@+id/room5_button"
+ />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:text="@string/hallway"
-        android:layout_marginTop="10dp"
+        android:textSize="18sp"
         android:id="@+id/room8_button"
-        android:layout_below="@+id/room6_button"
-        android:layout_alignLeft="@+id/room6_button"
-        android:layout_alignStart="@+id/room6_button" />
+        android:layout_below="@+id/room7_button"/>
 
     <ImageButton
         android:layout_width="wrap_content"
