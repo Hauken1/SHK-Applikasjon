@@ -121,6 +121,7 @@ public class TypeOfMode extends AppCompatActivity {
                 holiday();
             }
         });
+
     }
 
     public void goToHome() {
