@@ -680,11 +680,11 @@ public class LightingBathroom extends AppCompatActivity {
                 lightMedBtn4.setChecked(true);
 
 
-                lmin = true;
-                lmin1 = true;
-                lmin2 = true;
-                lmin3 = true;
-                lmin4 = true;
+                lmed = true;
+                lmed1 = true;
+                lmed2 = true;
+                lmed3 = true;
+                lmed4 = true;
 
 
             }
@@ -720,11 +720,11 @@ public class LightingBathroom extends AppCompatActivity {
                 lightMaxBtn4.setChecked(true);
 
 
-                lmin = true;
-                lmin1 = true;
-                lmin2 = true;
-                lmin3 = true;
-                lmin4 = true;
+                lmax = true;
+                lmax1 = true;
+                lmax2 = true;
+                lmax3 = true;
+                lmax4 = true;
 
 
             }
