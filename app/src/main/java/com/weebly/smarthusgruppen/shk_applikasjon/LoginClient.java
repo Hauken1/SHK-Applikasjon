@@ -232,6 +232,7 @@ public class LoginClient extends AppCompatActivity {
                     connection.getOutputStream()));
             input = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
+            if(connection.isConnected()) connected = true;
 
         } catch (UnknownHostException e) {
             new AlertDialog.Builder(LoginClient.this)
