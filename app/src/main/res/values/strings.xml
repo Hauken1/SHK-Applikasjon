@@ -62,6 +62,10 @@
     <string name="ph">PLACEHOLDER</string>
     <string name="current_temp">Nå</string>
     <string name="static_temp">Styr denne</string>
+    <string name="day">Dag</string>
+    <string name="night">Natt</string>
+    <string name="holiday">Ferie</string>
+    <string name="away">Borte</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
-
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -28,6 +29,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
+
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     int serverPort = 12345;
@@ -40,6 +42,7 @@ public class LoginClient extends AppCompatActivity {
     Boolean loggedIn;
     Boolean connected;
     static Socket connection;
+    private SwipeRefreshLayout swipeContainer;
 
 
     @Override
@@ -57,7 +60,44 @@ public class LoginClient extends AppCompatActivity {
 
         }
 
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new OnRefreshListener() {
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                connect();
+
+             //   fetchTimelineAsync(0);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
     }
+ /*   public void fetchTimelineAsync(int page) {
+        // Send the network request to fetch the updated data
+        // `client` here is an instance of Android Async HTTP
+        client.getHomeTimeline(0, new JsonHttpResponseHandler() {
+            public void onSuccess(JSONArray json) {
+                // Remember to CLEAR OUT old items before appending in the new ones
+                adapter.clear();
+                // ...the data has come back, add new items to your adapter...
+                adapter.addAll(...);
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
+            }
+
+            public void onFailure(Throwable e) {
+                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
+            }
+        });
+    }
+*/
 
     protected void onRestart() {
         super.onRestart();
@@ -192,9 +232,7 @@ public class LoginClient extends AppCompatActivity {
             System.out.println(ioe);
         }
     }
-
-
-
+    
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -221,7 +259,6 @@ public class LoginClient extends AppCompatActivity {
             }
         }));
         thread.start();
-
     }
 
     private void connectToServer() {
