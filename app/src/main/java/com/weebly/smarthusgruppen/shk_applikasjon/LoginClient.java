@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     int serverPort = 12345;
-    String hostName= "128.39.82.188";
+    String hostName= "128.39.81.49";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -110,6 +110,17 @@ public class LoginClient extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            output.write("Disconnect");
+            output.newLine();
+            output.flush();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     protected static Socket returnConnection() {
         return connection;
@@ -136,7 +147,6 @@ public class LoginClient extends AppCompatActivity {
 
             if(connected == false) {
                 connect();
-
             }
             else {
 
@@ -222,9 +232,7 @@ public class LoginClient extends AppCompatActivity {
             System.out.println(ioe);
         }
     }
-
-
-
+    
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -251,20 +259,17 @@ public class LoginClient extends AppCompatActivity {
             }
         }));
         thread.start();
-
     }
 
     private void connectToServer() {
         try {
-                connection = new Socket(InetAddress.getByName(hostName), serverPort);
-                Log.d("ClientActivity", "C: Connected to server.");
-                output = new BufferedWriter(new OutputStreamWriter(
-                        connection.getOutputStream()));
-                input = new BufferedReader(new InputStreamReader(
-                        connection.getInputStream()));
-            if (connection.isConnected()) {
-                connected = true;
-            }
+            connection = new Socket(InetAddress.getByName(hostName), serverPort);
+            Log.d("ClientActivity", "C: Connected to server.");
+            output = new BufferedWriter(new OutputStreamWriter(
+                    connection.getOutputStream()));
+            input = new BufferedReader(new InputStreamReader(
+                    connection.getInputStream()));
+            if(connection.isConnected()) connected = true;
 
         } catch (UnknownHostException e) {
             new AlertDialog.Builder(LoginClient.this)
