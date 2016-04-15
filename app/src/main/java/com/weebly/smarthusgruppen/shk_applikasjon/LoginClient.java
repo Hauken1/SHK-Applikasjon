@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     int serverPort = 12345;
-    String hostName= "128.39.81.49";
+    String hostName= "192.168.38.128";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -146,6 +146,17 @@ public class LoginClient extends AppCompatActivity {
             password = tempPw.getText().toString();
 
             if(connected == false) {
+                AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                add.setTitle("Unable to connect to server");
+                add.setMessage("Check your internet connection");
+                add.setCancelable(false);
+                add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                }).create().show();
+
+                add.create();
                 connect();
             }
             else {
@@ -171,16 +182,17 @@ public class LoginClient extends AppCompatActivity {
                                         loggedIn = true;
                                         goToHome();
                                     } else {
-                                        new AlertDialog.Builder(LoginClient.this)
-                                                .setTitle("Failed login")
-                                                .setMessage("Wrong username or password")
-                                                .setCancelable(false)
-                                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
+                                        AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                                        add.setTitle("Login failed");
+                                        add.setMessage("Wrong username or password");
+                                        add.setCancelable(false);
+                                        add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                            }
+                                        }).create().show();
 
-                                                    }
-                                                }).create().show();
+                                        add.create();
                                     }
 
                                     // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
@@ -272,16 +284,17 @@ public class LoginClient extends AppCompatActivity {
             if(connection.isConnected()) connected = true;
 
         } catch (UnknownHostException e) {
-            new AlertDialog.Builder(LoginClient.this)
-                    .setTitle("Unable to connect to server")
-                    .setMessage("Check your internet connection")
-                    .setCancelable(false)
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+            add.setTitle("Unable to connect to server");
+            add.setMessage("Check your internet connection");
+            add.setCancelable(false);
+            add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                         }
                     }).create().show();
 
+            add.create();
         } catch (IOException e) {
         }
     }
