@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     int serverPort = 12345;
-    String hostName= "192.168.38.128";
+    String hostName= "128.39.80.54";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
