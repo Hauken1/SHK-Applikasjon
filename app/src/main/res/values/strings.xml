@@ -79,6 +79,15 @@
     <string name="bad_l1">Bad - lys 1</string>
     <string name="bad_l2">Bad - lys 2</string>
     <string name="bad_roof">Bad - tak</string>
+    <string name="bed_all">Soverom - alt lys</string>
+    <string name="office_all">Kontor - alt lys</string>
+    <string name="lr_all">Stue - alt lys</string>
+    <string name="lr_win">Stue - v/vindu</string>
+    <string name="lr_l1">Stue - tak</string>
+    <string name="lr_wl">Stue - v/vegg</string>
+    <string name="hall_all">Gang - alt lys</string>
+    <string name="hall_in">Inngangsdør</string>
+    <string name="hall_bt">Ytter gang</string>
 
 
 

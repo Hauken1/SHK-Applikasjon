@@ -341,7 +341,7 @@
             android:layout_width="267dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/sk_tplv"
+            android:text="@string/sk_roof2"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:id="@+id/textView9"
