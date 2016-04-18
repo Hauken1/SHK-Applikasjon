@@ -57,7 +57,31 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp" />
 
+    <CheckBox
+        android:id="@+id/saveLoginCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Husk meg?"
+        android:textColor="#060606"
+        android:layout_below="@+id/edittext_password"
+        android:layout_alignLeft="@+id/edittext_password"
+        android:layout_alignStart="@+id/edittext_password"
+        android:textAlignment="center" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bytt passord?"
+        android:id="@+id/change_pw"
+        android:clickable="true"
+        android:layout_alignTop="@+id/saveLoginCheckBox"
+        android:layout_toRightOf="@+id/saveLoginCheckBox"
+        android:layout_toEndOf="@+id/saveLoginCheckBox"
+        android:textAlignment="center"
+        android:textColor="#13f03f"
+        android:paddingTop="8dp"
+        android:paddingLeft="5dp"
+        android:layout_alignBottom="@+id/saveLoginCheckBox" />
 
 
 </RelativeLayout>
