@@ -5,12 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:id="@+id/scrView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         >
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,30 +13,34 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/green"
     tools:context="com.weebly.smarthusgruppen.shk_applikasjon.LoginClient">
 
 
 
     <EditText
         android:id="@+id/edittext_password"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:hint="@string/ask_pw"
         android:focusable="true"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
         android:textColorHighlight="#ff7eff15"
         android:layout_below="@+id/edittext_username"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:id="@+id/edittext_username"
         android:hint="@string/ask_username"
         android:focusable="true"
         android:textColorHighlight="#ff7eff15"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true" />
 
 
@@ -53,38 +51,34 @@
         android:layout_height="wrap_content"
         android:onClick="Login"
         android:text="@string/Login"
-        android:layout_below="@+id/edittext_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:layout_below="@+id/change_pw"
+        android:layout_alignLeft="@+id/saveLoginCheckBox"
+        android:layout_alignStart="@+id/saveLoginCheckBox" />
 
     <CheckBox
         android:id="@+id/saveLoginCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Husk meg?"
+        android:text="@string/remember"
         android:textColor="#060606"
+        android:gravity="center"
         android:layout_below="@+id/edittext_password"
-        android:layout_alignLeft="@+id/edittext_password"
-        android:layout_alignStart="@+id/edittext_password"
-        android:textAlignment="center" />
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:checked="false" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bytt passord?"
+        android:text="@string/ch_pw"
         android:id="@+id/change_pw"
         android:clickable="true"
-        android:layout_alignTop="@+id/saveLoginCheckBox"
-        android:layout_toRightOf="@+id/saveLoginCheckBox"
-        android:layout_toEndOf="@+id/saveLoginCheckBox"
-        android:textAlignment="center"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
         android:textColor="#13f03f"
-        android:paddingTop="8dp"
-        android:paddingLeft="5dp"
-        android:layout_alignBottom="@+id/saveLoginCheckBox" />
-
-
+        android:layout_below="@+id/saveLoginCheckBox"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
-    </ScrollView>
-
     </android.support.v4.widget.SwipeRefreshLayout>

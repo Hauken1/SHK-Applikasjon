@@ -5,30 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.nio.channels.Channel;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
-
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity_2 extends AppCompatActivity {
     String userInput;
     static BufferedWriter output;
     static BufferedReader input;
@@ -109,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         startMessageListener();
-        MainActivity.sendText("Command:007262112,1");
-        MainActivity.sendText("Command:007262112,2");
-        MainActivity.sendText("Command:007262112,3");
-        MainActivity.sendText("Command:007262112,4");
-        MainActivity.sendText("Command:007262112,5");
-        MainActivity.sendText("Command:007262112,6");
+        MainActivity_2.sendText("Command:007262112,1");
+        MainActivity_2.sendText("Command:007262112,2");
+        MainActivity_2.sendText("Command:007262112,3");
+        MainActivity_2.sendText("Command:007262112,4");
+        MainActivity_2.sendText("Command:007262112,5");
+        MainActivity_2.sendText("Command:007262112,6");
     }
 
     @Override
@@ -164,27 +162,27 @@ public class MainActivity extends AppCompatActivity {
         sendText("Disconnect");
     }
     public void goToRoomView() {
-        Intent intent = new Intent(this, RoomList.class);
+        Intent intent = new Intent(this, RoomList_2.class);
         startActivity(intent);
     }
 
 
     public void goToClimateView() {
-        Intent intent = new Intent(this, Climate.class);
+        Intent intent = new Intent(this, Climate_2.class);
         startActivity(intent);
     }
 
     public void goToWindowView() {
-        Intent intent = new Intent(this, Windows.class);
+        Intent intent = new Intent(this, Windows_2.class);
         startActivity(intent);
     }
 
     public void goToMeasurementView() {
-        Intent intent = new Intent(this, Measurement.class);
+        Intent intent = new Intent(this, Measurement_2.class);
         startActivity(intent);
     }
     public void goToModeView() {
-        Intent intent = new Intent(this, TypeOfMode.class);
+        Intent intent = new Intent(this, TypeOfMode_2.class);
         startActivity(intent);
     }
 
@@ -213,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
                             TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
-                            MainActivity.sendText("Disconnect");
+                            MainActivity_2.sendText("Disconnect");
                             e.printStackTrace();
                         }
                     }
