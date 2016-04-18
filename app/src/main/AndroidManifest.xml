@@ -76,7 +76,51 @@
         <activity android:name=".Measurement"
             android:label="@string/measure1"/>
         <activity android:name=".TypeOfMode"
-            android:label="@string/modes"></activity>
+            android:label="@string/modes"/>
+
+        <activity
+            android:name=".RoomList_2"
+            android:label="@string/room_view_light" />
+        <activity
+            android:name=".Climate_2"
+            android:label="@string/climate_view" />
+        <activity
+            android:name=".Temperature_2"
+            android:label="@string/heating_view" />
+        <activity
+            android:name=".Ventilation_2"
+            android:label="@string/ventilation_view" />
+        <activity
+            android:name=".LightingKitchen_2"
+            android:label="@string/lighting_kitchen" />
+        <activity
+            android:name=".LightingOffice_2"
+            android:label="@string/lighting_office" />
+        <activity
+            android:name=".LightingLivingRoom_2"
+            android:label="@string/lighting_living_room" />
+        <activity
+            android:name=".LightingHallway_2"
+            android:label="@string/lighting_hallway" />
+        <activity
+            android:name=".LightingBedroom1_2"
+            android:label="@string/lighting_bedroom1" />
+        <activity
+            android:name=".LightingBedroom2_2"
+            android:label="@string/lighting_bedroom2" />
+        <activity
+            android:name=".LightingBathroom_2"
+            android:label="@string/lighting_bathroom" />
+        <activity
+            android:name=".MainActivity_2"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".Windows_2"
+            android:label="@string/windows" />
+        <activity android:name=".Measurement_2"
+            android:label="@string/measure1"/>
+        <activity android:name=".TypeOfMode_2"
+            android:label="@string/modes"/>
     </application>
 
 </manifest>

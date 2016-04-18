@@ -397,7 +397,7 @@ public class LoginClient extends AppCompatActivity {
                                        switch (ID) {
                                            case 1:
                                                    loggedIn = true;
-                                                   goToHome();
+                                                   goToHome2();
                                                break;
                                            case 2:
                                                    loggedIn = true;
@@ -409,7 +409,7 @@ public class LoginClient extends AppCompatActivity {
                                                break;
                                            case 4:
                                                    loggedIn = true;
-                                                   goToHome();
+                                                   goToHome2();
                                                break;
                                            default:
                                                failLogin();
