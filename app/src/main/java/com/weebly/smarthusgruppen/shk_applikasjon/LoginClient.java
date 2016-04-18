@@ -1,18 +1,25 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Button;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -32,8 +39,13 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
+    TextView changePw;
+    CheckBox rememberMe;
+    EditText tempUser;
+    EditText tempPw;
+
     int serverPort = 12345;
-    String hostName= "128.39.80.54";
+    String hostName= "128.39.81.44";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -41,8 +53,18 @@ public class LoginClient extends AppCompatActivity {
     String password;
     Boolean loggedIn;
     Boolean connected;
+    Boolean rememberMeBool;
     static Socket connection;
     private SwipeRefreshLayout swipeContainer;
+    String pwChanged;
+    Handler gHandler;
+
+    int ep;
+
+    private SharedPreferences loginSettings;
+    private SharedPreferences.Editor loginEditor;
+
+
 
 
     @Override
@@ -50,15 +72,30 @@ public class LoginClient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_client);
 
+        gHandler = new Handler();
         if(savedInstanceState == null){
             loggedIn = false;
             connected = false;
             connect();
-
-            loginBtn = (Button) findViewById(R.id.login_button);
-            loginBtn.setOnClickListener(userLogin);
-
         }
+        rememberMe = (CheckBox)findViewById(R.id.saveLoginCheckBox);
+        loginBtn = (Button) findViewById(R.id.login_button);
+        loginBtn.setOnClickListener(userLogin);
+        tempUser = (EditText) findViewById(R.id.edittext_username);
+        tempPw = (EditText) findViewById(R.id.edittext_password);
+        changePw = (TextView) findViewById(R.id.change_pw);
+        changePw.setOnClickListener(changePassword);
+
+        loginSettings = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginEditor = loginSettings.edit();
+
+        rememberMeBool = loginSettings.getBoolean("saveLogin", false);
+        if (rememberMeBool == true) {
+            tempUser.setText(loginSettings.getString("username", ""));
+            tempPw.setText(loginSettings.getString("password", ""));
+            rememberMe.setChecked(true);
+        }
+
 
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
@@ -136,27 +173,178 @@ public class LoginClient extends AppCompatActivity {
 
 
 
+    public View.OnClickListener changePassword = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginClient.this);
+            alertDialog.setTitle("Bytt passord");
+            final EditText userName = new EditText(LoginClient.this);
+            final EditText oldPass = new EditText(LoginClient.this);
+            final EditText newPass = new EditText(LoginClient.this);
+            final EditText confirmPass = new EditText(LoginClient.this);
+            LinearLayout layout = new LinearLayout(LoginClient.this);
+            layout.setOrientation(LinearLayout.VERTICAL);
+            userName.setHint("Brukernavn");
+            oldPass.setHint("Nåværende passord");
+            newPass.setHint("Nytt passord");
+            confirmPass.setHint("Bekreft passord");
+            oldPass.setTransformationMethod(new PasswordTransformationMethod());
+            newPass.setTransformationMethod(new PasswordTransformationMethod());
+            confirmPass.setTransformationMethod(new PasswordTransformationMethod());
+
+            layout.addView(userName);
+            layout.addView(oldPass);
+            layout.addView(newPass);
+            layout.addView(confirmPass);
+            alertDialog.setView(layout);
+
+            alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    try {
+                        final String oP = oldPass.getText().toString();
+                        final String newP = newPass.getText().toString();
+                        final String confirmP = confirmPass.getText().toString();
+                        final String user = userName.getText().toString();
+                        pwChanged = "Ping";
+
+                        if (connection.isConnected() &&
+                                !newP.isEmpty() && !confirmP.isEmpty() && newP.equals(confirmP)) {
+                            final String code = "ChangePW";
+
+                            try {
+                                Thread thread = new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            sendNewUserInformation(code, user, oP, newP);
+                                            ep = 0;
+                                            while(pwChanged.contains("Ping") && pwChanged != null){
+                                                if(input.ready()){
+                                                    pwChanged = input.readLine();
+                                                }
+                                                Random rng = new Random();
+                                                TimeUnit.MILLISECONDS.sleep(rng.nextInt(200) * 10);
+                                                if(ep == 20) break;
+                                                ep++;
+                                            }
+                                            //pwChanged = input.read();
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                                thread.start();
+                                thread.join();
+                                if(ep !=20) {
+                                    if (pwChanged.equals("PChanged")) {
+                                        pwChanged = "Ping";
+                                        AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                                        add.setTitle("Suksess");
+                                        add.setMessage("Passordet ditt har blitt endret!");
+                                        add.setCancelable(false);
+                                        add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                rememberMe.setChecked(false);
+                                            }
+                                        });
+                                        add.create();
+                                        add.show();
+                                    } else {
+                                        AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                                        add.setTitle("Feil");
+                                        add.setMessage("Noe gikk galt. Vennligst prøv på nytt.");
+                                        add.setCancelable(false);
+                                        add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                            }
+                                        });
+                                        add.create();
+                                        add.show();
+                                    }
+                                }
+                                else {
+                                    AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                                    add.setTitle("Feil");
+                                    add.setMessage("Endringen av passord tok for lang tid. Prøv igjen");
+                                    add.setCancelable(false);
+                                    add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        }
+                                    });
+                                    add.create();
+                                    add.show();
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                            add.setTitle("Feil");
+                            add.setMessage("Noe gikk galt. Vennligst prøv på nytt.");
+                            add.setCancelable(false);
+                            add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                            add.create();
+                            add.show();
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                        add.setTitle("Feil");
+                        add.setMessage("Noe gikk galt. Sjekk tilkobling til server.");
+                        add.setCancelable(false);
+                        add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        add.create();
+                        add.show();
+                    }
+                }
+            });
+            alertDialog.setNegativeButton("Avbryt", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            alertDialog.create();
+            alertDialog.show();
+        }
+    };
 
     public View.OnClickListener userLogin = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            EditText tempUser = (EditText) findViewById(R.id.edittext_username);
-            EditText tempPw = (EditText) findViewById(R.id.edittext_password);
             username = tempUser.getText().toString();
             password = tempPw.getText().toString();
 
             if(connected == false) {
                 AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
-                add.setTitle("Unable to connect to server");
-                add.setMessage("Check your internet connection");
+                add.setTitle("Ikke tilkoblet");
+                add.setMessage("Prøv å logg inn igjen");
                 add.setCancelable(false);
                 add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
-                }).create().show();
-
+                });
                 add.create();
+                add.show();
+                //Tries to connect again
                 connect();
             }
             else {
@@ -166,48 +354,93 @@ public class LoginClient extends AppCompatActivity {
                     public void run() {
                         String login = "Login";
                         if (!username.isEmpty() && !password.isEmpty() && !login.isEmpty()) {
-
+                            //If rememberMe is checked, saves the user for further logins
+                            if (rememberMe.isChecked()) {
+                                loginEditor.putBoolean("saveLogin", true);
+                                loginEditor.putString("username", username);
+                                loginEditor.putString("password", password);
+                                loginEditor.commit();
+                            } else {
+                                loginEditor.clear();
+                                loginEditor.commit();
+                            }
 
                             if (connection.isConnected()) {
 
                                 Log.d("ClientActivity", "C: Trying to log in.");
                                 Random rnd = new Random();
-                                sendLogin(login, username, password);
+
                                 try {
-                                    //TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
-                                    int ID = Integer.valueOf(input.readLine());
-                                    System.out.print(ID + " ID");
-                                    Log.d("ClientActivity", "C: logging in..." + ID);
-                                    if (ID > 0) {
-                                        loggedIn = true;
-                                        goToHome();
-                                    } else {
-                                        AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
-                                        add.setTitle("Login failed");
-                                        add.setMessage("Wrong username or password");
-                                        add.setCancelable(false);
-                                        add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                            }
-                                        }).create().show();
+                                    sendLogin(login, username, password);
+                                   // Random rng = new Random();
+                                    //TimeUnit.MILLISECONDS.sleep(rng.nextInt(100) * 10);
+                                   // ProgressDialog dialog = ProgressDialog.show(LoginClient.this, "Loading", "Please wait...", true);
 
-                                        add.create();
+                                    String read = "Ping";
+                                    int n =0;
+                                    while(read.contains("Ping") && read != null) {
+                                        read = input.readLine();
+                                        Random rng = new Random();
+                                        TimeUnit.MILLISECONDS.sleep(rng.nextInt(100) * 10);
+                                        if(n == 20) break;
+                                        n++;
                                     }
+                                    //dialog.dismiss();
+                                    //int ID = Integer.valueOf(input.readLine());
+                                    if(n != 20) {
+                                        int ID = Integer.parseInt(read);
+                                        Log.d("ClientActivity", "C: logging in..." + ID);
+                                        if (ID > 0) {
+                                            loggedIn = true;
+                                            goToHome();
+                                        } else {
+                                            gHandler.post(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                                                    add.setTitle("Pålogging feilet");
+                                                    add.setMessage("Feil brukernavn eller passord");
+                                                    add.setCancelable(false);
+                                                    add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                        }
+                                                    });
+                                                    add.create();
+                                                    add.show();
+                                                }
+                                            });
+                                        }
+                                    }
+                                    else {
+                                        gHandler.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                                                add.setTitle("Pålogging failet");
+                                                add.setMessage("Påloggingen tok for lang tid. Prøv igjen");
+                                                add.setCancelable(false);
+                                                add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                    }
+                                                });
+                                                add.create();
+                                                add.show();
+                                            }
+                                        });
 
+                                    }
                                     // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
                                     // sende med forskjellige ID
-
-
                                 } catch (Exception e) {
-                                    System.out.println(e);
+                                    e.printStackTrace();
                                 }
                             }
 
                         }
                     }
                 }));
-
                 thread.start();
             }
         }
@@ -224,6 +457,30 @@ public class LoginClient extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public static void sendNewUserInformation(String code, String userName, String oldPw,
+                                              String newPw){
+        try {
+            output.write(code);
+            output.newLine();
+            output.flush();
+
+            output.write(userName);
+            output.newLine();
+            output.flush();
+
+            output.write(oldPw);
+            output.newLine();
+            output.flush();
+
+            output.write(newPw);
+            output.newLine();
+            output.flush();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // sending login information to server
@@ -258,16 +515,14 @@ public class LoginClient extends AppCompatActivity {
         final Thread thread = new Thread((new Runnable() {
             @Override
             public void run() {
-                try {
+                //try {
 
                     Log.d("ClientActivity", "C: Connecting...");
-                    while(!connected) {
+                    //while(!connected) {
                         connectToServer();
-                        Thread.sleep(50);
-                    }
-                 } catch (InterruptedException e) {
-
-                }
+                     //   Thread.sleep(50);
+                   // }
+               //  } catch (InterruptedException e) {
             }
         }));
         thread.start();
@@ -289,12 +544,12 @@ public class LoginClient extends AppCompatActivity {
             add.setMessage("Check your internet connection");
             add.setCancelable(false);
             add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    }).create().show();
-
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+                    });
             add.create();
+            add.show();
         } catch (IOException e) {
         }
     }
