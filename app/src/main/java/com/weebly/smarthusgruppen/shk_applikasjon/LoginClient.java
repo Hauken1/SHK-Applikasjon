@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -55,7 +56,6 @@ public class LoginClient extends AppCompatActivity {
     Boolean connected;
     Boolean rememberMeBool;
     static Socket connection;
-    private SwipeRefreshLayout swipeContainer;
     String pwChanged;
     Handler gHandler;
 
@@ -73,12 +73,12 @@ public class LoginClient extends AppCompatActivity {
         setContentView(R.layout.activity_login_client);
 
         gHandler = new Handler();
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             loggedIn = false;
             connected = false;
             connect();
         }
-        rememberMe = (CheckBox)findViewById(R.id.saveLoginCheckBox);
+        rememberMe = (CheckBox) findViewById(R.id.saveLoginCheckBox);
         loginBtn = (Button) findViewById(R.id.login_button);
         loginBtn.setOnClickListener(userLogin);
         tempUser = (EditText) findViewById(R.id.edittext_username);
@@ -90,51 +90,12 @@ public class LoginClient extends AppCompatActivity {
         loginEditor = loginSettings.edit();
 
         rememberMeBool = loginSettings.getBoolean("saveLogin", false);
-        if (rememberMeBool == true) {
+        if (rememberMeBool) {
             tempUser.setText(loginSettings.getString("username", ""));
             tempPw.setText(loginSettings.getString("password", ""));
             rememberMe.setChecked(true);
         }
-
-
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
-        // Setup refresh listener which triggers new data loading
-        swipeContainer.setOnRefreshListener(new OnRefreshListener() {
-            public void onRefresh() {
-                // Your code to refresh the list here.
-                // Make sure you call swipeContainer.setRefreshing(false)
-                // once the network request has completed successfully.
-                connect();
-
-             //   fetchTimelineAsync(0);
-            }
-        });
-        // Configure the refreshing colors
-        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
-
     }
- /*   public void fetchTimelineAsync(int page) {
-        // Send the network request to fetch the updated data
-        // `client` here is an instance of Android Async HTTP
-        client.getHomeTimeline(0, new JsonHttpResponseHandler() {
-            public void onSuccess(JSONArray json) {
-                // Remember to CLEAR OUT old items before appending in the new ones
-                adapter.clear();
-                // ...the data has come back, add new items to your adapter...
-                adapter.addAll(...);
-                // Now we call setRefreshing(false) to signal refresh has finished
-                swipeContainer.setRefreshing(false);
-            }
-
-            public void onFailure(Throwable e) {
-                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
-            }
-        });
-    }
-*/
 
     protected void onRestart() {
         super.onRestart();
@@ -350,7 +311,7 @@ public class LoginClient extends AppCompatActivity {
             username = tempUser.getText().toString();
             password = tempPw.getText().toString();
 
-            if(connected == false) {
+            if(!connected) {
                 AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
                 add.setTitle("Ikke tilkoblet");
                 add.setMessage("Prøv å logg inn igjen");
@@ -415,45 +376,32 @@ public class LoginClient extends AppCompatActivity {
                                     if(n != 20) {
                                         int ID = Integer.parseInt(read);
                                         Log.d("ClientActivity", "C: logging in..." + ID);
-                                        if (ID > 0) {
-                                            loggedIn = true;
-                                            goToHome();
-                                        } else {
-                                            gHandler.post(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
-                                                    add.setTitle("Pålogging feilet");
-                                                    add.setMessage("Feil brukernavn eller passord");
-                                                    add.setCancelable(false);
-                                                    add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                        }
-                                                    });
-                                                    add.create();
-                                                    add.show();
-                                                }
-                                            });
-                                        }
+
+                                       switch (ID) {
+                                           case 1:
+                                                   loggedIn = true;
+                                                   goToHome();
+                                               break;
+                                           case 2:
+                                                   loggedIn = true;
+                                                   goToHome2();
+                                               break;
+                                           case 3:
+                                                   loggedIn = true;
+                                                   goToHome();
+                                               break;
+                                           case 4:
+                                                   loggedIn = true;
+                                                   goToHome();
+                                               break;
+                                           default:
+                                               failLogin();
+                                               break;
+
+                                       }
                                     }
                                     else {
-                                        gHandler.post(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
-                                                add.setTitle("Pålogging failet");
-                                                add.setMessage("Påloggingen tok for lang tid. Prøv igjen");
-                                                add.setCancelable(false);
-                                                add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                    }
-                                                });
-                                                add.create();
-                                                add.show();
-                                            }
-                                        });
+                                        failLogin2();
 
                                     }
                                     // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
@@ -532,6 +480,11 @@ public class LoginClient extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToHome2() {
+        Intent intent = new Intent(this, MainActivity_2.class);
+        startActivity(intent);
+    }
+
     public void connect() {
         /*
         Thread cThread = new Thread(new ClientThread());
@@ -578,6 +531,45 @@ public class LoginClient extends AppCompatActivity {
         } catch (IOException e) {
         }
     }
+
+    public void failLogin()  {
+        gHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                add.setTitle("Pålogging feilet");
+                add.setMessage("Feil brukernavn eller passord");
+                add.setCancelable(false);
+                add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                add.create();
+                add.show();
+            }
+        });
+    }
+
+    public void failLogin2() {
+        gHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+                add.setTitle("Pålogging failet");
+                add.setMessage("Påloggingen tok for lang tid. Prøv igjen");
+                add.setCancelable(false);
+                add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                add.create();
+                add.show();
+            }
+        });
+    }
+
 /*
     public class ClientThread implements Runnable {
 
