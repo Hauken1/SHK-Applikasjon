@@ -95,6 +95,20 @@ public class LoginClient extends AppCompatActivity {
             tempPw.setText(loginSettings.getString("password", ""));
             rememberMe.setChecked(true);
         }
+        randomWait();
+        if(!connected) {
+            AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
+            add.setTitle("Unable to connect to server");
+            add.setMessage("Check your internet connection");
+            add.setCancelable(false);
+            add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            add.create();
+            add.show();
+        }
     }
 
     protected void onRestart() {
@@ -111,6 +125,7 @@ public class LoginClient extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        /*
         try {
             output.write("Disconnect");
             output.newLine();
@@ -118,6 +133,7 @@ public class LoginClient extends AppCompatActivity {
         }catch (Exception e) {
             e.printStackTrace();
         }
+        */
     }
 
     protected static Socket returnConnection() {
@@ -369,8 +385,9 @@ public class LoginClient extends AppCompatActivity {
                                         TimeUnit.MILLISECONDS.sleep(rng.nextInt(100) * 10);
                                         if(n == 20) break;
                                         n++;
-                                        pDialog.dismiss();
+
                                     }
+                                    pDialog.dismiss();
                                     //dialog.dismiss();
                                     //int ID = Integer.valueOf(input.readLine());
                                     if(n != 20) {
@@ -384,11 +401,11 @@ public class LoginClient extends AppCompatActivity {
                                                break;
                                            case 2:
                                                    loggedIn = true;
-                                                   goToHome2();
+                                                   goToHome();
                                                break;
                                            case 3:
                                                    loggedIn = true;
-                                                   goToHome();
+                                                   goToHome2();
                                                break;
                                            case 4:
                                                    loggedIn = true;
@@ -475,6 +492,14 @@ public class LoginClient extends AppCompatActivity {
         }
     }
 
+    public void randomWait() {
+        try {
+            Random rng = new Random();
+            TimeUnit.MILLISECONDS.sleep(rng.nextInt(150) * 10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

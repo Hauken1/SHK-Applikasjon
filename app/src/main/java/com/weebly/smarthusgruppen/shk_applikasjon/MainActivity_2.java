@@ -159,7 +159,7 @@ public class MainActivity_2 extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        sendText("Disconnect");
+       // sendText("Disconnect");
     }
     public void goToRoomView() {
         Intent intent = new Intent(this, RoomList_2.class);
