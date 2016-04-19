@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
-public class Ventilation_2 extends AppCompatActivity {
+public class Ventilation_3 extends AppCompatActivity {
     ImageButton homeBtn;
     boolean connected;
     ToggleButton lvlOneBtn;
@@ -25,16 +25,16 @@ public class Ventilation_2 extends AppCompatActivity {
 
 
 
-        lvlOneBtn = (ToggleButton) findViewById(R.id.lvl12_button);
+        lvlOneBtn = (ToggleButton) findViewById(R.id.lvl13_button);
         lvlOneBtn.setOnClickListener(toggle_level1);
 
-        lvlTwoBtn = (ToggleButton) findViewById(R.id.lvl22_button);
+        lvlTwoBtn = (ToggleButton) findViewById(R.id.lvl23_button);
         lvlTwoBtn.setOnClickListener(toggle_level2);
 
-        lvlThreeBtn = (ToggleButton) findViewById(R.id.lvl32_button);
+        lvlThreeBtn = (ToggleButton) findViewById(R.id.lvl33_button);
         lvlThreeBtn.setOnClickListener(toggle_level3);
 
-        turnOffBtn = (ToggleButton) findViewById(R.id.lvl42_button);
+        turnOffBtn = (ToggleButton) findViewById(R.id.lvl43_button);
         turnOffBtn.setOnClickListener(turn_off);
 
         //home button
@@ -162,7 +162,7 @@ public class Ventilation_2 extends AppCompatActivity {
         turnOffBtn.setChecked(false);
     }
     public void goToHome() {
-        Intent intent = new Intent(this, MainActivity_2.class);
+        Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
     }
 }

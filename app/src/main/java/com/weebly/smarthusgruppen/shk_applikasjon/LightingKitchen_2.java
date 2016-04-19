@@ -28,10 +28,6 @@ public class LightingKitchen_2 extends AppCompatActivity {
     boolean lmed4 = false;
     boolean lmax4 = false;
 
-    boolean lmin5 = false;
-    boolean lmed5 = false;
-    boolean lmax5 = false;
-
     boolean lmin6 = false;
     boolean lmed6 = false;
     boolean lmax6 = false;
@@ -61,11 +57,6 @@ public class LightingKitchen_2 extends AppCompatActivity {
     ToggleButton lightMinBtn4;
     ToggleButton lightMedBtn4;
     ToggleButton lightMaxBtn4;
-
-    ToggleButton lightOffBtn5;
-    ToggleButton lightMinBtn5;
-    ToggleButton lightMaxBtn5;
-    ToggleButton lightMedBtn5;
 
     ToggleButton lightOffBtn6;
     ToggleButton lightMinBtn6;
@@ -598,107 +589,6 @@ public class LightingKitchen_2 extends AppCompatActivity {
         lmax4 = false;
     }
 
-       /* next 5th row */
-
-    // all lights off
-    protected View.OnClickListener light_all__off_Listener5 = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (lmin5 || lmed5 || lmax5) {
-                MainActivity.sendText("Command:000002117,1,0");
-                lmin5 = false;
-                lmed5 = false;
-                lmax5 = false;
-
-                lightMinBtn5.setChecked(false);
-                lightMedBtn5.setChecked(false);
-                lightMaxBtn5.setChecked(false);
-
-            }
-        }
-    };
-
-    // all lights on minimum
-    protected View.OnClickListener light_all_min5 = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (!lmin5) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
-                lmin5 = true;
-                lmed5 = false;
-                lmax5 = false;
-
-                lightMedBtn5.setChecked(false);
-                lightMaxBtn5.setChecked(false);
-                lightOffBtn5.setChecked(false);
-            } else if (lmin5) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
-                allBoolFalse5();
-                allButtonsOff5();
-                lightOffBtn5.setChecked(true);
-
-            }
-        }
-    };
-
-    // all lights on medium
-    protected View.OnClickListener light_all_med5 = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (!lmed5) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
-                lmin5 = false;
-                lmed5 = true;
-                lmax5 = false;
-
-                lightMinBtn5.setChecked(false);
-                lightMaxBtn5.setChecked(false);
-                lightOffBtn5.setChecked(false);
-            }
-            else if (lmed5) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
-                allBoolFalse5();
-                allButtonsOff5();
-                lightOffBtn5.setChecked(true);
-            }
-        }
-    };
-
-    // all lights on max
-    protected View.OnClickListener light_all_Listener5 = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (!lmax5) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
-                lmin5 = false;
-                lmed5 = false;
-                lmax5 = true;
-
-                lightMinBtn5.setChecked(false);
-                lightMedBtn5.setChecked(false);
-                lightOffBtn5.setChecked(false);
-            }
-            else if (lmax5) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
-                allBoolFalse5();
-                allButtonsOff5();
-                lightOffBtn5.setChecked(true);
-            }
-        }
-    };
-
-    public void allButtonsOff5() {
-        lightMinBtn5.setChecked(false);
-        lightMedBtn5.setChecked(false);
-        lightMaxBtn5.setChecked(false);
-        lightOffBtn5.setChecked(false);
-    }
-
-    public void allBoolFalse5()  {
-        lmin5 = false;
-        lmed5 = false;
-        lmax5 = false;
-    }
 
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
 
@@ -747,14 +637,13 @@ public class LightingKitchen_2 extends AppCompatActivity {
                 lightMinBtn2.setChecked(true);
                 lightMinBtn3.setChecked(true);
                 lightMinBtn4.setChecked(true);
-                lightMinBtn5.setChecked(true);
 
                 lmin = true;
                 lmin1 = true;
                 lmin2 = true;
                 lmin3 = true;
                 lmin4 = true;
-                lmin5 = true;
+
 
 
             } else if (lmin6) {
@@ -787,14 +676,12 @@ public class LightingKitchen_2 extends AppCompatActivity {
                 lightMedBtn2.setChecked(true);
                 lightMedBtn3.setChecked(true);
                 lightMedBtn4.setChecked(true);
-                lightMedBtn5.setChecked(true);
 
                 lmed = true;
                 lmed1 = true;
                 lmed2 = true;
                 lmed3 = true;
                 lmed4 = true;
-                lmed5 = true;
 
             }
             else if (lmed6) {
@@ -827,14 +714,12 @@ public class LightingKitchen_2 extends AppCompatActivity {
                 lightMaxBtn2.setChecked(true);
                 lightMaxBtn3.setChecked(true);
                 lightMaxBtn4.setChecked(true);
-                lightMaxBtn5.setChecked(true);
 
                 lmax = true;
                 lmax1 = true;
                 lmax2 = true;
                 lmax3 = true;
                 lmax4 = true;
-                lmax5 = true;
 
             }
             else if (lmax6) {
@@ -867,14 +752,12 @@ public class LightingKitchen_2 extends AppCompatActivity {
         allButtonsOff2();
         allButtonsOff3();
         allButtonsOff4();
-        allButtonsOff5();
 
         allBoolFalse();
         allBoolFalse1();
         allBoolFalse2();
         allBoolFalse3();
         allBoolFalse4();
-        allBoolFalse5();
     }
 
     public void offSwitchoff() {
@@ -883,7 +766,6 @@ public class LightingKitchen_2 extends AppCompatActivity {
         lightOffBtn2.setChecked(true);
         lightOffBtn3.setChecked(true);
         lightOffBtn4.setChecked(true);
-        lightOffBtn5.setChecked(true);
     }
 
     public void setupGUI() {
@@ -950,18 +832,6 @@ public class LightingKitchen_2 extends AppCompatActivity {
         lightMaxBtn4 = (ToggleButton) findViewById(R.id.toggle_1004);
         lightMaxBtn4.setOnClickListener(light_all_Listener4);
 
-
-        lightOffBtn5 = (ToggleButton) findViewById(R.id.toggle_05);
-        lightOffBtn5.setOnClickListener(light_all__off_Listener5);
-
-        lightMinBtn5 = (ToggleButton) findViewById(R.id.toggle_305);
-        lightMinBtn5.setOnClickListener(light_all_min5);
-
-        lightMedBtn5 = (ToggleButton) findViewById(R.id.toggle_705);
-        lightMedBtn5.setOnClickListener(light_all_med5);
-
-        lightMaxBtn5 = (ToggleButton) findViewById(R.id.toggle_1005);
-        lightMaxBtn5.setOnClickListener(light_all_Listener5);
 
 
         lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_06);

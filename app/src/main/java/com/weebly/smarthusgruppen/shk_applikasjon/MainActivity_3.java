@@ -26,7 +26,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
-public class MainActivity_2 extends AppCompatActivity {
+public class MainActivity_3 extends AppCompatActivity {
     static BufferedWriter output;
     static BufferedReader input;
     TextView receivedText;
@@ -97,12 +97,12 @@ public class MainActivity_2 extends AppCompatActivity {
             }
         });
         startMessageListener();
-        MainActivity_2.sendText("Command:007262112,1");
-        MainActivity_2.sendText("Command:007262112,2");
-        MainActivity_2.sendText("Command:007262112,3");
-        MainActivity_2.sendText("Command:007262112,4");
-        MainActivity_2.sendText("Command:007262112,5");
-        MainActivity_2.sendText("Command:007262112,6");
+        MainActivity_3.sendText("Command:007262112,1");
+        MainActivity_3.sendText("Command:007262112,2");
+        MainActivity_3.sendText("Command:007262112,3");
+        MainActivity_3.sendText("Command:007262112,4");
+        MainActivity_3.sendText("Command:007262112,5");
+        MainActivity_3.sendText("Command:007262112,6");
     }
 
     @Override
@@ -152,23 +152,23 @@ public class MainActivity_2 extends AppCompatActivity {
        // sendText("Disconnect");
     }
     public void goToRoomView() {
-        Intent intent = new Intent(this, RoomList_2.class);
+        Intent intent = new Intent(this, RoomList_3.class);
         startActivity(intent);
     }
 
 
     public void goToClimateView() {
-        Intent intent = new Intent(this, Climate_2.class);
+        Intent intent = new Intent(this, Climate_3.class);
         startActivity(intent);
     }
 
 
     public void goToMeasurementView() {
-        Intent intent = new Intent(this, Measurement_2.class);
+        Intent intent = new Intent(this, Measurement_3.class);
         startActivity(intent);
     }
     public void goToModeView() {
-        Intent intent = new Intent(this, TypeOfMode_2.class);
+        Intent intent = new Intent(this, TypeOfMode_3.class);
         startActivity(intent);
     }
 
@@ -197,7 +197,7 @@ public class MainActivity_2 extends AppCompatActivity {
                             TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
-                            MainActivity_2.sendText("Disconnect");
+                            MainActivity_3.sendText("Disconnect");
                             e.printStackTrace();
                         }
                     }

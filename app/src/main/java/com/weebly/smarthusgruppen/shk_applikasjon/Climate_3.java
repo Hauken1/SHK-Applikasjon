@@ -1,14 +1,14 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 
-public class Climate extends AppCompatActivity {
+public class Climate_3 extends AppCompatActivity {
     Button tempBtn;
     Button ventBtn;
     ImageButton homeBtn;
@@ -46,17 +46,20 @@ public class Climate extends AppCompatActivity {
     }
 
     public void goToTemperatureView() {
-        Intent intent = new Intent(this, Temperature.class);
+        Intent intent = new Intent(this, Temperature_3.class);
         startActivity(intent);
     }
 
     public void goToVentilationView() {
-        Intent intent = new Intent(this, Ventilation.class);
+        Intent intent = new Intent(this, Ventilation_3.class);
         startActivity(intent);
     }
 
     public void goToHome() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
     }
+
+
+
 }
