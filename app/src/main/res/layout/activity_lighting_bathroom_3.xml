@@ -11,7 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.LightingBathroom_2">
+    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.LightingBathroom_3">
 
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/bad_l1"
+            android:text="@string/bad_wl"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:id="@+id/textView3"
@@ -97,7 +97,7 @@
             android:layout_column="3"
             />
 
-        <!-- kjøkken lys 2 -->
+        <!-- bad lys tak -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -154,66 +154,6 @@
             android:id="@+id/toggle_1001"
             android:checked="false"
             android:layout_row="6"
-            android:layout_column="3"
-            />
-
-        <!-- bad vegg -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/bad_wl"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:id="@+id/textView5"
-            android:layout_row="13"
-            android:layout_columnSpan="2"
-            android:layout_column="1"
-            android:textColor="#090909"
-            />
-
-
-
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOff="Av"
-            android:textOn="Av"
-            android:id="@+id/toggle_02"
-            android:checked="true"
-            android:layout_row="14"
-            android:layout_column="0" />
-
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOff="Min"
-            android:textOn="Min"
-            android:id="@+id/toggle_302"
-            android:checked="false"
-            android:layout_column="1"
-            android:layout_row="14"
-            />
-
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOff="Med"
-            android:textOn="Med"
-            android:id="@+id/toggle_702"
-            android:checked="false"
-            android:layout_row="14"
-            android:layout_column="2"
-            />
-
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOff="Max"
-            android:textOn="Max"
-            android:id="@+id/toggle_1002"
-            android:checked="false"
-            android:layout_row="14"
             android:layout_column="3"
             />
 

@@ -1,4 +1,5 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
+// THIS ROOMLIST FILE IS FOR LIGHTS ONLY !!!!
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,32 +8,36 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+public class RoomList_3 extends AppCompatActivity {
 
-public class Climate_2 extends AppCompatActivity {
-    Button tempBtn;
-    Button ventBtn;
+    Button bathroomBtn;
+    Button kitchenBtn;
     ImageButton homeBtn;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_climate);
-        // temp button
-        tempBtn = (Button) findViewById(R.id.heating_view_button);
-        tempBtn.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_room_list);
+
+
+        // kitchen button
+        kitchenBtn = (Button) findViewById(R.id.room1_button);
+        kitchenBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                goToTemperatureView();
+                goToKitchenLights();
             }
         });
 
-        // vent button
-        ventBtn = (Button) findViewById(R.id.ventilation_view_button);
-        ventBtn.setOnClickListener(new View.OnClickListener() {
+        // bathroom button
+        bathroomBtn = (Button) findViewById(R.id.room2_button);
+        bathroomBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                goToVentilationView();
+                goToBathroomLights();
             }
         });
+
 
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
@@ -42,24 +47,19 @@ public class Climate_2 extends AppCompatActivity {
             }
         });
 
+        }
 
-    }
 
-    public void goToTemperatureView() {
-        Intent intent = new Intent(this, Temperature_2.class);
+    public void goToKitchenLights() {
+        Intent intent = new Intent(this, LightingFlat.class);
         startActivity(intent);
     }
-
-    public void goToVentilationView() {
-        Intent intent = new Intent(this, Ventilation_2.class);
+    public void goToBathroomLights() {
+        Intent intent = new Intent(this, LightingBathroom_3.class);
         startActivity(intent);
     }
-
     public void goToHome() {
-        Intent intent = new Intent(this, MainActivity_2.class);
+        Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
     }
-
-
-
 }

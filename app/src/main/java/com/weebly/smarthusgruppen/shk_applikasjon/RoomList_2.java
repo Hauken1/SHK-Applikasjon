@@ -13,11 +13,9 @@ public class RoomList_2 extends AppCompatActivity {
     Button bathroomBtn;
     Button bed1Btn;
     Button bed2Btn;
-    Button bed3Btn;
     Button hallwayBtn;
     Button kitchenBtn;
     Button officeBtn;
-    Button livingRoomBtn;
     ImageButton homeBtn;
 
 
@@ -45,13 +43,6 @@ public class RoomList_2 extends AppCompatActivity {
         });
 
 
-        // Living room button
-        livingRoomBtn = (Button) findViewById(R.id.room3_button);
-        livingRoomBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)  {
-                goToLivingRoomLights();
-            }
-        });
 
         // bedroom 1 button
         bed1Btn = (Button) findViewById(R.id.room4_button);
@@ -105,10 +96,6 @@ public class RoomList_2 extends AppCompatActivity {
     }
     public void goToBathroomLights() {
         Intent intent = new Intent(this, LightingBathroom_2.class);
-        startActivity(intent);
-    }
-    public void goToLivingRoomLights() {
-        Intent intent = new Intent(this, LightingLivingRoom_2.class);
         startActivity(intent);
     }
     public void goToBed1Lights() {

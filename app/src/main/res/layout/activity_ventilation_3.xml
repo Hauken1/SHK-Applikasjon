@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Ventilation_2"
+    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Ventilation_3"
     android:contentDescription="home button">
 
     <ImageButton
@@ -23,7 +23,7 @@
         android:layout_height="40dp"
         android:textOn="@string/lvl1"
         android:textOff="@string/lvl1"
-        android:id="@+id/lvl12_button"
+        android:id="@+id/lvl13_button"
         android:layout_marginTop="43dp"
         android:layout_below="@+id/home_button"
         android:layout_alignParentLeft="true"
@@ -34,18 +34,18 @@
         android:layout_height="40dp"
         android:textOff="@string/lvl2"
         android:textOn="@string/lvl2"
-        android:id="@+id/lvl22_button"
-        android:layout_alignTop="@+id/lvl12_button"
-        android:layout_toRightOf="@+id/lvl12_button"
-        android:layout_toEndOf="@+id/lvl12_button" />
+        android:id="@+id/lvl23_button"
+        android:layout_alignTop="@+id/lvl13_button"
+        android:layout_toRightOf="@+id/lvl13_button"
+        android:layout_toEndOf="@+id/lvl13_button" />
 
     <ToggleButton
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:id="@+id/lvl32_button"
-        android:layout_alignTop="@+id/lvl22_button"
-        android:layout_toRightOf="@+id/lvl22_button"
-        android:layout_toEndOf="@+id/lvl22_button"
+        android:id="@+id/lvl33_button"
+        android:layout_alignTop="@+id/lvl23_button"
+        android:layout_toRightOf="@+id/lvl23_button"
+        android:layout_toEndOf="@+id/lvl23_button"
         android:checked="false"
         android:textOff="@string/lvl3"
         android:textOn="@string/lvl3"/>
@@ -53,10 +53,10 @@
     <ToggleButton
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:id="@+id/lvl42_button"
-        android:layout_alignTop="@+id/lvl32_button"
-        android:layout_toRightOf="@+id/lvl32_button"
-        android:layout_toEndOf="@+id/lvl32_button"
+        android:id="@+id/lvl43_button"
+        android:layout_alignTop="@+id/lvl33_button"
+        android:layout_toRightOf="@+id/lvl33_button"
+        android:layout_toEndOf="@+id/lvl33_button"
         android:checked="false"
         android:textOff="@string/off"
         android:textOn="@string/off" />

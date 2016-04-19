@@ -7,5 +7,6 @@
     <color name="white">#FFFFFF</color>
     <color name="azure">#00b8e6</color>
     <color name="red">#ff4d4d</color>
+    <color name="orange">#ffa500</color>
     <color name="black_overlay">#66000000</color>
 </resources>

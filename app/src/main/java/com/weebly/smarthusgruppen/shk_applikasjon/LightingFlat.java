@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
-public class LightingBathroom_2 extends AppCompatActivity {
+public class LightingFlat extends AppCompatActivity {
     boolean lmin = false;
     boolean lmed = false;
     boolean lmax = false;
@@ -19,6 +19,14 @@ public class LightingBathroom_2 extends AppCompatActivity {
     boolean lmin2 = false;
     boolean lmed2 = false;
     boolean lmax2 = false;
+
+    boolean lmin3 = false;
+    boolean lmed3 = false;
+    boolean lmax3 = false;
+
+    boolean lmin4 = false;
+    boolean lmed4 = false;
+    boolean lmax4 = false;
 
     boolean lmin6 = false;
     boolean lmed6 = false;
@@ -40,21 +48,29 @@ public class LightingBathroom_2 extends AppCompatActivity {
     ToggleButton lightMedBtn2;
     ToggleButton lightMaxBtn2;
 
+    ToggleButton lightOffBtn3;
+    ToggleButton lightMinBtn3;
+    ToggleButton lightMedBtn3;
+    ToggleButton lightMaxBtn3;
+
+    ToggleButton lightOffBtn4;
+    ToggleButton lightMinBtn4;
+    ToggleButton lightMedBtn4;
+    ToggleButton lightMaxBtn4;
+
     ToggleButton lightOffBtn6;
     ToggleButton lightMinBtn6;
     ToggleButton lightMaxBtn6;
     ToggleButton lightMedBtn6;
-
     ImageButton homeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lighting_bathroom);
+        setContentView(R.layout.activity_lighting_kitchen);
 
-      setupGUI();
+        setupGUI();
     }
-
 
     // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
@@ -66,12 +82,11 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lmed = false;
                 lmax = false;
 
-
                 lightMinBtn.setChecked(false);
                 lightMedBtn.setChecked(false);
                 lightMaxBtn.setChecked(false);
-
             }
+
         }
     };
 
@@ -88,12 +103,13 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lightMedBtn.setChecked(false);
                 lightMaxBtn.setChecked(false);
                 lightOffBtn.setChecked(false);
-            } else if (lmin) {
+            }
+
+            else if (lmin) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
-
             }
         }
     };
@@ -112,6 +128,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lightMaxBtn.setChecked(false);
                 lightOffBtn.setChecked(false);
             }
+
             else if (lmed) {
                 MainActivity.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse();
@@ -135,6 +152,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lightMedBtn.setChecked(false);
                 lightOffBtn.setChecked(false);
             }
+
             else if (lmax) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse();
@@ -177,8 +195,6 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lightMinBtn1.setChecked(false);
                 lightMedBtn1.setChecked(false);
                 lightMaxBtn1.setChecked(false);
-
-
             }
         }
     };
@@ -277,6 +293,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lmed2 = false;
                 lmax2 = false;
 
+
                 lightMinBtn2.setChecked(false);
                 lightMedBtn2.setChecked(false);
                 lightMaxBtn2.setChecked(false);
@@ -368,12 +385,218 @@ public class LightingBathroom_2 extends AppCompatActivity {
         lmax2 = false;
     }
 
+     /* next 4th row */
+
+    // all lights off
+    protected View.OnClickListener light_all__off_Listener3 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (lmin3 || lmed3 || lmax3) {
+                MainActivity.sendText("Command:000002117,1,0");
+                lmin3 = false;
+                lmed3 = false;
+                lmax3 = false;
+
+                lightMinBtn3.setChecked(false);
+                lightMedBtn3.setChecked(false);
+                lightMaxBtn3.setChecked(false);
+
+            }
+        }
+    };
+
+    // all lights on minimum
+    protected View.OnClickListener light_all_min3 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!lmin3) {
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                lmin3 = true;
+                lmed3 = false;
+                lmax3 = false;
+
+                lightMedBtn3.setChecked(false);
+                lightMaxBtn3.setChecked(false);
+                lightOffBtn3.setChecked(false);
+            } else if (lmin3) {
+                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                allBoolFalse3();
+                allButtonsOff3();
+                lightOffBtn3.setChecked(true);
+
+            }
+        }
+    };
+
+    // all lights on medium
+    protected View.OnClickListener light_all_med3 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!lmed3) {
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                lmin3 = false;
+                lmed3 = true;
+                lmax3 = false;
+
+                lightMinBtn3.setChecked(false);
+                lightMaxBtn3.setChecked(false);
+                lightOffBtn3.setChecked(false);
+            }
+            else if (lmed3) {
+                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                allBoolFalse3();
+                allButtonsOff3();
+                lightOffBtn3.setChecked(true);
+            }
+        }
+    };
+
+    // all lights on max
+    protected View.OnClickListener light_all_Listener3 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!lmax3) {        //this method should only be called if there is a connection.
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                lmin3 = false;
+                lmed3 = false;
+                lmax3 = true;
+
+                lightMinBtn3.setChecked(false);
+                lightMedBtn3.setChecked(false);
+                lightOffBtn3.setChecked(false);
+            }
+            else if (lmax3) {
+                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                allBoolFalse3();
+                allButtonsOff3();
+                lightOffBtn3.setChecked(true);
+            }
+        }
+    };
+
+    public void allButtonsOff3() {
+        lightMinBtn3.setChecked(false);
+        lightMedBtn3.setChecked(false);
+        lightMaxBtn3.setChecked(false);
+        lightOffBtn3.setChecked(false);
+    }
+
+    public void allBoolFalse3()  {
+        lmin3 = false;
+        lmed3 = false;
+        lmax3 = false;
+    }
+
+      /* next 5th row */
+
+    // all lights off
+    protected View.OnClickListener light_all__off_Listener4 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (lmin4 || lmed4 || lmax4) {
+                MainActivity.sendText("Command:000002117,1,0");
+                lmin4 = false;
+                lmed4 = false;
+                lmax4 = false;
+
+                lightMinBtn4.setChecked(false);
+                lightMedBtn4.setChecked(false);
+                lightMaxBtn4.setChecked(false);
+
+            }
+        }
+    };
+
+    // all lights on minimum
+    protected View.OnClickListener light_all_min4 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!lmin4) {
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                lmin4 = true;
+                lmed4 = false;
+                lmax4 = false;
+
+                lightMedBtn4.setChecked(false);
+                lightMaxBtn4.setChecked(false);
+                lightOffBtn4.setChecked(false);
+            } else if (lmin4) {
+                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                allBoolFalse4();
+                allButtonsOff4();
+                lightOffBtn4.setChecked(true);
+
+            }
+        }
+    };
+
+    // all lights on medium
+    protected View.OnClickListener light_all_med4 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!lmed4) {
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                lmin4 = false;
+                lmed4 = true;
+                lmax4 = false;
+
+                lightMinBtn4.setChecked(false);
+                lightMaxBtn4.setChecked(false);
+                lightOffBtn4.setChecked(false);
+            }
+            else if (lmed4) {
+                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                allBoolFalse4();
+                allButtonsOff4();
+                lightOffBtn4.setChecked(true);
+            }
+        }
+    };
+
+    // all lights on max
+    protected View.OnClickListener light_all_Listener4 = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (!lmax4) {        //this method should only be called if there is a connection.
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                lmin4 = false;
+                lmed4 = false;
+                lmax4 = true;
+
+                lightMinBtn4.setChecked(false);
+                lightMedBtn4.setChecked(false);
+                lightOffBtn4.setChecked(false);
+            }
+            else if (lmax4) {
+                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                allBoolFalse4();
+                allButtonsOff4();
+                lightOffBtn4.setChecked(true);
+            }
+        }
+    };
+
+    public void allButtonsOff4() {
+        lightMinBtn4.setChecked(false);
+        lightMedBtn4.setChecked(false);
+        lightMaxBtn4.setChecked(false);
+        lightOffBtn4.setChecked(false);
+    }
+
+    public void allBoolFalse4()  {
+        lmin4 = false;
+        lmed4 = false;
+        lmax4 = false;
+    }
+
+
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
 
     // all lights off
     protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
                 MainActivity.sendText("Command:000002117,1,0");
                 lmin6 = false;
                 lmed6 = false;
@@ -386,10 +609,10 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 allButtonOffKill();
                 offSwitchoff();
 
-            if(loff6) {
+
+            if(loff6){
                 lightOffBtn6.setChecked(true);
             }
-
         }
     };
 
@@ -412,10 +635,15 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lightMinBtn.setChecked(true);
                 lightMinBtn1.setChecked(true);
                 lightMinBtn2.setChecked(true);
+                lightMinBtn3.setChecked(true);
+                lightMinBtn4.setChecked(true);
 
                 lmin = true;
                 lmin1 = true;
                 lmin2 = true;
+                lmin3 = true;
+                lmin4 = true;
+
 
 
             } else if (lmin6) {
@@ -446,10 +674,14 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lightMedBtn.setChecked(true);
                 lightMedBtn1.setChecked(true);
                 lightMedBtn2.setChecked(true);
+                lightMedBtn3.setChecked(true);
+                lightMedBtn4.setChecked(true);
 
                 lmed = true;
                 lmed1 = true;
                 lmed2 = true;
+                lmed3 = true;
+                lmed4 = true;
 
             }
             else if (lmed6) {
@@ -480,17 +712,20 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lightMaxBtn.setChecked(true);
                 lightMaxBtn1.setChecked(true);
                 lightMaxBtn2.setChecked(true);
-
+                lightMaxBtn3.setChecked(true);
+                lightMaxBtn4.setChecked(true);
 
                 lmax = true;
                 lmax1 = true;
                 lmax2 = true;
-
+                lmax3 = true;
+                lmax4 = true;
 
             }
             else if (lmax6) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse6();
+
                 allButtonsOff6();
                 allButtonOffKill();
                 offSwitchoff();
@@ -515,17 +750,22 @@ public class LightingBathroom_2 extends AppCompatActivity {
         allButtonsOff();
         allButtonsOff1();
         allButtonsOff2();
-
+        allButtonsOff3();
+        allButtonsOff4();
 
         allBoolFalse();
         allBoolFalse1();
         allBoolFalse2();
+        allBoolFalse3();
+        allBoolFalse4();
     }
 
     public void offSwitchoff() {
         lightOffBtn.setChecked(true);
         lightOffBtn1.setChecked(true);
         lightOffBtn2.setChecked(true);
+        lightOffBtn3.setChecked(true);
+        lightOffBtn4.setChecked(true);
     }
 
     public void setupGUI() {
@@ -567,6 +807,33 @@ public class LightingBathroom_2 extends AppCompatActivity {
         lightMaxBtn2.setOnClickListener(light_all_Listener2);
 
 
+        lightOffBtn3 = (ToggleButton) findViewById(R.id.toggle_03);
+        lightOffBtn3.setOnClickListener(light_all__off_Listener3);
+
+        lightMinBtn3 = (ToggleButton) findViewById(R.id.toggle_303);
+        lightMinBtn3.setOnClickListener(light_all_min3);
+
+        lightMedBtn3 = (ToggleButton) findViewById(R.id.toggle_703);
+        lightMedBtn3.setOnClickListener(light_all_med3);
+
+        lightMaxBtn3 = (ToggleButton) findViewById(R.id.toggle_1003);
+        lightMaxBtn3.setOnClickListener(light_all_Listener3);
+
+
+        lightOffBtn4 = (ToggleButton) findViewById(R.id.toggle_04);
+        lightOffBtn4.setOnClickListener(light_all__off_Listener4);
+
+        lightMinBtn4 = (ToggleButton) findViewById(R.id.toggle_304);
+        lightMinBtn4.setOnClickListener(light_all_min4);
+
+        lightMedBtn4 = (ToggleButton) findViewById(R.id.toggle_704);
+        lightMedBtn4.setOnClickListener(light_all_med4);
+
+        lightMaxBtn4 = (ToggleButton) findViewById(R.id.toggle_1004);
+        lightMaxBtn4.setOnClickListener(light_all_Listener4);
+
+
+
         lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_06);
         lightOffBtn6.setOnClickListener(light_all__off_Listener6);
 
@@ -587,6 +854,4 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         });
     }
-
-
 }

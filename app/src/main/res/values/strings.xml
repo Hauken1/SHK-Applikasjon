@@ -13,6 +13,7 @@
     <string name="bedroom_2">Soverom 2</string>
     <string name="bedroom_3">Soverom 3</string>
     <string name="living_room">Stue</string>
+    <string name="kitch_lr">Kjøkken og stue</string>
     <string name="bathroom">Bad</string>
     <string name="hallway">Gang</string>
     <string name="office">Kontor</string>
@@ -90,6 +91,14 @@
     <string name="hall_bt">Ytter gang</string>
     <string name="remember">Husk meg</string>
     <string name="ch_pw">Glemt/bytte passord?</string>
+    <string name="laundry_room">Vaskerom</string>
+    <string name="curr_room">Oppholdsrom</string>
+    <string name="flat_all">Oppholdsrom - alt lys</string>
+    <string name="flat_rf">Oppholdsrom - taklys 1</string>
+    <string name="flat_rf1">Oppholdsrom - taklys 2</string>
+    <string name="bed_room">Soverom</string>
+    <string name="all_vent">Alle andre rom</string>
+
 
 
 
