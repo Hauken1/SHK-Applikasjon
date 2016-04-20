@@ -71,11 +71,11 @@
             android:name=".Toppleilighet.MainActivity"
             android:label="@string/app_name" />
         <activity
-            android:name=".Windows"
+            android:name=".Toppleilighet.Windows"
             android:label="@string/windows" />
-        <activity android:name=".Measurement"
+        <activity android:name=".Toppleilighet.Measurement"
             android:label="@string/measure1"/>
-        <activity android:name=".TypeOfMode"
+        <activity android:name=".Toppleilighet.TypeOfMode"
             android:label="@string/modes"/>
 
         <activity
