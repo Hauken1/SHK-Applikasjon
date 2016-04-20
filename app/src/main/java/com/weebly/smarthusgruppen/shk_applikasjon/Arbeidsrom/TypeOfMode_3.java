@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class TypeOfMode_3 extends AppCompatActivity {
     public static final String savedTemp1 = "1SavedTemperature";
     public static final String savedTemp2 = "2SavedTemperature";
@@ -150,7 +152,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < day) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -173,7 +175,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < day) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -196,7 +198,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < day) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -218,7 +220,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < day) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -241,7 +243,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < day) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -264,7 +266,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < day) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + dayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -274,7 +276,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
         nightBtn.setChecked(false);
         awayBtn.setChecked(false);
         //changing lighting to day mode (minimum)
-        MainActivity.sendText("Command:000002117,1,1");
+        MainActivity_3.sendText("Command:000002117,1,1");
         //Changing ventilation to day mode
 
     }
@@ -299,7 +301,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < night) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -322,7 +324,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < night) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -345,7 +347,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < night) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -368,7 +370,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < night) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -391,7 +393,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < night) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -414,7 +416,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < night) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + nightMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -424,7 +426,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
         dayBtn.setChecked(false);
         awayBtn.setChecked(false);
         //changing lighting to night mode (medium)
-        MainActivity.sendText("Command:000002117,1,2");
+        MainActivity_3.sendText("Command:000002117,1,2");
         //Changing ventilation to day mode
 
 
@@ -450,7 +452,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < away) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -473,7 +475,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < away) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -496,7 +498,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < away) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -519,7 +521,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < away) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -542,7 +544,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < away) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -565,7 +567,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < away) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + awayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -575,7 +577,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
         dayBtn.setChecked(false);
         nightBtn.setChecked(false);
         //changing lighting to away mode (off)
-        MainActivity.sendText("Command:000002117,1,0");
+        MainActivity_3.sendText("Command:000002117,1,0");
         //Changing ventilation to day mode
     }
     public void holiday() {
@@ -599,7 +601,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < holiday) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -622,7 +624,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < holiday) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -645,7 +647,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < holiday) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -668,7 +670,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < holiday) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -691,7 +693,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < holiday) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -714,7 +716,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
             String wateringFlag1;
             if (currentTemp < holiday) wateringFlag1 = "1"; else wateringFlag1 = "0";
 
-            MainActivity.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
+            MainActivity_3.sendText("Command:007260112," + channel1 + ",0,0," + holidayMode + ","
                     + holiday1 + "," + day1 + "," + night1 + "," + away1 + "," + wateringFlag1 + ","
                     + "15");
         }
@@ -723,7 +725,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
         dayBtn.setChecked(false);
         awayBtn.setChecked(false);
         //changing lighting to holiday mode (off)
-        MainActivity.sendText("Command:000002117,1,0");
+        MainActivity_3.sendText("Command:000002117,1,0");
         //Changing ventilation to day mode
     }
 }

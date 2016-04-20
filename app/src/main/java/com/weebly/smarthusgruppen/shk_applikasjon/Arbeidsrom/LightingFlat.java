@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class LightingFlat extends AppCompatActivity {
     boolean lmin = false;
     boolean lmed = false;
@@ -77,7 +79,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin || lmed || lmax) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin = false;
                 lmed = false;
                 lmax = false;
@@ -95,7 +97,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin = true;
                 lmed = false;
                 lmax = false;
@@ -106,7 +108,7 @@ public class LightingFlat extends AppCompatActivity {
             }
 
             else if (lmin) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
@@ -119,7 +121,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin = false;
                 lmed = true;
                 lmax = false;
@@ -130,7 +132,7 @@ public class LightingFlat extends AppCompatActivity {
             }
 
             else if (lmed) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
@@ -143,7 +145,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin = false;
                 lmed = false;
                 lmax = true;
@@ -154,7 +156,7 @@ public class LightingFlat extends AppCompatActivity {
             }
 
             else if (lmax) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
@@ -175,7 +177,7 @@ public class LightingFlat extends AppCompatActivity {
         lmax = false;
     }
     public void goToHome() {
-        Intent intent = new Intent(this, MainActivity_2.class);
+        Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
     }
 
@@ -187,7 +189,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin1 || lmed1 || lmax1) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin1 = false;
                 lmed1 = false;
                 lmax1 = false;
@@ -204,7 +206,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin1) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin1 = true;
                 lmed1 = false;
                 lmax1 = false;
@@ -213,7 +215,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightMaxBtn1.setChecked(false);
                 lightOffBtn1.setChecked(false);
             } else if (lmin1) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -227,7 +229,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed1) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin1 = false;
                 lmed1 = true;
                 lmax1 = false;
@@ -237,7 +239,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightOffBtn1.setChecked(false);
             }
             else if (lmed1) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -250,7 +252,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax1) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin1 = false;
                 lmed1 = false;
                 lmax1 = true;
@@ -260,7 +262,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightOffBtn1.setChecked(false);
             }
             else if (lmax1) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -288,7 +290,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin2 || lmed2 || lmax2) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin2 = false;
                 lmed2 = false;
                 lmax2 = false;
@@ -308,7 +310,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin2) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin2 = true;
                 lmed2 = false;
                 lmax2 = false;
@@ -317,7 +319,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightMaxBtn2.setChecked(false);
                 lightOffBtn2.setChecked(false);
             } else if (lmin2) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
@@ -331,7 +333,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed1) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin2 = false;
                 lmed2 = true;
                 lmax2 = false;
@@ -341,7 +343,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightOffBtn2.setChecked(false);
             }
             else if (lmed2) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
@@ -354,7 +356,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax2) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin2 = false;
                 lmed2 = false;
                 lmax2 = true;
@@ -364,7 +366,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightOffBtn2.setChecked(false);
             }
             else if (lmax2) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
@@ -392,7 +394,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin3 || lmed3 || lmax3) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin3 = false;
                 lmed3 = false;
                 lmax3 = false;
@@ -410,7 +412,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin3) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin3 = true;
                 lmed3 = false;
                 lmax3 = false;
@@ -419,7 +421,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightMaxBtn3.setChecked(false);
                 lightOffBtn3.setChecked(false);
             } else if (lmin3) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse3();
                 allButtonsOff3();
                 lightOffBtn3.setChecked(true);
@@ -433,7 +435,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed3) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin3 = false;
                 lmed3 = true;
                 lmax3 = false;
@@ -443,7 +445,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightOffBtn3.setChecked(false);
             }
             else if (lmed3) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse3();
                 allButtonsOff3();
                 lightOffBtn3.setChecked(true);
@@ -456,7 +458,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax3) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin3 = false;
                 lmed3 = false;
                 lmax3 = true;
@@ -466,7 +468,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightOffBtn3.setChecked(false);
             }
             else if (lmax3) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse3();
                 allButtonsOff3();
                 lightOffBtn3.setChecked(true);
@@ -494,7 +496,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin4 || lmed4 || lmax4) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin4 = false;
                 lmed4 = false;
                 lmax4 = false;
@@ -512,7 +514,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin4) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin4 = true;
                 lmed4 = false;
                 lmax4 = false;
@@ -521,7 +523,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightMaxBtn4.setChecked(false);
                 lightOffBtn4.setChecked(false);
             } else if (lmin4) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse4();
                 allButtonsOff4();
                 lightOffBtn4.setChecked(true);
@@ -535,7 +537,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed4) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin4 = false;
                 lmed4 = true;
                 lmax4 = false;
@@ -545,7 +547,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightOffBtn4.setChecked(false);
             }
             else if (lmed4) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse4();
                 allButtonsOff4();
                 lightOffBtn4.setChecked(true);
@@ -558,7 +560,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax4) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin4 = false;
                 lmed4 = false;
                 lmax4 = true;
@@ -568,7 +570,7 @@ public class LightingFlat extends AppCompatActivity {
                 lightOffBtn4.setChecked(false);
             }
             else if (lmax4) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse4();
                 allButtonsOff4();
                 lightOffBtn4.setChecked(true);
@@ -597,7 +599,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin6 = false;
                 lmed6 = false;
                 lmax6 = false;
@@ -621,7 +623,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin6) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin6 = true;
                 lmed6 = false;
                 lmax6 = false;
@@ -647,7 +649,7 @@ public class LightingFlat extends AppCompatActivity {
 
 
             } else if (lmin6) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
@@ -661,7 +663,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed6) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin6 = false;
                 lmed6 = true;
                 lmax6 = false;
@@ -685,7 +687,7 @@ public class LightingFlat extends AppCompatActivity {
 
             }
             else if (lmed6) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
@@ -699,7 +701,7 @@ public class LightingFlat extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax6) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin6 = false;
                 lmed6 = false;
                 lmax6 = true;
@@ -723,7 +725,7 @@ public class LightingFlat extends AppCompatActivity {
 
             }
             else if (lmax6) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse6();
 
                 allButtonsOff6();

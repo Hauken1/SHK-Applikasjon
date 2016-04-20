@@ -14,6 +14,9 @@ import android.widget.TextView;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.weebly.smarthusgruppen.shk_applikasjon.LoginClient;
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;

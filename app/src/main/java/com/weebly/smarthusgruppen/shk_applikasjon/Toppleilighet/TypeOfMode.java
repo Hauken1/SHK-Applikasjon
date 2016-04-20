@@ -27,10 +27,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
-
 import org.w3c.dom.Text;
-
 import java.util.Calendar;
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 public class TypeOfMode extends AppCompatActivity {
     public static final String savedTemp1 = "1SavedTemperature";
