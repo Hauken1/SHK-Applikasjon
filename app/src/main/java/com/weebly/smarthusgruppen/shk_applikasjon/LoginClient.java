@@ -24,6 +24,9 @@ import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
+import com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.MainActivity_3;
+import com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.MainActivity_2;
+import com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -136,15 +139,15 @@ public class LoginClient extends AppCompatActivity {
         */
     }
 
-    protected static Socket returnConnection() {
+    public static Socket returnConnection() {
         return connection;
     }
 
-    protected static BufferedReader returnReader() {
+    public static BufferedReader returnReader() {
         return input;
     }
 
-    protected static BufferedWriter returnwriter() {
+    public static BufferedWriter returnwriter() {
         return output;
     }
 

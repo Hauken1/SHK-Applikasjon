@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class Measurement extends AppCompatActivity {
     ImageButton homeBtn;
     @Override

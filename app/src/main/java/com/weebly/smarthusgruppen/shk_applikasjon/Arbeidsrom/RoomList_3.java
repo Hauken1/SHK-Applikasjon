@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class RoomList_3 extends AppCompatActivity {
 
     Button bathroomBtn;

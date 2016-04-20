@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -187,12 +189,12 @@ public class Temperature_3 extends AppCompatActivity {
     }
 
     public void requestNewTemperature() {
-        MainActivity.sendText("Command:007262112,1");
-        MainActivity.sendText("Command:007262112,2");
-        MainActivity.sendText("Command:007262112,3");
-        MainActivity.sendText("Command:007262112,4");
-        MainActivity.sendText("Command:007262112,5");
-        MainActivity.sendText("Command:007262112,6");
+        MainActivity_3.sendText("Command:007262112,1");
+        MainActivity_3.sendText("Command:007262112,2");
+        MainActivity_3.sendText("Command:007262112,3");
+        MainActivity_3.sendText("Command:007262112,4");
+        MainActivity_3.sendText("Command:007262112,5");
+        MainActivity_3.sendText("Command:007262112,6");
     }
 
     public void displayTemperature() {
@@ -449,7 +451,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                 + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                 + "15");
                 holiday = holiday + " °C";
@@ -469,7 +471,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -489,7 +491,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -509,7 +511,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -547,7 +549,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -567,7 +569,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -587,7 +589,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -607,7 +609,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -646,7 +648,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -666,7 +668,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -686,7 +688,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -706,7 +708,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -745,7 +747,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -765,7 +767,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -785,7 +787,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -805,7 +807,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -843,7 +845,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -863,7 +865,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -883,7 +885,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -903,7 +905,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -941,7 +943,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -961,7 +963,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -981,7 +983,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -1001,7 +1003,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -1040,7 +1042,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -1060,7 +1062,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -1080,7 +1082,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -1100,7 +1102,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -1138,7 +1140,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -1158,7 +1160,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -1178,7 +1180,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -1198,7 +1200,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -1236,7 +1238,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -1256,7 +1258,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -1276,7 +1278,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -1296,7 +1298,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -1334,7 +1336,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -1354,7 +1356,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -1374,7 +1376,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -1394,7 +1396,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -1432,7 +1434,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -1452,7 +1454,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -1472,7 +1474,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -1492,7 +1494,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";
@@ -1530,7 +1532,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag1 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag1 + ","
                         + "15");
                 holiday = holiday + " °C";
@@ -1550,7 +1552,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag2 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag2 + ","
                         + "15");
                 day = day + " °C";
@@ -1570,7 +1572,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag3 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag3 + ","
                         + "15");
                 night = night + " °C";
@@ -1590,7 +1592,7 @@ public class Temperature_3 extends AppCompatActivity {
                 }
                 else wateringFlag4 = "0";
 
-                MainActivity.sendText("Command:007260112," + channel + ",0,0," + mode + ","
+                MainActivity_3.sendText("Command:007260112," + channel + ",0,0," + mode + ","
                         + holiday + "," + day + "," + night + "," + away + "," + wateringFlag4 + ","
                         + "15");
                 away = away + " °C";

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 
 public class Climate_2 extends AppCompatActivity {
     Button tempBtn;

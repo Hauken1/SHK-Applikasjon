@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class LightingOffice_2 extends AppCompatActivity {
     boolean lmin6 = false;
     boolean lmed6 = false;
@@ -56,7 +58,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin1 || lmed1 || lmax1) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_2.sendText("Command:000002117,1,0");
                 lmin1 = false;
                 lmed1 = false;
                 lmax1 = false;
@@ -73,7 +75,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin1) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_2.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin1 = true;
                 lmed1 = false;
                 lmax1 = false;
@@ -82,7 +84,7 @@ public class LightingOffice_2 extends AppCompatActivity {
                 lightMaxBtn1.setChecked(false);
                 lightOffBtn1.setChecked(false);
             } else if (lmin1) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -96,7 +98,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed1) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_2.sendText("Command:000002117,1,2");     // all lights medium
                 lmin1 = false;
                 lmed1 = true;
                 lmax1 = false;
@@ -106,7 +108,7 @@ public class LightingOffice_2 extends AppCompatActivity {
                 lightOffBtn1.setChecked(false);
             }
             else if (lmed1) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -119,7 +121,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax1) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_2.sendText("Command:000002117,1,3"); // all lights to max
                 lmin1 = false;
                 lmed1 = false;
                 lmax1 = true;
@@ -129,7 +131,7 @@ public class LightingOffice_2 extends AppCompatActivity {
                 lightOffBtn1.setChecked(false);
             }
             else if (lmax1) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -157,7 +159,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin2 || lmed2 || lmax2) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_2.sendText("Command:000002117,1,0");
                 lmin2 = false;
                 lmed2 = false;
                 lmax2 = false;
@@ -176,7 +178,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin2) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_2.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin2 = true;
                 lmed2 = false;
                 lmax2 = false;
@@ -185,7 +187,7 @@ public class LightingOffice_2 extends AppCompatActivity {
                 lightMaxBtn2.setChecked(false);
                 lightOffBtn2.setChecked(false);
             } else if (lmin2) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
@@ -199,7 +201,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed1) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_2.sendText("Command:000002117,1,2");     // all lights medium
                 lmin2 = false;
                 lmed2 = true;
                 lmax2 = false;
@@ -209,7 +211,7 @@ public class LightingOffice_2 extends AppCompatActivity {
                 lightOffBtn2.setChecked(false);
             }
             else if (lmed2) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
@@ -222,7 +224,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax2) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_2.sendText("Command:000002117,1,3"); // all lights to max
                 lmin2 = false;
                 lmed2 = false;
                 lmax2 = true;
@@ -232,7 +234,7 @@ public class LightingOffice_2 extends AppCompatActivity {
                 lightOffBtn2.setChecked(false);
             }
             else if (lmax2) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
@@ -259,7 +261,7 @@ public class LightingOffice_2 extends AppCompatActivity {
     protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            MainActivity.sendText("Command:000002117,1,0");
+            MainActivity_2.sendText("Command:000002117,1,0");
             lmin6 = false;
             lmed6 = false;
             lmax6 = false;
@@ -283,7 +285,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin6) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_2.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin6 = true;
                 lmed6 = false;
                 lmax6 = false;
@@ -301,7 +303,7 @@ public class LightingOffice_2 extends AppCompatActivity {
                 lmin2 = true;
 
             } else if (lmin6) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
@@ -315,7 +317,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed6) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_2.sendText("Command:000002117,1,2");     // all lights medium
                 lmin6 = false;
                 lmed6 = true;
                 lmax6 = false;
@@ -335,7 +337,7 @@ public class LightingOffice_2 extends AppCompatActivity {
 
             }
             else if (lmed6) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
@@ -349,7 +351,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax6) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_2.sendText("Command:000002117,1,3"); // all lights to max
                 lmin6 = false;
                 lmed6 = false;
                 lmax6 = true;
@@ -369,7 +371,7 @@ public class LightingOffice_2 extends AppCompatActivity {
 
             }
             else if (lmax6) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_2.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse6();
 
                 allButtonsOff6();

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class LightingHallway extends AppCompatActivity {
     boolean lmin = false;
     boolean lmed = false;

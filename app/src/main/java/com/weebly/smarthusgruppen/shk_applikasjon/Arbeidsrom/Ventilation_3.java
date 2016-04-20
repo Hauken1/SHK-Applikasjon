@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class Ventilation_3 extends AppCompatActivity {
     ImageButton homeBtn;
     boolean connected;
@@ -54,8 +56,8 @@ public class Ventilation_3 extends AppCompatActivity {
         public void onClick(View v) {
             connected = true;
             if (!ch1) {
-                MainActivity.sendText("Command:000049114,2,0,0,1");     // turns off level 2
-                MainActivity.sendText("Command:000049114,1,100,0,1");   // turns on level 1
+                MainActivity_3.sendText("Command:000049114,2,0,0,1");     // turns off level 2
+                MainActivity_3.sendText("Command:000049114,1,100,0,1");   // turns on level 1
                 ch1 = true;
                 ch2 = false;
 
@@ -64,7 +66,7 @@ public class Ventilation_3 extends AppCompatActivity {
                 turnOffBtn.setChecked(false);
             }
             else if(ch1) {
-                MainActivity.sendText("Command:000049114,1,0,0,1");     // turns off level 1
+                MainActivity_3.sendText("Command:000049114,1,0,0,1");     // turns off level 1
                 ch1 = false;
                 allLvlOff();
             }
@@ -77,8 +79,8 @@ public class Ventilation_3 extends AppCompatActivity {
         public void onClick(View v) {
             connected = true;
             if (!ch2) {
-                MainActivity.sendText("Command:000049114,1,0,0,1");      // turns off level 1
-                MainActivity.sendText("Command:000049114,2,100,0,1");     // turns on level 2
+                MainActivity_3.sendText("Command:000049114,1,0,0,1");      // turns off level 1
+                MainActivity_3.sendText("Command:000049114,2,100,0,1");     // turns on level 2
                 ch2 = true;
                 ch1 = false;
 
@@ -87,7 +89,7 @@ public class Ventilation_3 extends AppCompatActivity {
                 turnOffBtn.setChecked(false);
             }
             else if(ch2) {
-                MainActivity.sendText("Command:000049114,2,0,0,1");     // turns off level 2
+                MainActivity_3.sendText("Command:000049114,2,0,0,1");     // turns off level 2
                 ch2 = false;
                 allLvlOff();
             }
@@ -100,7 +102,7 @@ public class Ventilation_3 extends AppCompatActivity {
         public void onClick(View v) {
             connected = true;
             if (!ch1 && !ch2) {
-                MainActivity.sendText("Command:000002114,1,1");      // turns on level 1 and 2
+                MainActivity_3.sendText("Command:000002114,1,1");      // turns on level 1 and 2
                 ch1 = true;
                 ch2 = true;
                 ch3 = true;
@@ -108,21 +110,21 @@ public class Ventilation_3 extends AppCompatActivity {
                 lvlOneTwoOff();
             }
             else if(ch2 && !ch1) {
-                MainActivity.sendText("Command:000049114,1,100,0,1");     // turns on level 1
+                MainActivity_3.sendText("Command:000049114,1,100,0,1");     // turns on level 1
                 ch1 = true;
                 ch3 = true;
 
               lvlOneTwoOff();
             }
             else if(!ch2 && ch1)  {
-                MainActivity.sendText("Command:000049114,2,100,0,1");      // turns on level 2
+                MainActivity_3.sendText("Command:000049114,2,100,0,1");      // turns on level 2
                 ch2 = true;
                 ch3 = true;
 
                 lvlOneTwoOff();
             }
             else if (ch2 && ch1){
-                MainActivity.sendText("Command:000002114,1,0");             // turns off 1 and 2
+                MainActivity_3.sendText("Command:000002114,1,0");             // turns off 1 and 2
                 allBoolFalse();
             }
         }
@@ -134,7 +136,7 @@ public class Ventilation_3 extends AppCompatActivity {
         public void onClick(View v) {
             connected = true;
             if ((ch1) || (ch2) || (ch3)) {          // ch1 or ch2 or ch3 true
-                MainActivity.sendText("Command:000002114,1,0");            // turns off 1 and 2
+                MainActivity_3.sendText("Command:000002114,1,0");            // turns off 1 and 2
                 allBoolFalse();
                 lvlOneBtn.setChecked(false);
                 lvlTwoBtn.setChecked(false);

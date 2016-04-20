@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class TypeOfMode extends AppCompatActivity {
     public static final String savedTemp1 = "1SavedTemperature";
     public static final String savedTemp2 = "2SavedTemperature";
