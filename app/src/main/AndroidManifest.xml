@@ -79,42 +79,60 @@
             android:label="@string/modes"/>
 
         <activity
-            android:name=".RoomList_2"
+            android:name=".Leilighet.RoomList_2"
             android:label="@string/room_view_light" />
         <activity
-            android:name=".Climate_2"
+            android:name=".Leilighet.Climate_2"
             android:label="@string/climate_view" />
         <activity
-            android:name=".Temperature_2"
+            android:name=".Leilighet.Temperature_2"
             android:label="@string/heating_view" />
         <activity
-            android:name=".Ventilation_2"
+            android:name=".Leilighet.Ventilation_2"
             android:label="@string/ventilation_view" />
         <activity
-            android:name=".LightingKitchen_2"
+            android:name=".Leilighet.LightingKitchen_2"
             android:label="@string/kitch_lr" />
         <activity
-            android:name=".LightingOffice_2"
+            android:name=".Leilighet.LightingOffice_2"
             android:label="@string/laundry_room" />
         <activity
-            android:name=".LightingHallway_2"
+            android:name=".Leilighet.LightingHallway_2"
             android:label="@string/lighting_hallway" />
         <activity
-            android:name=".LightingBedroom1_2"
+            android:name=".Leilighet.LightingBedroom1_2"
             android:label="@string/lighting_bedroom1" />
         <activity
-            android:name=".LightingBedroom2_2"
+            android:name=".Leilighet.LightingBedroom2_2"
             android:label="@string/lighting_bedroom2" />
         <activity
-            android:name=".LightingBathroom_2"
+            android:name=".Leilighet.LightingBathroom_2"
             android:label="@string/lighting_bathroom" />
         <activity
-            android:name=".MainActivity_2"
+            android:name=".Leilighet.MainActivity_2"
             android:label="@string/app_name" />
-        <activity android:name=".Measurement_2"
+        <activity android:name=".Leilighet.Measurement_2"
             android:label="@string/measure1"/>
-        <activity android:name=".TypeOfMode_2"
+        <activity android:name=".Leilighet.TypeOfMode_2"
             android:label="@string/modes"/>
+
+        <activity android:name=".Arbeidsrom.Climate_3"
+            android:label="@string/modes"/>
+        <activity android:name=".Arbeidsrom.LightingBathroom_3"
+            android:label="@string/modes"/>
+        <activity android:name=".Arbeidsrom.LightingFlat"
+            android:label="@string/modes"/>
+        <activity android:name=".Arbeidsrom.MainActivity_3"
+            android:label="@string/modes"/>
+        <activity android:name=".Arbeidsrom.RoomList_3"
+            android:label="@string/modes"/>
+        <activity android:name=".Arbeidsrom.Temperature_3"
+            android:label="@string/modes"/>
+        <activity android:name=".Arbeidsrom.TypeOfMode_3"
+            android:label="@string/modes"/>
+        <activity android:name=".Arbeidsrom.Ventilation_3"
+            android:label="@string/modes"/>
+
     </application>
 
 </manifest>
