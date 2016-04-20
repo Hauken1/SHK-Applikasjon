@@ -46,7 +46,7 @@ public class LoginClient extends AppCompatActivity {
     EditText tempPw;
 
     int serverPort = 12345;
-    String hostName= "128.39.81.44";
+    String hostName= "128.39.81.69";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -98,10 +98,10 @@ public class LoginClient extends AppCompatActivity {
         randomWait();
         if(!connected) {
             AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
-            add.setTitle("Unable to connect to server");
-            add.setMessage("Check your internet connection");
+            add.setTitle("Kan ikke koble til server");
+            add.setMessage("Sjekk internetttilkoblingen");
             add.setCancelable(false);
-            add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                 }
@@ -397,7 +397,7 @@ public class LoginClient extends AppCompatActivity {
                                        switch (ID) {
                                            case 1:
                                                    loggedIn = true;
-                                                   goToHome2();
+                                                   goToHome();
                                                break;
                                            case 2:
                                                    loggedIn = true;
@@ -543,10 +543,10 @@ public class LoginClient extends AppCompatActivity {
 
         } catch (UnknownHostException e) {
             AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
-            add.setTitle("Unable to connect to server");
-            add.setMessage("Check your internet connection");
+            add.setTitle("Kan ikke koble til server");
+            add.setMessage("Sjekk internettilkoblingen");
             add.setCancelable(false);
-            add.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                 }
