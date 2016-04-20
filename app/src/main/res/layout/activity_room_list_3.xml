@@ -7,13 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.RoomList_2">
+    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.RoomList_3">
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:text="@string/kitchen"
+        android:text="@string/curr_room"
         android:id="@+id/room1_button"
         android:layout_marginTop="12dp"
         android:textSize="18sp"
@@ -28,46 +28,6 @@
         android:textSize="18sp"
         android:id="@+id/room2_button"
         android:layout_below="@+id/room1_button" />
-
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:text="@string/bedroom_1"
-        android:textSize="18sp"
-        android:id="@+id/room4_button"
-        android:layout_below="@+id/room2_button"
-        />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:text="@string/bedroom_2"
-        android:textSize="18sp"
-        android:id="@+id/room5_button"
-        android:layout_below="@+id/room4_button"
-        />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:text="@string/laundry_room"
-        android:textSize="18sp"
-        android:id="@+id/room7_button"
-        android:layout_below="@+id/room5_button"
- />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:text="@string/hallway"
-        android:textSize="18sp"
-        android:id="@+id/room8_button"
-        android:layout_below="@+id/room7_button"/>
 
     <ImageButton
         android:layout_width="wrap_content"

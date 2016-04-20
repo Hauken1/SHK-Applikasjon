@@ -409,7 +409,7 @@ public class LoginClient extends AppCompatActivity {
                                                break;
                                            case 4:
                                                    loggedIn = true;
-                                                   goToHome2();
+                                                   goToHome3();
                                                break;
                                            default:
                                                failLogin();
@@ -507,6 +507,11 @@ public class LoginClient extends AppCompatActivity {
 
     public void goToHome2() {
         Intent intent = new Intent(this, MainActivity_2.class);
+        startActivity(intent);
+    }
+
+    public void goToHome3() {
+        Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
     }
 

@@ -18,16 +18,28 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <!-- soverom -->
     <ToggleButton
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:textOn="@string/lvl1"
         android:textOff="@string/lvl1"
         android:id="@+id/lvl1_button"
-        android:layout_marginTop="43dp"
-        android:layout_below="@+id/home_button"
+        android:layout_marginTop="9dp"
+        android:layout_below="@+id/txt1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_button"
+        android:id="@+id/txt1"
+        android:text="@string/bed_room"
+        android:textColor="#090909"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <ToggleButton
         android:layout_width="80dp"
@@ -61,4 +73,58 @@
         android:textOff="@string/off"
         android:textOn="@string/off" />
 
+        <!-- alt annet -->
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textOn="@string/lvl1"
+        android:textOff="@string/lvl1"
+        android:id="@+id/lvl11_button"
+        android:layout_marginTop="9dp"
+        android:layout_below="@+id/txt2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lvl4_button"
+        android:id="@+id/txt2"
+        android:text="@string/all_vent"
+        android:textColor="#090909"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textOff="@string/lvl2"
+        android:textOn="@string/lvl2"
+        android:id="@+id/lvl21_button"
+        android:layout_alignTop="@+id/lvl11_button"
+        android:layout_toRightOf="@+id/lvl11_button"
+        android:layout_toEndOf="@+id/lvl11_button" />
+
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/lvl31_button"
+        android:layout_alignTop="@+id/lvl21_button"
+        android:layout_toRightOf="@+id/lvl21_button"
+        android:layout_toEndOf="@+id/lvl21_button"
+        android:checked="false"
+        android:textOff="@string/lvl3"
+        android:textOn="@string/lvl3"/>
+
+    <ToggleButton
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/lvl41_button"
+        android:layout_alignTop="@+id/lvl31_button"
+        android:layout_toRightOf="@+id/lvl31_button"
+        android:layout_toEndOf="@+id/lvl31_button"
+        android:checked="false"
+        android:textOff="@string/off"
+        android:textOn="@string/off" />
 </RelativeLayout>
