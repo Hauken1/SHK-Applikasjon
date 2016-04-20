@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;

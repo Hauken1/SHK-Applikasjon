@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class Windows extends AppCompatActivity {
     ImageButton homeBtn;
     ToggleButton win1Open;

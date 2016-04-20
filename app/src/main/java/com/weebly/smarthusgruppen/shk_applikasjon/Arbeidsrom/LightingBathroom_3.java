@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.R;
+
 public class LightingBathroom_3 extends AppCompatActivity {
     boolean lmin = false;
     boolean lmed = false;
@@ -52,7 +54,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin || lmed || lmax) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin = false;
                 lmed = false;
                 lmax = false;
@@ -71,7 +73,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin = true;
                 lmed = false;
                 lmax = false;
@@ -80,7 +82,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 lightMaxBtn.setChecked(false);
                 lightOffBtn.setChecked(false);
             } else if (lmin) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
@@ -94,7 +96,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin = false;
                 lmed = true;
                 lmax = false;
@@ -104,7 +106,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 lightOffBtn.setChecked(false);
             }
             else if (lmed) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
@@ -117,7 +119,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin = false;
                 lmed = false;
                 lmax = true;
@@ -127,7 +129,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 lightOffBtn.setChecked(false);
             }
             else if (lmax) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
@@ -160,7 +162,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin1 || lmed1 || lmax1) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin1 = false;
                 lmed1 = false;
                 lmax1 = false;
@@ -179,7 +181,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin1) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin1 = true;
                 lmed1 = false;
                 lmax1 = false;
@@ -188,7 +190,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 lightMaxBtn1.setChecked(false);
                 lightOffBtn1.setChecked(false);
             } else if (lmin1) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -202,7 +204,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed1) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin1 = false;
                 lmed1 = true;
                 lmax1 = false;
@@ -212,7 +214,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 lightOffBtn1.setChecked(false);
             }
             else if (lmed1) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -225,7 +227,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax1) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin1 = false;
                 lmed1 = false;
                 lmax1 = true;
@@ -235,7 +237,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 lightOffBtn1.setChecked(false);
             }
             else if (lmax1) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
@@ -263,7 +265,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
     protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-                MainActivity.sendText("Command:000002117,1,0");
+                MainActivity_3.sendText("Command:000002117,1,0");
                 lmin6 = false;
                 lmed6 = false;
                 lmax6 = false;
@@ -287,7 +289,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin6) {
-                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                MainActivity_3.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin6 = true;
                 lmed6 = false;
                 lmax6 = false;
@@ -307,7 +309,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
 
 
             } else if (lmin6) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
@@ -321,7 +323,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed6) {
-                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                MainActivity_3.sendText("Command:000002117,1,2");     // all lights medium
                 lmin6 = false;
                 lmed6 = true;
                 lmax6 = false;
@@ -338,7 +340,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 lmed1 = true;
             }
             else if (lmed6) {
-                MainActivity.sendText("Command:000002117,1,0"); // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
@@ -352,7 +354,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmax6) {        //this method should only be called if there is a connection.
-                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                MainActivity_3.sendText("Command:000002117,1,3"); // all lights to max
                 lmin6 = false;
                 lmed6 = false;
                 lmax6 = true;
@@ -372,7 +374,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
 
             }
             else if (lmax6) {
-                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
