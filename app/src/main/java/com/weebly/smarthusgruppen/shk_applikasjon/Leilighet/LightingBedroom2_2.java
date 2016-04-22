@@ -23,7 +23,7 @@ public class LightingBedroom2_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lighting_bedroom2);
+        setContentView(R.layout.activity_lighting_bedroom2_2);
 
         lightOffBtn = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn.setOnClickListener(light_all__off_Listener);

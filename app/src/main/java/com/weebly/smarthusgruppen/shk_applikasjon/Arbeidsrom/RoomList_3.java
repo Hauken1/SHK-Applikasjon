@@ -21,7 +21,7 @@ public class RoomList_3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_list);
+        setContentView(R.layout.activity_room_list_3);
 
 
         // kitchen button

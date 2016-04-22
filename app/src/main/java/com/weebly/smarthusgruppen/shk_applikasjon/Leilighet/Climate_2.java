@@ -19,7 +19,7 @@ public class Climate_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_climate);
+        setContentView(R.layout.activity_climate_2);
         // temp button
         tempBtn = (Button) findViewById(R.id.heating_view_button);
         tempBtn.setOnClickListener(new View.OnClickListener() {

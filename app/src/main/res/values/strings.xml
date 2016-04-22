@@ -92,6 +92,8 @@
     <string name="remember">Husk meg</string>
     <string name="ch_pw">Glemt/bytte passord?</string>
     <string name="laundry_room">Vaskerom</string>
+    <string name="lau_roof">Vaskerom - tak</string>
+    <string name="lau_wl">Vaskerom - vegg</string>
     <string name="curr_room">Oppholdsrom</string>
     <string name="flat_all">Oppholdsrom - alt lys</string>
     <string name="flat_rf">Oppholdsrom - taklys 1</string>

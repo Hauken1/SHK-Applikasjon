@@ -20,13 +20,12 @@ public class Temperature_2 extends AppCompatActivity {
     ImageButton upBtn2;
     ImageButton upBtn3;
     ImageButton upBtn4;
-    ImageButton upBtn5;
     ImageButton downBtn;
     ImageButton downBtn1;
     ImageButton downBtn2;
     ImageButton downBtn3;
     ImageButton downBtn4;
-    ImageButton downBtn5;
+
 
     public static final String savedTemp1 = "1SavedTemperature" ;
     public static final String savedTemp2 = "2SavedTemperature" ;
@@ -51,7 +50,7 @@ public class Temperature_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_temperature);
+        setContentView(R.layout.activity_temperature_2);
 
 
         setUpTemperatureGUI();
@@ -100,12 +99,7 @@ public class Temperature_2 extends AppCompatActivity {
                 upTemp4();
             }
         });
-        upBtn5 = (ImageButton) findViewById(R.id.adjust_up5);
-        upBtn5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                upTemp5();
-            }
-        });
+
 
         // down temp button
         downBtn = (ImageButton) findViewById(R.id.adjust_down);
@@ -136,12 +130,6 @@ public class Temperature_2 extends AppCompatActivity {
         downBtn4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 downTemp4();
-            }
-        });
-        downBtn5 = (ImageButton) findViewById(R.id.adjust_down5);
-        downBtn5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                downTemp5();
             }
         });
 
