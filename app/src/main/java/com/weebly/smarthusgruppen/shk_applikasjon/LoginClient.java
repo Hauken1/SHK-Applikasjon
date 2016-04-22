@@ -49,7 +49,7 @@ public class LoginClient extends AppCompatActivity {
     EditText tempPw;
 
     int serverPort = 12345;
-    String hostName= "128.39.81.69";
+    String hostName= "128.39.83.34";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -102,7 +102,7 @@ public class LoginClient extends AppCompatActivity {
         if(!connected) {
             AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
             add.setTitle("Kan ikke koble til server");
-            add.setMessage("Sjekk internetttilkoblingen");
+            add.setMessage("Sjekk internettilkoblingen");
             add.setCancelable(false);
             add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
@@ -504,18 +504,23 @@ public class LoginClient extends AppCompatActivity {
         }
     }
     public void goToHome() {
+        Log.d("Logger inn",  "toppleilighet");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     public void goToHome2() {
+        Log.d("Logger inn", "Leilighet");
         Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);
+
     }
 
     public void goToHome3() {
-        Intent intent = new Intent(this, MainActivity_3.class);
+        Log.d("Logger inn", "Hybel");
+        Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);
+
     }
 
     public void connect() {

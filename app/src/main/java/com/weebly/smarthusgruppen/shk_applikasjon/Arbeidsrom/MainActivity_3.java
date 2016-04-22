@@ -34,7 +34,6 @@ public class MainActivity_3 extends AppCompatActivity {
     TextView receivedText;
     Button lightBtn;
     Button climateBtn;
-    Button measureBtn;
     Button modeBtn;
     static Socket connection;
 
@@ -59,7 +58,7 @@ public class MainActivity_3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_3);
 
         getConnection();
 
@@ -85,12 +84,6 @@ public class MainActivity_3 extends AppCompatActivity {
             }
         });
 
-        measureBtn = (Button) findViewById(R.id.measureButton);
-        measureBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)  {
-                goToMeasurementView();
-            }
-        });
 
         modeBtn = (Button) findViewById(R.id.modeButton);
         modeBtn.setOnClickListener(new View.OnClickListener() {
@@ -164,11 +157,6 @@ public class MainActivity_3 extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    public void goToMeasurementView() {
-        Intent intent = new Intent(this, Measurement_3.class);
-        startActivity(intent);
-    }
     public void goToModeView() {
         Intent intent = new Intent(this, TypeOfMode_3.class);
         startActivity(intent);

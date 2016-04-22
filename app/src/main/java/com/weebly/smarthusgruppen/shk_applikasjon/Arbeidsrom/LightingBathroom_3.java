@@ -43,7 +43,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lighting_bathroom);
+        setContentView(R.layout.activity_lighting_bathroom_3);
 
       setupGUI();
     }

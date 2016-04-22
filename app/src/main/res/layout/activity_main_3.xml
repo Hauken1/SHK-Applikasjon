@@ -36,14 +36,7 @@
         android:layout_below="@+id/lightButton"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:text="@string/measure1"
-        android:textSize="25dp"
-        android:id="@+id/measureButton"
-        android:layout_below="@+id/climateButton"
-        android:layout_centerHorizontal="true" />
+
 
     <Button
         android:layout_width="350dp"
@@ -51,6 +44,6 @@
         android:text="@string/modes"
         android:id="@+id/modeButton"
         android:textSize="25dp"
-        android:layout_below="@+id/measureButton"
+        android:layout_below="@+id/climateButton"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

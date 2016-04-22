@@ -13,7 +13,7 @@ public class Measurement_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_measurement);
+        setContentView(R.layout.activity_measurement_2);
 
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);

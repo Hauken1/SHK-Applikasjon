@@ -42,7 +42,7 @@ public class LightingHallway_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lighting_hallway);
+        setContentView(R.layout.activity_lighting_hallway_2);
 
         setupGUI();
     }
