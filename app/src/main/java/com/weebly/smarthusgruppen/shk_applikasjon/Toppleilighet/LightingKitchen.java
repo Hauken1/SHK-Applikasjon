@@ -1,6 +1,7 @@
 package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,13 @@ import android.widget.ToggleButton;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 public class LightingKitchen extends AppCompatActivity {
+
+    public static final String savedLight = "SavedLightingKitchen" ;
+    public static final String savedTemp = "1SavedTemperature";
+    public SharedPreferences tempSetting;
+    public SharedPreferences lightSettings;
+
+
     boolean lmin = false;
     boolean lmed = false;
     boolean lmax = false;
@@ -76,12 +84,995 @@ public class LightingKitchen extends AppCompatActivity {
     ToggleButton lightMedBtn6;
     ImageButton homeBtn;
 
+    String sMode;
+    int iMode;
+
+    public static final int row1 = 1;
+    public static final int row2 = 2;
+    public static final int row3 = 3;
+    public static final int row4 = 4;
+    public static final int row5 = 5;
+    public static final int row6 = 6;
+    public static final int rowall = 7;
+
+    public static final int lightOff = 0;
+    public static final int lightMin = 1;
+    public static final int lightMed = 2;
+    public static final int lightMax = 3;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_kitchen);
 
         setupGUI();
+        displayLight();
+    }
+
+    public void displayLight() {
+        try {
+
+            lightSettings = getSharedPreferences(savedLight, 0);
+            tempSetting = getSharedPreferences(savedTemp, 0);
+            sMode = tempSetting.getString("mode", "2");
+            iMode = Integer.parseInt(sMode);
+
+            allButtonOffKill();
+
+            String modeStatus1, modeStatus2, modeStatus3, modeStatus4, modeStatus5,
+                modeStatus6, modeStatsAll;
+            switch (iMode) {
+                case 1:
+                    modeStatus1 = lightSettings.getString("Hrow1status", "0");
+                    modeStatus2 = lightSettings.getString("Hrow2status", "0");
+                    modeStatus3 = lightSettings.getString("Hrow3status", "0");
+                    modeStatus4 = lightSettings.getString("Hrow4status", "0");
+                    modeStatus5 = lightSettings.getString("Hrow5status", "0");
+                    modeStatus6 = lightSettings.getString("Hrow6status", "0");
+                    modeStatsAll = lightSettings.getString("Hrowallstatus", "0");
+                    break;
+                case 2:
+                    modeStatus1 = lightSettings.getString("Drow1status", "0");
+                    modeStatus2 = lightSettings.getString("Drow2status", "0");
+                    modeStatus3 = lightSettings.getString("Drow3status", "0");
+                    modeStatus4 = lightSettings.getString("Drow4status", "0");
+                    modeStatus5 = lightSettings.getString("Drow5status", "0");
+                    modeStatus6 = lightSettings.getString("Drow6status", "0");
+                    modeStatsAll = lightSettings.getString("Drowallstatus", "0");
+                    break;
+                case 3:
+                    modeStatus1 = lightSettings.getString("Nrow1status", "0");
+                    modeStatus2 = lightSettings.getString("Nrow2status", "0");
+                    modeStatus3 = lightSettings.getString("Nrow3status", "0");
+                    modeStatus4 = lightSettings.getString("Nrow4status", "0");
+                    modeStatus5 = lightSettings.getString("Nrow5status", "0");
+                    modeStatus6 = lightSettings.getString("Nrow6status", "0");
+                    modeStatsAll = lightSettings.getString("Nrowallstatus", "0");
+                    break;
+                case 4:
+                    modeStatus1 = lightSettings.getString("Arow1status", "0");
+                    modeStatus2 = lightSettings.getString("Arow2status", "0");
+                    modeStatus3 = lightSettings.getString("Arow3status", "0");
+                    modeStatus4 = lightSettings.getString("Arow4status", "0");
+                    modeStatus5 = lightSettings.getString("Arow5status", "0");
+                    modeStatus6 = lightSettings.getString("Arow6status", "0");
+                    modeStatsAll = lightSettings.getString("Arowallstatus", "0");
+                    break;
+                default:
+                    modeStatus1 = "0";
+                    modeStatus2 = "0";
+                    modeStatus3 = "0";
+                    modeStatus4 = "0";
+                    modeStatus5 = "0";
+                    modeStatus6 = "0";
+                    modeStatsAll = "0";
+                    break;
+            }
+
+            int sAll = Integer.parseInt(modeStatsAll);
+            int s1 = Integer.parseInt(modeStatus1);
+            int s2 = Integer.parseInt(modeStatus2);
+            int s3 = Integer.parseInt(modeStatus3);
+            int s4 = Integer.parseInt(modeStatus4);
+            int s5 = Integer.parseInt(modeStatus5);
+            int s6 = Integer.parseInt(modeStatus6);
+
+            switch (s1){
+                case 0: //row 1 off
+                    lightOffBtn.setChecked(true);
+                    /*
+                    lmin = false;
+                    lmed = false;
+                    lmax = false;
+                    */
+                    break;
+                case 1: //row 1 min
+                    lmin = true;
+                    lightMinBtn.setChecked(true);
+                    break;
+                case 2: //row 2 med
+                    lmed = true;
+                    lightMedBtn.setChecked(true);
+                    break;
+                case 3: //row 1 max
+                    lmax = true;
+                    lightMaxBtn.setChecked(true);
+                    break;
+                default: //not set
+                    lightOffBtn.setChecked(true);
+                    break;
+             }
+
+            switch (s2){
+                case 0: //row 2 off
+                    lightOffBtn1.setChecked(true);
+                    /*
+                    lmin = false;
+                    lmed = false;
+                    lmax = false;
+                    */
+                    break;
+                case 1: //row 2 min
+                    lmin1 = true;
+                    lightMinBtn1.setChecked(true);
+                    break;
+                case 2: //row 2 med
+                    lmed1 = true;
+                    lightMedBtn1.setChecked(true);
+                    break;
+                case 3: //row 2 max
+                    lmax1 = true;
+                    lightMaxBtn1.setChecked(true);
+                    break;
+                default: //not set
+                    lightOffBtn1.setChecked(true);
+                    break;
+            }
+
+            switch (s3){
+                case 0: //row 3 off
+                    lightOffBtn2.setChecked(true);
+                    /*
+                    lmin = false;
+                    lmed = false;
+                    lmax = false;
+                    */
+                    break;
+                case 1: //row 3 min
+                    lmin2 = true;
+                    lightMinBtn2.setChecked(true);
+                    break;
+                case 2: //row 3 med
+                    lmed2 = true;
+                    lightMedBtn2.setChecked(true);
+                    break;
+                case 3: //row 3 max
+                    lmax2 = true;
+                    lightMaxBtn2.setChecked(true);
+                    break;
+                default: //not set
+                    lightOffBtn2.setChecked(true);
+                    break;
+            }
+
+            switch (s4){
+                case 0: //row 4 off
+                    lightOffBtn3.setChecked(true);
+                    /*
+                    lmin = false;
+                    lmed = false;
+                    lmax = false;
+                    */
+                    break;
+                case 1: //row 4 min
+                    lmin3 = true;
+                    lightMinBtn3.setChecked(true);
+                    break;
+                case 2: //row 4 med
+                    lmed3 = true;
+                    lightMedBtn3.setChecked(true);
+                    break;
+                case 3: //row 4 max
+                    lmax3 = true;
+                    lightMaxBtn3.setChecked(true);
+                    break;
+                default: //not set
+                    lightOffBtn3.setChecked(true);
+                    break;
+            }
+
+            switch (s5){
+                case 0: //row 5 off
+                    lightOffBtn4.setChecked(true);
+                    /*
+                    lmin = false;
+                    lmed = false;
+                    lmax = false;
+                    */
+                    break;
+                case 1: //row 5 min
+                    lmin4 = true;
+                    lightMinBtn4.setChecked(true);
+                    break;
+                case 2: //row 5 med
+                    lmed4 = true;
+                    lightMedBtn4.setChecked(true);
+                    break;
+                case 3: //row 5 max
+                    lmax4 = true;
+                    lightMaxBtn4.setChecked(true);
+                    break;
+                default: //not set
+                    lightOffBtn4.setChecked(true);
+                    break;
+            }
+            switch (s6){
+                case 0: //row 6 off
+                    lightOffBtn5.setChecked(true);
+                    /*
+                    lmin = false;
+                    lmed = false;
+                    lmax = false;
+                    */
+                    break;
+                case 1: //row 6 min
+                    lmin5 = true;
+                    lightMinBtn5.setChecked(true);
+                    break;
+                case 2: //row 6 med
+                    lmed5 = true;
+                    lightMedBtn5.setChecked(true);
+                    break;
+                case 3: //row 6 max
+                    lmax5 = true;
+                    lightMaxBtn5.setChecked(true);
+                    break;
+                default: //not set
+                    lightOffBtn5.setChecked(true);
+                    break;
+            }
+            switch (sAll) {
+                case 0: //row all off
+                    lightOffBtn6.setChecked(true);
+                    loff6 = true;
+                    /*
+                    lmin = false;
+                    lmed = false;
+                    lmax = false;
+                    */
+                    break;
+                case 1: //row all min
+                    lmin6 = true;
+                    lightMinBtn6.setChecked(true);
+                    lightOffBtn6.setChecked(false);
+                    break;
+                case 2: //row all med
+                    lmed6 = true;
+                    lightMedBtn6.setChecked(true);
+                    lightOffBtn6.setChecked(false);
+                    break;
+                case 3: //row all max
+                    lmax6 = true;
+
+                    lightMaxBtn6.setChecked(true);
+                    lightOffBtn6.setChecked(false);
+                    break;
+                default: //not set
+                    lightOffBtn6.setChecked(true);
+                    loff6 = true;
+                    break;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setLightSettingsForRow(int row, int value) {
+        lightSettings = getSharedPreferences(savedLight, 0);
+        SharedPreferences.Editor editor = lightSettings.edit();
+
+        switch (iMode){
+            case 1:
+                switch (row){
+                    case 1:
+                        switch (value){
+                            case 0:
+                                editor.putString("Hrow1status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Hrow1status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Hrow1status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Hrow1status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Hrow1status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (value){
+                            case 0:
+                                editor.putString("Hrow2status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Hrow2status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Hrow2status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Hrow2status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Hrow2status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (value){
+                            case 0:
+                                editor.putString("Hrow3status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Hrow3status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Hrow3status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Hrow3status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Hrow3status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (value){
+                            case 0:
+                                editor.putString("Hrow4status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Hrow4status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Hrow4status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Hrow4status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Hrow4status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 5:
+                        switch (value){
+                            case 0:
+                                editor.putString("Hrow5status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Hrow5status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Hrow5status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Hrow5status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Hrow5status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 6:
+                        switch (value){
+                            case 0:
+                                editor.putString("Hrow6status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Hrow6status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Hrow6status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Hrow6status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Hrow6status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 7:
+                        switch (value){
+                            case 0:
+                                editor.putString("Hrowallstatus", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Hrowallstatus", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Hrowallstatus", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Hrowallstatus", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Hrowallstatus", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 2:
+                switch (row){
+                    case 1:
+                        switch (value){
+                            case 0:
+                                editor.putString("Drow1status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Drow1status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Drow1status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Drow1status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Drow1status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (value){
+                            case 0:
+                                editor.putString("Drow2status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Drow2status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Drow2status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Drow2status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Drow2status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (value){
+                            case 0:
+                                editor.putString("Drow3status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Drow3status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Drow3status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Drow3status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Drow3status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (value){
+                            case 0:
+                                editor.putString("Drow4status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Drow4status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Drow4status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Drow4status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Drow4status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 5:
+                        switch (value){
+                            case 0:
+                                editor.putString("Drow5status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Drow5status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Drow5status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Drow5status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Drow5status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 6:
+                        switch (value){
+                            case 0:
+                                editor.putString("Drow6status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Drow6status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Drow6status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Drow6status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Drow6status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 7:
+                        switch (value){
+                            case 0:
+                                editor.putString("Drowallstatus", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Drowallstatus", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Drowallstatus", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Drowallstatus", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Drowallstatus", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 3:
+                switch (row){
+                    case 1:
+                        switch (value){
+                            case 0:
+                                editor.putString("Nrow1status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Nrow1status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Nrow1status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Nrow1status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Nrow1status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (value){
+                            case 0:
+                                editor.putString("Nrow2status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Nrow2status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Nrow2status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Nrow2status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Nrow2status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (value){
+                            case 0:
+                                editor.putString("Nrow3status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Nrow3status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Nrow3status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Nrow3status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Nrow3status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (value){
+                            case 0:
+                                editor.putString("Nrow4status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Nrow4status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Nrow4status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Nrow4status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Nrow4status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 5:
+                        switch (value){
+                            case 0:
+                                editor.putString("Nrow5status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Nrow5status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Nrow5status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Nrow5status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Nrow5status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 6:
+                        switch (value){
+                            case 0:
+                                editor.putString("Nrow6status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Nrow6status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Nrow6status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Nrow6status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Nrow6status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 7:
+                        switch (value){
+                            case 0:
+                                editor.putString("Nrowallstatus", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Nrowallstatus", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Nrowallstatus", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Nrowallstatus", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Nrowallstatus", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 4:
+                switch (row){
+                    case 1:
+                        switch (value){
+                            case 0:
+                                editor.putString("Arow1status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Arow1status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Arow1status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Arow1status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Arow1status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (value){
+                            case 0:
+                                editor.putString("Arow2status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Arow2status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Arow2status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Arow2status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Arow2status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (value){
+                            case 0:
+                                editor.putString("Arow3status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Arow3status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Arow3status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Arow3status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Arow3status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (value){
+                            case 0:
+                                editor.putString("Arow4status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Arow4status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Arow4status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Arow4status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Arow4status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 5:
+                        switch (value){
+                            case 0:
+                                editor.putString("Arow5status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Arow5status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Arow5status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Arow5status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Arow5status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 6:
+                        switch (value){
+                            case 0:
+                                editor.putString("Arow6status", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Arow6status", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Arow6status", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Arow6status", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Arow6status", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    case 7:
+                        switch (value){
+                            case 0:
+                                editor.putString("Arowallstatus", "0");
+                                editor.commit();
+                                break;
+                            case 1:
+                                editor.putString("Arowallstatus", "1");
+                                editor.commit();
+                                break;
+                            case 2:
+                                editor.putString("Arowallstatus", "2");
+                                editor.commit();
+                                break;
+                            case 3:
+                                editor.putString("Arowallstatus", "3");
+                                editor.commit();
+                                break;
+                            default:
+                                editor.putString("Arowallstatus", "0");
+                                editor.commit();
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     // all lights off
@@ -89,6 +1080,7 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin || lmed || lmax) {
+
                 MainActivity.sendText("Command:000002117,1,0");
                 lmin = false;
                 lmed = false;
@@ -97,8 +1089,8 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn.setChecked(false);
                 lightMedBtn.setChecked(false);
                 lightMaxBtn.setChecked(false);
+                setLightSettingsForRow(row1, lightOff);
             }
-
         }
     };
 
@@ -107,6 +1099,7 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin) {
+
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin = true;
                 lmed = false;
@@ -115,6 +1108,8 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMedBtn.setChecked(false);
                 lightMaxBtn.setChecked(false);
                 lightOffBtn.setChecked(false);
+
+                setLightSettingsForRow(row1,lightMin);
             }
 
             else if (lmin) {
@@ -122,6 +1117,7 @@ public class LightingKitchen extends AppCompatActivity {
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
+                setLightSettingsForRow(row1,lightOff);
             }
         }
     };
@@ -139,6 +1135,7 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn.setChecked(false);
                 lightMaxBtn.setChecked(false);
                 lightOffBtn.setChecked(false);
+                setLightSettingsForRow(row1,lightMed);
             }
 
             else if (lmed) {
@@ -146,6 +1143,7 @@ public class LightingKitchen extends AppCompatActivity {
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
+                setLightSettingsForRow(row1, lightOff);
             }
         }
     };
@@ -163,6 +1161,7 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn.setChecked(false);
                 lightMedBtn.setChecked(false);
                 lightOffBtn.setChecked(false);
+                setLightSettingsForRow(row1,lightMax);
             }
 
             else if (lmax) {
@@ -170,6 +1169,7 @@ public class LightingKitchen extends AppCompatActivity {
                 allBoolFalse();
                 allButtonsOff();
                 lightOffBtn.setChecked(true);
+                setLightSettingsForRow(row1,lightOff);
             }
         }
     };
@@ -207,6 +1207,7 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn1.setChecked(false);
                 lightMedBtn1.setChecked(false);
                 lightMaxBtn1.setChecked(false);
+                setLightSettingsForRow(row2, lightOff);
             }
         }
     };
@@ -224,12 +1225,13 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMedBtn1.setChecked(false);
                 lightMaxBtn1.setChecked(false);
                 lightOffBtn1.setChecked(false);
+                setLightSettingsForRow(row2, lightMin);
             } else if (lmin1) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
-
+                setLightSettingsForRow(row2, lightOff);
             }
         }
     };
@@ -247,12 +1249,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn1.setChecked(false);
                 lightMaxBtn1.setChecked(false);
                 lightOffBtn1.setChecked(false);
+                setLightSettingsForRow(row2, lightMed);
             }
             else if (lmed1) {
                 MainActivity.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
+                setLightSettingsForRow(row2, lightOff);
             }
         }
     };
@@ -270,12 +1274,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn1.setChecked(false);
                 lightMedBtn1.setChecked(false);
                 lightOffBtn1.setChecked(false);
+                setLightSettingsForRow(row2, lightMax);
             }
             else if (lmax1) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse1();
                 allButtonsOff1();
                 lightOffBtn1.setChecked(true);
+                setLightSettingsForRow(row2, lightOff);
             }
         }
     };
@@ -305,12 +1311,10 @@ public class LightingKitchen extends AppCompatActivity {
                 lmed2 = false;
                 lmax2 = false;
 
-
                 lightMinBtn2.setChecked(false);
                 lightMedBtn2.setChecked(false);
                 lightMaxBtn2.setChecked(false);
-
-
+                setLightSettingsForRow(row3, lightOff);
             }
         }
     };
@@ -328,12 +1332,13 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMedBtn2.setChecked(false);
                 lightMaxBtn2.setChecked(false);
                 lightOffBtn2.setChecked(false);
+                setLightSettingsForRow(row3, lightMin);
             } else if (lmin2) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
-
+                setLightSettingsForRow(row3, lightOff);
             }
         }
     };
@@ -351,12 +1356,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn2.setChecked(false);
                 lightMaxBtn2.setChecked(false);
                 lightOffBtn2.setChecked(false);
+                setLightSettingsForRow(row3, lightMed);
             }
             else if (lmed2) {
                 MainActivity.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
+                setLightSettingsForRow(row3,lightOff);
             }
         }
     };
@@ -374,12 +1381,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn2.setChecked(false);
                 lightMedBtn2.setChecked(false);
                 lightOffBtn2.setChecked(false);
+                setLightSettingsForRow(row3, lightMax);
             }
             else if (lmax2) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse2();
                 allButtonsOff2();
                 lightOffBtn2.setChecked(true);
+                setLightSettingsForRow(row3, lightOff);
             }
         }
     };
@@ -412,7 +1421,7 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn3.setChecked(false);
                 lightMedBtn3.setChecked(false);
                 lightMaxBtn3.setChecked(false);
-
+                setLightSettingsForRow(row4, lightOff);
             }
         }
     };
@@ -421,6 +1430,8 @@ public class LightingKitchen extends AppCompatActivity {
     protected View.OnClickListener light_all_min3 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            lightSettings = getSharedPreferences(savedLight, 0);
+            SharedPreferences.Editor editor = lightSettings.edit();
             if (!lmin3) {
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin3 = true;
@@ -430,12 +1441,15 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMedBtn3.setChecked(false);
                 lightMaxBtn3.setChecked(false);
                 lightOffBtn3.setChecked(false);
+                setLightSettingsForRow(row4,lightMin);
             } else if (lmin3) {
+                editor.putString("row4status", "0");
+                editor.commit();
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse3();
                 allButtonsOff3();
                 lightOffBtn3.setChecked(true);
-
+                setLightSettingsForRow(row4, lightOff);
             }
         }
     };
@@ -453,12 +1467,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn3.setChecked(false);
                 lightMaxBtn3.setChecked(false);
                 lightOffBtn3.setChecked(false);
+                setLightSettingsForRow(row4, lightMed);
             }
             else if (lmed3) {
                 MainActivity.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse3();
                 allButtonsOff3();
                 lightOffBtn3.setChecked(true);
+                setLightSettingsForRow(row4, lightOff);
             }
         }
     };
@@ -476,12 +1492,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn3.setChecked(false);
                 lightMedBtn3.setChecked(false);
                 lightOffBtn3.setChecked(false);
+                setLightSettingsForRow(row4, lightMax);
             }
             else if (lmax3) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse3();
                 allButtonsOff3();
                 lightOffBtn3.setChecked(true);
+                setLightSettingsForRow(row4, lightOff);
             }
         }
     };
@@ -515,6 +1533,7 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMedBtn4.setChecked(false);
                 lightMaxBtn4.setChecked(false);
 
+                setLightSettingsForRow(row5, lightOff);
             }
         }
     };
@@ -532,12 +1551,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMedBtn4.setChecked(false);
                 lightMaxBtn4.setChecked(false);
                 lightOffBtn4.setChecked(false);
+                setLightSettingsForRow(row5, lightMin);
             } else if (lmin4) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse4();
                 allButtonsOff4();
                 lightOffBtn4.setChecked(true);
 
+                setLightSettingsForRow(row5, lightOff);
             }
         }
     };
@@ -555,12 +1576,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn4.setChecked(false);
                 lightMaxBtn4.setChecked(false);
                 lightOffBtn4.setChecked(false);
+                setLightSettingsForRow(row5, lightMed);
             }
             else if (lmed4) {
                 MainActivity.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse4();
                 allButtonsOff4();
                 lightOffBtn4.setChecked(true);
+                setLightSettingsForRow(row5, lightOff);
             }
         }
     };
@@ -578,12 +1601,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn4.setChecked(false);
                 lightMedBtn4.setChecked(false);
                 lightOffBtn4.setChecked(false);
+                setLightSettingsForRow(row5, lightMax);
             }
             else if (lmax4) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse4();
                 allButtonsOff4();
                 lightOffBtn4.setChecked(true);
+                setLightSettingsForRow(row5, lightOff);
             }
         }
     };
@@ -601,7 +1626,7 @@ public class LightingKitchen extends AppCompatActivity {
         lmax4 = false;
     }
 
-       /* next 5th row */
+       /* next 6th row */
 
     // all lights off
     protected View.OnClickListener light_all__off_Listener5 = new View.OnClickListener() {
@@ -616,7 +1641,7 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn5.setChecked(false);
                 lightMedBtn5.setChecked(false);
                 lightMaxBtn5.setChecked(false);
-
+                setLightSettingsForRow(row6, lightOff);
             }
         }
     };
@@ -634,12 +1659,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMedBtn5.setChecked(false);
                 lightMaxBtn5.setChecked(false);
                 lightOffBtn5.setChecked(false);
+                setLightSettingsForRow(row6, lightMin);
             } else if (lmin5) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse5();
                 allButtonsOff5();
                 lightOffBtn5.setChecked(true);
 
+                setLightSettingsForRow(row6, lightOff);
             }
         }
     };
@@ -657,12 +1684,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn5.setChecked(false);
                 lightMaxBtn5.setChecked(false);
                 lightOffBtn5.setChecked(false);
+                setLightSettingsForRow(row6, lightMed);
             }
             else if (lmed5) {
                 MainActivity.sendText("Command:000002117,1,0"); // all lights off
                 allBoolFalse5();
                 allButtonsOff5();
                 lightOffBtn5.setChecked(true);
+                setLightSettingsForRow(row6, lightOff);
             }
         }
     };
@@ -680,12 +1709,14 @@ public class LightingKitchen extends AppCompatActivity {
                 lightMinBtn5.setChecked(false);
                 lightMedBtn5.setChecked(false);
                 lightOffBtn5.setChecked(false);
+                setLightSettingsForRow(row6, lightMax);
             }
             else if (lmax5) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse5();
                 allButtonsOff5();
                 lightOffBtn5.setChecked(true);
+                setLightSettingsForRow(row6, lightOff);
             }
         }
     };
@@ -703,24 +1734,218 @@ public class LightingKitchen extends AppCompatActivity {
         lmax5 = false;
     }
 
+    public void setLightSettingForAllRow(int value){
+        lightSettings = getSharedPreferences(savedLight, 0);
+        SharedPreferences.Editor editor = lightSettings.edit();
+
+        switch (iMode){
+            case 1:
+                switch (value){
+                    case 0:
+                        editor.putString("Hrowallstatus", "0");
+                        editor.putString("Hrow1status", "0");
+                        editor.putString("Hrow2status", "0");
+                        editor.putString("Hrow3status", "0");
+                        editor.putString("Hrow4status", "0");
+                        editor.putString("Hrow5status", "0");
+                        editor.putString("Hrow6status", "0");
+                        editor.commit();
+                        break;
+                    case 1:
+                        editor.putString("Hrowallstatus", "1");
+                        editor.putString("Hrow1status", "1");
+                        editor.putString("Hrow2status", "1");
+                        editor.putString("Hrow3status", "1");
+                        editor.putString("Hrow4status", "1");
+                        editor.putString("Hrow5status", "1");
+                        editor.putString("Hrow6status", "1");
+                        editor.commit();
+                        break;
+                    case 2:
+                        editor.putString("Hrowallstatus", "2");
+                        editor.putString("Hrow1status", "2");
+                        editor.putString("Hrow2status", "2");
+                        editor.putString("Hrow3status", "2");
+                        editor.putString("Hrow4status", "2");
+                        editor.putString("Hrow5status", "2");
+                        editor.putString("Hrow6status", "2");
+                        editor.commit();
+                        break;
+                    case 3:
+                        editor.putString("Hrowallstatus", "3");
+                        editor.putString("Hrow1status", "3");
+                        editor.putString("Hrow2status", "3");
+                        editor.putString("Hrow3status", "3");
+                        editor.putString("Hrow4status", "3");
+                        editor.putString("Hrow5status", "3");
+                        editor.putString("Hrow6status", "3");
+                        editor.commit();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 2:
+                switch (value){
+                    case 0:
+                        editor.putString("Drowallstatus", "0");
+                        editor.putString("Drow1status", "0");
+                        editor.putString("Drow2status", "0");
+                        editor.putString("Drow3status", "0");
+                        editor.putString("Drow4status", "0");
+                        editor.putString("Drow5status", "0");
+                        editor.putString("Drow6status", "0");
+                        editor.commit();
+                        break;
+                    case 1:
+                        editor.putString("Drowallstatus", "1");
+                        editor.putString("Drow1status", "1");
+                        editor.putString("Drow2status", "1");
+                        editor.putString("Drow3status", "1");
+                        editor.putString("Drow4status", "1");
+                        editor.putString("Drow5status", "1");
+                        editor.putString("Drow6status", "1");
+                        editor.commit();
+                        break;
+                    case 2:
+                        editor.putString("Drowallstatus", "2");
+                        editor.putString("Drow1status", "2");
+                        editor.putString("Drow2status", "2");
+                        editor.putString("Drow3status", "2");
+                        editor.putString("Drow4status", "2");
+                        editor.putString("Drow5status", "2");
+                        editor.putString("Drow6status", "2");
+                        editor.commit();
+                        break;
+                    case 3:
+                        editor.putString("Drowallstatus", "3");
+                        editor.putString("Drow1status", "3");
+                        editor.putString("Drow2status", "3");
+                        editor.putString("Drow3status", "3");
+                        editor.putString("Drow4status", "3");
+                        editor.putString("Drow5status", "3");
+                        editor.putString("Drow6status", "3");
+                        editor.commit();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 3:
+                switch (value){
+                    case 0:
+                        editor.putString("Nrowallstatus", "0");
+                        editor.putString("Nrow1status", "0");
+                        editor.putString("Nrow2status", "0");
+                        editor.putString("Nrow3status", "0");
+                        editor.putString("Nrow4status", "0");
+                        editor.putString("Nrow5status", "0");
+                        editor.putString("Nrow6status", "0");
+                        editor.commit();
+                        break;
+                    case 1:
+                        editor.putString("Nrowallstatus", "1");
+                        editor.putString("Nrow1status", "1");
+                        editor.putString("Nrow2status", "1");
+                        editor.putString("Nrow3status", "1");
+                        editor.putString("Nrow4status", "1");
+                        editor.putString("Nrow5status", "1");
+                        editor.putString("Nrow6status", "1");
+                        editor.commit();
+                        break;
+                    case 2:
+                        editor.putString("Nrowallstatus", "2");
+                        editor.putString("Nrow1status", "2");
+                        editor.putString("Nrow2status", "2");
+                        editor.putString("Nrow3status", "2");
+                        editor.putString("Nrow4status", "2");
+                        editor.putString("Nrow5status", "2");
+                        editor.putString("Nrow6status", "2");
+                        editor.commit();
+                        break;
+                    case 3:
+                        editor.putString("Nrowallstatus", "3");
+                        editor.putString("Nrow1status", "3");
+                        editor.putString("Nrow2status", "3");
+                        editor.putString("Nrow3status", "3");
+                        editor.putString("Nrow4status", "3");
+                        editor.putString("Nrow5status", "3");
+                        editor.putString("Nrow6status", "3");
+                        editor.commit();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case 4:
+                switch (value){
+                    case 0:
+                        editor.putString("Arowallstatus", "0");
+                        editor.putString("Arow1status", "0");
+                        editor.putString("Arow2status", "0");
+                        editor.putString("Arow3status", "0");
+                        editor.putString("Arow4status", "0");
+                        editor.putString("Arow5status", "0");
+                        editor.putString("Arow6status", "0");
+                        editor.commit();
+                        break;
+                    case 1:
+                        editor.putString("Arowallstatus", "1");
+                        editor.putString("Arow1status", "1");
+                        editor.putString("Arow2status", "1");
+                        editor.putString("Arow3status", "1");
+                        editor.putString("Arow4status", "1");
+                        editor.putString("Arow5status", "1");
+                        editor.putString("Arow6status", "1");
+                        editor.commit();
+                        break;
+                    case 2:
+                        editor.putString("Arowallstatus", "2");
+                        editor.putString("Arow1status", "2");
+                        editor.putString("Arow2status", "2");
+                        editor.putString("Arow3status", "2");
+                        editor.putString("Arow4status", "2");
+                        editor.putString("Arow5status", "2");
+                        editor.putString("Arow6status", "2");
+                        editor.commit();
+                        break;
+                    case 3:
+                        editor.putString("Arowallstatus", "3");
+                        editor.putString("Arow1status", "3");
+                        editor.putString("Arow2status", "3");
+                        editor.putString("Arow3status", "3");
+                        editor.putString("Arow4status", "3");
+                        editor.putString("Arow5status", "3");
+                        editor.putString("Arow6status", "3");
+                        editor.commit();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+    }
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
 
     // all lights off
     protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            MainActivity.sendText("Command:000002117,1,0");
 
-                MainActivity.sendText("Command:000002117,1,0");
-                lmin6 = false;
-                lmed6 = false;
-                lmax6 = false;
-                loff6 = true;
+            setLightSettingForAllRow(lightOff);
+            lmin6 = false;
+            lmed6 = false;
+            lmax6 = false;
+            loff6 = true;
 
-                lightMinBtn6.setChecked(false);
-                lightMedBtn6.setChecked(false);
-                lightMaxBtn6.setChecked(false);
-                allButtonOffKill();
-                offSwitchoff();
+            lightMinBtn6.setChecked(false);
+            lightMedBtn6.setChecked(false);
+            lightMaxBtn6.setChecked(false);
+            allButtonOffKill();
+            offSwitchoff();
 
 
             if(loff6){
@@ -735,6 +1960,8 @@ public class LightingKitchen extends AppCompatActivity {
         public void onClick(View v) {
             if (!lmin6) {
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+
+                setLightSettingForAllRow(lightMin);
                 lmin6 = true;
                 lmed6 = false;
                 lmax6 = false;
@@ -759,9 +1986,10 @@ public class LightingKitchen extends AppCompatActivity {
                 lmin4 = true;
                 lmin5 = true;
 
-
             } else if (lmin6) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
+
+                setLightSettingForAllRow(lightOff);
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
@@ -776,6 +2004,8 @@ public class LightingKitchen extends AppCompatActivity {
         public void onClick(View v) {
             if (!lmed6) {
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+
+                setLightSettingForAllRow(lightMed);
                 lmin6 = false;
                 lmed6 = true;
                 lmax6 = false;
@@ -802,6 +2032,8 @@ public class LightingKitchen extends AppCompatActivity {
             }
             else if (lmed6) {
                 MainActivity.sendText("Command:000002117,1,0"); // all lights off
+
+                setLightSettingForAllRow(lightOff);
                 allBoolFalse6();
                 allButtonsOff6();
                 allButtonOffKill();
@@ -816,6 +2048,8 @@ public class LightingKitchen extends AppCompatActivity {
         public void onClick(View v) {
             if (!lmax6) {        //this method should only be called if there is a connection.
                 MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+
+                setLightSettingForAllRow(lightMax);
                 lmin6 = false;
                 lmed6 = false;
                 lmax6 = true;
@@ -842,6 +2076,7 @@ public class LightingKitchen extends AppCompatActivity {
             }
             else if (lmax6) {
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                setLightSettingForAllRow(lightOff);
                 allBoolFalse6();
 
                 allButtonsOff6();

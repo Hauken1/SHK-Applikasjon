@@ -4,9 +4,11 @@ package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         modeBtn = (Button) findViewById(R.id.modeButton);
         modeBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)  {
+            public void onClick(View v) {
                 goToModeView();
             }
         });
@@ -118,6 +120,12 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,4");
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
+
+        /*
+        View v = findViewById(R.id.main_id);
+        v.setBackgroundColor(Color.);
+        setContentView(v);
+        */
     }
 
     @Override
