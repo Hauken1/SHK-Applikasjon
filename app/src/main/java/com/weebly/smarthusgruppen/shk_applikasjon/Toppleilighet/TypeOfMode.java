@@ -41,7 +41,19 @@ public class TypeOfMode extends AppCompatActivity {
 
     public static final String holidayTime = "SavedHolidayTime";
 
+    public static final String savedVent = "SavedVentilation" ;
+    public static final String savedLightKitchen = "SavedLightingKitchen";
+    public static final String savedLightBathroom = "SavedLightingBathroom";
+    public static final String savedLightBedroom1 = "SavedLightingBedroom1";
+    public static final String savedLightBedroom2 = "SavedLightingBedroom2";
+    public static final String savedLightHallway = "SavedLightingHallway";
+    public static final String savedLightLivingroom = "SavedLightingLivingRoom";
+    public static final String savedLightOffice = "SavedLightingOffice" ;
+
     SharedPreferences sharedpreferences;
+
+    SharedPreferences ventInfo;
+    SharedPreferences lightSettings;
 
     private String holidayMode = "1";
     private String dayMode = "2";
@@ -132,11 +144,6 @@ public class TypeOfMode extends AppCompatActivity {
         int yDay = sharedpreferences.getInt("day", 1992);
         int hHour = sharedpreferences.getInt("hour", 1992);
         int hMin = sharedpreferences.getInt("minute", 1992);
-        Log.d("Date", yYear + " " + yMonth + " " + yDay);
-        Log.d("Time", hHour + " " + hMin);
-        Log.d("Time", hour + " " + min);
-
-
 
     }
 
@@ -328,9 +335,312 @@ public class TypeOfMode extends AppCompatActivity {
         holidayBtn.setChecked(false);
         nightBtn.setChecked(false);
         awayBtn.setChecked(false);
-        //changing lighting to day mode (minimum)
-        MainActivity.sendText("Command:000002117,1,1");
+
+        int dMode = Integer.parseInt(dayMode);
+
+        //changing lighting to day mode
+        lightSettings = getSharedPreferences(savedLightKitchen, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBathroom, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBedroom1, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBedroom2, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightHallway, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightLivingroom, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightOffice, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+
         //Changing ventilation to day mode
+        sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
+        sendVent1Command(dMode);
+        sendVent2Command(dMode);
+    }
+
+    public void getAndSendLightCommand(int mode){
+
+        String modeStatus1, modeStatus2, modeStatus3, modeStatus4, modeStatus5,
+                modeStatus6, modeStatsAll;
+        switch (mode) {
+            case 1:
+                modeStatus1 = lightSettings.getString("Hrow1status", "0");
+                modeStatus2 = lightSettings.getString("Hrow2status", "0");
+                modeStatus3 = lightSettings.getString("Hrow3status", "0");
+                modeStatus4 = lightSettings.getString("Hrow4status", "0");
+                modeStatus5 = lightSettings.getString("Hrow5status", "0");
+                modeStatus6 = lightSettings.getString("Hrow6status", "0");
+                modeStatsAll = lightSettings.getString("Hrowallstatus", "0");
+                break;
+            case 2:
+                modeStatus1 = lightSettings.getString("Drow1status", "0");
+                modeStatus2 = lightSettings.getString("Drow2status", "0");
+                modeStatus3 = lightSettings.getString("Drow3status", "0");
+                modeStatus4 = lightSettings.getString("Drow4status", "0");
+                modeStatus5 = lightSettings.getString("Drow5status", "0");
+                modeStatus6 = lightSettings.getString("Drow6status", "0");
+                modeStatsAll = lightSettings.getString("Drowallstatus", "0");
+                break;
+            case 3:
+                modeStatus1 = lightSettings.getString("Nrow1status", "0");
+                modeStatus2 = lightSettings.getString("Nrow2status", "0");
+                modeStatus3 = lightSettings.getString("Nrow3status", "0");
+                modeStatus4 = lightSettings.getString("Nrow4status", "0");
+                modeStatus5 = lightSettings.getString("Nrow5status", "0");
+                modeStatus6 = lightSettings.getString("Nrow6status", "0");
+                modeStatsAll = lightSettings.getString("Nrowallstatus", "0");
+                break;
+            case 4:
+                modeStatus1 = lightSettings.getString("Arow1status", "0");
+                modeStatus2 = lightSettings.getString("Arow2status", "0");
+                modeStatus3 = lightSettings.getString("Arow3status", "0");
+                modeStatus4 = lightSettings.getString("Arow4status", "0");
+                modeStatus5 = lightSettings.getString("Arow5status", "0");
+                modeStatus6 = lightSettings.getString("Arow6status", "0");
+                modeStatsAll = lightSettings.getString("Arowallstatus", "0");
+                break;
+            default:
+                modeStatus1 = "0";
+                modeStatus2 = "0";
+                modeStatus3 = "0";
+                modeStatus4 = "0";
+                modeStatus5 = "0";
+                modeStatus6 = "0";
+                modeStatsAll = "0";
+                break;
+        }
+
+        int sAll = Integer.parseInt(modeStatsAll);
+        int s1 = Integer.parseInt(modeStatus1);
+        int s2 = Integer.parseInt(modeStatus2);
+        int s3 = Integer.parseInt(modeStatus3);
+        int s4 = Integer.parseInt(modeStatus4);
+        int s5 = Integer.parseInt(modeStatus5);
+        int s6 = Integer.parseInt(modeStatus6);
+
+        sendLightCommand(s1,s2,s3,s4,s5,s6,sAll);
+    }
+
+    public void sendLightCommand(int s1, int s2, int s3, int s4, int s5, int s6, int sAll ){
+
+        /*
+        All these commands are temporary. All commands will be sent to the same three lights in the
+        democase. This will be the case until all lighst and dimmers is installed in the
+        smarthhome.
+
+         */
+
+        switch (s1){
+            case 0: //row 1 off
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+            case 1: //row 1 min
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                break;
+            case 2: //row 2 med
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                break;
+            case 3: //row 1 max
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                break;
+            default:
+                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                break;
+        }
+
+        switch (s2){
+            case 0: //row 2 off
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+            case 1: //row 2 min
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                break;
+            case 2: //row 2 med
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                break;
+            case 3: //row 2 max
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                break;
+            default: //not set
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+        }
+
+        switch (s3){
+            case 0: //row 3 off
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+            case 1: //row 3 min
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                break;
+            case 2: //row 3 med
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                break;
+            case 3: //row 3 max
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                break;
+            default: //not set
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+        }
+
+        switch (s4){
+            case 0: //row 4 off
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+            case 1: //row 4 min
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                break;
+            case 2: //row 4 med
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                break;
+            case 3: //row 4 max
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                break;
+            default: //not set
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+        }
+
+        switch (s5){
+            case 0: //row 5 off
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+            case 1: //row 5 min
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                break;
+            case 2: //row 5 med
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                break;
+            case 3: //row 5 max
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                break;
+            default: //not set
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+        }
+        switch (s6){
+            case 0: //row 6 off
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+            case 1: //row 6 min
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                break;
+            case 2: //row 6 med
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                break;
+            case 3: //row 6 max
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                break;
+            default: //not set
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+        }
+
+    }
+    public void sendVent1Command(int mode) {
+
+        /*
+        All these commands are temporary. All commands will be sent to the same relé in the
+        democase. This will be the case until all rele and ventilationssytems is installed in the
+        smarthhome.
+        */
+
+        int s1 = 0;
+        String status1;
+        //Retrieving the right value based on mode
+        switch (mode){
+            case 1:
+                status1 = sharedpreferences.getString("Hvent1status", "0");
+                s1 = Integer.parseInt(status1);
+                break;
+            case 2:
+                status1 = sharedpreferences.getString("Dvent1status", "0");
+                s1 = Integer.parseInt(status1);
+                break;
+            case 3:
+                status1 = sharedpreferences.getString("Nvent1status", "0");
+                s1 = Integer.parseInt(status1);
+                break;
+            case 4:
+                status1 = sharedpreferences.getString("Avent1status", "0");
+                s1 = Integer.parseInt(status1);
+                break;
+        }
+
+        //Sending commands for ventilation 1
+        switch (s1) {
+            case 0:
+                MainActivity.sendText("Command:000002114,1,0");             // turns off 1 and 2
+                break;
+            case 1:
+                MainActivity.sendText("Command:000049114,2,0,0,1");     // turns off level 2
+                MainActivity.sendText("Command:000049114,1,100,0,1");   // turns on level 1
+                break;
+            case 2:
+                MainActivity.sendText("Command:000049114,1,0,0,1");      // turns off level 1
+                MainActivity.sendText("Command:000049114,2,100,0,1");     // turns on level 2
+                break;
+            case 3:
+                MainActivity.sendText("Command:000002114,1,1");      // turns on level 1 and 2
+                break;
+            default:
+                break;
+        }
+
+    }
+    public void sendVent2Command(int mode) {
+
+         /*
+        All these commands are temporary. All commands will be sent to the same relé in the
+        democase. This will be the case until all rele and ventilationssytems is installed in the
+        smarthhome.
+        */
+
+        int s2 = 0;
+        String status2;
+        //Retrieving the right value based on mode
+        switch (mode){
+            case 1:
+                status2 = sharedpreferences.getString("Hvent2status", "0");
+                s2 = Integer.parseInt(status2);
+                break;
+            case 2:
+                status2 = sharedpreferences.getString("Dvent2status", "0");
+                s2 = Integer.parseInt(status2);
+                break;
+            case 3:
+                status2 = sharedpreferences.getString("Nvent2status", "0");
+                s2 = Integer.parseInt(status2);
+                break;
+            case 4:
+                status2 = sharedpreferences.getString("Avent2status", "0");
+                s2 = Integer.parseInt(status2);
+                break;
+        }
+
+        //Sending commands for ventilation 2
+        //Need to change these to match the right values of the Smarthome (subnet, adr)
+        switch (s2) {
+            case 0:
+                MainActivity.sendText("Command:000002114,1,0");             // turns off 1 and 2
+                break;
+            case 1:
+                MainActivity.sendText("Command:000049114,2,0,0,1");     // turns off level 2
+                MainActivity.sendText("Command:000049114,1,100,0,1");   // turns on level 1
+                break;
+            case 2:
+                MainActivity.sendText("Command:000049114,1,0,0,1");      // turns off level 1
+                MainActivity.sendText("Command:000049114,2,100,0,1");     // turns on level 2
+                break;
+            case 3:
+                MainActivity.sendText("Command:000002114,1,1");      // turns on level 1 and 2
+                break;
+            default:
+                break;
+        }
 
     }
     public void night() {
@@ -478,10 +788,28 @@ public class TypeOfMode extends AppCompatActivity {
         holidayBtn.setChecked(false);
         dayBtn.setChecked(false);
         awayBtn.setChecked(false);
-        //changing lighting to night mode (medium)
-        MainActivity.sendText("Command:000002117,1,2");
-        //Changing ventilation to day mode
 
+        int dMode = Integer.parseInt(nightMode);
+        //changing lighting to night mode
+        lightSettings = getSharedPreferences(savedLightKitchen, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBathroom, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBedroom1, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBedroom2, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightHallway, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightLivingroom, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightOffice, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+
+        //Changing ventilation to night mode
+        sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
+        sendVent1Command(dMode);
+        sendVent2Command(dMode);
 
     }
     public void away(){
@@ -629,9 +957,29 @@ public class TypeOfMode extends AppCompatActivity {
         holidayBtn.setChecked(false);
         dayBtn.setChecked(false);
         nightBtn.setChecked(false);
-        //changing lighting to away mode (off)
-        MainActivity.sendText("Command:000002117,1,0");
-        //Changing ventilation to day mode
+
+        int dMode = Integer.parseInt(awayMode);
+
+        //changing lighting to away mode
+        lightSettings = getSharedPreferences(savedLightKitchen, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBathroom, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBedroom1, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBedroom2, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightHallway, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightLivingroom, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightOffice, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+
+        //Changing ventilation to away mode
+        sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
+        sendVent1Command(dMode);
+        sendVent2Command(dMode);
     }
 
     final private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
@@ -814,9 +1162,29 @@ public class TypeOfMode extends AppCompatActivity {
         nightBtn.setChecked(false);
         dayBtn.setChecked(false);
         awayBtn.setChecked(false);
-        //changing lighting to holiday mode (off)
-        MainActivity.sendText("Command:000002117,1,0");
-        //Changing ventilation to day mode
+
+        int dMode = Integer.parseInt(holidayMode);
+
+        //changing lighting to holiday mode
+        lightSettings = getSharedPreferences(savedLightKitchen, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBathroom, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBedroom1, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightBedroom2, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightHallway, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightLivingroom, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+        lightSettings = getSharedPreferences(savedLightOffice, Context.MODE_PRIVATE);
+        getAndSendLightCommand(dMode);
+
+        //Changing ventilation to holiday mode
+        sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
+        sendVent1Command(dMode);
+        sendVent2Command(dMode);
 
         Thread hThread = new Thread(new Runnable() {
             public void run() {
