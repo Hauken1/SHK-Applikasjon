@@ -23,7 +23,7 @@ public class Ventilation_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ventilation);
+        setContentView(R.layout.activity_ventilation_2);
 
 
 

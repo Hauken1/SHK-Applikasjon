@@ -44,7 +44,7 @@ public class LightingOffice_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lighting_office);
+        setContentView(R.layout.activity_lighting_office_2);
 
         setupGUI();
     }
@@ -409,43 +409,43 @@ public class LightingOffice_2 extends AppCompatActivity {
     }
 
     public void setupGUI() {
-        lightOffBtn1 = (ToggleButton) findViewById(R.id.toggle_01);
+        lightOffBtn1 = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn1.setOnClickListener(light_all__off_Listener1);
 
-        lightMinBtn1 = (ToggleButton) findViewById(R.id.toggle_301);
+        lightMinBtn1 = (ToggleButton) findViewById(R.id.toggle_30);
         lightMinBtn1.setOnClickListener(light_all_min1);
 
-        lightMedBtn1 = (ToggleButton) findViewById(R.id.toggle_701);
+        lightMedBtn1 = (ToggleButton) findViewById(R.id.toggle_70);
         lightMedBtn1.setOnClickListener(light_all_med1);
 
-        lightMaxBtn1 = (ToggleButton) findViewById(R.id.toggle_1001);
+        lightMaxBtn1 = (ToggleButton) findViewById(R.id.toggle_100);
         lightMaxBtn1.setOnClickListener(light_all_Listener1);
 
 
-        lightOffBtn2 = (ToggleButton) findViewById(R.id.toggle_02);
+        lightOffBtn2 = (ToggleButton) findViewById(R.id.toggle_01);
         lightOffBtn2.setOnClickListener(light_all__off_Listener2);
 
-        lightMinBtn2 = (ToggleButton) findViewById(R.id.toggle_302);
+        lightMinBtn2 = (ToggleButton) findViewById(R.id.toggle_301);
         lightMinBtn2.setOnClickListener(light_all_min2);
 
-        lightMedBtn2 = (ToggleButton) findViewById(R.id.toggle_702);
+        lightMedBtn2 = (ToggleButton) findViewById(R.id.toggle_701);
         lightMedBtn2.setOnClickListener(light_all_med2);
 
-        lightMaxBtn2 = (ToggleButton) findViewById(R.id.toggle_1002);
+        lightMaxBtn2 = (ToggleButton) findViewById(R.id.toggle_1001);
         lightMaxBtn2.setOnClickListener(light_all_Listener2);
 
 
 
-        lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_06);
+        lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_02);
         lightOffBtn6.setOnClickListener(light_all__off_Listener6);
 
-        lightMinBtn6 = (ToggleButton) findViewById(R.id.toggle_306);
+        lightMinBtn6 = (ToggleButton) findViewById(R.id.toggle_302);
         lightMinBtn6.setOnClickListener(light_all_min6);
 
-        lightMedBtn6 = (ToggleButton) findViewById(R.id.toggle_706);
+        lightMedBtn6 = (ToggleButton) findViewById(R.id.toggle_702);
         lightMedBtn6.setOnClickListener(light_all_med6);
 
-        lightMaxBtn6 = (ToggleButton) findViewById(R.id.toggle_1006);
+        lightMaxBtn6 = (ToggleButton) findViewById(R.id.toggle_1002);
         lightMaxBtn6.setOnClickListener(light_all_Listener6);
 
         //home button
