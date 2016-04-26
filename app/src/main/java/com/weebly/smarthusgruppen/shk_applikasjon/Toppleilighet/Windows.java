@@ -30,10 +30,10 @@ public class Windows extends AppCompatActivity {
     TextView degreeOpen1;
     TextView degreeOpen2;
     TextView degreeOpen3;
-    Float winOpeningTime1 = 150f;
-    Float winOpeningTime2 = 120f;
-    Float winOpeningTime3 = 140f;
-    Float winOpener = 4.5f;
+    int winOpeningTime1 = 60;
+    int  winOpeningTime2 = 40;
+    int  winOpeningTime3 = 20;
+    int winOpener = 5;
     Boolean stopping1 = true;
     Boolean stopping2 = true;
     Boolean stopping3 = true;
@@ -41,15 +41,9 @@ public class Windows extends AppCompatActivity {
     Boolean chk2 = true;
     Boolean chk3 = true;
     Handler gHandler;
-    Boolean thrOpen1 = true;
-    Boolean thrOpen2 = true;
-    Boolean thrOpen3 = true;
-    Boolean thrClose1 = true;
-    Boolean thrClose2 = true;
-    Boolean thrClose3 = true;
 
-    int min = 180;
-    int max = 90;
+    int min = 100;
+    int max = 0;
 
 
 
@@ -302,12 +296,14 @@ public class Windows extends AppCompatActivity {
                 w3stop = false;
                 stopping3 = true;
                 chk3 = true;
+
+
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
 
-                                    windowOpening(winOpeningTime3, 3, chk3);
+                            windowOpening(winOpeningTime3, 3, chk3);
 
                         }
                         catch(Exception e) {
@@ -316,6 +312,8 @@ public class Windows extends AppCompatActivity {
                     }
                 });
                 thread.start();
+
+
                 win3Close.setChecked(false);
                 win3Stop.setChecked(false);
 
@@ -337,20 +335,22 @@ public class Windows extends AppCompatActivity {
                 stopping3 = true;
                 chk3 = false;
 
+                // if thread31 running, kill it and start this one instead
+
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-
                             windowOpening(winOpeningTime3, 3, chk3);
-
                         }
                         catch(Exception e) {
                             e.printStackTrace();
                         }
                     }
                 });
+
                 thread.start();
+
                 win3Open.setChecked(false);
                 win3Stop.setChecked(false);
 
@@ -401,10 +401,11 @@ public class Windows extends AppCompatActivity {
     }
     // parameters window = current degree of open/closed, ID which window, check = opening or closing?
     // Function for displaying how far each window is currently opened
-    public void windowOpening(float window, final int id, boolean check) {
+    public void windowOpening(int window, final int id, boolean check) {
 
         for(int i = 0; i< 20; i++) {
             if((stopping1 && (id == 1)) || (stopping2 && (id == 2)) || (stopping3 && (id == 3))) {
+
                 try {
                     //sending the actual Thread of execution to sleep X milliseconds
                     Thread.sleep(1000);
@@ -423,23 +424,23 @@ public class Windows extends AppCompatActivity {
                         public void run() {
                             switch(id) {
                                 case 1:
-                                    String temp1 = String.valueOf(tempwin + "°");
+                                    String temp1 = String.valueOf(tempwin + "%");
                                     if(tempwin < max) {
-                                        degreeOpen1.setText(max + "°");
+                                        degreeOpen1.setText(max + "%");
                                     }
                                     else degreeOpen1.setText(temp1);
                                     break;
                                 case 2:
-                                    String temp2 = String.valueOf(tempwin + "°");
+                                    String temp2 = String.valueOf(tempwin + "%");
                                     if(tempwin < max) {
-                                        degreeOpen2.setText(max + "°");
+                                        degreeOpen2.setText(max + "%");
                                     }
                                     else degreeOpen2.setText(temp2);
                                     break;
                                 case 3:
-                                    String temp3 = String.valueOf(tempwin + "°");
+                                    String temp3 = String.valueOf(tempwin + "%");
                                     if(tempwin < max) {
-                                        degreeOpen3.setText(max + "°");
+                                        degreeOpen3.setText(max + "%");
                                     }
                                     else degreeOpen3.setText(temp3);
                                     break;
@@ -452,21 +453,21 @@ public class Windows extends AppCompatActivity {
                         case 1:
                             winOpeningTime1 = window;
                             if(max > window) {
-                                winOpeningTime1 = 90.0f;
+                                winOpeningTime1 = max;
                             }
                             Log.d("updating ", "variable 1 "+ winOpeningTime1);
                             break;
                         case 2:
                             winOpeningTime2 = window;
                             if(max > window) {
-                                winOpeningTime1 = 90.0f;
+                                winOpeningTime1 = max;
                             }
-                            Log.d("udpdating ", "variable 2 "+ winOpeningTime2);
+                            Log.d("updating ", "variable 2 "+ winOpeningTime2);
                             break;
                         case 3:
                             winOpeningTime3 = window;
                             if(max > window) {
-                                winOpeningTime1 = 90.0f;
+                                winOpeningTime1 = max;
                             }
                             Log.d("updating ", "variable 3 "+ winOpeningTime3);
                             break;
@@ -483,30 +484,30 @@ public class Windows extends AppCompatActivity {
                     window += winOpener;
                     Log.d("closing window.." , "Closing Window...." + window);
 
-                    final float tempwin = window;
+                    final int tempwin = window;
                     // always updating display
                     gHandler.post(new Runnable() {
                         @Override
                         public void run() {
                             switch(id) {
                                 case 1:
-                                    String temp1 = String.valueOf(tempwin + "°");
+                                    String temp1 = String.valueOf(tempwin + "%");
                                     if(tempwin > min) {
-                                        degreeOpen1.setText(min + "°");
+                                        degreeOpen1.setText(min + "%");
                                     }
                                     else degreeOpen1.setText(temp1);
                                     break;
                                 case 2:
-                                    String temp2 = String.valueOf(tempwin + "°");
+                                    String temp2 = String.valueOf(tempwin + "%");
                                     if(tempwin > min) {
-                                        degreeOpen2.setText(min + "°");
+                                        degreeOpen2.setText(min + "%");
                                     }
                                     else degreeOpen2.setText(temp2);
                                     break;
                                 case 3:
-                                    String temp3 = String.valueOf(tempwin + "°");
+                                    String temp3 = String.valueOf(tempwin + "%");
                                     if(tempwin > min) {
-                                        degreeOpen3.setText(min + "°");
+                                        degreeOpen3.setText(min + "%");
                                     }
                                     else degreeOpen3.setText(temp3);
                                     break;
@@ -518,21 +519,21 @@ public class Windows extends AppCompatActivity {
                         case 1:
                             winOpeningTime1 = window;
                             if(window > min) {
-                                winOpeningTime1 = 180.0f;
+                                winOpeningTime1 = min;
                             }
                             Log.d("updating", "variable 1 "+ winOpeningTime1);
                             break;
                         case 2:
                             winOpeningTime2 = window;
                             if(window > min) {
-                                winOpeningTime2 = 180.0f;
+                                winOpeningTime2 = min;
                             }
                             Log.d("updating ", "variable 2 "+ winOpeningTime2);
                             break;
                         case 3:
                             winOpeningTime3 = window;
                             if(window > min) {
-                                winOpeningTime3 = 180.0f;
+                                winOpeningTime3 = min;
                             }
                             Log.d("updating ", "variable 3 "+ winOpeningTime3);
                             break;
@@ -652,13 +653,13 @@ public class Windows extends AppCompatActivity {
         /* These textviews will show on the screen to indicate to what degree
          the window is opened */
         degreeOpen1 = (TextView) findViewById(R.id.win4_button);
-        String temp1 = String.valueOf(winOpeningTime1 + "°");
+        String temp1 = String.valueOf(winOpeningTime1 + "%");
         degreeOpen1.setText(temp1);
         degreeOpen2 = (TextView) findViewById(R.id.win8_button);
-        String temp2 = String.valueOf(winOpeningTime2 + "°");
+        String temp2 = String.valueOf(winOpeningTime2 + "%");
         degreeOpen2.setText(temp2);
         degreeOpen3 = (TextView) findViewById(R.id.win12_button);
-        String temp3 = String.valueOf(winOpeningTime3 + "°");
+        String temp3 = String.valueOf(winOpeningTime3 + "%");
         degreeOpen3.setText(temp3);
 
         sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);

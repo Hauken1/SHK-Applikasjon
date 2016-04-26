@@ -16,16 +16,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:layout_width="350dp"
-        android:layout_height="70dp"
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/light_control_button"
         android:id="@+id/lightButton"
-        android:textSize="25dp"
-        android:layout_marginTop="29dp"
-        android:layout_below="@+id/receivedText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:background="@mipmap/Main_lys"
+        android:foregroundGravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -39,12 +39,11 @@
 
 
 
-    <Button
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:text="@string/modes"
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/Main_modus"
         android:id="@+id/modeButton"
-        android:textSize="25dp"
         android:layout_below="@+id/climateButton"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
