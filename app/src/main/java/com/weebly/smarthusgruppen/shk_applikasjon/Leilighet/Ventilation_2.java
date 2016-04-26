@@ -1,10 +1,12 @@
 package com.weebly.smarthusgruppen.shk_applikasjon.Leilighet;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
@@ -20,6 +22,35 @@ public class Ventilation_2 extends AppCompatActivity {
     boolean ch1 = false;        // channel 1 = level 1
     boolean ch2 = false;        // channel 2 = level 2
     boolean ch3 = false;        // channel 3 = level 3
+
+    public static final String savedVent = "SavedVentilation_2";
+    //Does matter what saved temp is used, all is set to the same mode
+    public static final String savedTemp = "1SavedTemperature_2";
+    public static final String savedColor = "SavedBackgroundColor_2";
+
+    SharedPreferences sharedpreferences;
+    public SharedPreferences ventilationSettings;
+    public SharedPreferences tempSetting;
+    String sMode;
+    int iMode;
+
+    int level0;
+    int level1;
+    int level2;
+    int level3;
+
+    public static final String DAY = "Dag";
+    public static final String NIGHT = "Natt";
+    public static final String AWAY = "Borte";
+    public static final String HOLIDAY = "Ferie";
+
+    public static final int iDAY = 2;
+    public static final int iNIGHT = 3;
+    public static final int iAWAY = 4;
+    public static final int iHOLIDAY = 1;
+
+    TextView mode_View;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

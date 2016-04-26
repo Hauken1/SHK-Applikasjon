@@ -12,12 +12,12 @@ import android.widget.ToggleButton;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 public class TypeOfMode_2 extends AppCompatActivity {
-    public static final String savedTemp1 = "1SavedTemperature";
-    public static final String savedTemp2 = "2SavedTemperature";
-    public static final String savedTemp3 = "3SavedTemperature";
-    public static final String savedTemp4 = "4SavedTemperature";
-    public static final String savedTemp5 = "5SavedTemperature";
-    public static final String savedTemp6 = "6SavedTemperature";
+    public static final String savedTemp1 = "1SavedTemperature_2";
+    public static final String savedTemp2 = "2SavedTemperature_2";
+    public static final String savedTemp3 = "3SavedTemperature_2";
+    public static final String savedTemp4 = "4SavedTemperature_2";
+    public static final String savedTemp5 = "5SavedTemperature_2";
+    public static final String savedTemp6 = "6SavedTemperature_2";
 
     SharedPreferences sharedpreferences;
 

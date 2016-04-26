@@ -27,12 +27,12 @@ public class Temperature_2 extends AppCompatActivity {
     ImageButton downBtn4;
 
 
-    public static final String savedTemp1 = "1SavedTemperature" ;
-    public static final String savedTemp2 = "2SavedTemperature" ;
-    public static final String savedTemp3 = "3SavedTemperature" ;
-    public static final String savedTemp4 = "4SavedTemperature" ;
-    public static final String savedTemp5 = "5SavedTemperature" ;
-    public static final String savedTemp6 = "6SavedTemperature" ;
+    public static final String savedTemp1 = "1SavedTemperature_2" ;
+    public static final String savedTemp2 = "2SavedTemperature_2" ;
+    public static final String savedTemp3 = "3SavedTemperature_2" ;
+    public static final String savedTemp4 = "4SavedTemperature_2" ;
+    public static final String savedTemp5 = "5SavedTemperature_2" ;
+    public static final String savedTemp6 = "6SavedTemperature_2" ;
 
     TextView stemp1;
     TextView stemp2;
@@ -46,6 +46,24 @@ public class Temperature_2 extends AppCompatActivity {
     TextView ctemp4;
     TextView ctemp5;
     TextView ctemp6;
+
+    TextView mode_View;
+
+    public static final String DAY = "Dag";
+    public static final String NIGHT = "Natt";
+    public static final String AWAY = "Borte";
+    public static final String HOLIDAY = "Ferie";
+
+    public static final int iDAY = 2;
+    public static final int iNIGHT = 3;
+    public static final int iAWAY = 4;
+    public static final int iHOLIDAY = 1;
+
+    public static final String savedTemp = "1SavedTemperature_2";
+    public static final String savedColor = "SavedBackgroundColor_2";
+
+    SharedPreferences sharedpreferences;
+    public SharedPreferences tempSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

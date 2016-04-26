@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:background="@mipmap/klima_temp"
         android:id="@+id/heating_view_button"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="115dp"
         android:layout_below="@+id/home_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -38,4 +38,17 @@
         android:layout_below="@+id/heating_view_button"
         android:layout_alignLeft="@+id/heating_view_button"
         android:layout_alignStart="@+id/heating_view_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Modus:"
+        android:id="@+id/mode_view"
+        android:layout_below="@+id/home_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_columnSpan="2"
+        android:layout_gravity="center"/>
+
 </RelativeLayout>

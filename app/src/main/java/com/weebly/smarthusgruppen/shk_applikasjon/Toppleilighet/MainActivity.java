@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
        setupGUI();
 
-
         startMessageListener();
         MainActivity.sendText("Command:007262112,1");
         MainActivity.sendText("Command:007262112,2");
