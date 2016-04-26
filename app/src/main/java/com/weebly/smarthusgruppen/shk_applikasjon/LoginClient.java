@@ -5,8 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
-import android.net.Uri;
+
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -18,12 +17,10 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Button;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
+
 import com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.MainActivity_3;
 import com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.MainActivity_2;
 import com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.MainActivity;
@@ -128,15 +125,7 @@ public class LoginClient extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        /*
-        try {
-            output.write("Disconnect");
-            output.newLine();
-            output.flush();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        */
+
     }
 
     public static Socket returnConnection() {
@@ -194,14 +183,6 @@ public class LoginClient extends AppCompatActivity {
                                 !newP.isEmpty() && !confirmP.isEmpty() && newP.equals(confirmP)) {
                             final String code = "ChangePW";
 
-                            /*
-                            final ProgressDialog pDialog = new ProgressDialog(LoginClient.this);
-                            pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                            pDialog.setMessage("Endrer passord..");
-                            pDialog.setIndeterminate(true);
-                            pDialog.setCancelable(false);
-                            pDialog.show();
-                            */
 
                             gHandler.post(new Runnable() {
                                 @Override
@@ -524,7 +505,7 @@ public class LoginClient extends AppCompatActivity {
 
     public void goToHome3() {
         Log.d("Logger inn", "Hybel");
-        Intent intent = new Intent(this, MainActivity_2.class);
+        Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
 
     }
@@ -614,55 +595,5 @@ public class LoginClient extends AppCompatActivity {
         });
     }
 
-/*
-    public class ClientThread implements Runnable {
-
-        public void run() {
-            try {
-                Log.d("ClientActivity", "C: Connecting...");
-                //while(!connected) {
-                    connectToServer();
-
-                // socket.close();
-                    Thread.sleep(50);
-                //}
-
-            } catch (Exception e) {
-                MainActivity.sendText("Disconnect");
-                Log.e("ClientActivity", "C: Error", e);
-            }
-        }
-    }
-/
-        private void connectToServer() {
-            try {
-
-                if(new Socket(InetAddress.getByName(hostName), serverPort).isConnected()) {
-                    connection = new Socket(InetAddress.getByName(hostName), serverPort);
-                    Log.d("ClientActivity", "C: Connected to server.");
-                    output = new BufferedWriter(new OutputStreamWriter(
-                            connection.getOutputStream()));
-                    input = new BufferedReader(new InputStreamReader(
-                            connection.getInputStream()));
-                    connected = true;
-                }
-                else {
-                    new AlertDialog.Builder(LoginClient.this)
-                            .setTitle("Unable to connect to server")
-                            .setMessage("Check your internet connection")
-                            .setCancelable(false)
-                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            }).create().show();
-                }
-            } catch (UnknownHostException e) {
-
-            } catch (IOException e) {
-            }
-        }
-
-*/
 
 }

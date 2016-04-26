@@ -55,9 +55,11 @@ public class Ventilation_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventilation_2);
+        setupGUI();
+        
+    }
 
-
-
+    public void setupGUI() {
         lvlOneBtn = (ToggleButton) findViewById(R.id.lvl12_button);
         lvlOneBtn.setOnClickListener(toggle_level1);
 
@@ -77,10 +79,7 @@ public class Ventilation_2 extends AppCompatActivity {
                 goToHome();
             }
         });
-
-        
     }
-
     // toggle level one
     protected View.OnClickListener toggle_level1 = new View.OnClickListener() {
         @Override

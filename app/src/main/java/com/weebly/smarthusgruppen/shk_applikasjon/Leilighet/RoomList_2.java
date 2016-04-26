@@ -45,7 +45,11 @@ public class RoomList_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list_2);
+        setupGUI();
 
+        }
+
+    public void setupGUI() {
 
         // kitchen button
         kitchenBtn = (Button) findViewById(R.id.room1_button);
@@ -63,8 +67,6 @@ public class RoomList_2 extends AppCompatActivity {
             }
         });
 
-
-
         // bedroom 1 button
         bed1Btn = (Button) findViewById(R.id.room4_button);
         bed1Btn.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +83,7 @@ public class RoomList_2 extends AppCompatActivity {
             }
         });
 
-
-        // office button
+         // office button
         officeBtn = (Button) findViewById(R.id.room7_button);
         officeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
@@ -105,11 +106,7 @@ public class RoomList_2 extends AppCompatActivity {
                 goToHome();
             }
         });
-
-
-
-        }
-
+    }
 
     public void goToKitchenLights() {
         Intent intent = new Intent(this, LightingKitchen_2.class);

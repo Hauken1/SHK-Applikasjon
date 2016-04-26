@@ -43,74 +43,77 @@ public class Climate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate);
+        setupGUI();
 
-        mode_View = (TextView) findViewById(R.id.mode_view);
-
-        try {
-            tempSetting = getSharedPreferences(savedTemp, 0);
-            String mode = tempSetting.getString("mode", "2");
-            int imode = Integer.parseInt(mode);
-            switch (imode) {
-                case iHOLIDAY:
-                    mode = HOLIDAY;
-                    break;
-                case iDAY:
-                    mode = DAY;
-                    break;
-                case iNIGHT:
-                    mode = NIGHT;
-                    break;
-                case iAWAY:
-                    mode = AWAY;
-                    break;
-                default:
-                    mode = DAY;
-                    break;
-            }
-            mode_View.setGravity(Gravity.CENTER);
-            mode_View.setText("Modus: " + mode);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        // temp button
-        tempBtn = (ImageButton) findViewById(R.id.heating_view_button);
-        tempBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goToTemperatureView();
-            }
-        });
-
-        // vent button
-        ventBtn = (ImageButton) findViewById(R.id.ventilation_view_button);
-        ventBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goToVentilationView();
-            }
-        });
-
-        //home button
-        homeBtn = (ImageButton) findViewById(R.id.home_button);
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)  {
-                goToHome();
-            }
-        });
-
-
-        sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
-
-        int value1 = sharedpreferences.getInt("value1", 0);
-        int value2 = sharedpreferences.getInt("value2", 0);
-        int value3 = sharedpreferences.getInt("value3", 0);
-        int value4 = sharedpreferences.getInt("set", 0);
-        if(value4 != 0){
-            View v = findViewById(R.id.climate_id1);
-            v.setBackgroundColor(Color.rgb(value1, value3, value2));
-            setContentView(v);
-        }
     }
 
+public void setupGUI() {
+    mode_View = (TextView) findViewById(R.id.mode_view);
+
+    try {
+        tempSetting = getSharedPreferences(savedTemp, 0);
+        String mode = tempSetting.getString("mode", "2");
+        int imode = Integer.parseInt(mode);
+        switch (imode) {
+            case iHOLIDAY:
+                mode = HOLIDAY;
+                break;
+            case iDAY:
+                mode = DAY;
+                break;
+            case iNIGHT:
+                mode = NIGHT;
+                break;
+            case iAWAY:
+                mode = AWAY;
+                break;
+            default:
+                mode = DAY;
+                break;
+        }
+        mode_View.setGravity(Gravity.CENTER);
+        mode_View.setText("Modus: " + mode);
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
+    // temp button
+    tempBtn = (ImageButton) findViewById(R.id.heating_view_button);
+    tempBtn.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            goToTemperatureView();
+        }
+    });
+
+    // vent button
+    ventBtn = (ImageButton) findViewById(R.id.ventilation_view_button);
+    ventBtn.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            goToVentilationView();
+        }
+    });
+
+    //home button
+    homeBtn = (ImageButton) findViewById(R.id.home_button);
+    homeBtn.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v)  {
+            goToHome();
+        }
+    });
+
+
+    sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
+
+    int value1 = sharedpreferences.getInt("value1", 0);
+    int value2 = sharedpreferences.getInt("value2", 0);
+    int value3 = sharedpreferences.getInt("value3", 0);
+    int value4 = sharedpreferences.getInt("set", 0);
+    if(value4 != 0){
+        View v = findViewById(R.id.climate_id1);
+        v.setBackgroundColor(Color.rgb(value1, value3, value2));
+        setContentView(v);
+    }
+}
     public void goToTemperatureView() {
         Intent intent = new Intent(this, Temperature.class);
         startActivity(intent);

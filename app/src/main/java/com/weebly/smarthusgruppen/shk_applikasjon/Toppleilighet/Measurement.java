@@ -20,7 +20,11 @@ public class Measurement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurement);
+        setupGUI();
 
+    }
+
+    public void setupGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
         homeBtn.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +44,6 @@ public class Measurement extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);

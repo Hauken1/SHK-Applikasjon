@@ -48,7 +48,11 @@ public class RoomList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
+        setupGUI();
 
+        }
+
+    public void setupGUI() {
         mode_View = (TextView) findViewById(R.id.mode_view);
 
         try {
@@ -155,9 +159,7 @@ public class RoomList extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
-        }
-
+    }
 
     public void goToKitchenLights() {
         Intent intent = new Intent(this, LightingKitchen.class);

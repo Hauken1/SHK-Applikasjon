@@ -66,7 +66,7 @@ public class MainActivity_3 extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-    setupGUI();
+        setupGUI();
         startMessageListener();
         MainActivity_3.sendText("Command:007262112,1");
         MainActivity_3.sendText("Command:007262112,2");

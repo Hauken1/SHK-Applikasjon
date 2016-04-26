@@ -61,7 +61,13 @@ public class LightingBedroom2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_bedroom2);
+        setupGUI();
 
+
+        displayLight();
+    }
+
+    public void setupGUI() {
         lightOffBtn = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn.setOnClickListener(light_all__off_Listener);
 
@@ -122,8 +128,6 @@ public class LightingBedroom2 extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
-        displayLight();
     }
 
     public void displayLight() {

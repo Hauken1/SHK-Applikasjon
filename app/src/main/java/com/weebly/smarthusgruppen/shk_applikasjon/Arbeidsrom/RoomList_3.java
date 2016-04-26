@@ -23,7 +23,12 @@ public class RoomList_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list_3);
 
+        setupGUI();
 
+
+        }
+
+    public void setupGUI(){
         // kitchen button
         kitchenBtn = (Button) findViewById(R.id.room1_button);
         kitchenBtn.setOnClickListener(new View.OnClickListener() {
@@ -48,8 +53,7 @@ public class RoomList_3 extends AppCompatActivity {
                 goToHome();
             }
         });
-
-        }
+    }
 
 
     public void goToKitchenLights() {

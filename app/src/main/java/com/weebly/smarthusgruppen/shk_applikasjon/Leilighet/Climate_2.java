@@ -40,6 +40,11 @@ public class Climate_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate_2);
+      setupGUI();
+
+
+    }
+    public void setupGUI() {
         // temp button
         tempBtn = (ImageButton) findViewById(R.id.heating_view_button);
         tempBtn.setOnClickListener(new View.OnClickListener() {
@@ -63,8 +68,6 @@ public class Climate_2 extends AppCompatActivity {
                 goToHome();
             }
         });
-
-
     }
 
     public void goToTemperatureView() {
