@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -32,9 +33,9 @@ public class MainActivity_3 extends AppCompatActivity {
     static BufferedWriter output;
     static BufferedReader input;
     TextView receivedText;
-    Button lightBtn;
-    Button climateBtn;
-    Button modeBtn;
+    ImageButton lightBtn;
+    ImageButton climateBtn;
+    ImageButton modeBtn;
     static Socket connection;
 
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
@@ -47,7 +48,6 @@ public class MainActivity_3 extends AppCompatActivity {
     public static final String savedTemp6 = "6SavedTemperature";
 
     SharedPreferences sharedpreferences;
-    OutputStream os;
 
 
     /**
@@ -65,11 +65,10 @@ public class MainActivity_3 extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-       /* connectBtn = (Button) findViewById(R.id.connectButton);
-        connectBtn.setOnClickListener(connectListener);*/
+
 
         // light control button
-        lightBtn = (Button) findViewById(R.id.lightButton);
+        lightBtn = (ImageButton) findViewById(R.id.lightButton);
         lightBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +76,7 @@ public class MainActivity_3 extends AppCompatActivity {
             }
         });
         // climate button
-        climateBtn = (Button) findViewById(R.id.climateButton);
+        climateBtn = (ImageButton) findViewById(R.id.climateButton);
         climateBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 goToClimateView();
@@ -85,7 +84,7 @@ public class MainActivity_3 extends AppCompatActivity {
         });
 
 
-        modeBtn = (Button) findViewById(R.id.modeButton);
+        modeBtn = (ImageButton) findViewById(R.id.modeButton);
         modeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 goToModeView();

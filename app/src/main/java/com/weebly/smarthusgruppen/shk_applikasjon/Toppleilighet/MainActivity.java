@@ -23,6 +23,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -52,12 +54,14 @@ public class MainActivity extends AppCompatActivity {
     static BufferedReader input;
     BufferedReader sysIn;
     TextView receivedText;
-    Button lightBtn;
-    Button climateBtn;
-    Button windowsBtn;
-    Button measureBtn;
-    Button modeBtn;
+
     ImageButton settings;
+    ImageButton lightBtn;
+    ImageButton climateBtn;
+    ImageButton windowsBtn;
+    ImageButton measureBtn;
+    ImageButton modeBtn;
+
     static Socket connection;
 
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
@@ -92,11 +96,10 @@ public class MainActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-       /* connectBtn = (Button) findViewById(R.id.connectButton);
-        connectBtn.setOnClickListener(connectListener);*/
+
 
         // light control button
-        lightBtn = (Button) findViewById(R.id.lightButton);
+        lightBtn = (ImageButton) findViewById(R.id.lightButton);
         lightBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,28 +107,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // climate button
-        climateBtn = (Button) findViewById(R.id.climateButton);
+        climateBtn = (ImageButton) findViewById(R.id.climateButton);
         climateBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 goToClimateView();
             }
         });
 
-        windowsBtn = (Button) findViewById(R.id.windowButton);
+        windowsBtn = (ImageButton) findViewById(R.id.windowButton);
         windowsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 goToWindowView();
             }
         });
 
-        measureBtn = (Button) findViewById(R.id.measureButton);
+        measureBtn = (ImageButton) findViewById(R.id.measureButton);
         measureBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 goToMeasurementView();
             }
         });
 
-        modeBtn = (Button) findViewById(R.id.modeButton);
+        modeBtn = (ImageButton) findViewById(R.id.modeButton);
         modeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 goToModeView();
