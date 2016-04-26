@@ -13,7 +13,7 @@ import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 public class Measurement extends AppCompatActivity {
     ImageButton homeBtn;
-    public static final String savedColor = "SavedBackgroundColor";
+    public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
     @Override

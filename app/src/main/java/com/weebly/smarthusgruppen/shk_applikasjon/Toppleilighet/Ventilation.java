@@ -36,10 +36,10 @@ public class Ventilation extends AppCompatActivity {
     boolean ch21 = false;        // channel 2 = level 2
     boolean ch31 = false;        // channel 3 = level 3
 
-    public static final String savedVent = "SavedVentilation";
+    public static final String savedVent = "SavedVentilation_1";
     //Does matter what saved temp is used, all is set to the same mode
-    public static final String savedTemp = "1SavedTemperature";
-    public static final String savedColor = "SavedBackgroundColor";
+    public static final String savedTemp = "1SavedTemperature_1";
+    public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
     public SharedPreferences ventilationSettings;

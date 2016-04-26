@@ -36,13 +36,13 @@ public class Temperature extends AppCompatActivity {
     ImageButton downBtn4;
     ImageButton downBtn5;
 
-    public static final String savedTemp1 = "1SavedTemperature" ;
-    public static final String savedTemp2 = "2SavedTemperature" ;
-    public static final String savedTemp3 = "3SavedTemperature" ;
-    public static final String savedTemp4 = "4SavedTemperature" ;
-    public static final String savedTemp5 = "5SavedTemperature" ;
-    public static final String savedTemp6 = "6SavedTemperature" ;
-    public static final String savedColor = "SavedBackgroundColor";
+    public static final String savedTemp1 = "1SavedTemperature_1" ;
+    public static final String savedTemp2 = "2SavedTemperature_1" ;
+    public static final String savedTemp3 = "3SavedTemperature_1" ;
+    public static final String savedTemp4 = "4SavedTemperature_1" ;
+    public static final String savedTemp5 = "5SavedTemperature_1" ;
+    public static final String savedTemp6 = "6SavedTemperature_1" ;
+    public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
 
@@ -69,7 +69,7 @@ public class Temperature extends AppCompatActivity {
     public static final int iAWAY = 4;
     public static final int iHOLIDAY = 1;
 
-    public static final String savedTemp = "1SavedTemperature";
+    public static final String savedTemp = "1SavedTemperature_1";
     public SharedPreferences tempSetting;
 
     TextView mode_View;
@@ -272,7 +272,6 @@ public class Temperature extends AppCompatActivity {
                 case 1:
                     try {
                         SharedPreferences tempSettings = getSharedPreferences(savedTemp1, 0);
-                        if (tempSettings.contains("channel")) {
                             String channel1 = tempSettings.getString("channel", "1");
                             String mode1 = tempSettings.getString("mode", "1");
                             String holiday1 = tempSettings.getString("holiday", "18") + " °C";
@@ -300,7 +299,6 @@ public class Temperature extends AppCompatActivity {
                                     stemp1.setText(day1);
                                     break;
                             }
-                        }
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -308,7 +306,6 @@ public class Temperature extends AppCompatActivity {
                 case 2:
                     try {
                         SharedPreferences tempSettings = getSharedPreferences(savedTemp2, 0);
-                        if (tempSettings.contains("channel")) {
                             String channel2 = tempSettings.getString("channel", "1");
                             String mode2 = tempSettings.getString("mode", "1");
                             String holiday2 = tempSettings.getString("holiday", "18") + " °C";
@@ -336,7 +333,6 @@ public class Temperature extends AppCompatActivity {
                                     stemp2.setText(day2);
                                     break;
                             }
-                        }
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -344,7 +340,6 @@ public class Temperature extends AppCompatActivity {
                 case 3:
                     try {
                         SharedPreferences tempSettings = getSharedPreferences(savedTemp3, 0);
-                        if (tempSettings.contains("channel")) {
                             String channel3 = tempSettings.getString("channel", "1");
                             String mode3 = tempSettings.getString("mode", "1");
                             String holiday3 = tempSettings.getString("holiday", "18") + " °C";
@@ -372,7 +367,6 @@ public class Temperature extends AppCompatActivity {
                                     stemp3.setText(day3);
                                     break;
                             }
-                        }
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -380,7 +374,6 @@ public class Temperature extends AppCompatActivity {
                 case 4:
                     try {
                         SharedPreferences tempSettings = getSharedPreferences(savedTemp4, 0);
-                        if (tempSettings.contains("channel")) {
                             String channel4 = tempSettings.getString("channel", "1");
                             String mode4 = tempSettings.getString("mode", "1");
                             String holiday4 = tempSettings.getString("holiday", "18") + " °C";
@@ -408,7 +401,6 @@ public class Temperature extends AppCompatActivity {
                                     stemp4.setText(day4);
                                     break;
                             }
-                        }
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -416,7 +408,6 @@ public class Temperature extends AppCompatActivity {
                 case 5:
                     try {
                         SharedPreferences tempSettings = getSharedPreferences(savedTemp5, 0);
-                        if (tempSettings.contains("channel")) {
                             String channel5 = tempSettings.getString("channel", "1");
                             String mode5 = tempSettings.getString("mode", "1");
                             String holiday5 = tempSettings.getString("holiday", "18") + " °C";
@@ -444,7 +435,6 @@ public class Temperature extends AppCompatActivity {
                                     stemp5.setText(day5);
                                     break;
                             }
-                        }
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -452,7 +442,6 @@ public class Temperature extends AppCompatActivity {
                 case 6:
                     try {
                         SharedPreferences tempSettings = getSharedPreferences(savedTemp6, 0);
-                        if (tempSettings.contains("channel")) {
                             String channel6 = tempSettings.getString("channel", "1");
                             String mode6 = tempSettings.getString("mode", "1");
                             String holiday6 = tempSettings.getString("holiday", "18") + " °C";
@@ -480,7 +469,6 @@ public class Temperature extends AppCompatActivity {
                                     stemp6.setText(day6);
                                     break;
                             }
-                        }
                     }catch (Exception e){
                         e.printStackTrace();
                     }

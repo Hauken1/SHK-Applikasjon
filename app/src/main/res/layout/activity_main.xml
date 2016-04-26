@@ -71,6 +71,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:background="@mipmap/set" />
+        android:background="@mipmap/settings_main1" />
 
 </RelativeLayout>
