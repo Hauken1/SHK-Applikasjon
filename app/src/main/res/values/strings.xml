@@ -100,9 +100,10 @@
     <string name="flat_rf1">Oppholdsrom - taklys 2</string>
     <string name="bed_room">Soverom</string>
     <string name="all_vent">Alle andre rom</string>
-
-
-
+    <string name="adm_view">Administrator side</string>
+    <string name="m1_v">Forbruk toppleilighet</string>
+    <string name="m2_v">Forbruk leilighet</string>
+    <string name="m3_v">Forbruk arbeidsrom</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>

@@ -73,11 +73,12 @@
         <activity
             android:name=".Toppleilighet.Windows"
             android:label="@string/windows" />
-        <activity android:name=".Toppleilighet.Measurement"
-            android:label="@string/measure1"/>
-        <activity android:name=".Toppleilighet.TypeOfMode"
-            android:label="@string/modes"/>
-
+        <activity
+            android:name=".Toppleilighet.Measurement"
+            android:label="@string/measure1" />
+        <activity
+            android:name=".Toppleilighet.TypeOfMode"
+            android:label="@string/modes" />
         <activity
             android:name=".Leilighet.RoomList_2"
             android:label="@string/room_view_light" />
@@ -111,28 +112,39 @@
         <activity
             android:name=".Leilighet.MainActivity_2"
             android:label="@string/app_name" />
-        <activity android:name=".Leilighet.Measurement_2"
-            android:label="@string/measure1"/>
-        <activity android:name=".Leilighet.TypeOfMode_2"
-            android:label="@string/modes"/>
-
-        <activity android:name=".Arbeidsrom.Climate_3"
-            android:label="@string/climate_view"/>
-        <activity android:name=".Arbeidsrom.LightingBathroom_3"
-            android:label="@string/lighting_bathroom"/>
-        <activity android:name=".Arbeidsrom.LightingFlat"
-            android:label="@string/modes"/>
-        <activity android:name=".Arbeidsrom.MainActivity_3"
-            android:label="@string/app_name"/>
-        <activity android:name=".Arbeidsrom.RoomList_3"
-            android:label="@string/modes"/>
-        <activity android:name=".Arbeidsrom.Temperature_3"
-            android:label="@string/heating_view"/>
-        <activity android:name=".Arbeidsrom.TypeOfMode_3"
-            android:label="@string/modes"/>
-        <activity android:name=".Arbeidsrom.Ventilation_3"
-            android:label="@string/ventilation_view"/>
-
+        <activity
+            android:name=".Leilighet.Measurement_2"
+            android:label="@string/measure1" />
+        <activity
+            android:name=".Leilighet.TypeOfMode_2"
+            android:label="@string/modes" />
+        <activity
+            android:name=".Arbeidsrom.Climate_3"
+            android:label="@string/climate_view" />
+        <activity
+            android:name=".Arbeidsrom.LightingBathroom_3"
+            android:label="@string/lighting_bathroom" />
+        <activity
+            android:name=".Arbeidsrom.LightingFlat"
+            android:label="@string/modes" />
+        <activity
+            android:name=".Arbeidsrom.MainActivity_3"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".Arbeidsrom.RoomList_3"
+            android:label="@string/modes" />
+        <activity
+            android:name=".Arbeidsrom.Temperature_3"
+            android:label="@string/heating_view" />
+        <activity
+            android:name=".Arbeidsrom.TypeOfMode_3"
+            android:label="@string/modes" />
+        <activity
+            android:name=".Arbeidsrom.Ventilation_3"
+            android:label="@string/ventilation_view" />
+        <activity android:name=".Arbeidsrom.Measurement_3"
+                    android:label="@string/measure1" />
+        <activity android:name=".Admin"></activity>
     </application>
 
 </manifest>

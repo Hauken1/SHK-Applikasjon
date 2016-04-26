@@ -400,7 +400,7 @@ public class LoginClient extends AppCompatActivity {
                                        switch (ID) {
                                            case 1:
                                                    loggedIn = true;
-                                                   goToHome();
+                                                   goToAdmin();
                                                break;
                                            case 2:
                                                    loggedIn = true;
@@ -506,6 +506,12 @@ public class LoginClient extends AppCompatActivity {
     public void goToHome() {
         Log.d("Logger inn",  "toppleilighet");
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToAdmin() {
+        Log.d("Logger inn admin", "Adminside..");
+        Intent intent = new Intent(this, Admin.class);
         startActivity(intent);
     }
 
