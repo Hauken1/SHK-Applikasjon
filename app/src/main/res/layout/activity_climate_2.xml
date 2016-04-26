@@ -22,7 +22,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/Klima_temp"
+        android:background="@mipmap/klima_temp"
         android:id="@+id/heating_view_button"
         android:layout_marginTop="95dp"
         android:layout_below="@+id/home_button"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ventilation_view_button"
-        android:background="@mipmap/Klima_ventilasjon"
+        android:background="@mipmap/klima_ventilasjon"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/heating_view_button"
         android:layout_alignLeft="@+id/heating_view_button"

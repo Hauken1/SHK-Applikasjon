@@ -16,8 +16,8 @@ import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 
 public class Climate extends AppCompatActivity {
-    Button tempBtn;
-    Button ventBtn;
+    ImageButton tempBtn;
+    ImageButton ventBtn;
     ImageButton homeBtn;
 
     public static final String DAY = "Dag";
@@ -74,7 +74,7 @@ public class Climate extends AppCompatActivity {
         }
 
         // temp button
-        tempBtn = (Button) findViewById(R.id.heating_view_button);
+        tempBtn = (ImageButton) findViewById(R.id.heating_view_button);
         tempBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 goToTemperatureView();
@@ -82,7 +82,7 @@ public class Climate extends AppCompatActivity {
         });
 
         // vent button
-        ventBtn = (Button) findViewById(R.id.ventilation_view_button);
+        ventBtn = (ImageButton) findViewById(R.id.ventilation_view_button);
         ventBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 goToVentilationView();
