@@ -1,9 +1,13 @@
 package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 // THIS ROOMLIST FILE IS FOR LIGHTS ONLY !!!!
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
@@ -21,15 +25,58 @@ public class RoomList extends AppCompatActivity {
     Button kitchenBtn;
     Button officeBtn;
     Button livingRoomBtn;
+    TextView mode_View;
     ImageButton homeBtn;
 
+    public static final String DAY = "Dag";
+    public static final String NIGHT = "Natt";
+    public static final String AWAY = "Borte";
+    public static final String HOLIDAY = "Ferie";
 
+    public static final int iDAY = 2;
+    public static final int iNIGHT = 3;
+    public static final int iAWAY = 4;
+    public static final int iHOLIDAY = 1;
+
+    public static final String savedTemp = "1SavedTemperature";
+    public static final String savedColor = "SavedBackgroundColor";
+
+    SharedPreferences sharedpreferences;
+    public SharedPreferences tempSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list);
 
+        mode_View = (TextView) findViewById(R.id.mode_view);
+
+        try {
+            tempSetting = getSharedPreferences(savedTemp, 0);
+            String mode = tempSetting.getString("mode", "2");
+            int imode = Integer.parseInt(mode);
+            switch (imode) {
+                case iHOLIDAY:
+                    mode = HOLIDAY;
+                    break;
+                case iDAY:
+                    mode = DAY;
+                    break;
+                case iNIGHT:
+                    mode = NIGHT;
+                    break;
+                case iAWAY:
+                    mode = AWAY;
+                    break;
+                default:
+                    mode = DAY;
+                    break;
+            }
+            mode_View.setGravity(Gravity.CENTER);
+            mode_View.setText("Modus: " + mode);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         // kitchen button
         kitchenBtn = (Button) findViewById(R.id.room1_button);
@@ -97,7 +144,17 @@ public class RoomList extends AppCompatActivity {
             }
         });
 
+        sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
 
+        int value1 = sharedpreferences.getInt("value1", 0);
+        int value2 = sharedpreferences.getInt("value2", 0);
+        int value3 = sharedpreferences.getInt("value3", 0);
+        int value4 = sharedpreferences.getInt("set", 0);
+        if(value4 != 0){
+            View v = findViewById(R.id.roomlist_id);
+            v.setBackgroundColor(Color.rgb(value1, value3, value2));
+            setContentView(v);
+        }
 
         }
 

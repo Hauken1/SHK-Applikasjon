@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnCount="4"
-        android:rowCount="4"
+        android:rowCount="5"
         android:orientation="vertical"
         tools:context=".GridXMLActivity"
         android:layout_alignParentTop="true"
@@ -44,7 +44,7 @@
         android:id="@+id/toggle_0"
         android:checked="true"
         android:layout_column="0"
-        android:layout_row="2"
+        android:layout_row="3"
          />
 
     <ToggleButton
@@ -55,7 +55,7 @@
         android:id="@+id/toggle_30"
         android:checked="false"
         android:layout_column="1"
-        android:layout_row="2"
+        android:layout_row="3"
          />
 
     <ToggleButton
@@ -66,7 +66,7 @@
         android:id="@+id/toggle_70"
         android:checked="false"
         android:layout_column="2"
-        android:layout_row="2"
+        android:layout_row="3"
          />
 
     <ToggleButton
@@ -77,7 +77,7 @@
         android:id="@+id/toggle_100"
         android:checked="false"
         android:layout_column="3"
-        android:layout_row="2"
+        android:layout_row="3"
        />
 
     <TextView
@@ -89,10 +89,23 @@
         android:id="@+id/textView3"
         android:textColor="#090909"
         android:layout_column="1"
-        android:layout_row="1"
+        android:layout_row="2"
         android:layout_columnSpan="2"
         android:layout_gravity="center"
          />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Modus:"
+            android:id="@+id/mode_view"
+            android:layout_below="@+id/home_button"
+            android:layout_centerHorizontal="true"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center"/>
 </GridLayout>
 </RelativeLayout>
 </ScrollView>
