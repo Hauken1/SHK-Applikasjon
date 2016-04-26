@@ -29,15 +29,14 @@
 
 
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:text="@string/climate_view"
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/Main_klima_new"
         android:id="@+id/climateButton"
-        android:textSize="25dp"
         android:layout_below="@+id/lightButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -45,7 +44,8 @@
         android:id="@+id/windowButton"
         android:background="@mipmap/Main_vindu"
         android:layout_below="@+id/climateButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -53,7 +53,8 @@
         android:background="@mipmap/Main_forbruk2"
         android:id="@+id/measureButton"
         android:layout_below="@+id/windowButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -61,6 +62,7 @@
         android:background="@mipmap/Main_modus"
         android:id="@+id/modeButton"
         android:layout_below="@+id/measureButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
