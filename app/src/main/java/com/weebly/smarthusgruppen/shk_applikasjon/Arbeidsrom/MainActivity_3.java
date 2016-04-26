@@ -66,7 +66,17 @@ public class MainActivity_3 extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
+    setupGUI();
+        startMessageListener();
+        MainActivity_3.sendText("Command:007262112,1");
+        MainActivity_3.sendText("Command:007262112,2");
+        MainActivity_3.sendText("Command:007262112,3");
+        MainActivity_3.sendText("Command:007262112,4");
+        MainActivity_3.sendText("Command:007262112,5");
+        MainActivity_3.sendText("Command:007262112,6");
+    }
 
+    public void setupGUI() {
         // light control button
         lightBtn = (ImageButton) findViewById(R.id.lightButton);
         lightBtn.setOnClickListener(new View.OnClickListener() {
@@ -83,22 +93,13 @@ public class MainActivity_3 extends AppCompatActivity {
             }
         });
 
-
         modeBtn = (ImageButton) findViewById(R.id.modeButton);
         modeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 goToModeView();
             }
         });
-        startMessageListener();
-        MainActivity_3.sendText("Command:007262112,1");
-        MainActivity_3.sendText("Command:007262112,2");
-        MainActivity_3.sendText("Command:007262112,3");
-        MainActivity_3.sendText("Command:007262112,4");
-        MainActivity_3.sendText("Command:007262112,5");
-        MainActivity_3.sendText("Command:007262112,6");
     }
-
     @Override
     public void onStart() {
         super.onStart();
