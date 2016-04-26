@@ -68,12 +68,7 @@ public class Ventilation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventilation);
-
         setupGUI();
-        level0 = 0;
-        level1 = 1;
-        level2 = 2;
-        level3 = 3;
         displayVentilation();
     }
     public void goToHome() {
@@ -683,7 +678,10 @@ public class Ventilation extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
+        level0 = 0;
+        level1 = 1;
+        level2 = 2;
+        level3 = 3;
 
     }
 

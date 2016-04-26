@@ -45,46 +45,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
 
           setUpGUI();
 
-        sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
-        if (sharedpreferences.contains("channel")) {
-            String currentMode = sharedpreferences.getString("mode", "2");
-            int cM = Integer.parseInt(currentMode);
-            switch (cM) {
-                case 1:
-                    dayBtn.setChecked(false);
-                    nightBtn.setChecked(false);
-                    awayBtn.setChecked(false);
-                    holidayBtn.setChecked(true);
-                    break;
-                case 2:
-                    dayBtn.setChecked(true);
-                    nightBtn.setChecked(false);
-                    awayBtn.setChecked(false);
-                    holidayBtn.setChecked(false);
-                    break;
-                case 3:
-                    dayBtn.setChecked(false);
-                    nightBtn.setChecked(true);
-                    awayBtn.setChecked(false);
-                    holidayBtn.setChecked(false);
-                    break;
-                case 4:
-                    dayBtn.setChecked(false);
-                    nightBtn.setChecked(false);
-                    awayBtn.setChecked(true);
-                    holidayBtn.setChecked(false);
-                    break;
-                default:
-                    dayBtn.setChecked(true);
-                    nightBtn.setChecked(false);
-                    awayBtn.setChecked(false);
-                    holidayBtn.setChecked(false);
-                    break;
-            }
-        }
-
-
-
     }
 
     public void setUpGUI() {
@@ -123,6 +83,44 @@ public class TypeOfMode_2 extends AppCompatActivity {
                 holiday();
             }
         });
+
+        sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
+        if (sharedpreferences.contains("channel")) {
+            String currentMode = sharedpreferences.getString("mode", "2");
+            int cM = Integer.parseInt(currentMode);
+            switch (cM) {
+                case 1:
+                    dayBtn.setChecked(false);
+                    nightBtn.setChecked(false);
+                    awayBtn.setChecked(false);
+                    holidayBtn.setChecked(true);
+                    break;
+                case 2:
+                    dayBtn.setChecked(true);
+                    nightBtn.setChecked(false);
+                    awayBtn.setChecked(false);
+                    holidayBtn.setChecked(false);
+                    break;
+                case 3:
+                    dayBtn.setChecked(false);
+                    nightBtn.setChecked(true);
+                    awayBtn.setChecked(false);
+                    holidayBtn.setChecked(false);
+                    break;
+                case 4:
+                    dayBtn.setChecked(false);
+                    nightBtn.setChecked(false);
+                    awayBtn.setChecked(true);
+                    holidayBtn.setChecked(false);
+                    break;
+                default:
+                    dayBtn.setChecked(true);
+                    nightBtn.setChecked(false);
+                    awayBtn.setChecked(false);
+                    holidayBtn.setChecked(false);
+                    break;
+            }
+        }
 
     }
 

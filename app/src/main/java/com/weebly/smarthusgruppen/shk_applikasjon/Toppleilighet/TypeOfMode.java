@@ -91,7 +91,10 @@ public class TypeOfMode extends AppCompatActivity {
 
         gHandler = new Handler();
         setUpGUI();
+        modeSetup();
+    }
 
+    public void modeSetup(){
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
@@ -145,7 +148,6 @@ public class TypeOfMode extends AppCompatActivity {
         int hHour = sharedpreferences.getInt("hour", 1992);
         int hMin = sharedpreferences.getInt("minute", 1992);
     }
-
     public void setUpGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
