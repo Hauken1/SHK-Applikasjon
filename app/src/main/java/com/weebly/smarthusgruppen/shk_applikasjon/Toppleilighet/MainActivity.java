@@ -26,7 +26,6 @@ import android.widget.SeekBar;
 
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
