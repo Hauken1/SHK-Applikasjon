@@ -42,8 +42,8 @@ public class Windows extends AppCompatActivity {
     Boolean chk3 = true;
     Handler gHandler;
 
-    int min = 100;
-    int max = 0;
+    int min = 0;
+    int max = 100;
 
 
 
@@ -414,7 +414,7 @@ public class Windows extends AppCompatActivity {
                 }
                 // if true - means the window is going to be opened or partially opened.
                 if (check) {
-                    window -= winOpener;
+                    window += winOpener;
                     Log.d("opening window..", "Opening window..." + window);
                     final float tempwin = window;
 
@@ -425,21 +425,21 @@ public class Windows extends AppCompatActivity {
                             switch(id) {
                                 case 1:
                                     String temp1 = String.valueOf(tempwin + "%");
-                                    if(tempwin < max) {
+                                    if(tempwin > max) {
                                         degreeOpen1.setText(max + "%");
                                     }
                                     else degreeOpen1.setText(temp1);
                                     break;
                                 case 2:
                                     String temp2 = String.valueOf(tempwin + "%");
-                                    if(tempwin < max) {
+                                    if(tempwin > max) {
                                         degreeOpen2.setText(max + "%");
                                     }
                                     else degreeOpen2.setText(temp2);
                                     break;
                                 case 3:
                                     String temp3 = String.valueOf(tempwin + "%");
-                                    if(tempwin < max) {
+                                    if(tempwin > max) {
                                         degreeOpen3.setText(max + "%");
                                     }
                                     else degreeOpen3.setText(temp3);
@@ -452,28 +452,28 @@ public class Windows extends AppCompatActivity {
                     switch(id) {
                         case 1:
                             winOpeningTime1 = window;
-                            if(max > window) {
+                            if(window > max) {
                                 winOpeningTime1 = max;
                             }
                             Log.d("updating ", "variable 1 "+ winOpeningTime1);
                             break;
                         case 2:
                             winOpeningTime2 = window;
-                            if(max > window) {
+                            if(window > max) {
                                 winOpeningTime1 = max;
                             }
                             Log.d("updating ", "variable 2 "+ winOpeningTime2);
                             break;
                         case 3:
                             winOpeningTime3 = window;
-                            if(max > window) {
+                            if(window > max) {
                                 winOpeningTime1 = max;
                             }
                             Log.d("updating ", "variable 3 "+ winOpeningTime3);
                             break;
                     }
 
-                    if(max >= window) {
+                    if(window >= max) {
                         i = 20;
                         Log.d("opening window.." , "Finished opening " + window);
 
@@ -481,7 +481,7 @@ public class Windows extends AppCompatActivity {
                 }
                 // else means the window is going to be closed or partially closed
                 else {
-                    window += winOpener;
+                    window -= winOpener;
                     Log.d("closing window.." , "Closing Window...." + window);
 
                     final int tempwin = window;
@@ -492,21 +492,21 @@ public class Windows extends AppCompatActivity {
                             switch(id) {
                                 case 1:
                                     String temp1 = String.valueOf(tempwin + "%");
-                                    if(tempwin > min) {
+                                    if(tempwin < min) {
                                         degreeOpen1.setText(min + "%");
                                     }
                                     else degreeOpen1.setText(temp1);
                                     break;
                                 case 2:
                                     String temp2 = String.valueOf(tempwin + "%");
-                                    if(tempwin > min) {
+                                    if(tempwin < min) {
                                         degreeOpen2.setText(min + "%");
                                     }
                                     else degreeOpen2.setText(temp2);
                                     break;
                                 case 3:
                                     String temp3 = String.valueOf(tempwin + "%");
-                                    if(tempwin > min) {
+                                    if(tempwin < min) {
                                         degreeOpen3.setText(min + "%");
                                     }
                                     else degreeOpen3.setText(temp3);
@@ -518,28 +518,28 @@ public class Windows extends AppCompatActivity {
                     switch(id) {
                         case 1:
                             winOpeningTime1 = window;
-                            if(window > min) {
+                            if(window < min) {
                                 winOpeningTime1 = min;
                             }
                             Log.d("updating", "variable 1 "+ winOpeningTime1);
                             break;
                         case 2:
                             winOpeningTime2 = window;
-                            if(window > min) {
+                            if(window < min) {
                                 winOpeningTime2 = min;
                             }
                             Log.d("updating ", "variable 2 "+ winOpeningTime2);
                             break;
                         case 3:
                             winOpeningTime3 = window;
-                            if(window > min) {
+                            if(window < min) {
                                 winOpeningTime3 = min;
                             }
                             Log.d("updating ", "variable 3 "+ winOpeningTime3);
                             break;
                     }
 
-                    if(window >= min) {
+                    if(window <= min) {
                         i = 20;        // breaking out of loop if window reaches closing point.
                         Log.d("closing window.." , "Finished closing " + window);
                     }
