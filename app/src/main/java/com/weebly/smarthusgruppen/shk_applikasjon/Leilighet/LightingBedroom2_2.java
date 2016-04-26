@@ -24,6 +24,11 @@ public class LightingBedroom2_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_bedroom2_2);
+        setupGUI();
+    }
+
+
+    public void setupGUI() {
 
         lightOffBtn = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn.setOnClickListener(light_all__off_Listener);
@@ -45,7 +50,6 @@ public class LightingBedroom2_2 extends AppCompatActivity {
             }
         });
     }
-
 
     // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {

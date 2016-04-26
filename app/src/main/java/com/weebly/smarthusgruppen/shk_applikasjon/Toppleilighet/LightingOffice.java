@@ -67,7 +67,11 @@ public class LightingOffice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_office);
+        setupGUI();
+        displayLight();
+    }
 
+    public void setupGUI() {
         lightOffBtn = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn.setOnClickListener(light_all__off_Listener);
 
@@ -129,9 +133,7 @@ public class LightingOffice extends AppCompatActivity {
             setContentView(v);
         }
 
-        displayLight();
     }
-
     public void displayLight() {
         try {
 

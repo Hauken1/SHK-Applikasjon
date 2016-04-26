@@ -21,6 +21,11 @@ public class Climate_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate_3);
         // temp button
+       setupGUI();
+
+    }
+
+    public void setupGUI() {
         tempBtn = (ImageButton) findViewById(R.id.heating_view_button);
         tempBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -44,9 +49,7 @@ public class Climate_3 extends AppCompatActivity {
             }
         });
 
-
     }
-
     public void goToTemperatureView() {
         Intent intent = new Intent(this, Temperature_3.class);
         startActivity(intent);

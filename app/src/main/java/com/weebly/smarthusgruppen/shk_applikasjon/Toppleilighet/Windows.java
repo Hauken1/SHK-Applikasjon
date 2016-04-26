@@ -81,10 +81,7 @@ public class Windows extends AppCompatActivity {
         setContentView(R.layout.activity_windows);
         gHandler = new Handler();
         setupGUI();
-
     }
-
-
 
     // Open window 1 (kitchen)
     protected View.OnClickListener win1_open = new View.OnClickListener() {
