@@ -1,18 +1,31 @@
 package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.Layout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -44,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     Button windowsBtn;
     Button measureBtn;
     Button modeBtn;
+    ImageButton settings;
     static Socket connection;
 
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
@@ -54,10 +68,14 @@ public class MainActivity extends AppCompatActivity {
     public static final String savedTemp4 = "4SavedTemperature";
     public static final String savedTemp5 = "5SavedTemperature";
     public static final String savedTemp6 = "6SavedTemperature";
+    public static final String savedColor = "SavedBackgroundColor";
 
     SharedPreferences sharedpreferences;
     OutputStream os;
 
+    public int seekBarValue1;
+    public int seekBarValue2;
+    public int seekBarValue3;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -113,6 +131,15 @@ public class MainActivity extends AppCompatActivity {
                 goToModeView();
             }
         });
+
+        settings = (ImageButton) findViewById(R.id.settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                settingsView();
+            }
+        });
+
+
         startMessageListener();
         MainActivity.sendText("Command:007262112,1");
         MainActivity.sendText("Command:007262112,2");
@@ -121,11 +148,17 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
 
-        /*
-        View v = findViewById(R.id.main_id);
-        v.setBackgroundColor(Color.);
-        setContentView(v);
-        */
+        sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
+
+        int value1 = sharedpreferences.getInt("value1", 0);
+        int value2 = sharedpreferences.getInt("value2", 0);
+        int value3 = sharedpreferences.getInt("value3", 0);
+        int value4 = sharedpreferences.getInt("set", 0);
+        if(value4 != 0){
+            View v = findViewById(R.id.main_id);
+            v.setBackgroundColor(Color.rgb(value1,value3, value2));
+            setContentView(v);
+        }
     }
 
     @Override
@@ -199,46 +232,145 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-        private void startMessageListener() {
-            Thread mThread = new Thread(new Runnable() {
-                public void run() {
-                    while (true) {
-                        Random rnd = new Random();
-                        try {
+    public void settingsView() {
 
-                            String msg = input.readLine();
-                            Log.d("msg", ""+ msg);
+        Dialog settingsDialog = new Dialog(this);
+        settingsDialog.setContentView(R.layout.settings_main1);
+        settingsDialog.setCancelable(true);
 
-                            if(msg.startsWith("TempInfo:")) {
-                                tempInfoController(msg.substring(8, msg.length()));
-                            }
+        final ImageView colorV = (ImageView)settingsDialog.findViewById(R.id.colorView);
+        SeekBar seekBar1 = (SeekBar)settingsDialog.findViewById(R.id.seekBar1);
+        seekBarValue1 = seekBar1.getProgress();
 
-                            else {
+        seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Error when reading msg");
-                            //e.printStackTrace();
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+
+                seekBarValue1 = progress;
+                colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        SeekBar seekBar2 = (SeekBar)settingsDialog.findViewById(R.id.seekBar2);
+
+        seekBarValue2 = seekBar2.getProgress();
+        seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+
+                seekBarValue2 = progress;
+                colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        SeekBar seekBar3 = (SeekBar)settingsDialog.findViewById(R.id.seekBar3);
+        seekBarValue3 = seekBar3.getProgress();
+        seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+
+                seekBarValue3 = progress;
+                colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+        });
+
+        colorV.setBackgroundColor(Color.rgb(seekBarValue1, seekBarValue3, seekBarValue2));
+        settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putInt("value1", seekBarValue1);
+                editor.putInt("value2", seekBarValue2);
+                editor.putInt("value3", seekBarValue3);
+                editor.putInt("set", 1);
+                editor.commit();
+                View v = findViewById(R.id.main_id);
+                v.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
+                setContentView(v);
+            }
+        });
+        settingsDialog.show();
+
+
+    }
+
+    private void startMessageListener() {
+        Thread mThread = new Thread(new Runnable() {
+            public void run() {
+                while (true) {
+                    Random rnd = new Random();
+                    try {
+
+                        String msg = input.readLine();
+                        Log.d("msg", ""+ msg);
+
+                        if(msg.startsWith("TempInfo:")) {
+                            tempInfoController(msg.substring(8, msg.length()));
                         }
-                        try {
-                            TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
-                        } catch (Exception e) {
-                            // TODO Auto-generated catch block
-                            MainActivity.sendText("Disconnect");
-                            e.printStackTrace();
+
+                        else {
+
                         }
+                    } catch (Exception e) {
+                        System.out.println("Error when reading msg");
+                        //e.printStackTrace();
+                    }
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        MainActivity.sendText("Disconnect");
+                        e.printStackTrace();
                     }
                 }
+            }
 
 
-            });
-            mThread.start();
-        }
+        });
+        mThread.start();
+    }
 
-        private void displayMessage(String text) {
-           receivedText.append(text);
-           // SwingUtilities.invokeLater(() -> receivedText.append(text));
-        }
+    private void displayMessage(String text) {
+       receivedText.append(text);
+       // SwingUtilities.invokeLater(() -> receivedText.append(text));
+    }
 
     /**
      * Sets the temperatures given from server
