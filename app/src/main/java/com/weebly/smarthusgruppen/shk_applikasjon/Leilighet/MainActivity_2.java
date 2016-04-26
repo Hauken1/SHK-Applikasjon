@@ -69,6 +69,17 @@ public class MainActivity_2 extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
 
+
+        startMessageListener();
+        MainActivity_2.sendText("Command:007262112,1");
+        MainActivity_2.sendText("Command:007262112,2");
+        MainActivity_2.sendText("Command:007262112,3");
+        MainActivity_2.sendText("Command:007262112,4");
+        MainActivity_2.sendText("Command:007262112,5");
+        MainActivity_2.sendText("Command:007262112,6");
+    }
+
+    public void setupGUI() {
         // light control button
         lightBtn = (ImageButton) findViewById(R.id.lightButton);
         lightBtn.setOnClickListener(new View.OnClickListener() {
@@ -98,15 +109,7 @@ public class MainActivity_2 extends AppCompatActivity {
                 goToModeView();
             }
         });
-        startMessageListener();
-        MainActivity_2.sendText("Command:007262112,1");
-        MainActivity_2.sendText("Command:007262112,2");
-        MainActivity_2.sendText("Command:007262112,3");
-        MainActivity_2.sendText("Command:007262112,4");
-        MainActivity_2.sendText("Command:007262112,5");
-        MainActivity_2.sendText("Command:007262112,6");
     }
-
     @Override
     public void onStart() {
         super.onStart();

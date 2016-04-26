@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.weebly.smarthusgruppen.shk_applikasjon.Admin">
+
+    <TextView
+        android:id="@+id/receivedText"
+        android:text="@string/adm_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:foregroundGravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#090909"/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/m1_v"
+        android:id="@+id/meas1Button"
+        android:foregroundGravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/receivedText"/>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/meas2Button"
+        android:text="@string/m2_v"
+        android:layout_below="@+id/meas1Button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
+
+
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/m3_v"
+        android:id="@+id/meas3Button"
+        android:layout_below="@+id/meas2Button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
+
+</RelativeLayout>

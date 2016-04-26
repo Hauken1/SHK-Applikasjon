@@ -97,6 +97,31 @@ public class MainActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
 
+       setupGUI();
+
+
+        startMessageListener();
+        MainActivity.sendText("Command:007262112,1");
+        MainActivity.sendText("Command:007262112,2");
+        MainActivity.sendText("Command:007262112,3");
+        MainActivity.sendText("Command:007262112,4");
+        MainActivity.sendText("Command:007262112,5");
+        MainActivity.sendText("Command:007262112,6");
+
+        sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
+
+        int value1 = sharedpreferences.getInt("value1", 0);
+        int value2 = sharedpreferences.getInt("value2", 0);
+        int value3 = sharedpreferences.getInt("value3", 0);
+        int value4 = sharedpreferences.getInt("set", 0);
+        if(value4 != 0){
+            View v = findViewById(R.id.main_id);
+            v.setBackgroundColor(Color.rgb(value1,value3, value2));
+            setContentView(v);
+        }
+    }
+
+    public void setupGUI() {
         // light control button
         lightBtn = (ImageButton) findViewById(R.id.lightButton);
         lightBtn.setOnClickListener(new View.OnClickListener() {
@@ -140,29 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 settingsView();
             }
         });
-
-
-        startMessageListener();
-        MainActivity.sendText("Command:007262112,1");
-        MainActivity.sendText("Command:007262112,2");
-        MainActivity.sendText("Command:007262112,3");
-        MainActivity.sendText("Command:007262112,4");
-        MainActivity.sendText("Command:007262112,5");
-        MainActivity.sendText("Command:007262112,6");
-
-        sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
-
-        int value1 = sharedpreferences.getInt("value1", 0);
-        int value2 = sharedpreferences.getInt("value2", 0);
-        int value3 = sharedpreferences.getInt("value3", 0);
-        int value4 = sharedpreferences.getInt("set", 0);
-        if(value4 != 0){
-            View v = findViewById(R.id.main_id);
-            v.setBackgroundColor(Color.rgb(value1,value3, value2));
-            setContentView(v);
-        }
     }
-
     @Override
     public void onStart() {
         super.onStart();
