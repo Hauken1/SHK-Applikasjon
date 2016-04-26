@@ -38,8 +38,8 @@ public class RoomList extends AppCompatActivity {
     public static final int iAWAY = 4;
     public static final int iHOLIDAY = 1;
 
-    public static final String savedTemp = "1SavedTemperature";
-    public static final String savedColor = "SavedBackgroundColor";
+    public static final String savedTemp = "1SavedTemperature_1";
+    public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;

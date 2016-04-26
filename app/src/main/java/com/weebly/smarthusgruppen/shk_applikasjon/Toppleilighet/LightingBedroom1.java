@@ -18,9 +18,9 @@ import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 public class LightingBedroom1 extends AppCompatActivity {
 
-    public static final String savedLight = "SavedLightingBedroom1";
-    public static final String savedTemp = "1SavedTemperature";
-    public static final String savedColor = "SavedBackgroundColor";
+    public static final String savedLight = "SavedLightingBedroom1_1";
+    public static final String savedTemp = "1SavedTemperature_1";
+    public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;

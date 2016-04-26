@@ -33,24 +33,24 @@ import java.util.Calendar;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 public class TypeOfMode extends AppCompatActivity {
-    public static final String savedTemp1 = "1SavedTemperature";
-    public static final String savedTemp2 = "2SavedTemperature";
-    public static final String savedTemp3 = "3SavedTemperature";
-    public static final String savedTemp4 = "4SavedTemperature";
-    public static final String savedTemp5 = "5SavedTemperature";
-    public static final String savedTemp6 = "6SavedTemperature";
+    public static final String savedTemp1 = "1SavedTemperature_1";
+    public static final String savedTemp2 = "2SavedTemperature_1";
+    public static final String savedTemp3 = "3SavedTemperature_1";
+    public static final String savedTemp4 = "4SavedTemperature_1";
+    public static final String savedTemp5 = "5SavedTemperature_1";
+    public static final String savedTemp6 = "6SavedTemperature_1";
 
-    public static final String holidayTime = "SavedHolidayTime";
+    public static final String holidayTime = "SavedHolidayTime_1";
 
-    public static final String savedVent = "SavedVentilation" ;
-    public static final String savedLightKitchen = "SavedLightingKitchen";
-    public static final String savedLightBathroom = "SavedLightingBathroom";
-    public static final String savedLightBedroom1 = "SavedLightingBedroom1";
-    public static final String savedLightBedroom2 = "SavedLightingBedroom2";
-    public static final String savedLightHallway = "SavedLightingHallway";
-    public static final String savedLightLivingroom = "SavedLightingLivingRoom";
-    public static final String savedLightOffice = "SavedLightingOffice" ;
-    public static final String savedColor = "SavedBackgroundColor";
+    public static final String savedVent = "SavedVentilation_1" ;
+    public static final String savedLightKitchen = "SavedLightingKitchen_1";
+    public static final String savedLightBathroom = "SavedLightingBathroom_1";
+    public static final String savedLightBedroom1 = "SavedLightingBedroom1_1";
+    public static final String savedLightBedroom2 = "SavedLightingBedroom2_1";
+    public static final String savedLightHallway = "SavedLightingHallway_1";
+    public static final String savedLightLivingroom = "SavedLightingLivingRoom_1";
+    public static final String savedLightOffice = "SavedLightingOffice_1";
+    public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
 
@@ -103,41 +103,39 @@ public class TypeOfMode extends AppCompatActivity {
         //Checks what mode the the heatingcontrollers are set to.
         //All heatingcontrollolers are set to the same mode
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
-        if (sharedpreferences.contains("channel")) {
-            String currentMode = sharedpreferences.getString("mode", "2");
-            int cM = Integer.parseInt(currentMode);
-            switch (cM) {
-                case 1:
-                    dayBtn.setChecked(false);
-                    nightBtn.setChecked(false);
-                    awayBtn.setChecked(false);
-                    holidayBtn.setChecked(true);
-                    break;
-                case 2:
-                    dayBtn.setChecked(true);
-                    nightBtn.setChecked(false);
-                    awayBtn.setChecked(false);
-                    holidayBtn.setChecked(false);
-                    break;
-                case 3:
-                    dayBtn.setChecked(false);
-                    nightBtn.setChecked(true);
-                    awayBtn.setChecked(false);
-                    holidayBtn.setChecked(false);
-                    break;
-                case 4:
-                    dayBtn.setChecked(false);
-                    nightBtn.setChecked(false);
-                    awayBtn.setChecked(true);
-                    holidayBtn.setChecked(false);
-                    break;
-                default:
-                    dayBtn.setChecked(true);
-                    nightBtn.setChecked(false);
-                    awayBtn.setChecked(false);
-                    holidayBtn.setChecked(false);
-                    break;
-            }
+        String currentMode = sharedpreferences.getString("mode", "2");
+        int cM = Integer.parseInt(currentMode);
+        switch (cM) {
+            case 1:
+                dayBtn.setChecked(false);
+                nightBtn.setChecked(false);
+                awayBtn.setChecked(false);
+                holidayBtn.setChecked(true);
+                break;
+            case 2:
+                dayBtn.setChecked(true);
+                nightBtn.setChecked(false);
+                awayBtn.setChecked(false);
+                holidayBtn.setChecked(false);
+                break;
+            case 3:
+                dayBtn.setChecked(false);
+                nightBtn.setChecked(true);
+                awayBtn.setChecked(false);
+                holidayBtn.setChecked(false);
+                break;
+            case 4:
+                dayBtn.setChecked(false);
+                nightBtn.setChecked(false);
+                awayBtn.setChecked(true);
+                holidayBtn.setChecked(false);
+                break;
+            default:
+                dayBtn.setChecked(true);
+                nightBtn.setChecked(false);
+                awayBtn.setChecked(false);
+                holidayBtn.setChecked(false);
+                break;
         }
 
         sharedpreferences = getSharedPreferences(holidayTime, Context.MODE_PRIVATE);
@@ -146,7 +144,6 @@ public class TypeOfMode extends AppCompatActivity {
         int yDay = sharedpreferences.getInt("day", 1992);
         int hHour = sharedpreferences.getInt("hour", 1992);
         int hMin = sharedpreferences.getInt("minute", 1992);
-
     }
 
     public void setUpGUI() {

@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
 
-    public static final String savedTemp1 = "1SavedTemperature";
-    public static final String savedTemp2 = "2SavedTemperature";
-    public static final String savedTemp3 = "3SavedTemperature";
-    public static final String savedTemp4 = "4SavedTemperature";
-    public static final String savedTemp5 = "5SavedTemperature";
-    public static final String savedTemp6 = "6SavedTemperature";
-    public static final String savedColor = "SavedBackgroundColor";
+    public static final String savedTemp1 = "1SavedTemperature_1";
+    public static final String savedTemp2 = "2SavedTemperature_1";
+    public static final String savedTemp3 = "3SavedTemperature_1";
+    public static final String savedTemp4 = "4SavedTemperature_1";
+    public static final String savedTemp5 = "5SavedTemperature_1";
+    public static final String savedTemp6 = "6SavedTemperature_1";
+    public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
     OutputStream os;
