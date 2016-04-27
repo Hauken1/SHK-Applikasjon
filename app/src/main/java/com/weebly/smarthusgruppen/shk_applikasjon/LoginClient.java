@@ -65,8 +65,6 @@ public class LoginClient extends AppCompatActivity {
     private SharedPreferences.Editor loginEditor;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

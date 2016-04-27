@@ -36,6 +36,7 @@
         android:layout_gravity="center"
         />
 
+
         <!-- kjøkken tak -->
         <TextView
         android:layout_width="wrap_content"

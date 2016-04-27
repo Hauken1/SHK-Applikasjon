@@ -22,10 +22,7 @@ public class Measurement_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurement);
 
-    setupGUI();
-
-
-
+        setupGUI();
 
     }
 
@@ -45,7 +42,7 @@ public class Measurement_3 extends AppCompatActivity {
         int value3 = sharedpreferences.getInt("value3", 0);
         int value4 = sharedpreferences.getInt("set", 0);
         if(value4 != 0){
-            View v = findViewById(R.id.measure_id);
+            View v = findViewById(R.id.measure_id_3);
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }

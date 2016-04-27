@@ -270,33 +270,33 @@ public class Temperature extends AppCompatActivity {
                 case 1:
                     try {
                         SharedPreferences tempSettings = getSharedPreferences(savedTemp1, 0);
-                            String channel1 = tempSettings.getString("channel", "1");
-                            String mode1 = tempSettings.getString("mode", "1");
-                            String holiday1 = tempSettings.getString("holiday", "18") + " °C";
-                            String day1 = tempSettings.getString("day", "23") + " °C";
-                            String night1 = tempSettings.getString("night", "21") + " °C";
-                            String away1 = tempSettings.getString("away", "19") + " °C";
-                            String current1 = tempSettings.getString("current", "22") + " °C";
+                        String channel1 = tempSettings.getString("channel", "1");
+                        String mode1 = tempSettings.getString("mode", "1");
+                        String holiday1 = tempSettings.getString("holiday", "18") + " °C";
+                        String day1 = tempSettings.getString("day", "23") + " °C";
+                        String night1 = tempSettings.getString("night", "21") + " °C";
+                        String away1 = tempSettings.getString("away", "19") + " °C";
+                        String current1 = tempSettings.getString("current", "22") + " °C";
 
-                            ctemp1.setText(current1);
-                            int m = Integer.parseInt(mode1);
-                            switch (m) {
-                                case 1:
-                                    stemp1.setText(holiday1);
-                                    break;
-                                case 2:
-                                    stemp1.setText(day1);
-                                    break;
-                                case 3:
-                                    stemp1.setText(night1);
-                                    break;
-                                case 4:
-                                    stemp1.setText(away1);
-                                    break;
-                                default:
-                                    stemp1.setText(day1);
-                                    break;
-                            }
+                        ctemp1.setText(current1);
+                        int m = Integer.parseInt(mode1);
+                        switch (m) {
+                            case 1:
+                                stemp1.setText(holiday1);
+                                break;
+                            case 2:
+                                stemp1.setText(day1);
+                                break;
+                            case 3:
+                                stemp1.setText(night1);
+                                break;
+                            case 4:
+                                stemp1.setText(away1);
+                                break;
+                            default:
+                                stemp1.setText(day1);
+                                break;
+                        }
                     }catch (Exception e){
                         e.printStackTrace();
                     }

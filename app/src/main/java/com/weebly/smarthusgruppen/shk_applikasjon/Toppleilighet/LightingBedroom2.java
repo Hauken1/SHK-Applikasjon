@@ -166,11 +166,6 @@ public class LightingBedroom2 extends AppCompatActivity {
             switch (s1){
                 case 0: //row 1 off
                     lightOffBtn.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 1 min
                     lmin = true;
