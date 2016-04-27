@@ -170,7 +170,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
         int value3 = sharedpreferences.getInt("value3", 0);
         int value4 = sharedpreferences.getInt("set", 0);
         if(value4 != 0){
-            View v = findViewById(R.id.type_of_mode_id_2);
+            View v = findViewById(R.id.type_of_mode_id_3);
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }

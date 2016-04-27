@@ -1,10 +1,13 @@
 package com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -27,23 +30,28 @@ public class Temperature_3 extends AppCompatActivity {
 
     public static final String savedTemp1 = "1SavedTemperature_3" ;
     public static final String savedTemp2 = "2SavedTemperature_3" ;
+    /*
     public static final String savedTemp3 = "3SavedTemperature_3" ;
     public static final String savedTemp4 = "4SavedTemperature_3" ;
     public static final String savedTemp5 = "5SavedTemperature_3" ;
     public static final String savedTemp6 = "6SavedTemperature_3" ;
-
+    */
     TextView stemp1;
     TextView stemp2;
+    /*
     TextView stemp3;
     TextView stemp4;
     TextView stemp5;
     TextView stemp6;
+    */
     TextView ctemp1;
     TextView ctemp2;
+    /*
     TextView ctemp3;
     TextView ctemp4;
     TextView ctemp5;
     TextView ctemp6;
+    */
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -127,6 +135,46 @@ public class Temperature_3 extends AppCompatActivity {
         ctemp1 = (TextView) findViewById(R.id.current1_tv);
         ctemp2 = (TextView) findViewById(R.id.current2_tv);
 
+        mode_View = (TextView) findViewById(R.id.mode_view);
+
+        try {
+            tempSetting = getSharedPreferences(savedTemp, 0);
+            String mode = tempSetting.getString("mode", "2");
+            int imode = Integer.parseInt(mode);
+            switch (imode) {
+                case iHOLIDAY:
+                    mode = HOLIDAY;
+                    break;
+                case iDAY:
+                    mode = DAY;
+                    break;
+                case iNIGHT:
+                    mode = NIGHT;
+                    break;
+                case iAWAY:
+                    mode = AWAY;
+                    break;
+                default:
+                    mode = DAY;
+                    break;
+            }
+            mode_View.setGravity(Gravity.CENTER);
+            mode_View.setText("Modus: " + mode);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
+
+        int value1 = sharedpreferences.getInt("value1", 0);
+        int value2 = sharedpreferences.getInt("value2", 0);
+        int value3 = sharedpreferences.getInt("value3", 0);
+        int value4 = sharedpreferences.getInt("set", 0);
+        if(value4 != 0){
+            View v = findViewById(R.id.ScrollView01);
+            v.setBackgroundColor(Color.rgb(value1, value3, value2));
+            setContentView(v);
+        }
 
     }
 
@@ -168,7 +216,7 @@ public class Temperature_3 extends AppCompatActivity {
     }
 
     public void displayTemperature() {
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 1; i <= 3; i++) {
             switch (i) {
                 case 1:
                     try {
@@ -233,144 +281,6 @@ public class Temperature_3 extends AppCompatActivity {
                             default:
                                 stemp2.setText(day2);
                                 break;
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case 3:
-                    try {
-                        SharedPreferences tempSettings = getSharedPreferences(savedTemp3, 0);
-                        String channel3 = tempSettings.getString("channel", "1");
-                        String mode3 = tempSettings.getString("mode", "1");
-                        String holiday3 = tempSettings.getString("holiday", "18") + " °C";
-                        String day3 = tempSettings.getString("day", "23") + " °C";
-                        String night3 = tempSettings.getString("night", "21") + " °C";
-                        String away3 = tempSettings.getString("away", "19") + " °C";
-                        String current3 = tempSettings.getString("current", "22") + " °C";
-
-                        ctemp3.setText(current3);
-                        int m = Integer.parseInt(mode3);
-                        switch (m) {
-                            case 1:
-                                stemp3.setText(holiday3);
-                                break;
-                            case 2:
-                                stemp3.setText(day3);
-                                break;
-                            case 3:
-                                stemp3.setText(night3);
-                                break;
-                            case 4:
-                                stemp3.setText(away3);
-                                break;
-                            default:
-                                stemp3.setText(day3);
-                                break;
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case 4:
-                    try {
-                        SharedPreferences tempSettings = getSharedPreferences(savedTemp4, 0);
-                        String channel4 = tempSettings.getString("channel", "1");
-                        String mode4 = tempSettings.getString("mode", "1");
-                        String holiday4 = tempSettings.getString("holiday", "18") + " °C";
-                        String day4 = tempSettings.getString("day", "23") + " °C";
-                        String night4 = tempSettings.getString("night", "21") + " °C";
-                        String away4 = tempSettings.getString("away", "19") + " °C";
-                        String current4 = tempSettings.getString("current", "22") + " °C";
-
-                        ctemp4.setText(current4);
-                        int m = Integer.parseInt(mode4);
-                        switch (m) {
-                            case 1:
-                                stemp4.setText(holiday4);
-                                break;
-                            case 2:
-                                stemp4.setText(day4);
-                                break;
-                            case 3:
-                                stemp4.setText(night4);
-                                break;
-                            case 4:
-                                stemp4.setText(away4);
-                                break;
-                            default:
-                                stemp4.setText(day4);
-                                break;
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case 5:
-                    try {
-                        SharedPreferences tempSettings = getSharedPreferences(savedTemp5, 0);
-                        String channel5 = tempSettings.getString("channel", "1");
-                        String mode5 = tempSettings.getString("mode", "1");
-                        String holiday5 = tempSettings.getString("holiday", "18") + " °C";
-                        String day5 = tempSettings.getString("day", "23") + " °C";
-                        String night5 = tempSettings.getString("night", "21") + " °C";
-                        String away5 = tempSettings.getString("away", "19") + " °C";
-                        String current5 = tempSettings.getString("current", "22") + " °C";
-
-                        ctemp5.setText(current5);
-                        int m = Integer.parseInt(mode5);
-                        switch (m) {
-                            case 1:
-                                stemp5.setText(holiday5);
-                                break;
-                            case 2:
-                                stemp5.setText(day5);
-                                break;
-                            case 3:
-                                stemp5.setText(night5);
-                                break;
-                            case 4:
-                                stemp5.setText(away5);
-                                break;
-                            default:
-                                stemp5.setText(day5);
-                                break;
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case 6:
-                    try {
-                        SharedPreferences tempSettings = getSharedPreferences(savedTemp6, 0);
-                        if (tempSettings.contains("channel")) {
-                            String channel6 = tempSettings.getString("channel", "1");
-                            String mode6 = tempSettings.getString("mode", "1");
-                            String holiday6 = tempSettings.getString("holiday", "18") + " °C";
-                            String day6 = tempSettings.getString("day", "23") + " °C";
-                            String night6 = tempSettings.getString("night", "21") + " °C";
-                            String away6 = tempSettings.getString("away", "19") + " °C";
-                            String current6 = tempSettings.getString("current", "22") + " °C";
-
-                            ctemp6.setText(current6);
-                            int m = Integer.parseInt(mode6);
-                            switch (m) {
-                                case 1:
-                                    stemp6.setText(holiday6);
-                                    break;
-                                case 2:
-                                    stemp6.setText(day6);
-                                    break;
-                                case 3:
-                                    stemp6.setText(night6);
-                                    break;
-                                case 4:
-                                    stemp6.setText(away6);
-                                    break;
-                                default:
-                                    stemp6.setText(day6);
-                                    break;
-                            }
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -763,8 +673,6 @@ public class Temperature_3 extends AppCompatActivity {
                 break;
         }
     }
-
-
 
 
     @Override

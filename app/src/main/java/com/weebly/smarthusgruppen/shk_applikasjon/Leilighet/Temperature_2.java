@@ -35,20 +35,20 @@ public class Temperature_2 extends AppCompatActivity {
     public static final String savedTemp3 = "3SavedTemperature_2" ;
     public static final String savedTemp4 = "4SavedTemperature_2" ;
     public static final String savedTemp5 = "5SavedTemperature_2" ;
-    public static final String savedTemp6 = "6SavedTemperature_2" ;
+    //public static final String savedTemp6 = "6SavedTemperature_2" ;
 
     TextView stemp1;
     TextView stemp2;
     TextView stemp3;
     TextView stemp4;
     TextView stemp5;
-    TextView stemp6;
+    //TextView stemp6;
     TextView ctemp1;
     TextView ctemp2;
     TextView ctemp3;
     TextView ctemp4;
     TextView ctemp5;
-    TextView ctemp6;
+    //TextView ctemp6;
 
     TextView mode_View;
 
@@ -72,7 +72,6 @@ public class Temperature_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature_2);
-
 
         setUpTemperatureGUI();
         displayTemperature();
@@ -189,15 +188,17 @@ public class Temperature_2 extends AppCompatActivity {
         stemp3 = (TextView) findViewById(R.id.static3_tv);
         stemp4 = (TextView) findViewById(R.id.static4_tv);
         stemp5 = (TextView) findViewById(R.id.static5_tv);
+        /*
         stemp6 = (TextView) findViewById(R.id.static6_tv);
-
+        */
         ctemp1 = (TextView) findViewById(R.id.current1_tv);
         ctemp2 = (TextView) findViewById(R.id.current2_tv);
         ctemp3 = (TextView) findViewById(R.id.current3_tv);
         ctemp4 = (TextView) findViewById(R.id.current4_tv);
         ctemp5 = (TextView) findViewById(R.id.current5_tv);
+        /*
         ctemp6 = (TextView) findViewById(R.id.current6_tv);
-
+        */
         sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
 
         int value1 = sharedpreferences.getInt("value1", 0);
@@ -249,7 +250,7 @@ public class Temperature_2 extends AppCompatActivity {
     }
 
     public void displayTemperature() {
-        for(int i=1; i <= 6;i++) {
+        for(int i=1; i <= 5;i++) {
             switch (i){
                 case 1:
                     try {
@@ -416,40 +417,6 @@ public class Temperature_2 extends AppCompatActivity {
                                 break;
                             default:
                                 stemp5.setText(day5);
-                                break;
-                        }
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                    break;
-                case 6:
-                    try {
-                        SharedPreferences tempSettings = getSharedPreferences(savedTemp6, 0);
-                        String channel6 = tempSettings.getString("channel", "1");
-                        String mode6 = tempSettings.getString("mode", "1");
-                        String holiday6 = tempSettings.getString("holiday", "18") + " °C";
-                        String day6 = tempSettings.getString("day", "23") + " °C";
-                        String night6 = tempSettings.getString("night", "21") + " °C";
-                        String away6 = tempSettings.getString("away", "19") + " °C";
-                        String current6 = tempSettings.getString("current", "22") + " °C";
-
-                        ctemp6.setText(current6);
-                        int m = Integer.parseInt(mode6);
-                        switch (m) {
-                            case 1:
-                                stemp6.setText(holiday6);
-                                break;
-                            case 2:
-                                stemp6.setText(day6);
-                                break;
-                            case 3:
-                                stemp6.setText(night6);
-                                break;
-                            case 4:
-                                stemp6.setText(away6);
-                                break;
-                            default:
-                                stemp6.setText(day6);
                                 break;
                         }
                     }catch (Exception e){
@@ -955,6 +922,7 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
+    /*
     public void upTemp5() {
         SharedPreferences changeTempSettings = getSharedPreferences(savedTemp6, 0);
         SharedPreferences.Editor editor = changeTempSettings.edit();
@@ -1054,6 +1022,7 @@ public class Temperature_2 extends AppCompatActivity {
         }
 
     }
+    */
     public void downTemp() {
         SharedPreferences changeTempSettings = getSharedPreferences(savedTemp1, 0);
         SharedPreferences.Editor editor = changeTempSettings.edit();
@@ -1544,6 +1513,7 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
+    /*
     public void downTemp5() {
         SharedPreferences changeTempSettings = getSharedPreferences(savedTemp6, 0);
         SharedPreferences.Editor editor = changeTempSettings.edit();
@@ -1642,6 +1612,7 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
+    */
 }
 
 //******************************UNUSED CODE****************************************
