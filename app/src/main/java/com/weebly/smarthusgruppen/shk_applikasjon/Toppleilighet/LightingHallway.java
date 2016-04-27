@@ -131,11 +131,6 @@ public class LightingHallway extends AppCompatActivity {
             switch (s1){
                 case 0: //row 1 off
                     lightOffBtn.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 1 min
                     lmin = true;
@@ -157,11 +152,6 @@ public class LightingHallway extends AppCompatActivity {
             switch (s2){
                 case 0: //row 2 off
                     lightOffBtn1.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 2 min
                     lmin1 = true;
@@ -1129,6 +1119,7 @@ public class LightingHallway extends AppCompatActivity {
             allButtonOffKill();
             offSwitchoff();
 
+            setLightSettingsForAllOff();
             if (loff6) {
                 lightOffBtn6.setChecked(true);
             }

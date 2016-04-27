@@ -120,7 +120,6 @@ public class LightingBathroom extends AppCompatActivity {
     }
 
     public void displayLights() {
-
         try {
 
             lightSettings = getSharedPreferences(savedLight, 0);
@@ -180,22 +179,15 @@ public class LightingBathroom extends AppCompatActivity {
                     break;
             }
 
-            int sAll = Integer.parseInt(modeStatsAll);
             int s1 = Integer.parseInt(modeStatus1);
             int s2 = Integer.parseInt(modeStatus2);
             int s3 = Integer.parseInt(modeStatus3);
             int s4 = Integer.parseInt(modeStatus4);
             int s5 = Integer.parseInt(modeStatus5);
-          //  int s6 = Integer.parseInt(modeStatus6);
 
             switch (s1){
                 case 0: //row 1 off
                     lightOffBtn.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 1 min
                     lmin = true;
@@ -217,11 +209,6 @@ public class LightingBathroom extends AppCompatActivity {
             switch (s2){
                 case 0: //row 2 off
                     lightOffBtn1.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 2 min
                     lmin1 = true;
@@ -243,11 +230,6 @@ public class LightingBathroom extends AppCompatActivity {
             switch (s3){
                 case 0: //row 3 off
                     lightOffBtn2.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 3 min
                     lmin2 = true;
@@ -269,11 +251,6 @@ public class LightingBathroom extends AppCompatActivity {
             switch (s4){
                 case 0: //row 4 off
                     lightOffBtn3.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 4 min
                     lmin3 = true;
@@ -295,11 +272,6 @@ public class LightingBathroom extends AppCompatActivity {
             switch (s5){
                 case 0: //row 5 off
                     lightOffBtn4.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 5 min
                     lmin4 = true;
@@ -317,66 +289,8 @@ public class LightingBathroom extends AppCompatActivity {
                     lightOffBtn4.setChecked(true);
                     break;
             }
-            /*
-            switch (s6){
-                case 0: //row 6 off
-                    lightOffBtn5.setChecked(true);
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    break;
-                case 1: //row 6 min
-                    lmin5 = true;
-                    lightMinBtn5.setChecked(true);
-                    break;
-                case 2: //row 6 med
-                    lmed5 = true;
-                    lightMedBtn5.setChecked(true);
-                    break;
-                case 3: //row 6 max
-                    lmax5 = true;
-                    lightMaxBtn5.setChecked(true);
-                    break;
-                default: //not set
-                    lightOffBtn5.setChecked(true);
-                    break;
-            }
-            */
             lightOffBtn6.setChecked(true);
             loff6 = true;
-            /*
-            switch (sAll) {
-                case 0: //row all off
-                    lightOffBtn6.setChecked(true);
-                    loff6 = true;
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-
-                    break;
-                case 1: //row all min
-                    lmin6 = true;
-                    lightMinBtn6.setChecked(true);
-                    lightOffBtn6.setChecked(false);
-                    break;
-                case 2: //row all med
-                    lmed6 = true;
-                    lightMedBtn6.setChecked(true);
-                    lightOffBtn6.setChecked(false);
-                    break;
-                case 3: //row all max
-                    lmax6 = true;
-
-                    lightMaxBtn6.setChecked(true);
-                    lightOffBtn6.setChecked(false);
-                    break;
-                default: //not set
-                    lightOffBtn6.setChecked(true);
-                    loff6 = true;
-                    break;
-            }
-        */
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -1102,7 +1016,6 @@ public class LightingBathroom extends AppCompatActivity {
                 lightMedBtn.setChecked(false);
                 lightMaxBtn.setChecked(false);
                 setLightSettingsForRow(row1, lightOff);
-
             }
         }
     };

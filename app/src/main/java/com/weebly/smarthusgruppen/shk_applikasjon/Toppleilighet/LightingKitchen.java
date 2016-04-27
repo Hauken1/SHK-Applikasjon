@@ -198,11 +198,6 @@ public class LightingKitchen extends AppCompatActivity {
             switch (s1){
                 case 0: //row 1 off
                     lightOffBtn.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 1 min
                     lmin = true;
@@ -224,11 +219,6 @@ public class LightingKitchen extends AppCompatActivity {
             switch (s2){
                 case 0: //row 2 off
                     lightOffBtn1.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 2 min
                     lmin1 = true;
@@ -250,11 +240,6 @@ public class LightingKitchen extends AppCompatActivity {
             switch (s3){
                 case 0: //row 3 off
                     lightOffBtn2.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 3 min
                     lmin2 = true;
@@ -276,11 +261,6 @@ public class LightingKitchen extends AppCompatActivity {
             switch (s4){
                 case 0: //row 4 off
                     lightOffBtn3.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 4 min
                     lmin3 = true;
@@ -302,11 +282,6 @@ public class LightingKitchen extends AppCompatActivity {
             switch (s5){
                 case 0: //row 5 off
                     lightOffBtn4.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 5 min
                     lmin4 = true;
@@ -327,11 +302,6 @@ public class LightingKitchen extends AppCompatActivity {
             switch (s6){
                 case 0: //row 6 off
                     lightOffBtn5.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 6 min
                     lmin5 = true;
@@ -349,37 +319,8 @@ public class LightingKitchen extends AppCompatActivity {
                     lightOffBtn5.setChecked(true);
                     break;
             }
-            switch (sAll) {
-                case 0: //row all off
-                    lightOffBtn6.setChecked(true);
-                    loff6 = true;
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
-                    break;
-                case 1: //row all min
-                    lmin6 = true;
-                    lightMinBtn6.setChecked(true);
-                    lightOffBtn6.setChecked(false);
-                    break;
-                case 2: //row all med
-                    lmed6 = true;
-                    lightMedBtn6.setChecked(true);
-                    lightOffBtn6.setChecked(false);
-                    break;
-                case 3: //row all max
-                    lmax6 = true;
-
-                    lightMaxBtn6.setChecked(true);
-                    lightOffBtn6.setChecked(false);
-                    break;
-                default: //not set
-                    lightOffBtn6.setChecked(true);
-                    loff6 = true;
-                    break;
-            }
+            lightOffBtn6.setChecked(true);
+            loff6 = true;
         }catch (Exception e){
             e.printStackTrace();
         }

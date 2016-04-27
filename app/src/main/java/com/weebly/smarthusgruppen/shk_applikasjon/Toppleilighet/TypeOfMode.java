@@ -197,7 +197,6 @@ public class TypeOfMode extends AppCompatActivity {
             setContentView(v);
         }
 
-
     }
 
     public void goToHome() {
