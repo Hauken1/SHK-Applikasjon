@@ -46,7 +46,7 @@ public class LoginClient extends AppCompatActivity {
     EditText tempPw;
 
     int serverPort = 12345;
-    String hostName= "128.39.142.140";
+    String hostName= "128.39.82.164";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
