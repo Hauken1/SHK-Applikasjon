@@ -64,10 +64,7 @@ public class TypeOfMode extends AppCompatActivity {
     private String nightMode = "3";
     private String awayMode = "4";
 
-    boolean isDay = false;
-    boolean isNight = false;
-    boolean isAway = false;
-    boolean isHoliday = false;
+
 
     ImageButton homeBtn;
     ToggleButton dayBtn;

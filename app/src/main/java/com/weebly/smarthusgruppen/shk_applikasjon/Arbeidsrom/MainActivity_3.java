@@ -42,6 +42,7 @@ public class MainActivity_3 extends AppCompatActivity {
     ImageButton climateBtn;
     ImageButton modeBtn;
     ImageButton settings;
+    ImageButton measBtn;
     static Socket connection;
 
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
@@ -101,6 +102,13 @@ public class MainActivity_3 extends AppCompatActivity {
         climateBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 goToClimateView();
+            }
+        });
+
+        measBtn = (ImageButton) findViewById(R.id.forbrukButton);
+        measBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goToMeasView();
             }
         });
 
@@ -285,7 +293,10 @@ public class MainActivity_3 extends AppCompatActivity {
         Intent intent = new Intent(this, Climate_3.class);
         startActivity(intent);
     }
-
+    public void goToMeasView() {
+        Intent intent = new Intent(this, Measurement_3.class);
+        startActivity(intent);
+    }
     public void goToModeView() {
         Intent intent = new Intent(this, TypeOfMode_3.class);
         startActivity(intent);

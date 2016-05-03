@@ -949,11 +949,11 @@ public class LightingHallway extends AppCompatActivity {
         }
     };
 
-    // all lights on max
+    // lights on max
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (!lmax) {        //this method should only be called if there is a connection.
+            if (!lmax) {
                 MainActivity.sendText("Command:000002117,1,3"); // all lights to max
                 lmin = false;
                 lmed = false;
