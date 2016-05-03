@@ -17,6 +17,9 @@ import android.widget.ToggleButton;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 public class Windows extends AppCompatActivity {
+
+    public static final String savedWindow = "SavedWindow_1";
+
     ImageButton homeBtn;
     ToggleButton win1Open;
     ToggleButton win1Close;
@@ -30,9 +33,9 @@ public class Windows extends AppCompatActivity {
     TextView degreeOpen1;
     TextView degreeOpen2;
     TextView degreeOpen3;
-    int winOpeningTime1 = 60;
-    int  winOpeningTime2 = 40;
-    int  winOpeningTime3 = 20;
+    int winOpeningTime1 = 00;
+    int winOpeningTime2 = 00;
+    int winOpeningTime3 = 00;
     int winOpener = 5;
     Boolean stopping1 = true;
     Boolean stopping2 = true;
@@ -44,8 +47,6 @@ public class Windows extends AppCompatActivity {
 
     int min = 0;
     int max = 100;
-
-
 
     boolean w1open = false;
     boolean w1close = false;
@@ -399,6 +400,8 @@ public class Windows extends AppCompatActivity {
     // parameters window = current degree of open/closed, ID which window, check = opening or closing?
     // Function for displaying how far each window is currently opened
     public void windowOpening(int window, final int id, boolean check) {
+        sharedpreferences = getSharedPreferences(savedWindow, 0);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
 
         for(int i = 0; i< 20; i++) {
             if((stopping1 && (id == 1)) || (stopping2 && (id == 2)) || (stopping3 && (id == 3))) {
@@ -583,7 +586,20 @@ public class Windows extends AppCompatActivity {
             }
         }); */
 
-
+        switch (id){
+            case 1:
+                editor.putString("window1status", Integer.toString(winOpeningTime1));
+                break;
+            case 2:
+                editor.putString("window2status", Integer.toString(winOpeningTime2));
+                break;
+            case 3:
+                editor.putString("window3status", Integer.toString(winOpeningTime3));
+                break;
+            default:
+                break;
+        }
+        editor.apply();
 
     }
 
@@ -650,14 +666,25 @@ public class Windows extends AppCompatActivity {
         /* These textviews will show on the screen to indicate to what degree
          the window is opened */
         degreeOpen1 = (TextView) findViewById(R.id.win4_button);
-        String temp1 = String.valueOf(winOpeningTime1 + "%");
-        degreeOpen1.setText(temp1);
+        //String temp1 = String.valueOf(winOpeningTime1 + "%");
+        //degreeOpen1.setText(temp1);
         degreeOpen2 = (TextView) findViewById(R.id.win8_button);
-        String temp2 = String.valueOf(winOpeningTime2 + "%");
-        degreeOpen2.setText(temp2);
+        //String temp2 = String.valueOf(winOpeningTime2 + "%");
+        //degreeOpen2.setText(temp2);
         degreeOpen3 = (TextView) findViewById(R.id.win12_button);
-        String temp3 = String.valueOf(winOpeningTime3 + "%");
-        degreeOpen3.setText(temp3);
+        //String temp3 = String.valueOf(winOpeningTime3 + "%");
+        //degreeOpen3.setText(temp3);
+
+        sharedpreferences = getSharedPreferences(savedWindow, 0);
+
+        String window1 = sharedpreferences.getString("window1status", "0") + "%";
+        String window2 = sharedpreferences.getString("window2status", "0") + "%";
+        String window3 = sharedpreferences.getString("window3status", "0") + "%";
+
+        degreeOpen1.setText(window1);
+        degreeOpen2.setText(window2);
+        degreeOpen3.setText(window3);
+
 
         sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
 

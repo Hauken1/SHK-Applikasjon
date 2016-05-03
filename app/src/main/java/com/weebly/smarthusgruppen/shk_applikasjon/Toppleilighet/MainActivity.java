@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton measureBtn;
     ImageButton modeBtn;
 
+    Boolean online;
     static Socket connection;
 
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
@@ -97,9 +98,11 @@ public class MainActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
 
-       setupGUI();
+        setupGUI();
 
         startMessageListener();
+
+
         MainActivity.sendText("Command:007262112,1");
         MainActivity.sendText("Command:007262112,2");
         MainActivity.sendText("Command:007262112,3");
@@ -107,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
 
+        //Night/day settings
 
     }
 
@@ -344,6 +348,21 @@ public class MainActivity extends AppCompatActivity {
                     Random rnd = new Random();
                     try {
 
+                        if (input.ready()) {
+                            String msg = input.readLine();
+
+                            Log.d("msg", ""+ msg);
+
+                            if(msg.startsWith("TempInfo:")) {
+                                tempInfoController(msg.substring(8, msg.length()));
+                            }
+
+                            else {
+
+                            }
+
+                        }
+                        /*
                         String msg = input.readLine();
                         Log.d("msg", ""+ msg);
 
@@ -354,6 +373,7 @@ public class MainActivity extends AppCompatActivity {
                         else {
 
                         }
+                        */
                     } catch (Exception e) {
                         System.out.println("Error when reading msg");
                         //e.printStackTrace();
