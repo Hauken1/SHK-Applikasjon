@@ -332,7 +332,7 @@ public class Windows extends AppCompatActivity {
                 stopping3 = true;
                 chk3 = false;
 
-                // if thread31 running, kill it and start this one instead
+
 
                 Thread thread = new Thread(new Runnable() {
                     @Override
@@ -540,8 +540,6 @@ public class Windows extends AppCompatActivity {
                         i = 20;        // breaking out of loop if window reaches closing point.
                         Log.d("closing window.." , "Finished closing " + window);
                     }
-                    /* arithmetic seems reversed because the degree starts at 180 and goes towards 90
-                    * So while actually opening the window we need to reduce the degrees*/
                 }
 
             }
@@ -550,40 +548,6 @@ public class Windows extends AppCompatActivity {
             }
 
         }
-       /* final float tempFloat = window;
-        gHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                switch (id) {
-                    case 1:
-                        winOpeningTime1 = tempFloat;
-                        float w1temp = Math.abs(winOpeningTime1 - 180);
-                        String temp1 = String.valueOf(w1temp + "°");
-                        degreeOpen1.setText(temp1);
-                        Log.d("first window", "printing to screen" + temp1);
-
-                        break;
-                    case 2:
-                        winOpeningTime2 = tempFloat;
-                        float w2temp = Math.abs(winOpeningTime2 - 180);
-                        String temp2 = String.valueOf(w2temp + "°");
-                        degreeOpen2.setText(temp2);
-                        Log.d("second window", "printing to screen" + temp2);
-                        break;
-                    case 3:
-                        winOpeningTime3 = tempFloat;
-                        //float w3temp = Math.abs(winOpeningTime3-180);
-                        //String temp3 = String.valueOf(w3temp + "°");
-                        String temp3 = String.valueOf(winOpeningTime3 + "°");
-                        degreeOpen3.setText(temp3);
-                        Log.d("third window", "printing to screen" + temp3);
-
-                        break;
-                }
-            }
-        }); */
-
-
 
     }
 
