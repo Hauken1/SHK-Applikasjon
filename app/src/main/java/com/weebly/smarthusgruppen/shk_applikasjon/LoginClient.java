@@ -509,21 +509,11 @@ public class LoginClient extends AppCompatActivity {
     }
 
     public void connect() {
-        /*
-        Thread cThread = new Thread(new ClientThread());
-        cThread.start();
-        */
         final Thread thread = new Thread((new Runnable() {
             @Override
             public void run() {
-                //try {
-
                     Log.d("ClientActivity", "C: Connecting...");
-                    //while(!connected) {
                         connectToServer();
-                     //   Thread.sleep(50);
-                   // }
-               //  } catch (InterruptedException e) {
             }
         }));
         thread.start();
