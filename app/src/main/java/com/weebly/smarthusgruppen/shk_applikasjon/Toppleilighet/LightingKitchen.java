@@ -1,15 +1,20 @@
 package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -20,10 +25,12 @@ public class LightingKitchen extends AppCompatActivity {
     public static final String savedLight = "SavedLightingKitchen_1" ;
     public static final String savedTemp = "1SavedTemperature_1";
     public static final String savedColor = "SavedBackgroundColor_1";
+    public static final String savedLightSettings = "SavedLightSettings_Kitchen_1";
 
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;
     public SharedPreferences lightSettings;
+    public SharedPreferences savedLightSet;
 
 
     boolean lmin = false;
@@ -89,11 +96,15 @@ public class LightingKitchen extends AppCompatActivity {
     ToggleButton lightMinBtn6;
     ToggleButton lightMaxBtn6;
     ToggleButton lightMedBtn6;
+
     ImageButton homeBtn;
+    ImageButton light_setttings_button;
     TextView mode_View;
 
     String sMode;
     int iMode;
+
+    private int seekBarValue1;
 
     public static final int row1 = 1;
     public static final int row2 = 2;
@@ -2081,6 +2092,72 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn5.setChecked(true);
     }
 
+    public void settingsView() {
+        savedLightSet = getSharedPreferences(savedLightSettings, 0);
+        final SharedPreferences.Editor editor = savedLightSet.edit();
+        String dimValue;
+        seekBarValue1 = savedLightSet.getInt("seekbarvalue1", 0);
+
+        if(seekBarValue1 == 0) {
+            dimValue = "30";
+        }
+        else dimValue = Integer.toString(seekBarValue1);
+
+        Dialog settingsDialog = new Dialog(this);
+        settingsDialog.setContentView(R.layout.settings_light);
+        settingsDialog.setCancelable(true);
+
+        final TextView sb1Status = (TextView)settingsDialog.findViewById(R.id.textView_dim_value);
+        sb1Status.setText(dimValue);
+        SeekBar sB1 = (SeekBar)settingsDialog.findViewById(R.id.seekBar1);
+        sB1.setProgress(seekBarValue1);
+        sB1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+
+                seekBarValue1 = progress + 30;
+                String dim = Integer.toString(seekBarValue1);
+                sb1Status.setText(dim);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+        });
+        settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                savedLightSet = getSharedPreferences(savedLightSettings, Context.MODE_PRIVATE);
+                editor.putInt("seekbarvalue1", seekBarValue1);
+                editor.commit();
+
+                AlertDialog.Builder add = new AlertDialog.Builder(LightingKitchen.this);
+                add.setTitle("Suksess");
+                add.setMessage("Medium dimmeverdi er endret");
+                add.setCancelable(false);
+                add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                add.create();
+                add.show();
+            }
+        });
+        settingsDialog.show();
+    }
+
+
     public void setupGUI() {
 
         mode_View = (TextView) findViewById(R.id.mode_view);
@@ -2162,7 +2239,6 @@ public class LightingKitchen extends AppCompatActivity {
         lightMaxBtn3 = (ToggleButton) findViewById(R.id.toggle_1003);
         lightMaxBtn3.setOnClickListener(light_all_Listener3);
 
-
         lightOffBtn4 = (ToggleButton) findViewById(R.id.toggle_04);
         lightOffBtn4.setOnClickListener(light_all__off_Listener4);
 
@@ -2175,7 +2251,6 @@ public class LightingKitchen extends AppCompatActivity {
         lightMaxBtn4 = (ToggleButton) findViewById(R.id.toggle_1004);
         lightMaxBtn4.setOnClickListener(light_all_Listener4);
 
-
         lightOffBtn5 = (ToggleButton) findViewById(R.id.toggle_05);
         lightOffBtn5.setOnClickListener(light_all__off_Listener5);
 
@@ -2187,7 +2262,6 @@ public class LightingKitchen extends AppCompatActivity {
 
         lightMaxBtn5 = (ToggleButton) findViewById(R.id.toggle_1005);
         lightMaxBtn5.setOnClickListener(light_all_Listener5);
-
 
         lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_06);
         lightOffBtn6.setOnClickListener(light_all__off_Listener6);
@@ -2206,6 +2280,13 @@ public class LightingKitchen extends AppCompatActivity {
         homeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 goToHome();
+            }
+        });
+
+        light_setttings_button = (ImageButton) findViewById(R.id.settings_light);
+        light_setttings_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                settingsView();
             }
         });
 

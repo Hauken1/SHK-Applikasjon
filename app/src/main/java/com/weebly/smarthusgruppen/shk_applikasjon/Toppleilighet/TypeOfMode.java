@@ -2,6 +2,7 @@ package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -51,6 +52,7 @@ public class TypeOfMode extends AppCompatActivity {
     public static final String savedLightLivingroom = "SavedLightingLivingRoom_1";
     public static final String savedLightOffice = "SavedLightingOffice_1";
     public static final String savedColor = "SavedBackgroundColor_1";
+    public static final String savedDayNight = "SavedDayNightSettings_1";
 
     SharedPreferences sharedpreferences;
 
@@ -72,6 +74,7 @@ public class TypeOfMode extends AppCompatActivity {
     ToggleButton nightBtn;
     ToggleButton awayBtn;
     ToggleButton holidayBtn;
+    ImageButton settings;
 
     Handler gHandler;
 
@@ -185,6 +188,13 @@ public class TypeOfMode extends AppCompatActivity {
             }
         });
 
+        settings = (ImageButton) findViewById(R.id.settings_mode);
+        settings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                settingsView();
+            }
+        });
+
         sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
 
         int value1 = sharedpreferences.getInt("value1", 0);
@@ -202,6 +212,136 @@ public class TypeOfMode extends AppCompatActivity {
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void settingsView() {
+        sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
+
+        Dialog settingsDialog = new Dialog(this);
+        settingsDialog.setContentView(R.layout.settings_modus);
+        settingsDialog.setCancelable(true);
+        final EditText dayText = (EditText)settingsDialog.findViewById(R.id.editText_day);
+        final EditText nightText = (EditText)settingsDialog.findViewById(R.id.editText_night);
+        TextView setDay = (TextView)settingsDialog.findViewById(R.id.set_day);
+        TextView setNight = (TextView)settingsDialog.findViewById(R.id.set_night);
+        dayText.setInputType(InputType.TYPE_CLASS_NUMBER);
+        nightText.setInputType(InputType.TYPE_CLASS_NUMBER);
+        InputFilter[] filter1 = new InputFilter[1];
+        filter1[0] = new InputFilter.LengthFilter(5);
+        dayText.setFilters(filter1);
+        nightText.setFilters(filter1);
+        dayText.addTextChangedListener(new TimeTextWatcher(dayText));
+        nightText.addTextChangedListener(new TimeTextWatcher(nightText));
+
+        String sDay = Integer.toString(sharedpreferences.getInt("dayhour", 0)) + ":"
+                    + Integer.toString(sharedpreferences.getInt("daymin",0));
+        String sNight = Integer.toString(sharedpreferences.getInt("nighthour", 0)) + ":"
+                    + Integer.toString(sharedpreferences.getInt("nightmin",0));
+        setDay.setText(sDay);
+        setNight.setText(sNight);
+
+                settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        int hDay = 0, mDay = 0, hNight = 0, mNight = 0;
+                        boolean gotTimeDay, gotTimeNight, daySet = false, nightSet = false;
+                        String getDayTime = dayText.getText().toString();
+                        gotTimeDay = getDayTime.isEmpty();
+                        if (getDayTime.length() < 5)
+                            gotTimeDay = true;
+                        if (!gotTimeDay) {
+                            hDay = Integer.parseInt(getDayTime.substring(0, 2));
+                            mDay = Integer.parseInt(getDayTime.substring(3, getDayTime.length()));
+                        }
+                        if (hDay < 25 && mDay < 60 && !gotTimeDay) {
+                            editor.putInt("dayhour", hDay);
+                            editor.putInt("daymin", mDay);
+                            editor.putInt("dayset", 1);
+                            editor.commit();
+                            daySet = true;
+                        }
+                        String getNightTime = nightText.getText().toString();
+                        gotTimeNight = getNightTime.isEmpty();
+                        if (getNightTime.length() < 5)
+                            gotTimeNight = true;
+                        if (!gotTimeNight) {
+                            hNight = Integer.parseInt(getNightTime.substring(0, 2));
+                            mNight = Integer.parseInt(getNightTime.substring(3, getNightTime.length()));
+                        }
+                        if (hNight < 25 && mNight < 60 && !gotTimeNight) {
+                            editor.putInt("nighthour", hNight);
+                            editor.putInt("nightmin", mNight);
+                            editor.putInt("nightset", 1);
+                            editor.commit();
+                            nightSet = true;
+                        }
+                        if (nightSet && daySet) {
+                            MainActivity.sendText("DayNightSetT:" + "B" + "," + hDay + "," + mDay + "," + hNight + ","
+                                    + mNight);
+                            AlertDialog.Builder add = new AlertDialog.Builder(TypeOfMode.this);
+                            add.setTitle("Suksess");
+                            add.setMessage("Tid for når modus skifter til natt og dag er endret.");
+                            add.setCancelable(false);
+                            add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            add.create();
+                            add.show();
+                        } else if (daySet) {
+                            MainActivity.sendText("DayNightSetT:" + "D" + "," + hDay + "," + mDay);
+                            AlertDialog.Builder add = new AlertDialog.Builder(TypeOfMode.this);
+                            add.setTitle("");
+                            add.setMessage("Suksess."
+                                    + "\nTiden for når modus skifter til dag er endret."
+                                    + "\n\nVerdiene for når det skiftes til natt, er ikke lagret.");
+                            add.setCancelable(false);
+                            add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            add.create();
+                            add.show();
+                        } else if (nightSet) {
+                            MainActivity.sendText("DayNightSetT:" + "N" + "," + hNight + "," + mNight);
+                            AlertDialog.Builder add = new AlertDialog.Builder(TypeOfMode.this);
+                            add.setTitle("Suksess");
+                            add.setMessage("Tiden for når modus skifter til natt er endret"
+                                    + "\n\nVerdiene for når det skiftes til dag, er ikke lagret");
+                            add.setCancelable(false);
+                            add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            add.create();
+                            add.show();
+                        } else {
+                            AlertDialog.Builder add = new AlertDialog.Builder(TypeOfMode.this);
+                            add.setTitle("Feil");
+                            add.setMessage("Noe gikk galt."
+                                    + "\nSjekk verdiene og prøv igjen.");
+                            add.setCancelable(false);
+                            add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            add.create();
+                            add.show();
+                        }
+                    }
+                });
+
+        settingsDialog.show();
     }
 
     public void day() {
@@ -1582,4 +1722,73 @@ public class TypeOfMode extends AppCompatActivity {
             });
         hThread.start();
         }
+
+    private class TimeTextWatcher implements TextWatcher {
+
+        private EditText time;
+
+        private TimeTextWatcher(EditText time) {
+            this.time = time;
+        }
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            boolean flag = true;
+            String eachBlock[] = time.getText().toString().split(":");
+            for (int i = 0; i < eachBlock.length; i++) {
+                if (eachBlock[i].length() > 6) {
+                    flag = false;
+                }
+            }
+            if (flag) {
+
+                time.setOnKeyListener(new View.OnKeyListener() {
+
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                        if (keyCode == KeyEvent.KEYCODE_DEL)
+                            mKeyDel = 1;
+                        return false;
+                    }
+                });
+
+                if (mKeyDel == 0) {
+
+                    if (((time.getText().length() + 1) % 3) == 0) {
+                        if (time.getText().length() < 5) {
+                            time.setText(time.getText() + ":");
+                            time.setSelection(time.getText().length());
+                        }
+                    }
+                    mTextValue = time.getText().toString();
+                } else {
+                    mTextValue = time.getText().toString();
+                    if (mLastChar.equals(':')) {
+                        mTextValue = mTextValue.substring(0, mTextValue.length() - 1);
+                        time.setText(mTextValue);
+                        time.setSelection(mTextValue.length());
+                    }
+                    mKeyDel = 0;
+                }
+
+            } else {
+                time.setText(mTextValue);
+            }
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            if (s.length() > 0) {// save the last char value
+                mLastChar = s.charAt(s.length() - 1);
+            } else {
+                mLastChar = '\0';
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
     }
+}

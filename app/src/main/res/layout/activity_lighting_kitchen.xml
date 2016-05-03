@@ -172,8 +172,6 @@
             android:textColor="#090909"
             />
 
-
-
         <ToggleButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -231,8 +229,6 @@
             android:layout_column="1"
             android:textColor="#090909"
             />
-
-
 
         <ToggleButton
             android:layout_width="wrap_content"
@@ -471,6 +467,15 @@
             />
 
     </GridLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_light"
+        android:layout_below="@+id/GridLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/settings_main1" />
 
 </RelativeLayout>
 </ScrollView>
