@@ -237,6 +237,7 @@ public class TypeOfMode extends AppCompatActivity {
                     + Integer.toString(sharedpreferences.getInt("daymin",0));
         String sNight = Integer.toString(sharedpreferences.getInt("nighthour", 0)) + ":"
                     + Integer.toString(sharedpreferences.getInt("nightmin",0));
+        
         setDay.setText(sDay);
         setNight.setText(sNight);
 
