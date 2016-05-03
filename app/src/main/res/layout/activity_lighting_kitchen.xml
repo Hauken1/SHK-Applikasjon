@@ -475,7 +475,7 @@
         android:layout_below="@+id/GridLayout1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:background="@mipmap/settings_main1" />
+        android:background="@mipmap/mainsettings" />
 
 </RelativeLayout>
 </ScrollView>
