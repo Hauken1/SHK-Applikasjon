@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:onClick="Login"
         android:text="@string/Login"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/colorPrimary"
         android:textColor="@color/white"
         android:layout_below="@+id/change_pw"
@@ -80,5 +81,20 @@
         android:textColor="#13f03f"
         android:layout_below="@+id/saveLoginCheckBox"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Glemt passord?"
+        android:textColor="#13f03f"
+        android:gravity="center"
+        android:id="@+id/forgot_pw"
+        android:clickable="true"
+        android:layout_marginTop="6dp"
+        android:layout_below="@+id/change_pw"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp" />
+
 </RelativeLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
