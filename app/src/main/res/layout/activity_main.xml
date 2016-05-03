@@ -20,49 +20,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lightButton"
-        android:background="@mipmap/main_lys"
+        android:background="@mipmap/mainlys"
         android:foregroundGravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        />
 
 
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/main_klima_new"
+        android:background="@mipmap/maintemp"
         android:id="@+id/climateButton"
         android:layout_below="@+id/lightButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/windowButton"
-        android:background="@mipmap/main_vindu"
+        android:background="@mipmap/mainvindu"
         android:layout_below="@+id/climateButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/main_forbruk2"
+        android:background="@mipmap/mainforbruk"
         android:id="@+id/measureButton"
         android:layout_below="@+id/windowButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/main_modus"
+        android:background="@mipmap/mainmodus"
         android:id="@+id/modeButton"
         android:layout_below="@+id/measureButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -71,6 +71,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:background="@mipmap/settings_main1" />
+        android:background="@mipmap/mainsettings" />
 
 </RelativeLayout>
