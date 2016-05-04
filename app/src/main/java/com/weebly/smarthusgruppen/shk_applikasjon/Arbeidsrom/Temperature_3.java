@@ -30,28 +30,13 @@ public class Temperature_3 extends AppCompatActivity {
 
     public static final String savedTemp1 = "1SavedTemperature_3" ;
     public static final String savedTemp2 = "2SavedTemperature_3" ;
-    /*
-    public static final String savedTemp3 = "3SavedTemperature_3" ;
-    public static final String savedTemp4 = "4SavedTemperature_3" ;
-    public static final String savedTemp5 = "5SavedTemperature_3" ;
-    public static final String savedTemp6 = "6SavedTemperature_3" ;
-    */
+
     TextView stemp1;
     TextView stemp2;
-    /*
-    TextView stemp3;
-    TextView stemp4;
-    TextView stemp5;
-    TextView stemp6;
-    */
+
     TextView ctemp1;
     TextView ctemp2;
-    /*
-    TextView ctemp3;
-    TextView ctemp4;
-    TextView ctemp5;
-    TextView ctemp6;
-    */
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -78,6 +63,10 @@ public class Temperature_3 extends AppCompatActivity {
 
 
     @Override
+    /**
+     * loads GUI settings on startup
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature_3);
@@ -91,7 +80,10 @@ public class Temperature_3 extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setUpTemperatureGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
@@ -178,6 +170,9 @@ public class Temperature_3 extends AppCompatActivity {
 
     }
 
+    /**
+     * sends the user to the mainactivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);

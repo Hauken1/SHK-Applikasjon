@@ -14,7 +14,9 @@ import android.widget.TextView;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
-
+/**
+ * Interface to send the user to climate view to enter temperature and ventilation pages
+ */
 public class Climate_2 extends AppCompatActivity {
     ImageButton tempBtn;
     ImageButton ventBtn;
@@ -38,7 +40,10 @@ public class Climate_2 extends AppCompatActivity {
 
     TextView mode_View;
 
-
+    /**
+     * loads GUI settings on startup
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,10 @@ public class Climate_2 extends AppCompatActivity {
 
 
     }
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
 
         mode_View = (TextView) findViewById(R.id.mode_view);
@@ -115,16 +124,23 @@ public class Climate_2 extends AppCompatActivity {
 
     }
 
+    /**
+     * sends the user to the temperature view menu
+     */
     public void goToTemperatureView() {
         Intent intent = new Intent(this, Temperature_2.class);
         startActivity(intent);
     }
-
+    /**
+     * sends the user to the ventilation view menu
+     */
     public void goToVentilationView() {
         Intent intent = new Intent(this, Ventilation_2.class);
         startActivity(intent);
     }
-
+    /**
+     * sends the user to the mainActivity view menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);

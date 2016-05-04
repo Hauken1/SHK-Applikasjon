@@ -157,6 +157,11 @@ public class TypeOfMode extends AppCompatActivity {
         int hHour = sharedpreferences.getInt("hour", 1992);
         int hMin = sharedpreferences.getInt("minute", 1992);
     }
+
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setUpGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);

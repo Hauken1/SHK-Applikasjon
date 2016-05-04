@@ -85,7 +85,7 @@ public class Temperature extends AppCompatActivity {
     }
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
-     * settings. SharedPreferences for each mode.
+     * settings. SharedPreferences for each mode. loads temperature information
      */
     public void setUpTemperatureGUI() {
 

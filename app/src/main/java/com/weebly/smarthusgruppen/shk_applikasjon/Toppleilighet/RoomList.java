@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 /**
- * Roomlist covers all the rooms in the appartment. Lets the user choose which room to change
+ * Roomlist covers all the rooms in the apartment. Lets the user choose which room to change
  * the lights in
  */
 public class RoomList extends AppCompatActivity {
