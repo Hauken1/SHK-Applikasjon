@@ -14,7 +14,9 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
+/**
+ * Controls all the lights for the office Light settings based on mode is also saved
+ */
 public class LightingOffice extends AppCompatActivity {
 
     public static final String savedLight = "SavedLightingOffice_1";
@@ -62,7 +64,10 @@ public class LightingOffice extends AppCompatActivity {
     public static final int iHOLIDAY = 1;
 
     TextView mode_View;
-    
+    /**
+     * runs on startup and sets up gui and displays light settings dependent on current mode
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +75,10 @@ public class LightingOffice extends AppCompatActivity {
         setupGUI();
         displayLight();
     }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
         lightOffBtn = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn.setOnClickListener(light_all__off_Listener);
@@ -134,6 +142,10 @@ public class LightingOffice extends AppCompatActivity {
         }
 
     }
+    /**
+     * displays light settings dependent on which mode the house is in. saves all these variables
+     * in sharedpreferences
+     */
     public void displayLight() {
         try {
 
@@ -198,7 +210,11 @@ public class LightingOffice extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * Changing and saving value for light settings. Depending on the mode the house is in.
+     * @param row the row in the grid layout. for which button is clicked
+     * @param value off, min, med, or max value for the light.
+     */
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
@@ -905,7 +921,9 @@ public class LightingOffice extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
@@ -923,7 +941,9 @@ public class LightingOffice extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min = new View.OnClickListener() {
         @Override
@@ -946,7 +966,9 @@ public class LightingOffice extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med = new View.OnClickListener() {
         @Override
@@ -970,7 +992,9 @@ public class LightingOffice extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
@@ -995,7 +1019,9 @@ public class LightingOffice extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * set all toggle buttons to off
+     */
     public void allButtonsOff() {
         lightMinBtn.setChecked(false);
         lightMedBtn.setChecked(false);
@@ -1003,12 +1029,18 @@ public class LightingOffice extends AppCompatActivity {
         lightOffBtn.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse()  {
         lmin = false;
         lmed = false;
         lmax = false;
     }
 
+    /**
+     * sends user to mainActivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

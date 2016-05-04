@@ -16,6 +16,10 @@ import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
+/**
+ * opening of three different windows, displaying to user the current window opening value.
+ * saving window state
+ */
 public class Windows extends AppCompatActivity {
 
     public static final String savedWindow = "SavedWindow_1";
@@ -76,6 +80,10 @@ public class Windows extends AppCompatActivity {
 
     TextView mode_View;
 
+    /**
+     * runs on startup sets up GUI for the page
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -392,13 +400,25 @@ public class Windows extends AppCompatActivity {
     };
 
 
-
+    /**
+     * sends the user to the mainActivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
     // parameters window = current degree of open/closed, ID which window, check = opening or closing?
     // Function for displaying how far each window is currently opened
+
+    /**
+     * Allows for opening, closing and stopping of a window already in motion. It checks
+     * which if a certain window is moving and then knows which one to stop if the stop command
+     * is issued. It displays to the user the status of all the windows, while its being opened
+     * , closed or on stop.
+     * @param window the status of each window
+     * @param id the id for which window it is
+     * @param check is the window opening or closing
+     */
     public void windowOpening(int window, final int id, boolean check) {
         sharedpreferences = getSharedPreferences(savedWindow, 0);
         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -554,9 +574,11 @@ public class Windows extends AppCompatActivity {
 
 
     }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
-
         mode_View = (TextView) findViewById(R.id.mode_view);
 
         try {

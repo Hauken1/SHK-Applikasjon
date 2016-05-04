@@ -15,6 +15,10 @@ import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
+/**
+ * Allows the user to change ventilation settings. Three different stages of ventilation.
+ * Allows settings to be saved between different modes of the house
+ */
 public class Ventilation extends AppCompatActivity {
     ImageButton homeBtn;
     boolean connected;
@@ -64,6 +68,10 @@ public class Ventilation extends AppCompatActivity {
 
     TextView mode_View;
 
+    /**
+     * loads the GUI Setup and loads the current ventilation display status on start up.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,11 +79,19 @@ public class Ventilation extends AppCompatActivity {
         setupGUI();
         displayVentilation();
     }
+
+    /**
+     * changes from Windows view to mainActivity.
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Displays ventilation status on screen. Sets buttons toggle on/off to what was saved
+     * in that mode
+     */
     public void displayVentilation() {
 
         try {
@@ -157,6 +173,10 @@ public class Ventilation extends AppCompatActivity {
         }
     }
 
+    /**
+     * Saves ventilation status to sharedpreferences for each mode.
+     * @param i
+     */
     public void setVent2BasedOnMode(int i) {
         ventilationSettings = getSharedPreferences(savedVent, 0);
         SharedPreferences.Editor editor = ventilationSettings.edit();
@@ -254,6 +274,10 @@ public class Ventilation extends AppCompatActivity {
         }
     }
 
+    /**
+     * Saves ventilation status to sharedpreferences for each mode
+     * @param i
+     */
     public void setVent1BasedOnMode(int i) {
         ventilationSettings = getSharedPreferences(savedVent, 0);
         SharedPreferences.Editor editor = ventilationSettings.edit();
@@ -352,6 +376,11 @@ public class Ventilation extends AppCompatActivity {
     }
     // for bedrooms
     // toggle level one
+    /**
+     * Toggles level 1 if level 1 is not activated. sends command to server to turn of lvl 2.
+     * turn on lvl 1. in the action to toggle on level 1. If level one is toggled it will tell the
+     * server to turn off level 1.turns off the other toggle buttons
+     */
     protected View.OnClickListener toggle_level1 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -375,7 +404,11 @@ public class Ventilation extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * Toggles level 2 if level 2 is not activated. sends command to server to turn of lvl 1.
+     * turn on lvl 2. in the action to toggle on level 2. If level one is toggled it will tell the
+     * server to turn off level 2.turns off the other toggle buttons
+     */
     // toggle level 2
     protected View.OnClickListener toggle_level2 = new View.OnClickListener() {
         @Override
@@ -400,7 +433,11 @@ public class Ventilation extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * Toggles on level 3 by turning no level 1 and 2. toggles off 1 and 2. If one function is
+     * not being used but the other is . the first is turned on to make sure both is on
+     * so toggle 3 can be activated. If toggle 3 is activated already it turns off everything
+     */
     // toggle level 3
     protected View.OnClickListener toggle_level3 = new View.OnClickListener() {
         @Override
@@ -440,6 +477,9 @@ public class Ventilation extends AppCompatActivity {
         }
     };
 
+    /**
+     * turns off mode 1 and 2. Also toggles of all 3 other buttons.
+     */
     // turn off
     protected View.OnClickListener turn_off = new View.OnClickListener() {
         @Override
@@ -459,17 +499,27 @@ public class Ventilation extends AppCompatActivity {
         }
     };
 
+    /**
+     * toggles off button 1,2 and off
+     */
     public void lvlOneTwoOff() {
         lvlOneBtn.setChecked(false);
         lvlTwoBtn.setChecked(false);
         turnOffBtn.setChecked(false);
     }
+
+    /**
+     * sets all bools to false
+     */
     public void allBoolFalse() {
         ch1 = false;
         ch2 = false;
         ch3 = false;
     }
 
+    /**
+     * toggles of all 4 buttons
+     */
     public void allLvlOff()  {
         lvlOneBtn.setChecked(false);
         lvlTwoBtn.setChecked(false);
@@ -478,8 +528,12 @@ public class Ventilation extends AppCompatActivity {
     }
 
 
-    // for all other rooms
 
+    /**
+     * Toggles level 1 if level 1 is not activated. sends command to server to turn of lvl 2.
+     * turn on lvl 1. in the action to toggle on level 1. If level one is toggled it will tell the
+     * server to turn off level 1.turns off the other toggle buttons
+     */
     // toggle level one
     protected View.OnClickListener toggle_level11 = new View.OnClickListener() {
         @Override
@@ -504,7 +558,11 @@ public class Ventilation extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * Toggles level 2 if level 2 is not activated. sends command to server to turn of lvl 1.
+     * turn on lvl 2. in the action to toggle on level 2. If level one is toggled it will tell the
+     * server to turn off level 2.turns off the other toggle buttons
+     */
     // toggle level 2
     protected View.OnClickListener toggle_level21 = new View.OnClickListener() {
         @Override
@@ -530,6 +588,11 @@ public class Ventilation extends AppCompatActivity {
         }
     };
 
+    /**
+     * Toggles on level 3 by turning no level 1 and 2. toggles off 1 and 2. If one function is
+     * not being used but the other is . the first is turned on to make sure both is on
+     * so toggle 3 can be activated. If toggle 3 is activated already it turns off everything
+     */
     // toggle level 3
     protected View.OnClickListener toggle_level31 = new View.OnClickListener() {
         @Override
@@ -567,7 +630,9 @@ public class Ventilation extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns off mode 1 and 2. Also toggles of all 3 other buttons.
+     */
     // turn off
     protected View.OnClickListener turn_off1 = new View.OnClickListener() {
         @Override
@@ -584,17 +649,27 @@ public class Ventilation extends AppCompatActivity {
         }
     };
 
+    /**
+     * toggles off button 1, 2 and off
+     */
     public void lvlOneTwoOff1() {
         lvlOneBtn1.setChecked(false);
         lvlTwoBtn1.setChecked(false);
         turnOffBtn1.setChecked(false);
     }
+
+    /**
+     * sets all booleans to false.
+     */
     public void allBoolFalse1() {
         ch11 = false;
         ch21 = false;
         ch31 = false;
     }
 
+    /**
+     * sets all toggle buttons to off
+     */
     public void allLvlOff1()  {
         lvlOneBtn1.setChecked(false);
         lvlTwoBtn1.setChecked(false);
@@ -602,7 +677,11 @@ public class Ventilation extends AppCompatActivity {
         turnOffBtn1.setChecked(false);
     }
 
-
+    /**
+     * loads in all GUI setup functions. Creation of the onClickListeners for each ToggleButton
+     * loads in settings saved dependent on which mode the house is in. Saves color settings for
+     * the current users background choice.
+     */
     public void setupGUI() {
 
         mode_View = (TextView) findViewById(R.id.mode_view);
