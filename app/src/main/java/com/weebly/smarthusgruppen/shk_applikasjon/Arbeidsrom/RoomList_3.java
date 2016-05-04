@@ -14,7 +14,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
+/**
+ * Roomlist covers all the rooms in the apartment. Lets the user choose which room to change
+ * the lights in
+ */
 public class RoomList_3 extends AppCompatActivity {
 
     Button bathroomBtn;
@@ -40,6 +43,10 @@ public class RoomList_3 extends AppCompatActivity {
 
 
     @Override
+    /**
+     * loads GUI settings on startup
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list_3);
@@ -47,7 +54,10 @@ public class RoomList_3 extends AppCompatActivity {
         setupGUI();
 
         }
-
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setupGUI(){
         // kitchen button
         kitchenBtn = (Button) findViewById(R.id.room1_button);
@@ -116,15 +126,23 @@ public class RoomList_3 extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * sends the user to the temperature view menu
+     */
     public void goToKitchenLights() {
         Intent intent = new Intent(this, LightingFlat.class);
         startActivity(intent);
     }
+    /**
+     * sends the user to the ventilation view menu
+     */
     public void goToBathroomLights() {
         Intent intent = new Intent(this, LightingBathroom_3.class);
         startActivity(intent);
     }
+    /**
+     * sends the user to the mainActivity view menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);

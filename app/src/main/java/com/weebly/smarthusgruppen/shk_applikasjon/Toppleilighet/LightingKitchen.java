@@ -20,7 +20,8 @@ import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 /**
- * Controls all the lights for the kitchen Light settings based on mode is also saved
+ * Controls all the lights for the kitchen Light settings based on mode. Therse settings are
+ * also saved in shared preferences
  */
 public class LightingKitchen extends AppCompatActivity {
 

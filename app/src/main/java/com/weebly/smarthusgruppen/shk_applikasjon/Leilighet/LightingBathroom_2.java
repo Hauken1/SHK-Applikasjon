@@ -13,7 +13,10 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
+/**
+ * Controls all the lights for the bathroom Light settings based on mode. Therse settings are
+ * also saved in shared preferences
+ */
 public class LightingBathroom_2 extends AppCompatActivity {
 
     public static final String savedLight = "SavedLightingBathroom_2";
@@ -92,6 +95,10 @@ public class LightingBathroom_2 extends AppCompatActivity {
     ImageButton homeBtn;
 
     @Override
+    /**
+     * runs on startup and sets up gui and displays light settings dependent on current mode
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_bathroom_2);
@@ -99,7 +106,10 @@ public class LightingBathroom_2 extends AppCompatActivity {
         setupGUI();
         displayLights();
     }
-
+    /**
+     * displays light settings dependent on which mode the house is in. saves all these variables
+     * in sharedpreferences
+     */
     public void displayLights() {
         try {
 
@@ -211,7 +221,11 @@ public class LightingBathroom_2 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Changing and saving value for light settings. Depending on the mode the house is in.
+     * @param row the row in the grid layout. for which button is clicked
+     * @param value off, min, med, or max value for the light.
+     */
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
@@ -917,7 +931,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 break;
         }
     }
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
@@ -936,7 +952,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min = new View.OnClickListener() {
         @Override
@@ -960,7 +978,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med = new View.OnClickListener() {
         @Override
@@ -985,7 +1005,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
@@ -1011,18 +1033,27 @@ public class LightingBathroom_2 extends AppCompatActivity {
         }
     };
 
+    /**
+     * sets all toggle buttons to off
+     */
     public void allButtonsOff() {
         lightMinBtn.setChecked(false);
         lightMedBtn.setChecked(false);
         lightMaxBtn.setChecked(false);
         lightOffBtn.setChecked(false);
     }
-
+/**
+ * sets all bool to false
+ */
     public void allBoolFalse()  {
         lmin = false;
         lmed = false;
         lmax = false;
     }
+
+    /**
+     * sends the user to the mainActivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);
@@ -1030,7 +1061,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
 
 
     /* next 2nd row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener1 = new View.OnClickListener() {
         @Override
@@ -1048,7 +1081,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min1 = new View.OnClickListener() {
         @Override
@@ -1073,7 +1108,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med1 = new View.OnClickListener() {
         @Override
@@ -1098,7 +1135,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener1 = new View.OnClickListener() {
         @Override
@@ -1124,6 +1163,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
         }
     };
 
+    /**
+     * sets all toggle buttons to off
+     */
     public void allButtonsOff1() {
         lightMinBtn1.setChecked(false);
         lightMedBtn1.setChecked(false);
@@ -1131,6 +1173,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
         lightOffBtn1.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse1()  {
         lmin1 = false;
         lmed1 = false;
@@ -1138,7 +1183,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
     }
 
     /* next 3rd row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener2 = new View.OnClickListener() {
         @Override
@@ -1156,7 +1203,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min2 = new View.OnClickListener() {
         @Override
@@ -1180,7 +1229,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med2 = new View.OnClickListener() {
         @Override
@@ -1205,7 +1256,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener2 = new View.OnClickListener() {
         @Override
@@ -1231,6 +1284,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
         }
     };
 
+    /**
+     * sets all toggle buttons to off
+     */
     public void allButtonsOff2() {
         lightMinBtn2.setChecked(false);
         lightMedBtn2.setChecked(false);
@@ -1238,6 +1294,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
         lightOffBtn2.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse2()  {
         lmin2 = false;
         lmed2 = false;
@@ -1245,7 +1304,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
     }
 
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
         @Override
@@ -1268,7 +1329,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
 
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min6 = new View.OnClickListener() {
         @Override
@@ -1304,7 +1367,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med6 = new View.OnClickListener() {
         @Override
@@ -1339,7 +1404,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener6 = new View.OnClickListener() {
         @Override
@@ -1375,28 +1442,36 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * settings for all rows to set light to off
+     */
     public void setLightSettingsForAllOff() {
         setLightSettingsForRow(rowall, lightOff);
         setLightSettingsForRow(row1, lightOff);
         setLightSettingsForRow(row2, lightOff);
         setLightSettingsForRow(row3, lightOff);
     }
-
+    /**
+     * settings for all rows to set light to minimum
+     */
     public void setLightSettingsForAllMin() {
         setLightSettingsForRow(rowall, lightMin);
         setLightSettingsForRow(row1, lightMin);
         setLightSettingsForRow(row2, lightMin);
         setLightSettingsForRow(row3, lightMin);
     }
-
+    /**
+     * settings for all rows to set light to medium
+     */
     public void setLightSettingsForAllMed() {
         setLightSettingsForRow(rowall, lightMed);
         setLightSettingsForRow(row1, lightMed);
         setLightSettingsForRow(row2, lightMed);
         setLightSettingsForRow(row3, lightMed);
     }
-
+    /**
+     * settings for all rows to set light to maximum
+     */
     public void setLightSettingsForAllMax() {
         setLightSettingsForRow(rowall, lightMax);
         setLightSettingsForRow(row1, lightMax);
@@ -1404,6 +1479,9 @@ public class LightingBathroom_2 extends AppCompatActivity {
         setLightSettingsForRow(row3, lightMax);
     }
 
+    /**
+     * sets all toggle buttons to off
+     */
     public void allButtonsOff6() {
         lightMinBtn6.setChecked(false);
         lightMedBtn6.setChecked(false);
@@ -1411,12 +1489,18 @@ public class LightingBathroom_2 extends AppCompatActivity {
         lightOffBtn6.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse6()  {
         lmin6 = false;
         lmed6 = false;
         lmax6 = false;
     }
 
+    /**
+     * sets all toggle buttons to off and bool to false
+     */
     public void allButtonOffKill() {
         allButtonsOff();
         allButtonsOff1();
@@ -1428,12 +1512,18 @@ public class LightingBathroom_2 extends AppCompatActivity {
         allBoolFalse2();
     }
 
+    /**
+     * sets toggle buttons to true
+     */
     public void offSwitchoff() {
         lightOffBtn.setChecked(true);
         lightOffBtn1.setChecked(true);
         lightOffBtn2.setChecked(true);
     }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
         mode_View = (TextView) findViewById(R.id.mode_view);
 

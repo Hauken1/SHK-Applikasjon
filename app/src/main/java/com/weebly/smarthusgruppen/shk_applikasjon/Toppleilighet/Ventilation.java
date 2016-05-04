@@ -175,7 +175,7 @@ public class Ventilation extends AppCompatActivity {
 
     /**
      * Saves ventilation status to sharedpreferences for each mode.
-     * @param i
+     * @param i used to determine which mode the house is in
      */
     public void setVent2BasedOnMode(int i) {
         ventilationSettings = getSharedPreferences(savedVent, 0);
@@ -275,8 +275,8 @@ public class Ventilation extends AppCompatActivity {
     }
 
     /**
-     * Saves ventilation status to sharedpreferences for each mode
-     * @param i
+     * Saves ventilation status to sharedpreferences for each mode.
+     * @param i used to determine which mode the house is in
      */
     public void setVent1BasedOnMode(int i) {
         ventilationSettings = getSharedPreferences(savedVent, 0);

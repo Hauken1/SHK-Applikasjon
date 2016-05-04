@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
 /**
- * Interface to send the user to temperature and ventilation pages
+ * Interface to send the user to the climate view to enter temperature and ventilation pages
  */
 public class Climate extends AppCompatActivity {
     ImageButton tempBtn;

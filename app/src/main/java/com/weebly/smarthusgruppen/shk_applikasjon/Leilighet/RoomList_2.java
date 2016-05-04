@@ -14,7 +14,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
+/**
+ * Roomlist covers all the rooms in the apartment. Lets the user choose which room to change
+ * the lights in
+ */
 public class RoomList_2 extends AppCompatActivity {
 
     Button bathroomBtn;
@@ -44,13 +47,20 @@ public class RoomList_2 extends AppCompatActivity {
 
 
     @Override
+    /**
+     * runs on startup and sets up gui
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list_2);
         setupGUI();
 
         }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
 
         // kitchen button
