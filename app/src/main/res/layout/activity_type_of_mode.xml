@@ -27,7 +27,7 @@
         android:textOn="@string/day"
         android:id="@+id/toggle_day"
         android:checked="false"
-        android:layout_below="@+id/toggle_night"
+        android:layout_below="@+id/home_button"
         android:layout_alignLeft="@+id/toggle_night"
         android:layout_alignStart="@+id/toggle_night" />
 
@@ -39,7 +39,7 @@
         android:textOn="@string/night"
         android:id="@+id/toggle_night"
         android:checked="false"
-        android:layout_below="@+id/toggle_holiday"
+        android:layout_below="@+id/toggle_day"
         android:layout_alignLeft="@+id/toggle_holiday"
         android:layout_alignStart="@+id/toggle_holiday" />
 
@@ -63,8 +63,7 @@
         android:textOn="@string/away"
         android:id="@+id/toggle_away"
         android:checked="false"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/home_button"
+        android:layout_below="@+id/toggle_night"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

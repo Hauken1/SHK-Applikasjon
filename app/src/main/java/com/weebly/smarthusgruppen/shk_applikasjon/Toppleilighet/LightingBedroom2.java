@@ -14,7 +14,9 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
+/**
+ * Controls all the lights for the bedroom2 Light settings based on mode is also saved
+ */
 public class LightingBedroom2 extends AppCompatActivity {
 
     public static final String savedLight = "SavedLightingBedroom2_1";
@@ -57,6 +59,10 @@ public class LightingBedroom2 extends AppCompatActivity {
 
     TextView mode_View;
 
+    /**
+     * runs on startup and sets up gui and displays light settings dependent on current mode
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +72,10 @@ public class LightingBedroom2 extends AppCompatActivity {
 
         displayLight();
     }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
         lightOffBtn = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn.setOnClickListener(light_all__off_Listener);
@@ -129,7 +138,10 @@ public class LightingBedroom2 extends AppCompatActivity {
             setContentView(v);
         }
     }
-
+    /**
+     * displays light settings dependent on which mode the house is in. saves all these variables
+     * in sharedpreferences
+     */
     public void displayLight() {
         try {
 
@@ -188,7 +200,11 @@ public class LightingBedroom2 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Changing and saving value for light settings. Depending on the mode the house is in.
+     * @param row the row in the grid layout. for which button is clicked
+     * @param value off, min, med, or max value for the light.
+     */
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
@@ -894,6 +910,9 @@ public class LightingBedroom2 extends AppCompatActivity {
                 break;
         }
     }
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
@@ -911,7 +930,9 @@ public class LightingBedroom2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min = new View.OnClickListener() {
         @Override
@@ -935,7 +956,9 @@ public class LightingBedroom2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med = new View.OnClickListener() {
         @Override
@@ -959,7 +982,9 @@ public class LightingBedroom2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
@@ -985,6 +1010,9 @@ public class LightingBedroom2 extends AppCompatActivity {
         }
     };
 
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff() {
         lightMinBtn.setChecked(false);
         lightMedBtn.setChecked(false);
@@ -992,12 +1020,18 @@ public class LightingBedroom2 extends AppCompatActivity {
         lightOffBtn.setChecked(false);
     }
 
+    /**
+     * sets all booleans to false
+     */
     public void allBoolFalse()  {
         lmin = false;
         lmed = false;
         lmax = false;
     }
 
+    /**
+     * go to mainActivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
