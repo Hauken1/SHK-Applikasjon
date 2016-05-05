@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -105,6 +106,13 @@ public class LightingKitchen extends AppCompatActivity {
     int iMode;
 
     private int seekBarValue1;
+    private int seekBarValue2;
+
+    String minDimvalue = "30";
+    String medDimValue = "70";
+
+    Boolean medChanged;
+    Boolean minChanged;
 
     public static final int row1 = 1;
     public static final int row2 = 2;
@@ -1068,6 +1076,12 @@ public class LightingKitchen extends AppCompatActivity {
         public void onClick(View v) {
             if (!lmin) {
 
+                /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMinDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin = true;
                 lmed = false;
@@ -1095,6 +1109,13 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed) {
+
+                  /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMedDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
                 lmin = false;
                 lmed = true;
@@ -1185,6 +1206,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin1) {
+                 /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMinDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin1 = true;
                 lmed1 = false;
@@ -1209,6 +1236,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed1) {
+                    /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMedDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
                 lmin1 = false;
                 lmed1 = true;
@@ -1274,6 +1307,7 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (lmin2 || lmed2 || lmax2) {
+
                 MainActivity.sendText("Command:000002117,1,0");
                 lmin2 = false;
                 lmed2 = false;
@@ -1292,6 +1326,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin2) {
+                 /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMinDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin2 = true;
                 lmed2 = false;
@@ -1316,6 +1356,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed1) {
+                    /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMedDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
                 lmin2 = false;
                 lmed2 = true;
@@ -1398,9 +1444,13 @@ public class LightingKitchen extends AppCompatActivity {
     protected View.OnClickListener light_all_min3 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            lightSettings = getSharedPreferences(savedLight, 0);
-            SharedPreferences.Editor editor = lightSettings.edit();
             if (!lmin3) {
+                 /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMinDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin3 = true;
                 lmed3 = false;
@@ -1411,8 +1461,6 @@ public class LightingKitchen extends AppCompatActivity {
                 lightOffBtn3.setChecked(false);
                 setLightSettingsForRow(row4,lightMin);
             } else if (lmin3) {
-                editor.putString("row4status", "0");
-                editor.commit();
                 MainActivity.sendText("Command:000002117,1,0");     // all lights off
                 allBoolFalse3();
                 allButtonsOff3();
@@ -1427,6 +1475,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed3) {
+                    /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMedDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
                 lmin3 = false;
                 lmed3 = true;
@@ -1511,6 +1565,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin4) {
+                   /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMinDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin4 = true;
                 lmed4 = false;
@@ -1536,6 +1596,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed4) {
+                /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMedDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
                 lmin4 = false;
                 lmed4 = true;
@@ -1619,6 +1685,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin5) {
+                   /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMinDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
                 lmin5 = true;
                 lmed5 = false;
@@ -1644,6 +1716,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed5) {
+                    /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMedDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
                 lmin5 = false;
                 lmed5 = true;
@@ -1927,6 +2005,14 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmin6) {
+                   /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                * This method need to send single channel command for all lights.
+                String dim = testForMinDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+
+                */
                 MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
 
                 setLightSettingForAllRow(lightMin);
@@ -1971,6 +2057,12 @@ public class LightingKitchen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!lmed6) {
+                    /*
+                *This is the right command, but the valid device number and channel is
+                * not correct. This have to be set when the smart home is configuered.
+                String dim = testForMedDimValueSet();
+                MainActivity.sendText("Command:000049114,2," + dim + ",0,1");
+                */
                 MainActivity.sendText("Command:000002117,1,2");     // all lights medium
 
                 setLightSettingForAllRow(lightMed);
@@ -2092,23 +2184,54 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn5.setChecked(true);
     }
 
+    public String testForMedDimValueSet(){
+        savedLightSet = getSharedPreferences(savedLightSettings,0);
+
+        String mD = Integer.toString(savedLightSet.getInt("seekbarvalue1", 0));
+        if(mD.equals("0")){
+            return medDimValue;
+        }
+        else return mD;
+    }
+
+    public String testForMinDimValueSet(){
+        savedLightSet = getSharedPreferences(savedLightSettings, 0);
+
+        String mD = Integer.toString(savedLightSet.getInt("seekbarvalue2", 0));
+        if(mD.equals("0")){
+            return minDimvalue;
+        }
+        return mD;
+    }
+
     public void settingsView() {
         savedLightSet = getSharedPreferences(savedLightSettings, 0);
         final SharedPreferences.Editor editor = savedLightSet.edit();
-        String dimValue;
+        String dimValue, dimValueMin;
         seekBarValue1 = savedLightSet.getInt("seekbarvalue1", 0);
+        seekBarValue2 = savedLightSet.getInt("seekbarvalue2", 0);
+
+        medChanged = false;
+        minChanged = false;
 
         if(seekBarValue1 == 0) {
-            dimValue = "30";
+            dimValue = "30%";
         }
-        else dimValue = Integer.toString(seekBarValue1);
+        else dimValue = Integer.toString(seekBarValue1) + "%";
+        if(seekBarValue2 ==0){
+            dimValueMin = "10%";
+        }
+        else dimValueMin = Integer.toString(seekBarValue2) + "%";
 
-        Dialog settingsDialog = new Dialog(this);
+        final Dialog settingsDialog = new Dialog(this);
         settingsDialog.setContentView(R.layout.settings_light);
         settingsDialog.setCancelable(true);
 
         final TextView sb1Status = (TextView)settingsDialog.findViewById(R.id.textView_dim_value);
         sb1Status.setText(dimValue);
+        final TextView sb2Status = (TextView)settingsDialog.findViewById(R.id.textView_dim_value_min);
+        sb2Status.setText(dimValueMin);
+
         SeekBar sB1 = (SeekBar)settingsDialog.findViewById(R.id.seekBar1);
         sB1.setProgress(seekBarValue1);
         sB1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -2116,9 +2239,9 @@ public class LightingKitchen extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-
+                medChanged = true;
                 seekBarValue1 = progress + 30;
-                String dim = Integer.toString(seekBarValue1);
+                String dim = Integer.toString(seekBarValue1) + "%";
                 sb1Status.setText(dim);
 
             }
@@ -2133,25 +2256,88 @@ public class LightingKitchen extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
+        SeekBar sB2 = (SeekBar)settingsDialog.findViewById(R.id.seekBar2);
+        sB2.setProgress(seekBarValue2);
+        sB2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                                          boolean fromUser) {
+                minChanged = true;
+                seekBarValue2 = progress + 10;
+                String dim = Integer.toString(seekBarValue2) + "%";
+                sb2Status.setText(dim);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+        });
+        Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                settingsDialog.cancel();
+            }
+        });
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
                 savedLightSet = getSharedPreferences(savedLightSettings, Context.MODE_PRIVATE);
-                editor.putInt("seekbarvalue1", seekBarValue1);
-                editor.commit();
+                if(medChanged) editor.putInt("seekbarvalue1", seekBarValue1);
+                if(minChanged) editor.putInt("seekbarvalue2", seekBarValue2);
 
-                AlertDialog.Builder add = new AlertDialog.Builder(LightingKitchen.this);
-                add.setTitle("Suksess");
-                add.setMessage("Medium dimmeverdi er endret");
-                add.setCancelable(false);
-                add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                add.create();
-                add.show();
+                editor.apply();
+
+                if(medChanged && minChanged) {
+                    AlertDialog.Builder add = new AlertDialog.Builder(LightingKitchen.this);
+                    add.setTitle("Suksess");
+                    add.setMessage("Medium og minimum dimmeverdi er endret");
+                    add.setCancelable(false);
+                    add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    add.create();
+                    add.show();
+                }
+                else if(medChanged) {
+                    AlertDialog.Builder add = new AlertDialog.Builder(LightingKitchen.this);
+                    add.setTitle("Suksess");
+                    add.setMessage("Medium dimmeverdi er endret");
+                    add.setCancelable(false);
+                    add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    add.create();
+                    add.show();
+                }
+                else if (minChanged) {
+                    AlertDialog.Builder add = new AlertDialog.Builder(LightingKitchen.this);
+                    add.setTitle("Suksess");
+                    add.setMessage("Minimum dimmeverdi er endret");
+                    add.setCancelable(false);
+                    add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    add.create();
+                    add.show();
+                }
             }
         });
         settingsDialog.show();

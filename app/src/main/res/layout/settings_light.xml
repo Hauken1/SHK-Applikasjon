@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Innstillinger"
+        android:text="Dimmeinnstillinger"
         android:id="@+id/textView_light_set"
         android:layout_gravity="center_horizontal"
         android:textStyle="bold"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Medium dimmeverdi:"
+        android:text="Medium:"
         android:id="@+id/textView_dim"
         android:layout_gravity="center_horizontal"
         android:paddingTop="10dp" />
@@ -26,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/seekBar1"
-        android:max="60"
+        android:max="59"
         android:progress="0"/>
 
     <TextView
@@ -36,6 +38,49 @@
         android:id="@+id/textView_dim_value"
         android:layout_gravity="center_horizontal"
         android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Minimum:"
+        android:id="@+id/textView18"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="30dp"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar2"
+        android:max="19"
+        android:progress="0"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_dim_value_min"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Innstillingene gjelder for alle lys i dette rommet"
+        android:id="@+id/textView19"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ok"
+        android:id="@+id/cancel_button"
+        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>

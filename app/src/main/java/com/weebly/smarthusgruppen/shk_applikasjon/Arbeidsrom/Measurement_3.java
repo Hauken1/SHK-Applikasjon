@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.MainActivity_2;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 import com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.MainActivity;
 
@@ -20,7 +21,7 @@ public class Measurement_3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_measurement);
+        setContentView(R.layout.activity_measurement_3);
 
         setupGUI();
 
@@ -49,7 +50,7 @@ public class Measurement_3 extends AppCompatActivity {
     }
 
     public void goToHome() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
     }
 }

@@ -38,8 +38,6 @@ import java.net.UnknownHostException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-
-
 public class LoginClient extends AppCompatActivity {
     Button loginBtn;
     TextView changePw;
@@ -49,7 +47,7 @@ public class LoginClient extends AppCompatActivity {
     TextView forgotPw;
 
     int serverPort = 12345;
-    String hostName= "128.39.80.185";
+    String hostName= "192.168.38.110";
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -111,17 +109,6 @@ public class LoginClient extends AppCompatActivity {
             });
             add.create();
             add.show();
-        }
-    }
-
-    protected void onRestart() {
-        super.onRestart();
-        try {
-            sendDisconnect("Disconnect");
-            connected = false;
-            loggedIn = false;
-        } catch (Exception e){
-            e.printStackTrace();
         }
     }
 
@@ -453,7 +440,6 @@ public class LoginClient extends AppCompatActivity {
                                                                             if (connection.isConnected() &&
                                                                                     !newP.isEmpty() && !confirmP.isEmpty() && newP.equals(confirmP)) {
                                                                                 final String code = "ForgotPw";
-
                                                                                         try {
                                                                                             Thread thread = new Thread(new Runnable() {
                                                                                                 @Override
