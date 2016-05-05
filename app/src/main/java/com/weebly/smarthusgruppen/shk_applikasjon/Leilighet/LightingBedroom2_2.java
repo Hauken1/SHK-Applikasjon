@@ -95,6 +95,11 @@ public class LightingBedroom2_2 extends AppCompatActivity {
         displayLight();
     }
 
+    /**
+     * Method that returns the medium intensity set by the user.
+     * Returns a default value if it has not been changed.
+     * @return medium intensity value
+     */
     public String testForMedDimValueSet(){
         savedLightSet = getSharedPreferences(savedLightSettings,0);
 
@@ -105,6 +110,11 @@ public class LightingBedroom2_2 extends AppCompatActivity {
         else return mD;
     }
 
+    /**
+     * Method that returns the minimum intensity set by the user.
+     * Returns a default value if it has not been changed.
+     * @return minimum intensity value
+     */
     public String testForMinDimValueSet(){
         savedLightSet = getSharedPreferences(savedLightSettings, 0);
 
@@ -115,6 +125,9 @@ public class LightingBedroom2_2 extends AppCompatActivity {
         return mD;
     }
 
+    /**
+     * A view which allows the user to chose minimum and medium intensity values.
+     */
     public void settingsView() {
         savedLightSet = getSharedPreferences(savedLightSettings, 0);
         final SharedPreferences.Editor editor = savedLightSet.edit();
@@ -147,6 +160,13 @@ public class LightingBedroom2_2 extends AppCompatActivity {
         sB1.setProgress(seekBarValue1);
         sB1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
+            /**
+             * Is called when the user moves the seekbar.
+             * Changes the value of the med/min intensity and adds it to a textview.
+             * @param seekBar the seekbar
+             * @param progress the value it is changed to
+             * @param fromUser if the user moved it or not
+             */
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
@@ -157,11 +177,19 @@ public class LightingBedroom2_2 extends AppCompatActivity {
 
             }
 
+            /**
+             *
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             *
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -171,6 +199,13 @@ public class LightingBedroom2_2 extends AppCompatActivity {
         sB2.setProgress(seekBarValue2);
         sB2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
+            /**
+             * Is called when the user moves the seekbar.
+             * Changes the value of the med/min intensity and adds it to a textview.
+             * @param seekBar the seekbar
+             * @param progress the value it is changed to
+             * @param fromUser if the user moved it or not
+             */
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
@@ -181,11 +216,19 @@ public class LightingBedroom2_2 extends AppCompatActivity {
 
             }
 
+            /**
+             *
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             *
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub

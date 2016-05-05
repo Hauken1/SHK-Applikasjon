@@ -20,6 +20,12 @@ import com.weebly.smarthusgruppen.shk_applikasjon.R;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * This class allows the user to see the current temperature of all heatingsones of
+ * this dwelling unit. The user can also change the temperature of all these heating sones.
+ * When a temperature is changed, a message is sent to the server and then to the heating-
+ * controller which changes the temperature currently set.
+ */
 public class Temperature_3 extends AppCompatActivity {
     ImageButton homeBtn;
     ImageButton upBtn;
@@ -62,11 +68,16 @@ public class Temperature_3 extends AppCompatActivity {
     public SharedPreferences tempSetting;
 
 
-    @Override
     /**
-     * loads GUI settings on startup
+     * Method that is called when the View is created.
+     * This method sets up the GUI, provides the user with valid
+     * temperatures and starts a threads which retrieves temperature from the heating controllers.
+     * If the temperatures has been changed manually (with on of the dwelling units many controller
+     * panels), this View will be updated.
+     *
      * @param savedInstanceState
      */
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature_3);
@@ -88,6 +99,11 @@ public class Temperature_3 extends AppCompatActivity {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
         homeBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the button is pressed.
+             * Sends the user back to the main menu.
+             * @param v the button
+             */
             public void onClick(View v) {
                 goToHome();
             }
@@ -96,12 +112,24 @@ public class Temperature_3 extends AppCompatActivity {
         // up temp button
         upBtn = (ImageButton) findViewById(R.id.adjust_up);
         upBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when button is pressed.
+             * Calls method that increases the temperature and updates the
+             * temperature View.
+             * @param v
+             */
             public void onClick(View v) {
                 upTemp();
             }
         });
         upBtn1 = (ImageButton) findViewById(R.id.adjust_up1);
         upBtn1.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when button is pressed.
+             * Calls method that increases the temperature and updates the
+             * temperature View.
+             * @param v
+             */
             public void onClick(View v) {
                 upTemp1();
             }
@@ -111,12 +139,24 @@ public class Temperature_3 extends AppCompatActivity {
         // down temp button
         downBtn = (ImageButton) findViewById(R.id.adjust_down);
         downBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when button is pressed.
+             * Calls method that decreases the temperature and updates the
+             * temperature View.
+             * @param v
+             */
             public void onClick(View v) {
                 downTemp();
             }
         });
         downBtn1 = (ImageButton) findViewById(R.id.adjust_down1);
         downBtn1.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when button is pressed.
+             * Calls method that decreases the temperature and updates the
+             * temperature View.
+             * @param v
+             */
             public void onClick(View v) {
                 downTemp1();
             }
@@ -178,6 +218,11 @@ public class Temperature_3 extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Method that starts a thread which updates the temperature if the user
+     * has changed the temperatures manually with one of the dwelling units many
+     * control-panels.
+     */
     public void update() {
         Thread mThread = new Thread(new Runnable() {
             public void run() {
@@ -201,6 +246,10 @@ public class Temperature_3 extends AppCompatActivity {
         mThread.start();
     }
 
+    /**
+     * Method that requests temperature information from the heating controller for this
+     * dwlling unit.
+     */
     public void requestNewTemperature() {
         MainActivity_3.sendText("Command:007262112,1");
         MainActivity_3.sendText("Command:007262112,2");
@@ -210,6 +259,10 @@ public class Temperature_3 extends AppCompatActivity {
         MainActivity_3.sendText("Command:007262112,6");
     }
 
+    /**
+     * Method that is called when the View is started (in OnCreate).
+     * Display the saved temperatures.
+     */
     public void displayTemperature() {
         for (int i = 1; i <= 3; i++) {
             switch (i) {
@@ -288,6 +341,10 @@ public class Temperature_3 extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method that is called when the user wants to increase the temperature of channel one.
+     * Updates the temperature for channel one
+     */
     public void upTemp() {
         SharedPreferences changeTempSettings = getSharedPreferences(savedTemp1, 0);
         SharedPreferences.Editor editor = changeTempSettings.edit();
@@ -383,6 +440,10 @@ public class Temperature_3 extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method that is called when the user wants to increase the temperature of channel two.
+     * Updates the temperature for channel two.
+     */
     public void upTemp1() {
         SharedPreferences changeTempSettings = getSharedPreferences(savedTemp2, 0);
         SharedPreferences.Editor editor = changeTempSettings.edit();
@@ -479,6 +540,10 @@ public class Temperature_3 extends AppCompatActivity {
 
     }
 
+    /**
+     * Method that is called when the user wants to decrease the temperature of channel one.
+     * Updates the temperature for channel one
+     */
     public void downTemp() {
         SharedPreferences changeTempSettings = getSharedPreferences(savedTemp1, 0);
         SharedPreferences.Editor editor = changeTempSettings.edit();
@@ -574,6 +639,10 @@ public class Temperature_3 extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method that is called when the user wants to decrease the temperature of channel two.
+     * Updates the temperature for channel two.
+     */
     public void downTemp1() {
         SharedPreferences changeTempSettings = getSharedPreferences(savedTemp2, 0);
         SharedPreferences.Editor editor = changeTempSettings.edit();
@@ -670,6 +739,9 @@ public class Temperature_3 extends AppCompatActivity {
     }
 
 
+    /**
+     * Auto generated method that is called when the View is started.
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -690,6 +762,9 @@ public class Temperature_3 extends AppCompatActivity {
         AppIndex.AppIndexApi.start(client, viewAction);
     }
 
+    /**
+     * Auto generated method that is called when the View is stopped.
+     */
     @Override
     public void onStop() {
         super.onStop();
