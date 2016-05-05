@@ -34,6 +34,12 @@ import org.w3c.dom.Text;
 import java.util.Calendar;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
+/**
+ * TypoeOfMode class allows the user to change the house between different predetermined modes.
+ * day, night and away mode are predetermined. Settings allows you to decide at what time the house
+ * automatically should change mode. Holiday mode allows you to decide date and time for your return
+ * and the house automatically goes into that mode prior to the users return.
+ */
 public class TypeOfMode extends AppCompatActivity {
     public static final String savedTemp1 = "1SavedTemperature_1";
     public static final String savedTemp2 = "2SavedTemperature_1";
@@ -65,8 +71,6 @@ public class TypeOfMode extends AppCompatActivity {
     private String nightMode = "3";
     private String awayMode = "4";
 
-
-
     ImageButton homeBtn;
     ToggleButton dayBtn;
     ToggleButton nightBtn;
@@ -84,6 +88,11 @@ public class TypeOfMode extends AppCompatActivity {
     String mTextValue;
     Character mLastChar = '\0'; // init with empty character
     int mKeyDel;
+
+    /**
+     * runs when the class starts up. Loads in GUI settings and mode settings.
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +158,11 @@ public class TypeOfMode extends AppCompatActivity {
         int hHour = sharedpreferences.getInt("hour", 1992);
         int hMin = sharedpreferences.getInt("minute", 1992);
     }
+
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setUpGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
@@ -207,6 +221,9 @@ public class TypeOfMode extends AppCompatActivity {
 
     }
 
+    /**
+     * sends the user to MainActivity
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

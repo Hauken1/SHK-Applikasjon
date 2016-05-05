@@ -19,13 +19,20 @@ public class Measurement_2 extends AppCompatActivity {
     SharedPreferences sharedpreferences;
 
     @Override
+    /**
+     * runs on startup and sets up gui
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurement_2);
 
         setupGUI();
     }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
@@ -48,6 +55,10 @@ public class Measurement_2 extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * sends the user to the mainactivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);

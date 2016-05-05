@@ -15,12 +15,15 @@ import android.widget.ImageButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
+/**
+ * Roomlist covers all the rooms in the apartment. Lets the user choose which room to change
+ * the lights in
+ */
 public class RoomList extends AppCompatActivity {
 
     Button bathroomBtn;
     Button bed1Btn;
     Button bed2Btn;
-    Button bed3Btn;
     Button hallwayBtn;
     Button kitchenBtn;
     Button officeBtn;
@@ -44,6 +47,10 @@ public class RoomList extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;
 
+    /**
+     * runs on startup sets up GUI
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +58,10 @@ public class RoomList extends AppCompatActivity {
         setupGUI();
 
         }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
         mode_View = (TextView) findViewById(R.id.mode_view);
 
@@ -161,36 +171,65 @@ public class RoomList extends AppCompatActivity {
         }
     }
 
+    /**
+     * sends the user to the lighting kitchen menu
+     */
     public void goToKitchenLights() {
         Intent intent = new Intent(this, LightingKitchen.class);
         startActivity(intent);
     }
+
+    /**
+     * sends the user to the lighting bathroom menu
+     */
     public void goToBathroomLights() {
         Intent intent = new Intent(this, LightingBathroom.class);
         startActivity(intent);
     }
+
+    /**
+     * sends the user to the lighting living room menu
+     */
     public void goToLivingRoomLights() {
         Intent intent = new Intent(this, LightingLivingRoom.class);
         startActivity(intent);
     }
+
+    /**
+     * sends the user to the ligthing bedroom 1 menu
+     */
     public void goToBed1Lights() {
         Intent intent = new Intent(this, LightingBedroom1.class);
         startActivity(intent);
     }
+
+    /**
+     * sends the user to the lighting bedroom 2 menu
+     */
     public void goToBed2Lights() {
         Intent intent = new Intent(this, LightingBedroom2.class);
         startActivity(intent);
     }
 
-
+    /**
+     * sends the user to office light menu
+     */
     public void goToOfficeLights() {
         Intent intent = new Intent(this, LightingOffice.class);
         startActivity(intent);
     }
+
+    /**
+     * sends the user to hallway lights menu
+     */
     public void goToHallwayLights() {
         Intent intent = new Intent(this, LightingHallway.class);
         startActivity(intent);
     }
+
+    /**
+     * sends the user to mainactivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

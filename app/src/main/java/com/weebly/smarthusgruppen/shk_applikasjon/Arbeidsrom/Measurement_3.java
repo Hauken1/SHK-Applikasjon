@@ -12,13 +12,20 @@ import android.widget.ImageButton;
 import com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.MainActivity_2;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 import com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.MainActivity;
-
+/**
+ * allows the user to view power and water usage
+ */
 public class Measurement_3 extends AppCompatActivity {
     ImageButton homeBtn;
     public static final String savedColor = "SavedBackgroundColor_3";
 
     SharedPreferences sharedpreferences;
+
     @Override
+    /**
+     * loads GUI settings on startup
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurement_3);
@@ -26,7 +33,10 @@ public class Measurement_3 extends AppCompatActivity {
         setupGUI();
 
     }
-
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setupGUI(){
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
@@ -49,6 +59,9 @@ public class Measurement_3 extends AppCompatActivity {
         }
     }
 
+    /**
+     * sends the user to the mainactivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);

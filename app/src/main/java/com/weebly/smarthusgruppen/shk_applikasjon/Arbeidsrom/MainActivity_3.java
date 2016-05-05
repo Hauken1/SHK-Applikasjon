@@ -67,7 +67,9 @@ public class MainActivity_3 extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_3);
@@ -87,7 +89,10 @@ public class MainActivity_3 extends AppCompatActivity {
         MainActivity_3.sendText("Command:007262112,5");
         MainActivity_3.sendText("Command:007262112,6");
     }
-
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setupGUI() {
         // light control button
         lightBtn = (ImageButton) findViewById(R.id.lightButton);

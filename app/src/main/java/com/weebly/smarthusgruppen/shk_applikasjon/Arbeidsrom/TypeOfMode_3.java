@@ -62,6 +62,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
     boolean isHoliday = false;
 
     ImageButton settings;
+
     ImageButton homeBtn;
     ToggleButton dayBtn;
     ToggleButton nightBtn;
@@ -78,13 +79,20 @@ public class TypeOfMode_3 extends AppCompatActivity {
     int mKeyDel;
 
     @Override
+    /**
+     * loads GUI settings on startup
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type_of_mode_3);
         setUpGUI();
         gHandler = new Handler();
     }
-
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setUpGUI() {
 
         calendar = Calendar.getInstance();

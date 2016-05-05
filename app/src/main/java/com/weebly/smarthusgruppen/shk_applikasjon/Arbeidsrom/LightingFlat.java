@@ -19,6 +19,10 @@ import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
+/**
+ * Controls all the lights for the flat Light settings based on mode. Therse settings are
+ * also saved in shared preferences
+ */
 public class LightingFlat extends AppCompatActivity {
 
     public static final String savedLight = "SavedLightingFlat_1";
@@ -125,7 +129,10 @@ public class LightingFlat extends AppCompatActivity {
     ToggleButton lightMaxBtn6;
     ToggleButton lightMedBtn6;
     ImageButton homeBtn;
-
+    /**
+     * loads GUI settings on startup and displays light information from shared preferences
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,7 +141,10 @@ public class LightingFlat extends AppCompatActivity {
         setupGUI();
         displayLight();
     }
-
+    /**
+     * displays light settings dependent on which mode the house is in. saves all these variables
+     * in sharedpreferences
+     */
     public void displayLight() {
         try {
 
@@ -237,77 +247,18 @@ public class LightingFlat extends AppCompatActivity {
                     lightOffBtn1.setChecked(true);
                     break;
             }
-            /*
-            switch (s3){
-                case 0: //row 3 off
-                    lightOffBtn2.setChecked(true);
-                    break;
-                case 1: //row 3 min
-                    lmin2 = true;
-                    lightMinBtn2.setChecked(true);
-                    break;
-                case 2: //row 3 med
-                    lmed2 = true;
-                    lightMedBtn2.setChecked(true);
-                    break;
-                case 3: //row 3 max
-                    lmax2 = true;
-                    lightMaxBtn2.setChecked(true);
-                    break;
-                default: //not set
-                    lightOffBtn2.setChecked(true);
-                    break;
-            }
 
-            switch (s4){
-                case 0: //row 4 off
-                    lightOffBtn3.setChecked(true);
-                    break;
-                case 1: //row 4 min
-                    lmin3 = true;
-                    lightMinBtn3.setChecked(true);
-                    break;
-                case 2: //row 4 med
-                    lmed3 = true;
-                    lightMedBtn3.setChecked(true);
-                    break;
-                case 3: //row 4 max
-                    lmax3 = true;
-                    lightMaxBtn3.setChecked(true);
-                    break;
-                default: //not set
-                    lightOffBtn3.setChecked(true);
-                    break;
-            }
-
-            switch (s5){
-                case 0: //row 5 off
-                    lightOffBtn4.setChecked(true);
-                    break;
-                case 1: //row 5 min
-                    lmin4 = true;
-                    lightMinBtn4.setChecked(true);
-                    break;
-                case 2: //row 5 med
-                    lmed4 = true;
-                    lightMedBtn4.setChecked(true);
-                    break;
-                case 3: //row 5 max
-                    lmax4 = true;
-                    lightMaxBtn4.setChecked(true);
-                    break;
-                default: //not set
-                    lightOffBtn4.setChecked(true);
-                    break;
-            }
-            */
             lightOffBtn6.setChecked(true);
             loff6 = true;
         }catch (Exception e){
             e.printStackTrace();
         }
     }
-
+    /**
+     * Changing and saving value for light settings. Depending on the mode the house is in.
+     * @param row the row in the grid layout. for which button is clicked
+     * @param value off, min, med, or max value for the light.
+     */
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
@@ -1013,6 +964,9 @@ public class LightingFlat extends AppCompatActivity {
                 break;
         }
     }
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
@@ -1031,7 +985,9 @@ public class LightingFlat extends AppCompatActivity {
 
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min = new View.OnClickListener() {
         @Override
@@ -1063,7 +1019,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med = new View.OnClickListener() {
         @Override
@@ -1094,7 +1052,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
@@ -1120,7 +1080,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff() {
         lightMinBtn.setChecked(false);
         lightMedBtn.setChecked(false);
@@ -1128,11 +1090,18 @@ public class LightingFlat extends AppCompatActivity {
         lightOffBtn.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse()  {
         lmin = false;
         lmed = false;
         lmax = false;
     }
+
+    /**
+     * sends the user to mainActivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
@@ -1140,7 +1109,9 @@ public class LightingFlat extends AppCompatActivity {
 
 
     /* next 2nd row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener1 = new View.OnClickListener() {
         @Override
@@ -1158,7 +1129,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min1 = new View.OnClickListener() {
         @Override
@@ -1188,7 +1161,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med1 = new View.OnClickListener() {
         @Override
@@ -1219,7 +1194,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener1 = new View.OnClickListener() {
         @Override
@@ -1244,7 +1221,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff1() {
         lightMinBtn1.setChecked(false);
         lightMedBtn1.setChecked(false);
@@ -1252,6 +1231,9 @@ public class LightingFlat extends AppCompatActivity {
         lightOffBtn1.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse1()  {
         lmin1 = false;
         lmed1 = false;
@@ -1259,7 +1241,9 @@ public class LightingFlat extends AppCompatActivity {
     }
 
     /* next 3rd row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener2 = new View.OnClickListener() {
         @Override
@@ -1278,7 +1262,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * Turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min2 = new View.OnClickListener() {
         @Override
@@ -1308,7 +1294,10 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * Turns light on to medium setting. Toggles off other buttons.
+     * If already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med2 = new View.OnClickListener() {
         @Override
@@ -1339,7 +1328,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener2 = new View.OnClickListener() {
         @Override
@@ -1364,7 +1355,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff2() {
         lightMinBtn2.setChecked(false);
         lightMedBtn2.setChecked(false);
@@ -1372,6 +1365,9 @@ public class LightingFlat extends AppCompatActivity {
         lightOffBtn2.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse2()  {
         lmin2 = false;
         lmed2 = false;
@@ -1379,7 +1375,9 @@ public class LightingFlat extends AppCompatActivity {
     }
 
      /* next 4th row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener3 = new View.OnClickListener() {
         @Override
@@ -1397,7 +1395,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min3 = new View.OnClickListener() {
         @Override
@@ -1427,7 +1427,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med3 = new View.OnClickListener() {
         @Override
@@ -1458,7 +1460,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener3 = new View.OnClickListener() {
         @Override
@@ -1483,7 +1487,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff3() {
         lightMinBtn3.setChecked(false);
         lightMedBtn3.setChecked(false);
@@ -1491,6 +1497,9 @@ public class LightingFlat extends AppCompatActivity {
         lightOffBtn3.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse3()  {
         lmin3 = false;
         lmed3 = false;
@@ -1498,7 +1507,9 @@ public class LightingFlat extends AppCompatActivity {
     }
 
       /* next 5th row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener4 = new View.OnClickListener() {
         @Override
@@ -1516,7 +1527,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min4 = new View.OnClickListener() {
         @Override
@@ -1546,7 +1559,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med4 = new View.OnClickListener() {
         @Override
@@ -1577,7 +1592,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to max setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener4 = new View.OnClickListener() {
         @Override
@@ -1602,7 +1619,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff4() {
         lightMinBtn4.setChecked(false);
         lightMedBtn4.setChecked(false);
@@ -1610,12 +1629,18 @@ public class LightingFlat extends AppCompatActivity {
         lightOffBtn4.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse4()  {
         lmin4 = false;
         lmed4 = false;
         lmax4 = false;
     }
-
+    /**
+     * Changing and saving value for light settings. Depending on the mode the house is in.
+     * @param value off, min, med, or max value for the light.
+     */
     public void setLightSettingForAllRow(int value){
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
@@ -1811,7 +1836,9 @@ public class LightingFlat extends AppCompatActivity {
     }
 
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
         @Override
@@ -1834,7 +1861,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min6 = new View.OnClickListener() {
         @Override
@@ -1882,7 +1911,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med6 = new View.OnClickListener() {
         @Override
@@ -1930,7 +1961,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener6 = new View.OnClickListener() {
         @Override
@@ -1948,18 +1981,10 @@ public class LightingFlat extends AppCompatActivity {
                 allButtonOffKill();
                 lightMaxBtn.setChecked(true);
                 lightMaxBtn1.setChecked(true);
-                /*
-                lightMaxBtn2.setChecked(true);
-                lightMaxBtn3.setChecked(true);
-                lightMaxBtn4.setChecked(true);
-                */
+
                 lmax = true;
                 lmax1 = true;
-                /*
-                lmax2 = true;
-                lmax3 = true;
-                lmax4 = true;
-                */
+
                 setLightSettingForAllRow(lightMax);
             }
             else if (lmax6) {
@@ -1973,7 +1998,9 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff6() {
         lightMinBtn6.setChecked(false);
         lightMedBtn6.setChecked(false);
@@ -1981,37 +2008,34 @@ public class LightingFlat extends AppCompatActivity {
         lightOffBtn6.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse6()  {
         lmin6 = false;
         lmed6 = false;
         lmax6 = false;
     }
 
+    /**
+     * sets toggle button to false and bool to false
+     */
     public void allButtonOffKill() {
         allButtonsOff();
         allButtonsOff1();
-        /*
-        allButtonsOff2();
-        allButtonsOff3();
-        allButtonsOff4();
-        */
+
         allBoolFalse();
         allBoolFalse1();
-        /*
-        allBoolFalse2();
-        allBoolFalse3();
-        allBoolFalse4();
-        */
+
     }
 
+    /**
+     * sets toggle buttons to true
+     */
     public void offSwitchoff() {
         lightOffBtn.setChecked(true);
         lightOffBtn1.setChecked(true);
-        /*
-        lightOffBtn2.setChecked(true);
-        lightOffBtn3.setChecked(true);
-        lightOffBtn4.setChecked(true);
-        */
+
     }
 
     public String testForMedDimValueSet(){
@@ -2173,6 +2197,10 @@ public class LightingFlat extends AppCompatActivity {
         settingsDialog.show();
     }
 
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setupGUI() {
         lightOffBtn = (ToggleButton) findViewById(R.id.toggle_0);
         lightOffBtn.setOnClickListener(light_all__off_Listener);
@@ -2198,46 +2226,6 @@ public class LightingFlat extends AppCompatActivity {
         lightMaxBtn1 = (ToggleButton) findViewById(R.id.toggle_1001);
         lightMaxBtn1.setOnClickListener(light_all_Listener1);
 
-
-        /*
-        lightOffBtn2 = (ToggleButton) findViewById(R.id.toggle_02);
-        lightOffBtn2.setOnClickListener(light_all__off_Listener2);
-
-        lightMinBtn2 = (ToggleButton) findViewById(R.id.toggle_302);
-        lightMinBtn2.setOnClickListener(light_all_min2);
-
-        lightMedBtn2 = (ToggleButton) findViewById(R.id.toggle_702);
-        lightMedBtn2.setOnClickListener(light_all_med2);
-
-        lightMaxBtn2 = (ToggleButton) findViewById(R.id.toggle_1002);
-        lightMaxBtn2.setOnClickListener(light_all_Listener2);
-
-
-        lightOffBtn3 = (ToggleButton) findViewById(R.id.toggle_03);
-        lightOffBtn3.setOnClickListener(light_all__off_Listener3);
-
-        lightMinBtn3 = (ToggleButton) findViewById(R.id.toggle_303);
-        lightMinBtn3.setOnClickListener(light_all_min3);
-
-        lightMedBtn3 = (ToggleButton) findViewById(R.id.toggle_703);
-        lightMedBtn3.setOnClickListener(light_all_med3);
-
-        lightMaxBtn3 = (ToggleButton) findViewById(R.id.toggle_1003);
-        lightMaxBtn3.setOnClickListener(light_all_Listener3);
-
-
-        lightOffBtn4 = (ToggleButton) findViewById(R.id.toggle_04);
-        lightOffBtn4.setOnClickListener(light_all__off_Listener4);
-
-        lightMinBtn4 = (ToggleButton) findViewById(R.id.toggle_304);
-        lightMinBtn4.setOnClickListener(light_all_min4);
-
-        lightMedBtn4 = (ToggleButton) findViewById(R.id.toggle_704);
-        lightMedBtn4.setOnClickListener(light_all_med4);
-
-        lightMaxBtn4 = (ToggleButton) findViewById(R.id.toggle_1004);
-        lightMaxBtn4.setOnClickListener(light_all_Listener4);
-        */
 
 
         lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_06);

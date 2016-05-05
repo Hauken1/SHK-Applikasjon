@@ -18,7 +18,10 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
+/**
+ * Controls all the lights for the hallway Light settings based on mode. Therse settings are
+ * also saved in shared preferences
+ */
 public class LightingHallway extends AppCompatActivity {
 
     public static final String savedLight = "SavedLightingHallway_1" ;
@@ -99,6 +102,10 @@ public class LightingHallway extends AppCompatActivity {
 
     TextView mode_View;
 
+    /**
+     * runs on startup and sets up gui and displays light settings dependent on current mode
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +114,10 @@ public class LightingHallway extends AppCompatActivity {
         setupGUI();
         displayLights();
     }
-
+    /**
+     * displays light settings dependent on which mode the house is in. saves all these variables
+     * in sharedpreferences
+     */
     public void displayLights() {
         try {
 
@@ -192,7 +202,11 @@ public class LightingHallway extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Changing and saving value for light settings. Depending on the mode the house is in.
+     * @param row the row in the grid layout. for which button is clicked
+     * @param value off, min, med, or max value for the light.
+     */
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
@@ -898,7 +912,9 @@ public class LightingHallway extends AppCompatActivity {
                 break;
         }
     }
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
@@ -916,7 +932,9 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min = new View.OnClickListener() {
         @Override
@@ -947,7 +965,9 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med = new View.OnClickListener() {
         @Override
@@ -977,7 +997,9 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // lights on max
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
@@ -1002,6 +1024,9 @@ public class LightingHallway extends AppCompatActivity {
         }
     };
 
+    /**
+     * set all toggle buttons to false
+     */
     public void allButtonsOff() {
         lightMinBtn.setChecked(false);
         lightMedBtn.setChecked(false);
@@ -1009,12 +1034,18 @@ public class LightingHallway extends AppCompatActivity {
         lightOffBtn.setChecked(false);
     }
 
+    /**
+     * set all bool to false
+     */
     public void allBoolFalse() {
         lmin = false;
         lmed = false;
         lmax = false;
     }
 
+    /**
+     * sends the user to MainActivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -1022,7 +1053,9 @@ public class LightingHallway extends AppCompatActivity {
 
 
     /* next 2nd row */
-
+    /**
+     * turns all lights and toggle buttons off
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener1 = new View.OnClickListener() {
         @Override
@@ -1041,7 +1074,9 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min1 = new View.OnClickListener() {
         @Override
@@ -1072,7 +1107,9 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med1 = new View.OnClickListener() {
         @Override
@@ -1102,7 +1139,9 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener1 = new View.OnClickListener() {
         @Override
@@ -1127,6 +1166,9 @@ public class LightingHallway extends AppCompatActivity {
         }
     };
 
+    /**
+     * toggle all buttons to false
+     */
     public void allButtonsOff1() {
         lightMinBtn1.setChecked(false);
         lightMedBtn1.setChecked(false);
@@ -1134,6 +1176,9 @@ public class LightingHallway extends AppCompatActivity {
         lightOffBtn1.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse1() {
         lmin1 = false;
         lmed1 = false;
@@ -1143,7 +1188,9 @@ public class LightingHallway extends AppCompatActivity {
 
 
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
-
+    /**
+     * turns off all lights and toggle all buttons off
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
         @Override
@@ -1167,7 +1214,9 @@ public class LightingHallway extends AppCompatActivity {
 
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min6 = new View.OnClickListener() {
         @Override
@@ -1208,7 +1257,9 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med6 = new View.OnClickListener() {
         @Override
@@ -1247,7 +1298,9 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener6 = new View.OnClickListener() {
         @Override
@@ -1282,6 +1335,9 @@ public class LightingHallway extends AppCompatActivity {
         }
     };
 
+    /**
+     * sets all toggle buttons to false
+     */
     public void allButtonsOff6() {
         lightMinBtn6.setChecked(false);
         lightMedBtn6.setChecked(false);
@@ -1289,12 +1345,18 @@ public class LightingHallway extends AppCompatActivity {
         lightOffBtn6.setChecked(false);
     }
 
+    /**
+     * sets all bools to false
+     */
     public void allBoolFalse6() {
         lmin6 = false;
         lmed6 = false;
         lmax6 = false;
     }
 
+    /**
+     * turns off all buttons and sets all bools to false
+     */
     public void allButtonOffKill() {
         allButtonsOff();
         allButtonsOff1();
@@ -1333,7 +1395,10 @@ public class LightingHallway extends AppCompatActivity {
 
 
     }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
 
         mode_View = (TextView) findViewById(R.id.mode_view);

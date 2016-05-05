@@ -20,7 +20,10 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
+/**
+ * Controls all the lights for the kitchen Light settings based on mode. Therse settings are
+ * also saved in shared preferences
+ */
 public class LightingKitchen extends AppCompatActivity {
 
     public static final String savedLight = "SavedLightingKitchen_1" ;
@@ -137,7 +140,10 @@ public class LightingKitchen extends AppCompatActivity {
     public static final int iAWAY = 4;
     public static final int iHOLIDAY = 1;
 
-
+    /**
+     * runs on startup and sets up gui and displays light settings dependent on current mode
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,7 +151,10 @@ public class LightingKitchen extends AppCompatActivity {
         setupGUI();
         displayLight();
     }
-
+    /**
+     * displays light settings dependent on which mode the house is in. saves all these variables
+     * in sharedpreferences
+     */
     public void displayLight() {
         try {
 
@@ -344,7 +353,11 @@ public class LightingKitchen extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Changing and saving value for light settings. Depending on the mode the house is in.
+     * @param row the row in the grid layout. for which button is clicked
+     * @param value off, min, med, or max value for the light.
+     */
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
@@ -1050,7 +1063,9 @@ public class LightingKitchen extends AppCompatActivity {
                 break;
         }
     }
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
@@ -1069,7 +1084,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min = new View.OnClickListener() {
         @Override
@@ -1103,7 +1120,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med = new View.OnClickListener() {
         @Override
@@ -1136,7 +1155,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
@@ -1163,6 +1184,9 @@ public class LightingKitchen extends AppCompatActivity {
         }
     };
 
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff() {
         lightMinBtn.setChecked(false);
         lightMedBtn.setChecked(false);
@@ -1170,11 +1194,18 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse()  {
         lmin = false;
         lmed = false;
         lmax = false;
     }
+
+    /**
+     * sends the user to the MainActivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -1182,7 +1213,9 @@ public class LightingKitchen extends AppCompatActivity {
 
 
     /* next 2nd row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener1 = new View.OnClickListener() {
         @Override
@@ -1200,7 +1233,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min1 = new View.OnClickListener() {
         @Override
@@ -1230,7 +1265,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med1 = new View.OnClickListener() {
         @Override
@@ -1261,7 +1298,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener1 = new View.OnClickListener() {
         @Override
@@ -1287,6 +1326,9 @@ public class LightingKitchen extends AppCompatActivity {
         }
     };
 
+    /**
+     * toggles all buttons to off
+     */
     public void allButtonsOff1() {
         lightMinBtn1.setChecked(false);
         lightMedBtn1.setChecked(false);
@@ -1294,6 +1336,9 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn1.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse1()  {
         lmin1 = false;
         lmed1 = false;
@@ -1301,7 +1346,9 @@ public class LightingKitchen extends AppCompatActivity {
     }
 
     /* next 3rd row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener2 = new View.OnClickListener() {
         @Override
@@ -1320,7 +1367,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min2 = new View.OnClickListener() {
         @Override
@@ -1350,7 +1399,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med2 = new View.OnClickListener() {
         @Override
@@ -1381,7 +1432,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener2 = new View.OnClickListener() {
         @Override
@@ -1407,6 +1460,9 @@ public class LightingKitchen extends AppCompatActivity {
         }
     };
 
+    /**
+     * toggles all buttons off
+     */
     public void allButtonsOff2() {
         lightMinBtn2.setChecked(false);
         lightMedBtn2.setChecked(false);
@@ -1414,6 +1470,9 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn2.setChecked(false);
     }
 
+    /**
+     * set all bool to false
+     */
     public void allBoolFalse2()  {
         lmin2 = false;
         lmed2 = false;
@@ -1421,7 +1480,9 @@ public class LightingKitchen extends AppCompatActivity {
     }
 
      /* next 4th row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener3 = new View.OnClickListener() {
         @Override
@@ -1439,7 +1500,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min3 = new View.OnClickListener() {
         @Override
@@ -1469,7 +1532,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med3 = new View.OnClickListener() {
         @Override
@@ -1500,7 +1565,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener3 = new View.OnClickListener() {
         @Override
@@ -1526,6 +1593,9 @@ public class LightingKitchen extends AppCompatActivity {
         }
     };
 
+    /**
+     * sets all toggle to off
+     */
     public void allButtonsOff3() {
         lightMinBtn3.setChecked(false);
         lightMedBtn3.setChecked(false);
@@ -1533,6 +1603,9 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn3.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse3()  {
         lmin3 = false;
         lmed3 = false;
@@ -1540,7 +1613,9 @@ public class LightingKitchen extends AppCompatActivity {
     }
 
       /* next 5th row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener4 = new View.OnClickListener() {
         @Override
@@ -1559,7 +1634,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min4 = new View.OnClickListener() {
         @Override
@@ -1590,7 +1667,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med4 = new View.OnClickListener() {
         @Override
@@ -1621,7 +1700,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener4 = new View.OnClickListener() {
         @Override
@@ -1647,6 +1728,9 @@ public class LightingKitchen extends AppCompatActivity {
         }
     };
 
+    /**
+     * sets all toggle button to off
+     */
     public void allButtonsOff4() {
         lightMinBtn4.setChecked(false);
         lightMedBtn4.setChecked(false);
@@ -1654,6 +1738,9 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn4.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse4()  {
         lmin4 = false;
         lmed4 = false;
@@ -1661,7 +1748,9 @@ public class LightingKitchen extends AppCompatActivity {
     }
 
        /* next 6th row */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener5 = new View.OnClickListener() {
         @Override
@@ -1679,7 +1768,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min5 = new View.OnClickListener() {
         @Override
@@ -1710,7 +1801,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med5 = new View.OnClickListener() {
         @Override
@@ -1741,7 +1834,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener5 = new View.OnClickListener() {
         @Override
@@ -1767,6 +1862,9 @@ public class LightingKitchen extends AppCompatActivity {
         }
     };
 
+    /**
+     * sets all toggle buttons to false
+     */
     public void allButtonsOff5() {
         lightMinBtn5.setChecked(false);
         lightMedBtn5.setChecked(false);
@@ -1774,12 +1872,20 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn5.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse5()  {
         lmin5 = false;
         lmed5 = false;
         lmax5 = false;
     }
 
+
+    /**
+     * saves light settings for all rows to SharedPreferences
+     * @param value off, min, med or max value for the light
+     */
     public void setLightSettingForAllRow(int value){
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
@@ -1974,7 +2080,9 @@ public class LightingKitchen extends AppCompatActivity {
         }
     }
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
-
+    /**
+     * turns off all lights and sets the other toggle buttons to off.
+     */
     // all lights off
     protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
         @Override
@@ -1999,7 +2107,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to minimum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on minimum
     protected View.OnClickListener light_all_min6 = new View.OnClickListener() {
         @Override
@@ -2051,7 +2161,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to medium setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on medium
     protected View.OnClickListener light_all_med6 = new View.OnClickListener() {
         @Override
@@ -2101,7 +2213,9 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns light on to maximum setting. toggles off other buttons. if already set turns off light
+     */
     // all lights on max
     protected View.OnClickListener light_all_Listener6 = new View.OnClickListener() {
         @Override
@@ -2146,6 +2260,9 @@ public class LightingKitchen extends AppCompatActivity {
         }
     };
 
+    /**
+     * toggles all buttons off
+     */
     public void allButtonsOff6() {
         lightMinBtn6.setChecked(false);
         lightMedBtn6.setChecked(false);
@@ -2153,12 +2270,18 @@ public class LightingKitchen extends AppCompatActivity {
         lightOffBtn6.setChecked(false);
     }
 
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse6()  {
         lmin6 = false;
         lmed6 = false;
         lmax6 = false;
     }
 
+    /**
+     * toggles of all buttons and sets all bool to false
+     */
     public void allButtonOffKill() {
         allButtonsOff();
         allButtonsOff1();
@@ -2175,6 +2298,9 @@ public class LightingKitchen extends AppCompatActivity {
         allBoolFalse5();
     }
 
+    /**
+     * toggles all the off buttons to true
+     */
     public void offSwitchoff() {
         lightOffBtn.setChecked(true);
         lightOffBtn1.setChecked(true);
@@ -2204,6 +2330,9 @@ public class LightingKitchen extends AppCompatActivity {
         return mD;
     }
 
+    /**
+     * Setting intensity value for medium and minimum light settings
+     */
     public void settingsView() {
         savedLightSet = getSharedPreferences(savedLightSettings, 0);
         final SharedPreferences.Editor editor = savedLightSet.edit();
@@ -2235,7 +2364,12 @@ public class LightingKitchen extends AppCompatActivity {
         SeekBar sB1 = (SeekBar)settingsDialog.findViewById(R.id.seekBar1);
         sB1.setProgress(seekBarValue1);
         sB1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
+            /**
+             *  When user moves the seekbar the value is saved.
+             * @param seekBar seekbar sent
+             * @param progress progress is the value on the seekbar
+             * @param fromUser if its changed by the user or not
+             */
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
@@ -2246,11 +2380,19 @@ public class LightingKitchen extends AppCompatActivity {
 
             }
 
+            /**
+             * onStartTrackingTouch
+             * @param seekBar seekbar sent
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             * onStopTrackingTouch
+             * @param seekBar seekbar sent
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -2288,12 +2430,15 @@ public class LightingKitchen extends AppCompatActivity {
             }
         });
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            /**
+             * alerting the user that the seekbar value has been successfully changed
+             * @param dialog the alert window
+             */
             @Override
             public void onCancel(DialogInterface dialog) {
                 savedLightSet = getSharedPreferences(savedLightSettings, Context.MODE_PRIVATE);
                 if(medChanged) editor.putInt("seekbarvalue1", seekBarValue1);
                 if(minChanged) editor.putInt("seekbarvalue2", seekBarValue2);
-
                 editor.apply();
 
                 if(medChanged && minChanged) {
@@ -2343,7 +2488,10 @@ public class LightingKitchen extends AppCompatActivity {
         settingsDialog.show();
     }
 
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
 
         mode_View = (TextView) findViewById(R.id.mode_view);

@@ -48,11 +48,9 @@ import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
-    String userInput;
     static BufferedWriter output;
     static BufferedReader input;
-    BufferedReader sysIn;
-    TextView receivedText;
+
 
     ImageButton settings;
     ImageButton lightBtn;
@@ -61,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     ImageButton measureBtn;
     ImageButton modeBtn;
 
-    Boolean online;
     static Socket connection;
 
     static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
@@ -113,7 +110,10 @@ public class MainActivity extends AppCompatActivity {
         //Night/day settings
 
     }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
         // light control button
         lightBtn = (ImageButton) findViewById(R.id.lightButton);
@@ -212,31 +212,48 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
 
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         //sendText("Disconnect");
     }
+
+    /**
+     * sends the user to the room view menu
+     */
     public void goToRoomView() {
         Intent intent = new Intent(this, RoomList.class);
         startActivity(intent);
     }
 
-
+    /**
+     * sends the user to the climate view menu
+     */
     public void goToClimateView() {
         Intent intent = new Intent(this, Climate.class);
         startActivity(intent);
     }
 
+    /**
+     * sends the user to the window view menu
+     */
     public void goToWindowView() {
         Intent intent = new Intent(this, Windows.class);
         startActivity(intent);
     }
 
+    /**
+     * sends the user to measurement view
+     */
     public void goToMeasurementView() {
         Intent intent = new Intent(this, Measurement.class);
         startActivity(intent);
     }
+
+    /**
+     * sends the user to the mode view
+     */
     public void goToModeView() {
         Intent intent = new Intent(this, TypeOfMode.class);
         startActivity(intent);
@@ -403,10 +420,7 @@ public class MainActivity extends AppCompatActivity {
         mThread.start();
     }
 
-    private void displayMessage(String text) {
-       receivedText.append(text);
-       // SwingUtilities.invokeLater(() -> receivedText.append(text));
-    }
+
 
     /**
      * Sets the temperatures given from server
@@ -538,26 +552,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-       // Log.d("Stuff", "" + zone.channel + " " + zone.mode + " " + zone.currHoliday + " " + zone.currDay + " " + zone.currNight+ " " + zone.currAway + " " + zone.currTemp);
 
-        /*
-        Log.d("Stuff", "" + Channel + " " + Mode + " " + Holiday + " " + Day + " " + Night + " " + Away + " " + CurrentTemp);
-        Intent i = new Intent(getApplicationContext(), Temperature.class);
-        i.putExtra("channel", msg.substring(2, 3));
-        i.putExtra("mode", msg.substring(1,2));
-        i.putExtra("holiday", ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5))));
-        i.putExtra("day", msg.substring(5, 7));
-        i.putExtra("night", msg.substring(7,9));
-        i.putExtra("away", msg.substring(9,11));
-        i.putExtra("currentTemp", msg.substring(11));
-        setResult(RESULT_OK,i);
-        startActivityForResult(i, 1);
-        */
-        //temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
-        //Temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
 
     }
 
+    /**
+     * used to send string commands to server
+     * @param textToSend string with command to send to server
+     */
     public static void sendText(String textToSend) {
         try {
             output.write(textToSend);

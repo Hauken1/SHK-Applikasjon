@@ -11,11 +11,18 @@ import android.widget.ImageButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
+/**
+ * allows the user to view power and water usage
+ */
 public class Measurement extends AppCompatActivity {
     ImageButton homeBtn;
     public static final String savedColor = "SavedBackgroundColor_1";
     SharedPreferences sharedpreferences;
-    
+
+    /**
+     * runs on startup and sets up GUI
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +31,10 @@ public class Measurement extends AppCompatActivity {
 
     }
 
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
@@ -45,6 +56,10 @@ public class Measurement extends AppCompatActivity {
             setContentView(v);
         }
     }
+
+    /**
+     * sends the user to the mainActivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

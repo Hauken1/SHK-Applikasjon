@@ -13,7 +13,10 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
+/**
+ * Allows the user to change ventilation settings. Three different stages of ventilation.
+ * Allows settings to be saved between different modes of the house
+ */
 public class Ventilation_2 extends AppCompatActivity {
     ImageButton homeBtn;
     boolean connected;
@@ -55,13 +58,20 @@ public class Ventilation_2 extends AppCompatActivity {
     TextView mode_View;
 
     @Override
+    /**
+     * runs on startup and sets up gui  and displays ventilation status information
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventilation_2);
         setupGUI();
         displayVentilation();
     }
-
+    /**
+     * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
+     * settings. SharedPreferences for each mode.
+     */
     public void setupGUI() {
         lvlOneBtn = (ToggleButton) findViewById(R.id.lvl12_button);
         lvlOneBtn.setOnClickListener(toggle_level1);
@@ -130,7 +140,10 @@ public class Ventilation_2 extends AppCompatActivity {
 
 
     }
-
+    /**
+     * Displays ventilation status on screen. Sets buttons toggle on/off to what was saved
+     * in that mode
+     */
     public void displayVentilation() {
 
         try {
@@ -184,7 +197,10 @@ public class Ventilation_2 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Saves ventilation status to sharedpreferences for each mode.
+     * @param i used to determine which mode the house is in
+     */
     public void setVent1BasedOnMode(int i) {
         ventilationSettings = getSharedPreferences(savedVent, 0);
         SharedPreferences.Editor editor = ventilationSettings.edit();
@@ -282,6 +298,11 @@ public class Ventilation_2 extends AppCompatActivity {
         }
     }
     // toggle level one
+    /**
+     * Toggles level 1 if level 1 is not activated. sends command to server to turn of lvl 2.
+     * turn on lvl 1. in the action to toggle on level 1. If level one is toggled it will tell the
+     * server to turn off level 1.turns off the other toggle buttons
+     */
     protected View.OnClickListener toggle_level1 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -305,7 +326,11 @@ public class Ventilation_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * Toggles level 2 if level 2 is not activated. sends command to server to turn of lvl 1.
+     * turn on lvl 2. in the action to toggle on level 2. If level one is toggled it will tell the
+     * server to turn off level 2.turns off the other toggle buttons
+     */
     // toggle level 2
     protected View.OnClickListener toggle_level2 = new View.OnClickListener() {
         @Override
@@ -330,7 +355,11 @@ public class Ventilation_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * Toggles on level 3 by turning no level 1 and 2. toggles off 1 and 2. If one function is
+     * not being used but the other is . the first is turned on to make sure both is on
+     * so toggle 3 can be activated. If toggle 3 is activated already it turns off everything
+     */
     // toggle level 3
     protected View.OnClickListener toggle_level3 = new View.OnClickListener() {
         @Override
@@ -365,7 +394,9 @@ public class Ventilation_2 extends AppCompatActivity {
             }
         }
     };
-
+    /**
+     * turns off mode 1 and 2. Also toggles of all 3 other buttons.
+     */
     // turn off
     protected View.OnClickListener turn_off = new View.OnClickListener() {
         @Override
@@ -382,23 +413,37 @@ public class Ventilation_2 extends AppCompatActivity {
         }
     };
 
+    /**
+     * sets toggle buttons to false
+     */
     public void lvlOneTwoOff() {
         lvlOneBtn.setChecked(false);
         lvlTwoBtn.setChecked(false);
         turnOffBtn.setChecked(false);
     }
+
+    /**
+     * sets all bool to false
+     */
     public void allBoolFalse() {
         ch1 = false;
         ch2 = false;
         ch3 = false;
     }
 
+    /**
+     * sets all toggle buttons to false
+     */
     public void allLvlOff()  {
         lvlOneBtn.setChecked(false);
         lvlTwoBtn.setChecked(false);
         lvlThreeBtn.setChecked(false);
         turnOffBtn.setChecked(false);
     }
+
+    /**
+     * sends the user to the mainactivity menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);

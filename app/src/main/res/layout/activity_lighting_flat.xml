@@ -175,7 +175,7 @@
 
         <!-- hybel - alt lys -->
         <TextView
-            android:layout_width="267dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/flat_all"
@@ -183,7 +183,7 @@
             android:layout_gravity="center"
             android:id="@+id/textView8"
             android:layout_row="1"
-            android:layout_columnSpan="3"
+            android:layout_columnSpan="2"
             android:layout_column="1"
             android:textColor="#090909"
             />

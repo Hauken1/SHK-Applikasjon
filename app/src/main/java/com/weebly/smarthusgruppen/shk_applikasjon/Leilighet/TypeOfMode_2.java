@@ -82,6 +82,10 @@ public class TypeOfMode_2 extends AppCompatActivity {
     int mKeyDel;
 
     @Override
+    /**
+     * loads GUI settings on startup
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type_of_mode_2);
@@ -138,6 +142,11 @@ public class TypeOfMode_2 extends AppCompatActivity {
                 break;
         }
     }
+
+    /**
+     * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
+     * which mode the house is in. Sets background color depending on user.
+     */
     public void setUpGUI() {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
