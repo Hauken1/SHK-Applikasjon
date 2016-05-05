@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -231,7 +232,7 @@ public class TypeOfMode extends AppCompatActivity {
     public void settingsView() {
         sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
 
-        Dialog settingsDialog = new Dialog(this);
+        final Dialog settingsDialog = new Dialog(this);
         settingsDialog.setContentView(R.layout.settings_modus);
         settingsDialog.setCancelable(true);
         final EditText dayText = (EditText)settingsDialog.findViewById(R.id.editText_day);
@@ -254,7 +255,13 @@ public class TypeOfMode extends AppCompatActivity {
         
         setDay.setText(sDay);
         setNight.setText(sNight);
-
+        Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                settingsDialog.cancel();
+            }
+        });
                 settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialog) {
@@ -329,20 +336,6 @@ public class TypeOfMode extends AppCompatActivity {
                             add.setTitle("Suksess");
                             add.setMessage("Tiden for når modus skifter til natt er endret"
                                     + "\n\nVerdiene for når det skiftes til dag, er ikke lagret");
-                            add.setCancelable(false);
-                            add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            add.create();
-                            add.show();
-                        } else {
-                            AlertDialog.Builder add = new AlertDialog.Builder(TypeOfMode.this);
-                            add.setTitle("Feil");
-                            add.setMessage("Noe gikk galt."
-                                    + "\nSjekk verdiene og prøv igjen.");
                             add.setCancelable(false);
                             add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 @Override

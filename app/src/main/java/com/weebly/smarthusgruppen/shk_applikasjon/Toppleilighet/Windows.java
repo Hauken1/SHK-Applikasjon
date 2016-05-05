@@ -37,9 +37,9 @@ public class Windows extends AppCompatActivity {
     TextView degreeOpen1;
     TextView degreeOpen2;
     TextView degreeOpen3;
-    int winOpeningTime1 = 00;
-    int winOpeningTime2 = 00;
-    int winOpeningTime3 = 00;
+    int winOpeningTime1;
+    int winOpeningTime2;
+    int winOpeningTime3;
     int winOpener = 5;
     Boolean stopping1 = true;
     Boolean stopping2 = true;
@@ -659,6 +659,9 @@ public class Windows extends AppCompatActivity {
         degreeOpen2.setText(window2);
         degreeOpen3.setText(window3);
 
+        winOpeningTime1 = Integer.parseInt(sharedpreferences.getString("window1status", "0"));
+        winOpeningTime2 = Integer.parseInt(sharedpreferences.getString("window2status", "0"));
+        winOpeningTime3 = Integer.parseInt(sharedpreferences.getString("window3status", "0"));
 
         sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
 

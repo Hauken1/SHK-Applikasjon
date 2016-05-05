@@ -195,23 +195,25 @@ public class MainActivity_2 extends AppCompatActivity {
        // sendText("Disconnect");
     }
     public void settingsView() {
-
-        Dialog settingsDialog = new Dialog(this);
+        sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
+        seekBarValue1 = sharedpreferences.getInt("value1", 0);
+        seekBarValue2 = sharedpreferences.getInt("value2", 0);
+        seekBarValue3 = sharedpreferences.getInt("value3", 0);
+        final Dialog settingsDialog = new Dialog(this);
         settingsDialog.setContentView(R.layout.settings_main1);
         settingsDialog.setCancelable(true);
 
         final ImageView colorV = (ImageView)settingsDialog.findViewById(R.id.colorView);
         SeekBar seekBar1 = (SeekBar)settingsDialog.findViewById(R.id.seekBar1);
-        seekBarValue1 = seekBar1.getProgress();
-
-        seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        //seekBarValue1 = seekBar1.getProgress();
+        seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
 
                 seekBarValue1 = progress;
-                colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
+                colorV.setBackgroundColor(Color.rgb(seekBarValue1, seekBarValue3, seekBarValue2));
             }
 
             @Override
@@ -226,8 +228,7 @@ public class MainActivity_2 extends AppCompatActivity {
         });
 
         SeekBar seekBar2 = (SeekBar)settingsDialog.findViewById(R.id.seekBar2);
-
-        seekBarValue2 = seekBar2.getProgress();
+        //seekBarValue2 = seekBar2.getProgress();
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -250,7 +251,7 @@ public class MainActivity_2 extends AppCompatActivity {
         });
 
         SeekBar seekBar3 = (SeekBar)settingsDialog.findViewById(R.id.seekBar3);
-        seekBarValue3 = seekBar3.getProgress();
+        //seekBarValue3 = seekBar3.getProgress();
         seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -271,7 +272,13 @@ public class MainActivity_2 extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
-
+        Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                settingsDialog.cancel();
+            }
+        });
         colorV.setBackgroundColor(Color.rgb(seekBarValue1, seekBarValue3, seekBarValue2));
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
