@@ -325,6 +325,7 @@ public class LightingBedroom2_2 extends AppCompatActivity {
 
         light_setttings_button = (ImageButton) findViewById(R.id.settings_light);
         light_setttings_button.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v)  {
                 settingsView();
             }
