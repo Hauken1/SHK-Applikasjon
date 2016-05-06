@@ -246,8 +246,6 @@ public class TypeOfMode_3 extends AppCompatActivity {
         settingsDialog.setCancelable(true);
         final EditText dayText = (EditText)settingsDialog.findViewById(R.id.editText_day);
         final EditText nightText = (EditText)settingsDialog.findViewById(R.id.editText_night);
-        TextView setDay = (TextView)settingsDialog.findViewById(R.id.set_day);
-        TextView setNight = (TextView)settingsDialog.findViewById(R.id.set_night);
         dayText.setInputType(InputType.TYPE_CLASS_NUMBER);
         nightText.setInputType(InputType.TYPE_CLASS_NUMBER);
         InputFilter[] filter1 = new InputFilter[1];
@@ -262,8 +260,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
         String sNight = Integer.toString(sharedpreferences.getInt("nighthour", 0)) + ":"
                 + Integer.toString(sharedpreferences.getInt("nightmin",0));
 
-        setDay.setText(sDay);
-        setNight.setText(sNight);
+
         Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             /**
