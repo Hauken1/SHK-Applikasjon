@@ -168,8 +168,7 @@ public class LightingOffice extends AppCompatActivity {
 
     }
     /**
-     * displays light settings dependent on which mode the house is in. saves all these variables
-     * in sharedpreferences
+     * Displays light settings dependent on which mode the house is in.
      */
     public void displayLight() {
         try {
@@ -1083,6 +1082,11 @@ public class LightingOffice extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Method that returns the medium intensity set by the user.
+     * Returns a default value if it has not been changed.
+     * @return medium intensity value
+     */
     public String testForMedDimValueSet(){
         savedLightSet = getSharedPreferences(savedLightSettings,0);
 
@@ -1093,6 +1097,11 @@ public class LightingOffice extends AppCompatActivity {
         else return mD;
     }
 
+    /**
+     * Method that returns the minimum intensity set by the user.
+     * Returns a default value if it has not been changed.
+     * @return minimum intensity value
+     */
     public String testForMinDimValueSet(){
         savedLightSet = getSharedPreferences(savedLightSettings, 0);
 
@@ -1103,6 +1112,9 @@ public class LightingOffice extends AppCompatActivity {
         return mD;
     }
 
+    /**
+     * A view which allows the user to chose minimum and medium intensity values.
+     */
     public void settingsView() {
         savedLightSet = getSharedPreferences(savedLightSettings, 0);
         final SharedPreferences.Editor editor = savedLightSet.edit();
@@ -1135,6 +1147,13 @@ public class LightingOffice extends AppCompatActivity {
         sB1.setProgress(seekBarValue1);
         sB1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
+            /**
+             * Is called when the user moves the seekbar.
+             * Changes the value of the med/min intensity and adds it to a textview.
+             * @param seekBar the seekbar
+             * @param progress the value it is changed to
+             * @param fromUser if the user moved it or not
+             */
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
@@ -1145,11 +1164,19 @@ public class LightingOffice extends AppCompatActivity {
 
             }
 
+            /**
+             *
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             *
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -1159,6 +1186,13 @@ public class LightingOffice extends AppCompatActivity {
         sB2.setProgress(seekBarValue2);
         sB2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
+            /**
+             * Is called when the user moves the seekbar.
+             * Changes the value of the med/min intensity and adds it to a textview.
+             * @param seekBar the seekbar
+             * @param progress the value it is changed to
+             * @param fromUser if the user moved it or not
+             */
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
@@ -1169,11 +1203,19 @@ public class LightingOffice extends AppCompatActivity {
 
             }
 
+            /**
+             *
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             *
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -1181,12 +1223,23 @@ public class LightingOffice extends AppCompatActivity {
         });
         Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the user clicks the button. It cancels the dialog,
+             * and then the cancellistner of the dialog is runned.
+             * @param v the button
+             */
             @Override
             public void onClick(View v) {
                 settingsDialog.cancel();
             }
         });
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            /**
+             * Method that is called when the dialog is canceled.
+             * Saves the intensity values and gives the user a dialog based on the changes
+             * he/she made, or none if nothing is changed.
+             * @param dialog the dialog to be canceled.
+             */
             @Override
             public void onCancel(DialogInterface dialog) {
                 savedLightSet = getSharedPreferences(savedLightSettings, Context.MODE_PRIVATE);

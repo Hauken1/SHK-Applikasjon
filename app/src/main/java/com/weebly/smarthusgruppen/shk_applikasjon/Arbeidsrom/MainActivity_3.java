@@ -33,7 +33,13 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * Main class of the "Hybel(Dorm)". This class sets up a View which gives the user access
+ * to "controlling" views. The views is light-,ventilation and heatingcontroll. The user is also
+ * provided with a buttons which send the user to the View where he/she can change the mode the
+ * house is set to. The user can also access a settings View on this page, which allows the user to
+ * customize his/her background color.
+ */
 public class MainActivity_3 extends AppCompatActivity {
     static BufferedWriter output;
     static BufferedReader input;
@@ -68,8 +74,16 @@ public class MainActivity_3 extends AppCompatActivity {
      */
     private GoogleApiClient client;
 
+    /**
+     * Method that is called the the View is created.
+     * This method retrives the connection used to login for further use, sets up the GUI and
+     * sends messages to the server where the server will respond with providing the user with
+     * the current temperatures in this apartment. It also changes the mode of the application to
+     * be the same as what the house is set to.
+     * Starts the messagelistner which listens for messages sent from the server.
+     * @param savedInstanceState
+     */
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_3);
@@ -144,6 +158,9 @@ public class MainActivity_3 extends AppCompatActivity {
         }
 
     }
+    /**
+     * Auto generated method that is called when the View is started.
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -164,6 +181,9 @@ public class MainActivity_3 extends AppCompatActivity {
         AppIndex.AppIndexApi.start(client, viewAction);
     }
 
+    /**
+     * Auto generated method that is called when the View is stopped.
+     */
     @Override
     public void onStop() {
         super.onStop();
@@ -185,11 +205,20 @@ public class MainActivity_3 extends AppCompatActivity {
         client.disconnect();
 
     }
+    /**
+     * Method that is called when the View is destroyed.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
        // sendText("Disconnect");
     }
+
+    /**
+     * Provides the user with a view, which allows the user to customize his/her background color.
+     * The background color is saved, so that it will be set when the user restarts the application
+     * and moves to another View.
+     */
     public void settingsView() {
         sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
         seekBarValue1 = sharedpreferences.getInt("value1", 0);
@@ -213,11 +242,19 @@ public class MainActivity_3 extends AppCompatActivity {
                 colorV.setBackgroundColor(Color.rgb(seekBarValue1, seekBarValue3, seekBarValue2));
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -236,11 +273,19 @@ public class MainActivity_3 extends AppCompatActivity {
                 colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -259,11 +304,19 @@ public class MainActivity_3 extends AppCompatActivity {
                 colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -271,6 +324,11 @@ public class MainActivity_3 extends AppCompatActivity {
         });
         Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the cancelbutton is pressed.
+             * Cancels the dialog, which again runs the OnCancelListener of the dialog.
+             * @param v the button
+             */
             @Override
             public void onClick(View v) {
                 settingsDialog.cancel();
@@ -278,6 +336,12 @@ public class MainActivity_3 extends AppCompatActivity {
         });
         colorV.setBackgroundColor(Color.rgb(seekBarValue1, seekBarValue3, seekBarValue2));
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            /**
+             * Method that is called when the method is canceled.
+             * Saves the current values of the seekbar and changes the color based on these
+             * values.
+             * @param dialog the dialog.
+             */
             @Override
             public void onCancel(DialogInterface dialog) {
                 sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
@@ -296,65 +360,79 @@ public class MainActivity_3 extends AppCompatActivity {
 
     }
 
+    /**
+     * Sends the user to the room list view for lighting-controll.
+     */
     public void goToRoomView() {
         Intent intent = new Intent(this, RoomList_3.class);
         startActivity(intent);
     }
 
 
+    /**
+     * Sends the user to climate View
+     */
     public void goToClimateView() {
         Intent intent = new Intent(this, Climate_3.class);
         startActivity(intent);
     }
+
+    /**
+     * Sends the user to measurement View
+     */
     public void goToMeasView() {
         Intent intent = new Intent(this, Measurement_3.class);
         startActivity(intent);
     }
+
+    /**
+     * Sends the user to mode View.
+     */
     public void goToModeView() {
         Intent intent = new Intent(this, TypeOfMode_3.class);
         startActivity(intent);
     }
 
-        private void startMessageListener() {
-            Thread mThread = new Thread(new Runnable() {
-                public void run() {
-                    while (true) {
-                        Random rnd = new Random();
-                        try {
+    /**
+     * Method starts a threads which listens for server messages.
+     * The main function of this listener is to retrieve temperature information from the server.
+     *
+     */
+    private void startMessageListener() {
+        Thread mThread = new Thread(new Runnable() {
+            public void run() {
+                while (true) {
+                    Random rnd = new Random();
+                    try {
 
-                            String msg = input.readLine();
-                            Log.d("msg", ""+ msg);
+                        String msg = input.readLine();
+                        Log.d("msg", ""+ msg);
 
-                            if(msg.startsWith("TempInfo:")) {
-                                tempInfoController(msg.substring(8, msg.length()));
-                            }
-
-                            else {
-
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Error when reading msg");
-                            //e.printStackTrace();
+                        if(msg.startsWith("TempInfo:")) {
+                            tempInfoController(msg.substring(8, msg.length()));
                         }
-                        try {
-                            TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
-                        } catch (Exception e) {
-                            // TODO Auto-generated catch block
-                            MainActivity_3.sendText("Disconnect");
-                            e.printStackTrace();
+
+                        else {
+
                         }
+                    } catch (Exception e) {
+                        System.out.println("Error when reading msg");
+                        //e.printStackTrace();
+                    }
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(rnd.nextInt(100) * 10);
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        MainActivity_3.sendText("Disconnect");
+                        e.printStackTrace();
                     }
                 }
+            }
 
 
-            });
-            mThread.start();
-        }
-
-        private void displayMessage(String text) {
-           receivedText.append(text);
-           // SwingUtilities.invokeLater(() -> receivedText.append(text));
-        }
+        });
+        mThread.start();
+    }
 
     /**
      * Sets the temperatures given from server
@@ -506,6 +584,10 @@ public class MainActivity_3 extends AppCompatActivity {
 
     }
 
+    /**
+     * used to send string commands to server
+     * @param textToSend string with command to send to server
+     */
     public static void sendText(String textToSend) {
         try {
             output.write(textToSend);
@@ -515,12 +597,19 @@ public class MainActivity_3 extends AppCompatActivity {
         }
     }
 
+    /**
+     * Retrieves the Socket, BufferedReader and Writer used when the
+     * user logged in.
+     */
     public static void getConnection() {
         connection = LoginClient.returnConnection();
         output = LoginClient.returnwriter();
         input = LoginClient.returnReader();
     }
 
+    /*
+   ***************************Code that is no longer in use*********************************
+    */
     public static TemperatureInformation returnTemperature(int n) {
         return tempZone.get(n);
     }

@@ -44,13 +44,16 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-
-
-
+/**
+ * Main class of the "Toppleilighet (Upper apartment)". This class sets up a View which gives the user access
+ * to "controlling" views. The views is light-,ventilation, window and heatingcontroll. The user is also
+ * provided with a buttons which send the user to the View where he/she can change the mode the
+ * house is set to. The user can also access a settings View on this page, which allows the user to
+ * customize his/her background color.
+ */
 public class MainActivity extends AppCompatActivity {
     static BufferedWriter output;
     static BufferedReader input;
-
 
     ImageButton settings;
     ImageButton lightBtn;
@@ -83,6 +86,16 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+
+    /**
+     * Method that is called the the View is created.
+     * This method retrives the connection used to login for further use, sets up the GUI and
+     * sends messages to the server where the server will respond with providing the user with
+     * the current temperatures in this apartment. It also changes the mode of the application to
+     * be the same as what the house is set to.
+     * Starts the messagelistner which listens for messages sent from the server.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,11 +107,9 @@ public class MainActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-
         setupGUI();
 
         startMessageListener();
-
 
         MainActivity.sendText("Command:007262112,1");
         MainActivity.sendText("Command:007262112,2");
@@ -106,8 +117,6 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,4");
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
-
-        //Night/day settings
 
     }
     /**
@@ -118,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
         // light control button
         lightBtn = (ImageButton) findViewById(R.id.lightButton);
         lightBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the button is pressed.
+             * @param v the button
+             */
             @Override
             public void onClick(View v) {
                 goToRoomView();
@@ -126,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
         // climate button
         climateBtn = (ImageButton) findViewById(R.id.climateButton);
         climateBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called the button is pressed.
+             * @param v the button
+             */
             public void onClick(View v)  {
                 goToClimateView();
             }
@@ -133,6 +150,10 @@ public class MainActivity extends AppCompatActivity {
 
         windowsBtn = (ImageButton) findViewById(R.id.windowButton);
         windowsBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called the button is pressed.
+             * @param v the button
+             */
             public void onClick(View v)  {
                 goToWindowView();
             }
@@ -140,6 +161,10 @@ public class MainActivity extends AppCompatActivity {
 
         measureBtn = (ImageButton) findViewById(R.id.measureButton);
         measureBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called the button is pressed.
+             * @param v the button
+             */
             public void onClick(View v)  {
                 goToMeasurementView();
             }
@@ -147,6 +172,10 @@ public class MainActivity extends AppCompatActivity {
 
         modeBtn = (ImageButton) findViewById(R.id.modeButton);
         modeBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called the button is pressed.
+             * @param v the button
+             */
             public void onClick(View v) {
                 goToModeView();
             }
@@ -154,6 +183,10 @@ public class MainActivity extends AppCompatActivity {
 
         settings = (ImageButton) findViewById(R.id.settings);
         settings.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called the button is pressed.
+             * @param v the button
+             */
             public void onClick(View v) {
                 settingsView();
             }
@@ -171,6 +204,10 @@ public class MainActivity extends AppCompatActivity {
             setContentView(v);
         }
     }
+
+    /**
+     * Auto generated method that is called when the View is started.
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -191,6 +228,9 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.start(client, viewAction);
     }
 
+    /**
+     * Auto generated method that is called when the View is stopped.
+     */
     @Override
     public void onStop() {
         super.onStop();
@@ -213,6 +253,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method that is called when the View is destroyed.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -259,6 +302,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Provides the user with a view, which allows the user to customize his/her background color.
+     * The background color is saved, so that it will be set when the user restarts the application
+     * and moves to another View.
+     */
     public void settingsView() {
         sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
         seekBarValue1 = sharedpreferences.getInt("value1", 0);
@@ -274,6 +322,14 @@ public class MainActivity extends AppCompatActivity {
 
         seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
+            /**
+             * Method that is called when the seekbar is moved.
+             * This method sets the value of the seekbar to a variable, that is used to
+             * make the background color
+             * @param seekBar the seekbar that has changed
+             * @param progress the value it has changed to
+             * @param fromUser if it is changed by the user or not
+             */
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
@@ -282,11 +338,19 @@ public class MainActivity extends AppCompatActivity {
                 colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -297,7 +361,14 @@ public class MainActivity extends AppCompatActivity {
 
         //seekBarValue2 = seekBar2.getProgress();
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
-
+            /**
+             * Method that is called when the seekbar is moved.
+             * This method sets the value of the seekbar to a variable, that is used to
+             * make the background color
+             * @param seekBar the seekbar that has changed
+             * @param progress the value it has changed to
+             * @param fromUser if it is changed by the user or not
+             */
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
@@ -306,11 +377,19 @@ public class MainActivity extends AppCompatActivity {
                 colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -321,6 +400,14 @@ public class MainActivity extends AppCompatActivity {
         //seekBarValue3 = seekBar3.getProgress();
         seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
+            /**
+             * Method that is called when the seekbar is moved.
+             * This method sets the value of the seekbar to a variable, that is used to
+             * make the background color
+             * @param seekBar the seekbar that has changed
+             * @param progress the value it has changed to
+             * @param fromUser if it is changed by the user or not
+             */
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
@@ -329,11 +416,19 @@ public class MainActivity extends AppCompatActivity {
                 colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
             }
 
+            /**
+             * Auto generated method that is made when making a seekbar
+             * @param seekBar the seekbar
+             */
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // TODO Auto-generated method stub
@@ -342,6 +437,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the cancelbutton is pressed.
+             * Cancels the dialog, which again runs the OnCancelListener of the dialog.
+             * @param v the button
+             */
             @Override
             public void onClick(View v) {
                 settingsDialog.cancel();
@@ -349,6 +449,12 @@ public class MainActivity extends AppCompatActivity {
         });
         colorV.setBackgroundColor(Color.rgb(seekBarValue1, seekBarValue3, seekBarValue2));
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            /**
+             * Method that is called when the method is canceled.
+             * Saves the current values of the seekbar and changes the color based on these
+             * values.
+             * @param dialog the dialog.
+             */
             @Override
             public void onCancel(DialogInterface dialog) {
                 sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
@@ -368,8 +474,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method starts a threads which listens for server messages.
+     * The main function of this listener is to retrieve temperature information from the server.
+     *
+     */
     private void startMessageListener() {
         Thread mThread = new Thread(new Runnable() {
+            /**
+             * Run method of the thread that is called when the thread has started.
+             * Starts the message listener.
+             */
             public void run() {
                 while (true) {
                     Random rnd = new Random();
@@ -414,16 +529,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
-
         });
         mThread.start();
     }
 
 
-
     /**
-     * Sets the temperatures given from server
+     * Sets the temperatures retrieved by the server
      * @param msg String containing temperatures
      */
     public void tempInfoController(String msg) {
@@ -569,12 +681,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Retrieves the Socket, BufferedReader and Writer used when the
+     * user logged in.
+     */
     public static void getConnection() {
         connection = LoginClient.returnConnection();
         output = LoginClient.returnwriter();
         input = LoginClient.returnReader();
     }
 
+    /*
+    ***************************Code that is no longer in use*********************************
+     */
     public static TemperatureInformation returnTemperature(int n) {
         return tempZone.get(n);
     }

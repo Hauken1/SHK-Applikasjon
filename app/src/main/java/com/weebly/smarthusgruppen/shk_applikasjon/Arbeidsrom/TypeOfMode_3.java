@@ -32,6 +32,12 @@ import com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.MainActivity;
 
 import java.util.Calendar;
 
+/**
+ * TypoeOfMode class allows the user to change the house between different predetermined modes.
+ * day, night, away and holiday mode are predetermined. Settings allows you to decide at what time the house
+ * automatically should change mode. Holiday mode allows you to decide date and time for your return
+ * and the house automatically goes into that mode prior to the users return.
+ */
 public class TypeOfMode_3 extends AppCompatActivity {
     public static final String savedTemp1 = "1SavedTemperature_3";
     public static final String savedTemp2 = "2SavedTemperature_3";
@@ -105,6 +111,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
         homeBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the user presses the home button.
+             * @param v the button
+             */
             public void onClick(View v) {
                 goToHome();
             }
@@ -112,6 +122,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
         dayBtn = (ToggleButton) findViewById(R.id.toggle_day);
         dayBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metod that is called when the user presses the day button.
+             * @param v the day button
+             */
             public void onClick(View v) {
                 day();
             }
@@ -119,6 +133,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
         nightBtn = (ToggleButton) findViewById(R.id.toggle_night);
         nightBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the user presses the night button.
+             * @param v the night button
+             */
             public void onClick(View v) {
                 night();
             }
@@ -126,6 +144,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
         awayBtn = (ToggleButton) findViewById(R.id.toggle_away);
         awayBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the user presses the away button.
+             * @param v the away button
+             */
             public void onClick(View v) {
                 away();
             }
@@ -133,6 +155,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
         holidayBtn = (ToggleButton) findViewById(R.id.toggle_holiday);
         holidayBtn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the user presses the holiday button.
+             * @param v the holiday button.
+             */
             public void onClick(View v) {
                 holiday();
             }
@@ -140,6 +166,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
         settings = (ImageButton) findViewById(R.id.settings_mode);
         settings.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the user presses the settings button.
+             * @param v the settings button.
+             */
             public void onClick(View v) {
                 settingsView();
             }
@@ -195,11 +225,19 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
     }
 
+    /**
+     * sends the user to MainActivity
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
     }
 
+    /**
+     * Method that allows the user to change the time of the day for when the dwelling unit should
+     * change to day and night.
+     *
+     */
     public void settingsView() {
         sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
 
@@ -228,12 +266,21 @@ public class TypeOfMode_3 extends AppCompatActivity {
         setNight.setText(sNight);
         Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Method that is called when the user presses the cancel button.
+             * This method cancels the dialog, thereby making the OnCancelListener run.
+             * @param v the cancel button.
+             */
             @Override
             public void onClick(View v) {
                 settingsDialog.cancel();
             }
         });
         settingsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            /**
+             * Method that is called when the dialog is canceled.
+             * @param dialog the dialog.
+             */
             @Override
             public void onCancel(DialogInterface dialog) {
                 sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
@@ -278,6 +325,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
                     add.setMessage("\nTid for når modus skifter til natt og dag er endret.");
                     add.setCancelable(false);
                     add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        /**
+                         * Method that is called when the user presses the "Ok" button
+                         * of the dialog. Dismisses the dialog.
+                         * @param dialog
+                         * @param which
+                         */
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -294,6 +347,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
                             + "\n\nVerdiene for når det skiftes til natt, er ikke lagret.");
                     add.setCancelable(false);
                     add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        /**
+                         * Method that is called when the user presses the "Ok" button
+                         * of the dialog. Dismisses the dialog.
+                         * @param dialog
+                         * @param which
+                         */
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -309,6 +368,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
                             + "\n\nVerdiene for når det skiftes til dag, er ikke lagret");
                     add.setCancelable(false);
                     add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        /**
+                         * Method that is called when the user presses the "Ok" button
+                         * of the dialog. Dismisses the dialog.
+                         * @param dialog
+                         * @param which
+                         */
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -323,6 +388,11 @@ public class TypeOfMode_3 extends AppCompatActivity {
         settingsDialog.show();
     }
 
+    /**
+     * Retrieves lightsetting for the current mode and calls a method that sends them to
+     * the server.
+     * @param mode the mode that is being changed to.
+     */
     public void getAndSendLightCommand(int mode){
 
         String modeStatus1, modeStatus2, modeStatus3, modeStatus4, modeStatus5,
@@ -386,6 +456,17 @@ public class TypeOfMode_3 extends AppCompatActivity {
         sendLightCommand(s1,s2,s3,s4,s5,s6,sAll);
     }
 
+    /**
+     * Method that sends light commands to the server, based on saved variables of the mode that the
+     * user has changed to.
+     * @param s1 Contains the intensity of row 1
+     * @param s2 Contains the intensity of row 2
+     * @param s3 Contains the intensity of row 3
+     * @param s4 Contains the intensity of row 4
+     * @param s5 Contains the intensity of row 5
+     * @param s6 Contains the intensity of row 6
+     * @param sAll Contains the intensity of all rows
+     */
     public void sendLightCommand(int s1, int s2, int s3, int s4, int s5, int s6, int sAll ){
 
         /*
@@ -503,6 +584,11 @@ public class TypeOfMode_3 extends AppCompatActivity {
         }
 
     }
+    /**
+     * This method sends the saved ventilation settings of the mode that the user has
+     * changed to, to the server.
+     * @param mode the mode that is being changed to.
+     */
     public void sendVent1Command(int mode) {
 
         /*
@@ -555,6 +641,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
     }
 
+    /**
+     * Method that is called when the user presses the day button.
+     * This method sets the current mode of the dwelling unit to day and send all the
+     * saved variables of the day mode to the server, so that the dwelling unit will be set to
+     * day mode.
+     */
     public void day() {
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
@@ -713,6 +805,13 @@ public class TypeOfMode_3 extends AppCompatActivity {
         sendVent1Command(dMode);
 
     }
+
+    /**
+     * Method that is called when the user presses the night button.
+     * This method sets the current mode of the dwelling unit to night and send all the
+     * saved variables of the night mode to the server, so that the dwelling unit will be set to
+     * night mode.
+     */
     public void night() {
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
@@ -870,8 +969,14 @@ public class TypeOfMode_3 extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
         sendVent1Command(dMode);
 
-
     }
+
+    /**
+     * Method that is called when the user presses the away button.
+     * This method sets the current mode of the dwelling unit to away and send all the
+     * saved variables of the away mode to the server, so that the dwelling unit will be set to
+     * away mode.
+     */
     public void away(){
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
@@ -1032,6 +1137,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
     }
 
+    /**
+     * Method that is called when the date in a DatePickerDialog is set.
+     * This method retrieves the values that is being set, and saves them for further use later.
+     */
     final private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
@@ -1047,6 +1156,15 @@ public class TypeOfMode_3 extends AppCompatActivity {
         }
     };
 
+    /**
+     * Method that is called when the user presses the holiday button.
+     * This method sets the current mode of the dwelling unit to holiday and send all the
+     * saved variables of the holiday mode to the server, so that the dwelling unit will be set to
+     * holiday mode. The user will also get a message which ask the user if he/she wants to set
+     * a date and time for when the user comes back, so that the house can be set to day/night in
+     * good time before the user return (increasing temperatures, turning on ventilation/lights and
+     * so on).
+     */
     public void holiday() {
 
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
@@ -1208,6 +1326,11 @@ public class TypeOfMode_3 extends AppCompatActivity {
             public void run() {
                 try {
                     gHandler.post(new Runnable() {
+                        /**
+                         * Method that is called when this handler is executed.
+                         * A handler has to be used because there is a lot of different
+                         * GUI features in thread.
+                         */
                         @Override
                         public void run() {
                             sharedpreferences = getSharedPreferences(holidayTime, Context.MODE_PRIVATE);
@@ -1223,6 +1346,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
                                     " når tiden er nådd.");
                             add.setCancelable(false);
                             add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        /**
+                                         * Method that is called when the "Ok" button is pressed.
+                                         * dismisses current dialog, and opens a DatePickerDialog
+                                         * @param dialog the current dialog.
+                                         * @param which
+                                         */
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
@@ -1244,6 +1373,16 @@ public class TypeOfMode_3 extends AppCompatActivity {
                                             dateDialog.show();
                                             dateDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Lagre",
                                                     new DialogInterface.OnClickListener() {
+                                                        /**
+                                                         * Method that is called when the "Lagre" button
+                                                         * has been pressed.
+                                                         * Dismisses the current dialog, and opens a new dialog
+                                                         * which allows the user to input time for return, how
+                                                         * many hours before this the mode should change
+                                                         * and to what mode.
+                                                         * @param dialog the current dialog.
+                                                         * @param which
+                                                         */
                                                         public void onClick(DialogInterface dialog, int which) {
                                                             dialog.dismiss();
 
@@ -1265,69 +1404,7 @@ public class TypeOfMode_3 extends AppCompatActivity {
                                                             time.setGravity(Gravity.CENTER);
                                                             time.setFilters(filter1);
                                                             time.setInputType(InputType.TYPE_CLASS_NUMBER);
-                                                            time.addTextChangedListener(new TextWatcher() {
-
-                                                                @Override
-                                                                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                                                                    boolean flag = true;
-                                                                    String eachBlock[] = time.getText().toString().split(":");
-                                                                    for (int i = 0; i < eachBlock.length; i++) {
-                                                                        if (eachBlock[i].length() > 6) {
-                                                                            flag = false;
-                                                                        }
-                                                                    }
-                                                                    if (flag) {
-
-                                                                        time.setOnKeyListener(new View.OnKeyListener() {
-
-                                                                            @Override
-                                                                            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                                                                                if (keyCode == KeyEvent.KEYCODE_DEL)
-                                                                                    mKeyDel = 1;
-                                                                                return false;
-                                                                            }
-                                                                        });
-
-                                                                        if (mKeyDel == 0) {
-
-                                                                            if (((time.getText().length() + 1) % 3) == 0) {
-                                                                                if (time.getText().length() < 5) {
-                                                                                    time.setText(time.getText() + ":");
-                                                                                    time.setSelection(time.getText().length());
-                                                                                }
-                                                                            }
-                                                                            mTextValue = time.getText().toString();
-                                                                        } else {
-                                                                            mTextValue = time.getText().toString();
-                                                                            if (mLastChar.equals(':')) {
-                                                                                mTextValue = mTextValue.substring(0, mTextValue.length() - 1);
-                                                                                time.setText(mTextValue);
-                                                                                time.setSelection(mTextValue.length());
-                                                                            }
-                                                                            mKeyDel = 0;
-                                                                        }
-
-                                                                    } else {
-                                                                        time.setText(mTextValue);
-                                                                    }
-                                                                }
-
-                                                                @Override
-                                                                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                                                    if (s.length() > 0) {// save the last char value
-                                                                        mLastChar = s.charAt(s.length() - 1);
-                                                                    } else {
-                                                                        mLastChar = '\0';
-                                                                    }
-                                                                }
-
-                                                                @Override
-                                                                public void afterTextChanged(Editable s) {
-
-                                                                }
-                                                            });
+                                                            time.addTextChangedListener(new TimeTextWatcher(time));
                                                             timeForChange.setText("");
                                                             timeForChange.setGravity(Gravity.CENTER);
                                                             timeForChange.setFilters(filter2);
@@ -1347,6 +1424,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
                                                             night.setChecked(false);
                                                             day.setChecked(false);
                                                             night.setOnClickListener(new View.OnClickListener() {
+                                                                /**
+                                                                 * Method that is called when night button is pressed.
+                                                                 * @param v the night button.
+                                                                 */
                                                                 public void onClick(View v) {
                                                                     if (day.isChecked()) {
                                                                         day.setChecked(false);
@@ -1354,6 +1435,10 @@ public class TypeOfMode_3 extends AppCompatActivity {
                                                                 }
                                                             });
                                                             day.setOnClickListener(new View.OnClickListener() {
+                                                                /**
+                                                                 * Method that is called when the day button is pressed.
+                                                                 * @param v the day button.
+                                                                 */
                                                                 public void onClick(View v) {
                                                                     if (night.isChecked()) {
                                                                         night.setChecked(false);
@@ -1369,6 +1454,14 @@ public class TypeOfMode_3 extends AppCompatActivity {
                                                             timeDialog.setView(layout);
 
                                                             timeDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                        /**
+                                                                         * Method that is called when the "Ok" button is pressed.
+                                                                         * Checks if the user input is valid and sends
+                                                                         * all the inputs to the server, which starts
+                                                                         * a holiday timer.
+                                                                         * @param dialog current dialog
+                                                                         * @param which
+                                                                         */
                                                                         @Override
                                                                         public void onClick(final DialogInterface dialog, int which) {
                                                                             dialog.dismiss();
@@ -1442,6 +1535,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
                                                                                 add.setCancelable(false);
                                                                                 add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                                    /**
+                                                                                     * Method that is called when the button is pressed.
+                                                                                     * Dismisses the dialog.
+                                                                                     * @param dialog current dialog
+                                                                                     * @param which
+                                                                                     */
                                                                                     @Override
                                                                                     public void onClick(DialogInterface dialog, int which) {
                                                                                         dialog.dismiss();
@@ -1457,6 +1556,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
                                                                                         + "\n\nPrøv igjen.");
                                                                                 add.setCancelable(false);
                                                                                 add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                                                    /**
+                                                                                     * Method that is called when the button is pressed.
+                                                                                     * Dismisses the dialog.
+                                                                                     * @param dialog current dialog
+                                                                                     * @param which
+                                                                                     */
                                                                                     @Override
                                                                                     public void onClick(DialogInterface dialog, int which) {
                                                                                         dialog.dismiss();
@@ -1543,9 +1648,13 @@ public class TypeOfMode_3 extends AppCompatActivity {
 
                                             );
                                             dateDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Avbryt",
-                                                    new DialogInterface.OnClickListener()
-
-                                                    {
+                                                    new DialogInterface.OnClickListener() {
+                                                        /**
+                                                         * Method that is called when the button is pressed.
+                                                         * Dismisses the dialog.
+                                                         * @param dialog current dialog
+                                                         * @param which
+                                                         */
                                                         public void onClick(DialogInterface dialog,
                                                                             int which) {
                                                             dialog.dismiss();
@@ -1555,8 +1664,13 @@ public class TypeOfMode_3 extends AppCompatActivity {
                                         }
                                     }
                             );
-                            add.setNegativeButton("Avbryt", new DialogInterface.OnClickListener()
-                                    {
+                            add.setNegativeButton("Avbryt", new DialogInterface.OnClickListener() {
+                                        /**
+                                         * Method that is called when the button is pressed.
+                                         * Cancels the dialog.
+                                         * @param dialog current dialog
+                                         * @param which
+                                         */
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.cancel();
@@ -1575,6 +1689,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
                             + "\n\nPrøv igjen.");
                     add.setCancelable(false);
                     add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        /**
+                         * Method that is called when the button is pressed.
+                         * Dismisses the dialog.
+                         * @param dialog current dialog
+                         * @param which
+                         */
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -1588,6 +1708,15 @@ public class TypeOfMode_3 extends AppCompatActivity {
         hThread.start();
     }
 
+    /**
+     * Class that implements TextWatcher.
+     * Most of this code is from a thread in StackOverflow.
+     * The main function of this class and its method is to insert ":"
+     * after the user has input two characthers.
+     * This class together with a filter that is being
+     * set to a EditText View, and setting input type to only numbers,
+     * will force the user to only input numbers following the format HH:MM.
+     */
     private class TimeTextWatcher implements TextWatcher {
 
         private EditText time;
@@ -1595,6 +1724,17 @@ public class TypeOfMode_3 extends AppCompatActivity {
         private TimeTextWatcher(EditText time) {
             this.time = time;
         }
+        /**
+         * Method that is called when the text has changed.
+         * Most of this code is from StackOverflow.
+         * The main function of this method is
+         * to insert ":" after the user has input two
+         * characters..
+         * @param s the text
+         * @param start where it starts
+         * @param before how it was before it was changed
+         * @param count length
+         */
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
@@ -1641,7 +1781,14 @@ public class TypeOfMode_3 extends AppCompatActivity {
                 time.setText(mTextValue);
             }
         }
-
+        /**
+         * Method that is called before the text
+         * has been changed
+         * @param s the text
+         * @param start beginning of the text
+         * @param count length
+         * @param after end of text
+         */
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             if (s.length() > 0) {// save the last char value
@@ -1651,6 +1798,12 @@ public class TypeOfMode_3 extends AppCompatActivity {
             }
         }
 
+        /**
+         * Method that is called after the
+         * text has been changed.
+         * Does nothing
+         * @param s the text
+         */
         @Override
         public void afterTextChanged(Editable s) {
 
