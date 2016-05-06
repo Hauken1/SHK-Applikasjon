@@ -1074,6 +1074,7 @@ public class LightingBedroom1 extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     /**
      * Method that returns the medium intensity set by the user.
      * Returns a default value if it has not been changed.
@@ -1275,5 +1276,6 @@ public class LightingBedroom1 extends AppCompatActivity {
         });
         settingsDialog.show();
     }
+
 
 }
