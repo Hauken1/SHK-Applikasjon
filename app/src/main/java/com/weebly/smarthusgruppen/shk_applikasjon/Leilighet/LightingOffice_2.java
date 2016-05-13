@@ -44,6 +44,7 @@ public class LightingOffice_2 extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;
     public SharedPreferences lightSettings;
+    Button modeBtn;
 
     String sMode;
     int iMode;
@@ -1778,6 +1779,13 @@ public class LightingOffice_2 extends AppCompatActivity {
     }
 
     /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode_2.class);
+        startActivity(intent);
+    }
+    /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
      */
@@ -1793,7 +1801,12 @@ public class LightingOffice_2 extends AppCompatActivity {
 
         lightMaxBtn1 = (ToggleButton) findViewById(R.id.toggle_100);
         lightMaxBtn1.setOnClickListener(light_all_Listener1);
-
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
+            }
+        });
 
         lightOffBtn2 = (ToggleButton) findViewById(R.id.toggle_01);
         lightOffBtn2.setOnClickListener(light_all__off_Listener2);

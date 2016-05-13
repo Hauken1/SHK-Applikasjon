@@ -31,7 +31,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/maintemp"
+        android:background="@mipmap/ny_mainklima2"
         android:id="@+id/climateButton"
         android:layout_below="@+id/lightButton"
         android:layout_centerHorizontal="true"
@@ -58,7 +58,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/mainmodus"
+        android:background="@mipmap/ny_mainmodus"
         android:id="@+id/modeButton"
         android:layout_below="@+id/measureButton"
         android:layout_centerHorizontal="true"
@@ -71,6 +71,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:background="@mipmap/mainsettings" />
+        android:background="@mipmap/ny_settingsfarge" />
 
 </RelativeLayout>
