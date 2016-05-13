@@ -47,6 +47,7 @@ public class LightingBedroom2_2 extends AppCompatActivity {
 
     String sMode;
     int iMode;
+    Button modeBtn;
 
     public static final int row1 = 1;
     public static final int row2 = 2;
@@ -296,6 +297,13 @@ public class LightingBedroom2_2 extends AppCompatActivity {
         });
         settingsDialog.show();
     }
+    /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode_2.class);
+        startActivity(intent);
+    }
 
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
@@ -322,7 +330,12 @@ public class LightingBedroom2_2 extends AppCompatActivity {
                 goToHome();
             }
         });
-
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
+            }
+        });
         light_setttings_button = (ImageButton) findViewById(R.id.settings_light);
         light_setttings_button.setOnClickListener(new View.OnClickListener() {
 

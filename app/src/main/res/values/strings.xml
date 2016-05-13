@@ -104,6 +104,9 @@
     <string name="m1_v">Forbruk toppleilighet</string>
     <string name="m2_v">Forbruk leilighet</string>
     <string name="m3_v">Forbruk arbeidsrom</string>
+    <string name="current_temp_room">Nå</string>
+    <string name="wanted_temp_room">Ønsket</string>
+    <string name="choose_mode">Modusvalg</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>

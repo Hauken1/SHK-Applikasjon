@@ -39,6 +39,7 @@ public class LightingBedroom1_2 extends AppCompatActivity {
 
     Boolean medChanged;
     Boolean minChanged;
+    Button modeBtn;
 
     public SharedPreferences savedLightSet;
     SharedPreferences sharedpreferences;
@@ -295,6 +296,14 @@ public class LightingBedroom1_2 extends AppCompatActivity {
     }
 
     /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode_2.class);
+        startActivity(intent);
+    }
+
+    /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
      */
@@ -310,7 +319,12 @@ public class LightingBedroom1_2 extends AppCompatActivity {
 
         lightMaxBtn = (ToggleButton) findViewById(R.id.toggle_100);
         lightMaxBtn.setOnClickListener(light_all_Listener);
-
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
+            }
+        });
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
         homeBtn.setOnClickListener(new View.OnClickListener() {

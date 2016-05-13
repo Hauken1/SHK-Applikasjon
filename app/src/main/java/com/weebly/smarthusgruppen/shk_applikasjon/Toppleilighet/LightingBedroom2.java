@@ -64,6 +64,7 @@ public class LightingBedroom2 extends AppCompatActivity {
     ToggleButton lightMedBtn;
     ToggleButton lightMaxBtn;
     ImageButton homeBtn;
+    Button modeBtn;
 
     public static final String DAY = "Dag";
     public static final String NIGHT = "Natt";
@@ -106,6 +107,13 @@ public class LightingBedroom2 extends AppCompatActivity {
 
         lightMaxBtn = (ToggleButton) findViewById(R.id.toggle_100);
         lightMaxBtn.setOnClickListener(light_all_Listener);
+
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
+            }
+        });
 
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
@@ -1274,5 +1282,13 @@ public class LightingBedroom2 extends AppCompatActivity {
             }
         });
         settingsDialog.show();
+    }
+
+    /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode.class);
+        startActivity(intent);
     }
 }
