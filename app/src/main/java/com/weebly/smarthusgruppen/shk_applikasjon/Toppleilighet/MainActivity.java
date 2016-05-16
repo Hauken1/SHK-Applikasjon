@@ -34,7 +34,6 @@ import java.io.IOException;
 
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     static Socket connection;
 
-    static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
+
 
     public static final String savedTemp1 = "1SavedTemperature_1";
     public static final String savedTemp2 = "2SavedTemperature_1";
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
      * sends messages to the server where the server will respond with providing the user with
      * the current temperatures in this apartment. It also changes the mode of the application to
      * be the same as what the house is set to.
-     * Starts the messagelistner which listens for messages sent from the server.
+     * Starts the messagelistener which listens for messages sent from the server.
      * @param savedInstanceState
      */
     @Override
@@ -656,44 +655,6 @@ public class MainActivity extends AppCompatActivity {
         connection = LoginClient.returnConnection();
         output = LoginClient.returnwriter();
         input = LoginClient.returnReader();
-    }
-
-    /*
-    ***************************Code that is no longer in use*********************************
-     */
-    public static TemperatureInformation returnTemperature(int n) {
-        return tempZone.get(n);
-    }
-
-    public static int returnTemperatureSize() {
-        return tempZone.size();
-    }
-
-
-
-    static public class TemperatureInformation {
-        String currDay;
-        String currNight;
-        String currHoliday;
-        String currAway;
-        String currTemp;
-        String channel;
-        String mode;
-
-        TemperatureInformation(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
-            channel = ch;
-            mode = mo;
-            currDay = cd;
-            currNight = cn;
-            currHoliday = cho;
-            currAway = ca;
-            currTemp = ct;
-
-        }
-    }
-
-    public static boolean TemperatureIsEmpty() {
-        return tempZone.isEmpty();
     }
 }
 
