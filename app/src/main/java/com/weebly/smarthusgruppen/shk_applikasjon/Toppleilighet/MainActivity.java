@@ -118,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
 
+        MainActivity.sendText("Monitor!");
+
     }
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
              * Method that is called the button is pressed.
              * @param v the button
              */
-            public void onClick(View v)  {
+            public void onClick(View v) {
                 goToWindowView();
             }
         });
@@ -499,8 +501,8 @@ public class MainActivity extends AppCompatActivity {
                                 tempInfoController(msg.substring(8, msg.length()));
                             }
 
-                            else {
-
+                            else if(msg.startsWith("Humidity:")) {
+                                humidityController(msg.substring(9, msg.length()));
                             }
 
                         }
@@ -561,24 +563,6 @@ public class MainActivity extends AppCompatActivity {
         // Gets rest of the string, which will (presumably) be two integers.
         String currentTemp = msg.substring(11);
         Log.d("current temp", currentTemp);
-
-        /*
-        boolean existingZone = false;
-
-        TemperatureInformation zone = new TemperatureInformation(channel,mode,day,night,holiday,away,currentTemp);
-        if(!tempZone.isEmpty()) {
-            for (int i = 0; i < tempZone.size(); i++) {
-                if (tempZone.get(i).channel == channel) {
-                    tempZone.set(i, zone);
-                    existingZone = true;
-                }
-            }
-        }
-        if(existingZone) {
-            existingZone = false;
-        }
-        else tempZone.add(zone);
-        */
 
         int ch = Integer.parseInt(channel);
         switch (ch) {
@@ -663,9 +647,20 @@ public class MainActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
 
-
-
+    public void humidityController(String msg) {
+        String sensorID, humidity;
+        if (msg.charAt(1) == 0) {
+            if (msg.charAt(2) == 0) {
+                sensorID = msg.substring(3,3);
+            }
+            else sensorID = msg.substring(2,3);
+        }
+        else sensorID = msg.substring(1,3);
+        Log.d("id", "" + sensorID);
+        humidity = msg.substring(4,6);
+        Log.d("hum", "" + humidity);
     }
 
     /**
