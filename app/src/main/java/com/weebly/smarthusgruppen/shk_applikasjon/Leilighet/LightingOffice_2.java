@@ -1820,7 +1820,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         lightMaxBtn2 = (ToggleButton) findViewById(R.id.toggle_1001);
         lightMaxBtn2.setOnClickListener(light_all_Listener2);
 
-
+    
 
         lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_02);
         lightOffBtn6.setOnClickListener(light_all__off_Listener6);

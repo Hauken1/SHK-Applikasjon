@@ -803,9 +803,6 @@ public class LoginClient extends AppCompatActivity {
 
                                 try {
                                     sendLogin(login, username, password);
-                                   // Random rng = new Random();
-                                    //TimeUnit.MILLISECONDS.sleep(rng.nextInt(100) * 10);
-                                   // ProgressDialog dialog = ProgressDialog.show(LoginClient.this, "Loading", "Please wait...", true);
 
                                     String read = "Ping";
                                     int n = 0;
@@ -818,8 +815,7 @@ public class LoginClient extends AppCompatActivity {
 
                                     }
                                     pDialog.dismiss();
-                                    //dialog.dismiss();
-                                    //int ID = Integer.valueOf(input.readLine());
+
                                     if(n != 20) {
                                         int ID = Integer.parseInt(read);
                                         Log.d("ClientActivity", "C: logging in..." + ID);
