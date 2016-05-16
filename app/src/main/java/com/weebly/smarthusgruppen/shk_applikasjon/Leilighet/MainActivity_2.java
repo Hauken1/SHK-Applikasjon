@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.TextView;
+
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -29,7 +29,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -44,15 +44,12 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity_2 extends AppCompatActivity {
     static BufferedWriter output;
     static BufferedReader input;
-    TextView receivedText;
     ImageButton lightBtn;
     ImageButton climateBtn;
     ImageButton measureBtn;
     ImageButton modeBtn;
     ImageButton settings;
     static Socket connection;
-
-    static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
 
     public static final String savedTemp1 = "1SavedTemperature_2";
     public static final String savedTemp2 = "2SavedTemperature_2";
@@ -492,23 +489,6 @@ public class MainActivity_2 extends AppCompatActivity {
         String currentTemp = msg.substring(11);
         Log.d("current temp", currentTemp);
 
-        /*
-        boolean existingZone = false;
-
-        TemperatureInformation zone = new TemperatureInformation(channel,mode,day,night,holiday,away,currentTemp);
-        if(!tempZone.isEmpty()) {
-            for (int i = 0; i < tempZone.size(); i++) {
-                if (tempZone.get(i).channel == channel) {
-                    tempZone.set(i, zone);
-                    existingZone = true;
-                }
-            }
-        }
-        if(existingZone) {
-            existingZone = false;
-        }
-        else tempZone.add(zone);
-        */
 
         int ch = Integer.parseInt(channel);
         switch (ch) {
@@ -594,23 +574,6 @@ public class MainActivity_2 extends AppCompatActivity {
                 break;
         }
 
-       // Log.d("Stuff", "" + zone.channel + " " + zone.mode + " " + zone.currHoliday + " " + zone.currDay + " " + zone.currNight+ " " + zone.currAway + " " + zone.currTemp);
-
-        /*
-        Log.d("Stuff", "" + Channel + " " + Mode + " " + Holiday + " " + Day + " " + Night + " " + Away + " " + CurrentTemp);
-        Intent i = new Intent(getApplicationContext(), Temperature.class);
-        i.putExtra("channel", msg.substring(2, 3));
-        i.putExtra("mode", msg.substring(1,2));
-        i.putExtra("holiday", ( (msg.charAt(3) == 0) ? Integer.parseInt(msg.substring(4, 5)) : Integer.parseInt(msg.substring(3, 5))));
-        i.putExtra("day", msg.substring(5, 7));
-        i.putExtra("night", msg.substring(7,9));
-        i.putExtra("away", msg.substring(9,11));
-        i.putExtra("currentTemp", msg.substring(11));
-        setResult(RESULT_OK,i);
-        startActivityForResult(i, 1);
-        */
-        //temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
-        //Temperature.createTempZone(Channel, Mode, Day, Night, Holiday, Away, CurrentTemp);
 
     }
 
@@ -638,42 +601,6 @@ public class MainActivity_2 extends AppCompatActivity {
     }
 
 
-    /*
-   ***************************Code that is no longer in use*********************************
-    */
-    public static TemperatureInformation returnTemperature(int n) {
-        return tempZone.get(n);
-    }
 
-    public static int returnTemperatureSize() {
-        return tempZone.size();
-    }
-
-
-
-    static public class TemperatureInformation {
-        String currDay;
-        String currNight;
-        String currHoliday;
-        String currAway;
-        String currTemp;
-        String channel;
-        String mode;
-
-        TemperatureInformation(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
-            channel = ch;
-            mode = mo;
-            currDay = cd;
-            currNight = cn;
-            currHoliday = cho;
-            currAway = ca;
-            currTemp = ct;
-
-        }
-    }
-
-    public static boolean TemperatureIsEmpty() {
-        return tempZone.isEmpty();
-    }
 }
 

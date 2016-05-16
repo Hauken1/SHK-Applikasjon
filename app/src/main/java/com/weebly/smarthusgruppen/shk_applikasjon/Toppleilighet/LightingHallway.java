@@ -44,6 +44,7 @@ public class LightingHallway extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;
     public SharedPreferences lightSettings;
+    Button modeBtn;
 
     String sMode;
     int iMode;
@@ -1454,6 +1455,13 @@ public class LightingHallway extends AppCompatActivity {
         lightMaxBtn1 = (ToggleButton) findViewById(R.id.toggle_1001);
         lightMaxBtn1.setOnClickListener(light_all_Listener1);
 
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
+            }
+        });
+
 
 
 
@@ -1698,5 +1706,13 @@ public class LightingHallway extends AppCompatActivity {
             }
         });
         settingsDialog.show();
+    }
+
+    /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode.class);
+        startActivity(intent);
     }
 }

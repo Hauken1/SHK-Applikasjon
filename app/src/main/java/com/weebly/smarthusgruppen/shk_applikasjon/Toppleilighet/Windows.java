@@ -640,14 +640,11 @@ public class Windows extends AppCompatActivity {
         /* These textviews will show on the screen to indicate to what degree
          the window is opened */
         degreeOpen1 = (TextView) findViewById(R.id.win4_button);
-        //String temp1 = String.valueOf(winOpeningTime1 + "%");
-        //degreeOpen1.setText(temp1);
+
         degreeOpen2 = (TextView) findViewById(R.id.win8_button);
-        //String temp2 = String.valueOf(winOpeningTime2 + "%");
-        //degreeOpen2.setText(temp2);
+
         degreeOpen3 = (TextView) findViewById(R.id.win12_button);
-        //String temp3 = String.valueOf(winOpeningTime3 + "%");
-        //degreeOpen3.setText(temp3);
+
 
         sharedpreferences = getSharedPreferences(savedWindow, 0);
 

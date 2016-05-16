@@ -47,6 +47,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
 
     String sMode;
     int iMode;
+    Button modeBtn;
 
     public static final int row1 = 1;
     public static final int row2 = 2;
@@ -1603,7 +1604,13 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
         });
         settingsDialog.show();
     }
-
+    /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode_3.class);
+        startActivity(intent);
+    }
     /**
      * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
      * which mode the house is in. Sets background color depending on user.
@@ -1633,6 +1640,12 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
         lightMaxBtn1 = (ToggleButton) findViewById(R.id.toggle_1001);
         lightMaxBtn1.setOnClickListener(light_all_Listener1);
 
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
+            }
+        });
 
         lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_06);
         lightOffBtn6.setOnClickListener(light_all__off_Listener6);

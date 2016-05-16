@@ -3,7 +3,7 @@ package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,7 +16,6 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -31,7 +30,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
-import org.w3c.dom.Text;
 import java.util.Calendar;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
 
@@ -1734,12 +1732,7 @@ public class TypeOfMode extends AppCompatActivity {
                                                                               value1.setText("Tid for ankomst: " + getTime);
                                                                               value2.setText("Tid for endring: " + getTimeForChange + " timer før ankomst");
                                                                               value3.setText("\nGod Ferie!");
-                                                                                /*
-                                                                                value.setGravity(Gravity.CENTER);
-                                                                                value1.setGravity(Gravity.CENTER);
-                                                                                value2.setGravity(Gravity.CENTER);
-                                                                                value3.setGravity(Gravity.CENTER);
-                                                                                */
+
                                                                               LinearLayout layout = new LinearLayout(TypeOfMode.this);
                                                                               layout.setOrientation(LinearLayout.VERTICAL);
                                                                               layout.addView(value);
@@ -1791,72 +1784,6 @@ public class TypeOfMode extends AppCompatActivity {
                                                           );
                                                           timeDialog.create();
                                                           timeDialog.show();
-                        /*
-                        final TimePickerDialog timeDialog = new TimePickerDialog(TypeOfMode.this,
-                                new TimePickerDialog.OnTimeSetListener() {
-                                    @Override
-                                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                        hour = hourOfDay;
-                                        min = minute;
-                                        sharedpreferences = getSharedPreferences(holidayTime, Context.MODE_PRIVATE);
-                                        SharedPreferences.Editor holidayEditor = sharedpreferences.edit();
-                                        holidayEditor.putInt("hour", hour);
-                                        holidayEditor.putInt("minute", min);
-                                        holidayEditor.commit();
-                                    }
-                                }, hour, min, true);
-                       // timeDialog.onTimeChanged(timePicker,,min);
-                        timeDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Lagre",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                        sharedpreferences = getSharedPreferences(holidayTime, Context.MODE_PRIVATE);
-                                        int yYear = sharedpreferences.getInt("year", 1992);
-                                        int yMonth = sharedpreferences.getInt("month", 1992);
-                                        int yDay = sharedpreferences.getInt("day", 1992);
-                                        int hHour = sharedpreferences.getInt("hour", 1992);
-                                        int hMin = sharedpreferences.getInt("minute", 1992);
-                                        Log.d("Date", yYear + " " + yMonth + " " + yDay);
-                                        Log.d("Time", hHour + " " + hMin);
-                                        Log.d("Time", hour + " " + min);
-                                    }
-                                });
-                        timeDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Avbryt",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                });
-
-                        timeDialog.show();
-
-                          int holidayYear = sharedpreferences.getInt("year", 0);
-                        int holidayMonth = sharedpreferences.getInt("month", 0);
-                        int holidayDay = sharedpreferences.getInt("day", 0);
-
-                        if(holidayYear == 0 || holidayMonth ==0 || holidayDay == 0 ) {
-
-                            AlertDialog.Builder add = new AlertDialog.Builder(TypeOfMode.this);
-                            add.setTitle("Feriemodus");
-                            add.setMessage("Modus er satt til ferie, men verdiene ble ikke lagret. Vennligst prøv igjen"
-                                            + "\n\n"
-                                            + "Du kan også skifte modus selv du kommer hjem"
-                                            + "og endre verdier selv");
-                            add.setCancelable(false);
-                            add.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            add.create();
-                            add.show();
-                        }
-                        else {
-
-                        }
-                        */
-
 
                                                       }
                                                   }

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -118,6 +119,7 @@ public class LightingBathroom extends AppCompatActivity {
     ToggleButton lightMedBtn6;
 
     ImageButton homeBtn;
+    Button modeBtn;
 
     public static final String DAY = "Dag";
     public static final String NIGHT = "Natt";
@@ -1168,11 +1170,22 @@ public class LightingBathroom extends AppCompatActivity {
         lmed = false;
         lmax = false;
     }
+
+    /**
+     * sends the user to the main activity
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode.class);
+        startActivity(intent);
+    }
 
     /* next 2nd row */
     /**
@@ -2302,6 +2315,13 @@ public class LightingBathroom extends AppCompatActivity {
         homeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)  {
                 goToHome();
+            }
+        });
+
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
             }
         });
 

@@ -74,6 +74,6 @@
         android:id="@+id/settings_mode"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@mipmap/mainsettings" />
+        android:background="@mipmap/ny_settingsmodus" />
 
 </RelativeLayout>

@@ -35,6 +35,7 @@ public class LightingKitchen extends AppCompatActivity {
     public SharedPreferences tempSetting;
     public SharedPreferences lightSettings;
     public SharedPreferences savedLightSet;
+    Button modeBtn;
 
 
     boolean lmin = false;
@@ -2636,6 +2637,12 @@ public class LightingKitchen extends AppCompatActivity {
         lightMaxBtn6 = (ToggleButton) findViewById(R.id.toggle_1006);
         lightMaxBtn6.setOnClickListener(light_all_Listener6);
 
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
+            }
+        });
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
         homeBtn.setOnClickListener(new View.OnClickListener() {
@@ -2663,5 +2670,13 @@ public class LightingKitchen extends AppCompatActivity {
             setContentView(v);
         }
 
+    }
+
+    /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode.class);
+        startActivity(intent);
     }
 }

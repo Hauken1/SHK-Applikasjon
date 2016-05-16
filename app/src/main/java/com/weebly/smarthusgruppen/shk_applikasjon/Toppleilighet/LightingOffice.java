@@ -80,6 +80,7 @@ public class LightingOffice extends AppCompatActivity {
     public static final int iNIGHT = 3;
     public static final int iAWAY = 4;
     public static final int iHOLIDAY = 1;
+    Button modeBtn;
 
     TextView mode_View;
     /**
@@ -109,6 +110,13 @@ public class LightingOffice extends AppCompatActivity {
 
         lightMaxBtn = (ToggleButton) findViewById(R.id.toggle_100);
         lightMaxBtn.setOnClickListener(light_all_Listener);
+
+        modeBtn = (Button) findViewById(R.id.mode_button);
+        modeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)  {
+                goToMode();
+            }
+        });
 
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);
@@ -1294,4 +1302,14 @@ public class LightingOffice extends AppCompatActivity {
         });
         settingsDialog.show();
     }
+
+    /**
+     * sends the user to the mode activity
+     */
+    public void goToMode() {
+        Intent intent = new Intent(this, TypeOfMode.class);
+        startActivity(intent);
+    }
+
+
 }

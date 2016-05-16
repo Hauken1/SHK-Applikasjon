@@ -1,7 +1,7 @@
 package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 
 
-import android.app.AlertDialog;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,21 +11,16 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
-import android.text.Layout;
+
 import android.util.Log;
-import android.view.Gravity;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
 
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -36,11 +31,9 @@ import com.weebly.smarthusgruppen.shk_applikasjon.R;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+
 import java.io.OutputStream;
 import java.net.Socket;
-import java.nio.channels.Channel;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -64,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     static Socket connection;
 
-    static public ArrayList<TemperatureInformation> tempZone = new ArrayList<>();
+
 
     public static final String savedTemp1 = "1SavedTemperature_1";
     public static final String savedTemp2 = "2SavedTemperature_1";
@@ -93,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
      * sends messages to the server where the server will respond with providing the user with
      * the current temperatures in this apartment. It also changes the mode of the application to
      * be the same as what the house is set to.
-     * Starts the messagelistner which listens for messages sent from the server.
+     * Starts the messagelistener which listens for messages sent from the server.
      * @param savedInstanceState
      */
     @Override
@@ -491,7 +484,6 @@ public class MainActivity extends AppCompatActivity {
                 while (true) {
                     Random rnd = new Random();
                     try {
-
                         if (input.ready()) {
                             String msg = input.readLine();
 
@@ -504,20 +496,8 @@ public class MainActivity extends AppCompatActivity {
                             else if(msg.startsWith("Humidity:")) {
                                 humidityController(msg.substring(9, msg.length()));
                             }
-
-                        }
-                        /*
-                        String msg = input.readLine();
-                        Log.d("msg", ""+ msg);
-
-                        if(msg.startsWith("TempInfo:")) {
-                            tempInfoController(msg.substring(8, msg.length()));
                         }
 
-                        else {
-
-                        }
-                        */
                     } catch (Exception e) {
                         System.out.println("Error when reading msg");
                         //e.printStackTrace();
@@ -541,28 +521,13 @@ public class MainActivity extends AppCompatActivity {
      * @param msg String containing temperatures
      */
     public void tempInfoController(String msg) {
-        // Sets the channel number
         String channel = msg.substring(1, 2);
-        Log.d("channel", channel);
-        // Sets the mode number
         String mode = msg.substring(2, 3);
-        Log.d("mode", mode);
-        // If the temperature is less than 10, set temp like int after 0, else set
-        // temp like int XX
         String holiday = (msg.charAt(3) == 0) ? msg.substring(4, 5) : msg.substring(3, 5);
-        Log.d("holiday", holiday);
-        // Will most likely be over 10
         String day = msg.substring(5, 7);
-        Log.d("day", day);
-        // Will most likely be over 10
         String night = msg.substring(7, 9);
-        Log.d("night", night);
-        // Will most likely be over 10
         String away = msg.substring(9, 11);
-        Log.d("away", away);
-        // Gets rest of the string, which will (presumably) be two integers.
         String currentTemp = msg.substring(11);
-        Log.d("current temp", currentTemp);
 
         int ch = Integer.parseInt(channel);
         switch (ch) {
@@ -684,44 +649,6 @@ public class MainActivity extends AppCompatActivity {
         connection = LoginClient.returnConnection();
         output = LoginClient.returnwriter();
         input = LoginClient.returnReader();
-    }
-
-    /*
-    ***************************Code that is no longer in use*********************************
-     */
-    public static TemperatureInformation returnTemperature(int n) {
-        return tempZone.get(n);
-    }
-
-    public static int returnTemperatureSize() {
-        return tempZone.size();
-    }
-
-
-
-    static public class TemperatureInformation {
-        String currDay;
-        String currNight;
-        String currHoliday;
-        String currAway;
-        String currTemp;
-        String channel;
-        String mode;
-
-        TemperatureInformation(String ch, String mo, String cd, String cn, String cho, String ca, String ct) {
-            channel = ch;
-            mode = mo;
-            currDay = cd;
-            currNight = cn;
-            currHoliday = cho;
-            currAway = ca;
-            currTemp = ct;
-
-        }
-    }
-
-    public static boolean TemperatureIsEmpty() {
-        return tempZone.isEmpty();
     }
 }
 

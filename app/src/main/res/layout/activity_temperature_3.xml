@@ -66,7 +66,27 @@
                 android:layout_row="1"
                 android:layout_column="1"
                 android:layout_columnSpan="2"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/curr_tv"
+                android:textColor="#090909"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:text="@string/current_temp_room"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/wanted_tv"
+                android:textColor="#090909"
+                android:layout_gravity="center_horizontal"
+                android:layout_row="1"
+                android:layout_column="3"
+                android:text="@string/wanted_temp_room"/>
 
             <TextView
                 android:layout_width="80dp"
@@ -86,6 +106,7 @@
                 android:layout_gravity="center"
                 android:layout_row="1"
                 android:layout_column="0"
+                android:layout_marginTop="20dp"
                 />
 
             <ImageView
@@ -96,6 +117,7 @@
                 android:layout_gravity="center"
                 android:layout_row="1"
                 android:layout_column="3"
+                android:layout_marginTop="20dp"
                 />
 
             <ImageButton

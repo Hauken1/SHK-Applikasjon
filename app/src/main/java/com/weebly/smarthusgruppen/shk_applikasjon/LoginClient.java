@@ -53,6 +53,7 @@ public class LoginClient extends AppCompatActivity {
 
     int serverPort = 12345;
     String hostName= "192.168.38.110";
+
     // 128.39.81.160 10.0.2.2
     static BufferedWriter output;
     static BufferedReader input;
@@ -803,9 +804,6 @@ public class LoginClient extends AppCompatActivity {
 
                                 try {
                                     sendLogin(login, username, password);
-                                   // Random rng = new Random();
-                                    //TimeUnit.MILLISECONDS.sleep(rng.nextInt(100) * 10);
-                                   // ProgressDialog dialog = ProgressDialog.show(LoginClient.this, "Loading", "Please wait...", true);
 
                                     String read = "Ping";
                                     int n = 0;
@@ -818,8 +816,7 @@ public class LoginClient extends AppCompatActivity {
 
                                     }
                                     pDialog.dismiss();
-                                    //dialog.dismiss();
-                                    //int ID = Integer.valueOf(input.readLine());
+
                                     if(n != 20) {
                                         int ID = Integer.parseInt(read);
                                         Log.d("ClientActivity", "C: logging in..." + ID);
