@@ -1,7 +1,7 @@
 package com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet;
 
 
-import android.app.AlertDialog;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,21 +11,16 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
-import android.text.Layout;
+
 import android.util.Log;
-import android.view.Gravity;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
 
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -36,10 +31,9 @@ import com.weebly.smarthusgruppen.shk_applikasjon.R;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+
 import java.io.OutputStream;
 import java.net.Socket;
-import java.nio.channels.Channel;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -504,18 +498,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                         }
-                        /*
-                        String msg = input.readLine();
-                        Log.d("msg", ""+ msg);
 
-                        if(msg.startsWith("TempInfo:")) {
-                            tempInfoController(msg.substring(8, msg.length()));
-                        }
-
-                        else {
-
-                        }
-                        */
                     } catch (Exception e) {
                         System.out.println("Error when reading msg");
                         //e.printStackTrace();
@@ -562,23 +545,7 @@ public class MainActivity extends AppCompatActivity {
         String currentTemp = msg.substring(11);
         Log.d("current temp", currentTemp);
 
-        /*
-        boolean existingZone = false;
 
-        TemperatureInformation zone = new TemperatureInformation(channel,mode,day,night,holiday,away,currentTemp);
-        if(!tempZone.isEmpty()) {
-            for (int i = 0; i < tempZone.size(); i++) {
-                if (tempZone.get(i).channel == channel) {
-                    tempZone.set(i, zone);
-                    existingZone = true;
-                }
-            }
-        }
-        if(existingZone) {
-            existingZone = false;
-        }
-        else tempZone.add(zone);
-        */
 
         int ch = Integer.parseInt(channel);
         switch (ch) {
