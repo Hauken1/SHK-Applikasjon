@@ -41,7 +41,6 @@ public class RoomList_3 extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;
 
-
     @Override
     /**
      * loads GUI settings on startup
@@ -50,9 +49,7 @@ public class RoomList_3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list_3);
-
         setupGUI();
-
         }
     /**
      * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
@@ -74,7 +71,6 @@ public class RoomList_3 extends AppCompatActivity {
                 goToBathroomLights();
             }
         });
-
 
         //home button
         homeBtn = (ImageButton) findViewById(R.id.home_button);

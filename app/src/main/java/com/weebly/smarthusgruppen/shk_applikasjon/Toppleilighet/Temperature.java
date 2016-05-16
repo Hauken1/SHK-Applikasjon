@@ -315,8 +315,6 @@ public class Temperature extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
-
     }
 
     /**
@@ -896,7 +894,6 @@ public class Temperature extends AppCompatActivity {
             default:
                 break;
         }
-        //MainActivity.sendText("Command:007260112,1,0,0,1,28,27,26,25,1,15");
     }
     /**
      * Method that is called when the user wants to increase the temperature of channel four.
@@ -1203,8 +1200,8 @@ public class Temperature extends AppCompatActivity {
             default:
                 break;
         }
-
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel one.
      * Updates the temperature for channel one
@@ -1307,6 +1304,7 @@ public class Temperature extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel two.
      * Updates the temperature for channel two.
@@ -1409,6 +1407,7 @@ public class Temperature extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel three.
      * Updates the temperature for channel three
@@ -1511,6 +1510,7 @@ public class Temperature extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel fire.
      * Updates the temperature for channel fire.
@@ -1613,6 +1613,7 @@ public class Temperature extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel five.
      * Updates the temperature for channel five.
@@ -1715,6 +1716,7 @@ public class Temperature extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel six.
      * Updates the temperature for channel six.

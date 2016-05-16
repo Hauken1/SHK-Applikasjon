@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
     static Socket connection;
 
-
-
     public static final String savedTemp1 = "1SavedTemperature_1";
     public static final String savedTemp2 = "2SavedTemperature_1";
     public static final String savedTemp3 = "3SavedTemperature_1";
@@ -110,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,4");
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
-
         MainActivity.sendText("Monitor!");
 
     }
@@ -254,7 +251,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //sendText("Disconnect");
     }
 
     /**
@@ -313,8 +309,6 @@ public class MainActivity extends AppCompatActivity {
 
         final ImageView colorV = (ImageView)settingsDialog.findViewById(R.id.colorView);
         SeekBar seekBar1 = (SeekBar)settingsDialog.findViewById(R.id.seekBar1);
-        //seekBarValue1 = seekBar1.getProgress();
-
         seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             /**
@@ -353,8 +347,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         SeekBar seekBar2 = (SeekBar)settingsDialog.findViewById(R.id.seekBar2);
-
-        //seekBarValue2 = seekBar2.getProgress();
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             /**
              * Method that is called when the seekbar is moved.
@@ -392,7 +384,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         SeekBar seekBar3 = (SeekBar)settingsDialog.findViewById(R.id.seekBar3);
-        //seekBarValue3 = seekBar3.getProgress();
         seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             /**
@@ -406,7 +397,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-
                 seekBarValue3 = progress;
                 colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
             }
@@ -465,8 +455,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         settingsDialog.show();
-
-
     }
 
     /**
@@ -486,20 +474,14 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         if (input.ready()) {
                             String msg = input.readLine();
-
-                            Log.d("msg", ""+ msg);
-
                             if(msg.startsWith("TempInfo:")) {
                                 tempInfoController(msg.substring(8, msg.length()));
                             }
-
                             else if(msg.startsWith("Humidity:")) {
                                 humidityController(msg.substring(9, msg.length()));
                             }
                         }
-
                     } catch (Exception e) {
-                        System.out.println("Error when reading msg");
                         //e.printStackTrace();
                     }
                     try {
@@ -614,6 +596,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method that process the humidity information received from server
+     * @param msg the message containing humidity information
+     */
     public void humidityController(String msg) {
         String sensorID, humidity;
         if (msg.charAt(1) == 0) {
@@ -651,4 +637,3 @@ public class MainActivity extends AppCompatActivity {
         input = LoginClient.returnReader();
     }
 }
-

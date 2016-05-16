@@ -35,7 +35,6 @@ public class Temperature_2 extends AppCompatActivity {
     ImageButton downBtn3;
     ImageButton downBtn4;
 
-
     public static final String savedTemp1 = "1SavedTemperature_2" ;
     public static final String savedTemp2 = "2SavedTemperature_2" ;
     public static final String savedTemp3 = "3SavedTemperature_2" ;
@@ -53,7 +52,6 @@ public class Temperature_2 extends AppCompatActivity {
     TextView ctemp3;
     TextView ctemp4;
     TextView ctemp5;
-
 
     TextView mode_View;
 
@@ -90,8 +88,8 @@ public class Temperature_2 extends AppCompatActivity {
         setUpTemperatureGUI();
         displayTemperature();
         update();
-
     }
+
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode. load temperature information
@@ -202,7 +200,6 @@ public class Temperature_2 extends AppCompatActivity {
             }
         });
 
-
         // down temp button
         downBtn = (ImageButton) findViewById(R.id.adjust_down);
         downBtn.setOnClickListener(new View.OnClickListener() {
@@ -270,17 +267,13 @@ public class Temperature_2 extends AppCompatActivity {
         stemp3 = (TextView) findViewById(R.id.static3_tv);
         stemp4 = (TextView) findViewById(R.id.static4_tv);
         stemp5 = (TextView) findViewById(R.id.static5_tv);
-        /*
-        stemp6 = (TextView) findViewById(R.id.static6_tv);
-        */
+
         ctemp1 = (TextView) findViewById(R.id.current1_tv);
         ctemp2 = (TextView) findViewById(R.id.current2_tv);
         ctemp3 = (TextView) findViewById(R.id.current3_tv);
         ctemp4 = (TextView) findViewById(R.id.current4_tv);
         ctemp5 = (TextView) findViewById(R.id.current5_tv);
-        /*
-        ctemp6 = (TextView) findViewById(R.id.current6_tv);
-        */
+
         sharedpreferences = getSharedPreferences(savedColor, Context.MODE_PRIVATE);
 
         int value1 = sharedpreferences.getInt("value1", 0);
@@ -834,8 +827,8 @@ public class Temperature_2 extends AppCompatActivity {
             default:
                 break;
         }
-        //MainActivity.sendText("Command:007260112,1,0,0,1,28,27,26,25,1,15");
     }
+
     /**
      * Method that is called when the user wants to increase the temperature of channel four.
      * Updates the temperature for channel four.
@@ -938,6 +931,7 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to increase the temperature of channel five.
      * Updates the temperature for channel five.
@@ -1143,6 +1137,7 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel two.
      * Updates the temperature for channel two.
@@ -1245,6 +1240,7 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel three.
      * Updates the temperature for channel three.
@@ -1347,6 +1343,7 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel four.
      * Updates the temperature for channel four.
@@ -1449,6 +1446,7 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * Method that is called when the user wants to decrease the temperature of channel five.
      * Updates the temperature for channel five.
@@ -1551,5 +1549,4 @@ public class Temperature_2 extends AppCompatActivity {
                 break;
         }
     }
-
 }

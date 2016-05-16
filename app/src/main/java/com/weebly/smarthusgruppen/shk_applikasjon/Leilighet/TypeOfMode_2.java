@@ -235,8 +235,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
-
     }
 
     /**
@@ -248,13 +246,58 @@ public class TypeOfMode_2 extends AppCompatActivity {
     }
 
     /**
+     * Method that formats the time to be more presentable
+     * @param nightDay the time that is being formatted
+     * @return the formatted time
+     */
+    public String testForTimeValues(int nightDay) {
+        sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
+        int dayH = sharedpreferences.getInt("dayhour", 0);
+        int dayM = sharedpreferences.getInt("daymin", 0);
+        int nightH = sharedpreferences.getInt("nighthour", 0);
+        int nightM = sharedpreferences.getInt("nightmin", 0);
+
+        if(nightDay == 2) {
+            String sDayH, sDayM;
+            if (dayH < 10) {
+                sDayH = "0" + Integer.toString(dayH);
+            } else {
+                sDayH = Integer.toString(dayH);
+            }
+            if (dayM < 10) {
+                sDayM = "0" + Integer.toString(dayM);
+            } else {
+                sDayM = Integer.toString(dayM);
+            }
+            String dayTime = sDayH + ":" + sDayM;
+            return dayTime;
+        }
+        else if(nightDay == 3) {
+            String sNightH, sNightM;
+            if (nightH < 10) {
+                sNightH = "0" + Integer.toString(nightH);
+            } else {
+                sNightH = Integer.toString(nightH);
+            }
+            if (nightM < 10) {
+                sNightM = "0" + Integer.toString(nightM);
+            } else {
+                sNightM = Integer.toString(nightM);
+            }
+            String nightTime = sNightH + ":" + sNightM;
+            return nightTime;
+        }
+        else return "00:00";
+    }
+
+    /**
      * Method that allows the user to change the time of the day for when the dwelling unit should
      * change to day and night.
      *
      */
     public void settingsView() {
         sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
-
+        int night = 3, day = 2;
         final Dialog settingsDialog = new Dialog(this);
         settingsDialog.setContentView(R.layout.settings_modus);
         settingsDialog.setCancelable(true);
@@ -269,10 +312,11 @@ public class TypeOfMode_2 extends AppCompatActivity {
         dayText.addTextChangedListener(new TimeTextWatcher(dayText));
         nightText.addTextChangedListener(new TimeTextWatcher(nightText));
 
-        String sDay = Integer.toString(sharedpreferences.getInt("dayhour", 0)) + ":"
-                + Integer.toString(sharedpreferences.getInt("daymin",0));
-        String sNight = Integer.toString(sharedpreferences.getInt("nighthour", 0)) + ":"
-                + Integer.toString(sharedpreferences.getInt("nightmin",0));
+        String ssDay = testForTimeValues(day);
+        String ssNight = testForTimeValues(night);
+
+        dayText.setHint(ssDay);
+        nightText.setHint(ssNight);
 
         Button cancelButton = (Button)settingsDialog.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -397,7 +441,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
         settingsDialog.show();
     }
 
-
     /**
      * Retrieves lightsetting for the current mode and calls a method that sends them to
      * the server.
@@ -485,7 +528,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
         smarthhome.
 
          */
-
         switch (s1){
             case 0: //row 1 off
                 MainActivity_2.sendText("Command:000002117,1,0");
@@ -592,8 +634,8 @@ public class TypeOfMode_2 extends AppCompatActivity {
                 MainActivity_2.sendText("Command:000002117,1,0");
                 break;
         }
-
     }
+
     /**
      * This method sends the saved ventilation settings of the mode that the user has
      * changed to, to the server.
@@ -648,7 +690,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
             default:
                 break;
         }
-
     }
 
     /**
@@ -663,7 +704,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
         SharedPreferences.Editor editor1 = sharedpreferences.edit();
         editor1.putString("mode",dayMode);
         editor1.commit();
-
         //Changing temperature for day mode for heating sone 1
         if (sharedpreferences.contains("channel")) {
             String channel1 = sharedpreferences.getString("channel", "1");
@@ -822,7 +862,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
         sendVent1Command(dMode);
     }
-
 
     /**
      * Method that is called when the user presses the night button.
@@ -994,8 +1033,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
         //Changing ventilation to night mode
         sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
         sendVent1Command(dMode);
-
-
     }
 
     /**
@@ -1563,12 +1600,6 @@ public class TypeOfMode_2 extends AppCompatActivity {
                                                                                 value1.setText("Tid for ankomst: " + getTime);
                                                                                 value2.setText("Tid for endring: " + getTimeForChange + " timer før ankomst");
                                                                                 value3.setText("\nGod Ferie!");
-                                                                                                /*
-                                                                                                value.setGravity(Gravity.CENTER);
-                                                                                                value1.setGravity(Gravity.CENTER);
-                                                                                                value2.setGravity(Gravity.CENTER);
-                                                                                                value3.setGravity(Gravity.CENTER);
-                                                                                                */
                                                                                 LinearLayout layout = new LinearLayout(TypeOfMode_2.this);
                                                                                 layout.setOrientation(LinearLayout.VERTICAL);
                                                                                 layout.addView(value);
@@ -1616,14 +1647,11 @@ public class TypeOfMode_2 extends AppCompatActivity {
                                                                             }
                                                                         }
                                                                     }
-
                                                             );
                                                             timeDialog.create();
                                                             timeDialog.show();
-
                                                         }
                                                     }
-
                                             );
                                             dateDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Avbryt",
                                                     new DialogInterface.OnClickListener() {

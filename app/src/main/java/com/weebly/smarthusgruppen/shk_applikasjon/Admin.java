@@ -30,8 +30,6 @@ public class Admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         setupGUI();
-
-
     }
 
     /**
@@ -59,7 +57,6 @@ public class Admin extends AppCompatActivity {
             }
         });
     }
-
 
     /**
      * sends the admin to the top floor apartment measurement view

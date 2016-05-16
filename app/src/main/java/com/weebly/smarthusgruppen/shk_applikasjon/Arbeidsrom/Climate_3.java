@@ -39,7 +39,6 @@ public class Climate_3 extends AppCompatActivity {
 
     TextView mode_View;
 
-
     @Override
     /**
      * loads GUI settings on startup
@@ -48,10 +47,9 @@ public class Climate_3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate_3);
-        // temp button
-       setupGUI();
-
+        setupGUI();
     }
+
     /**
      * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
      * which mode the house is in. Sets background color depending on user.
@@ -128,6 +126,7 @@ public class Climate_3 extends AppCompatActivity {
         Intent intent = new Intent(this, Temperature_3.class);
         startActivity(intent);
     }
+
     /**
      * sends the user to the ventilation view menu
      */
@@ -135,6 +134,7 @@ public class Climate_3 extends AppCompatActivity {
         Intent intent = new Intent(this, Ventilation_3.class);
         startActivity(intent);
     }
+
     /**
      * sends the user to the mainActivity menu
      */
@@ -142,7 +142,4 @@ public class Climate_3 extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity_3.class);
         startActivity(intent);
     }
-
-
-
 }

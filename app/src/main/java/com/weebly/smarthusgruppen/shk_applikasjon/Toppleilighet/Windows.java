@@ -23,7 +23,6 @@ import com.weebly.smarthusgruppen.shk_applikasjon.R;
 public class Windows extends AppCompatActivity {
 
     public static final String savedWindow = "SavedWindow_1";
-
     ImageButton homeBtn;
     ToggleButton win1Open;
     ToggleButton win1Close;
@@ -93,6 +92,9 @@ public class Windows extends AppCompatActivity {
     }
 
     // Open window 1 (kitchen)
+    /**
+     * Listener used for when the user want to open kitchen window
+     */
     protected View.OnClickListener win1_open = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -107,7 +109,7 @@ public class Windows extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                                    windowOpening(winOpeningTime1, 1, chk1);
+                            windowOpening(winOpeningTime1, 1, chk1);
                         }
                         catch(Exception e) {
                             e.printStackTrace();
@@ -126,6 +128,9 @@ public class Windows extends AppCompatActivity {
     };
 
     // Close window 1 (kitchen)
+    /**
+     *Listener for when the user want to close kitchen window
+     */
     protected View.OnClickListener win1_close = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -140,8 +145,7 @@ public class Windows extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                                    windowOpening(winOpeningTime1, 1, chk1);
-
+                            windowOpening(winOpeningTime1, 1, chk1);
                         }
                         catch(Exception e) {
                             e.printStackTrace();
@@ -159,6 +163,9 @@ public class Windows extends AppCompatActivity {
     };
 
     // Stop window 1 (kitchen)
+    /**
+     * Listener for when the user want to stop the kitchen window from closing or opening
+     */
     protected View.OnClickListener win1_stop = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -173,7 +180,7 @@ public class Windows extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                                    windowOpening(winOpeningTime1, 1, chk1);
+                            windowOpening(winOpeningTime1, 1, chk1);
                         }
                         catch(Exception e) {
                             e.printStackTrace();
@@ -191,7 +198,10 @@ public class Windows extends AppCompatActivity {
     };
 
 
-    // Open window 2 (kitchen)
+    // Open window 2
+    /**
+     * Listener for when the user wants to open window 2
+     */
     protected View.OnClickListener win2_open = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -207,7 +217,7 @@ public class Windows extends AppCompatActivity {
                     public void run() {
                         try {
 
-                                    windowOpening(winOpeningTime2, 2, chk2);
+                            windowOpening(winOpeningTime2, 2, chk2);
                         }
                         catch(Exception e) {
                             e.printStackTrace();
@@ -225,6 +235,9 @@ public class Windows extends AppCompatActivity {
     };
 
     // Close window 2 (kitchen)
+    /**
+     * Listener for when the wants to close window 2
+     */
     protected View.OnClickListener win2_close = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -240,7 +253,7 @@ public class Windows extends AppCompatActivity {
                     public void run() {
                         try {
 
-                                    windowOpening(winOpeningTime2, 2, chk2);
+                            windowOpening(winOpeningTime2, 2, chk2);
                         }
                         catch(Exception e) {
                             e.printStackTrace();
@@ -258,6 +271,9 @@ public class Windows extends AppCompatActivity {
     };
 
     // Stop window 2 (kitchen)
+    /**
+     * Listener for when the user wants to stop window 2 from closing or opening
+     */
     protected View.OnClickListener win2_stop = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -292,6 +308,9 @@ public class Windows extends AppCompatActivity {
 
 
     // Open window 3 (kitchen)
+    /**
+     * Listener for when the user wants to open window 3
+     */
     protected View.OnClickListener win3_open = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -302,7 +321,6 @@ public class Windows extends AppCompatActivity {
                 w3stop = false;
                 stopping3 = true;
                 chk3 = true;
-
 
                 Thread thread = new Thread(new Runnable() {
                     @Override
@@ -330,6 +348,9 @@ public class Windows extends AppCompatActivity {
     };
 
     // Close window 3 (kitchen)
+    /**
+     * Listener for when the user wants to close window 3
+     */
     protected View.OnClickListener win3_close = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -340,8 +361,6 @@ public class Windows extends AppCompatActivity {
                 w3stop = false;
                 stopping3 = true;
                 chk3 = false;
-
-
 
                 Thread thread = new Thread(new Runnable() {
                     @Override
@@ -359,7 +378,6 @@ public class Windows extends AppCompatActivity {
 
                 win3Open.setChecked(false);
                 win3Stop.setChecked(false);
-
             }else if (w3close) {
                 // do nothing
             }
@@ -367,6 +385,9 @@ public class Windows extends AppCompatActivity {
     };
 
     // Stop window 3(kitchen)
+    /**
+     * Listener for when the user wants to stop window 3 from closing or opening
+     */
     protected View.OnClickListener win3_stop = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -382,7 +403,7 @@ public class Windows extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                                    windowOpening(winOpeningTime3, 3, chk3);
+                            windowOpening(winOpeningTime3, 3, chk3);
                         }
                         catch(Exception e) {
                             e.printStackTrace();
@@ -399,7 +420,6 @@ public class Windows extends AppCompatActivity {
         }
     };
 
-
     /**
      * sends the user to the mainActivity menu
      */
@@ -407,9 +427,9 @@ public class Windows extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
     // parameters window = current degree of open/closed, ID which window, check = opening or closing?
     // Function for displaying how far each window is currently opened
-
     /**
      * Allows for opening, closing and stopping of a window already in motion. It checks
      * which if a certain window is moving and then knows which one to stop if the stop command
@@ -425,12 +445,11 @@ public class Windows extends AppCompatActivity {
 
         for(int i = 0; i< 20; i++) {
             if((stopping1 && (id == 1)) || (stopping2 && (id == 2)) || (stopping3 && (id == 3))) {
-
                 try {
                     //sending the actual Thread of execution to sleep X milliseconds
                     Thread.sleep(1000);
                 } catch (Exception e) {
-                    System.out.println("Exception : " + e.getMessage());
+                    e.printStackTrace();
                 }
                 // if true - means the window is going to be opened or partially opened.
                 if (check) {
@@ -465,10 +484,8 @@ public class Windows extends AppCompatActivity {
                                     else degreeOpen3.setText(temp3);
                                     break;
                             }
-
                         }
                     });
-
                     switch(id) {
                         case 1:
                             winOpeningTime1 = window;
@@ -492,11 +509,9 @@ public class Windows extends AppCompatActivity {
                             Log.d("updating ", "variable 3 "+ winOpeningTime3);
                             break;
                     }
-
                     if(window >= max) {
                         i = 20;
                         Log.d("opening window.." , "Finished opening " + window);
-
                     }
                 }
                 // else means the window is going to be closed or partially closed
@@ -564,16 +579,13 @@ public class Windows extends AppCompatActivity {
                         Log.d("closing window.." , "Finished closing " + window);
                     }
                 }
-
             }
             else {
                 i = 20;     // viss stopp blir trykt
             }
-
         }
-
-
     }
+
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
@@ -645,7 +657,6 @@ public class Windows extends AppCompatActivity {
 
         degreeOpen3 = (TextView) findViewById(R.id.win12_button);
 
-
         sharedpreferences = getSharedPreferences(savedWindow, 0);
 
         String window1 = sharedpreferences.getString("window1status", "0") + "%";
@@ -671,6 +682,5 @@ public class Windows extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
 }

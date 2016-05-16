@@ -45,7 +45,6 @@ public class RoomList_2 extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;
 
-
     @Override
     /**
      * runs on startup and sets up gui
@@ -55,8 +54,8 @@ public class RoomList_2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_list_2);
         setupGUI();
+    }
 
-        }
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
@@ -159,35 +158,59 @@ public class RoomList_2 extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
 
+    /**
+     * Sends the user to the kitchen menu
+     */
     public void goToKitchenLights() {
         Intent intent = new Intent(this, LightingKitchen_2.class);
         startActivity(intent);
     }
+
+    /**
+     * Sends the user to the bathroom menu
+     */
     public void goToBathroomLights() {
         Intent intent = new Intent(this, LightingBathroom_2.class);
         startActivity(intent);
     }
+
+    /**
+     * Sends the user to the bedroom1 menu
+     */
     public void goToBed1Lights() {
         Intent intent = new Intent(this, LightingBedroom1_2.class);
         startActivity(intent);
     }
+
+    /**
+     * Sends the user to the bedroom2 menu
+     */
     public void goToBed2Lights() {
         Intent intent = new Intent(this, LightingBedroom2_2.class);
         startActivity(intent);
     }
 
-
+    /**
+     * Sends the user to the office menu
+     */
     public void goToOfficeLights() {
         Intent intent = new Intent(this, LightingOffice_2.class);
         startActivity(intent);
     }
+
+    /**
+     * Sends the user to the hallway menu
+     */
     public void goToHallwayLights() {
         Intent intent = new Intent(this, LightingHallway_2.class);
         startActivity(intent);
     }
+
+    /**
+     * Sends the user to the main menu
+     */
     public void goToHome() {
         Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);

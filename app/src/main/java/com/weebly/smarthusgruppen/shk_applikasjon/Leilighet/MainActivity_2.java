@@ -16,23 +16,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
-
-
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.weebly.smarthusgruppen.shk_applikasjon.LoginClient;
 import com.weebly.smarthusgruppen.shk_applikasjon.R;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
-
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
 
 /**
  * Main class of the "Underleilighet(Lower apartment)". This class sets up a View which gives the user access
@@ -67,7 +62,6 @@ public class MainActivity_2 extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     OutputStream os;
 
-
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -101,6 +95,7 @@ public class MainActivity_2 extends AppCompatActivity {
         MainActivity_2.sendText("Command:007262112,4");
         MainActivity_2.sendText("Command:007262112,5");
         MainActivity_2.sendText("Command:007262112,6");
+        MainActivity_2.sendText("Monitor!");
     }
 
     public void setupGUI() {
@@ -438,10 +433,10 @@ public class MainActivity_2 extends AppCompatActivity {
                         if(msg.startsWith("TempInfo:")) {
                             tempInfoController(msg.substring(8, msg.length()));
                         }
-
-                        else {
-
+                        else if(msg.startsWith("Humidity:")) {
+                            humidityController(msg.substring(9, msg.length()));
                         }
+
                     } catch (Exception e) {
                         System.out.println("Error when reading msg");
                         //e.printStackTrace();
@@ -573,8 +568,24 @@ public class MainActivity_2 extends AppCompatActivity {
             default:
                 break;
         }
+    }
 
-
+    /**
+     * Method that process the humidity information received from server
+     * @param msg the message containing humidity information
+     */
+    public void humidityController(String msg) {
+        String sensorID, humidity;
+        if (msg.charAt(1) == 0) {
+            if (msg.charAt(2) == 0) {
+                sensorID = msg.substring(3,3);
+            }
+            else sensorID = msg.substring(2,3);
+        }
+        else sensorID = msg.substring(1,3);
+        Log.d("id", "" + sensorID);
+        humidity = msg.substring(4,6);
+        Log.d("hum", "" + humidity);
     }
 
     /**

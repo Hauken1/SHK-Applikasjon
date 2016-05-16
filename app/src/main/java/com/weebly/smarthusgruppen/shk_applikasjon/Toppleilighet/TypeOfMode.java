@@ -59,8 +59,6 @@ public class TypeOfMode extends AppCompatActivity {
     public static final String savedDayNight = "SavedDayNightSettings_1";
 
     SharedPreferences sharedpreferences;
-
-    SharedPreferences ventInfo;
     SharedPreferences lightSettings;
 
     private String holidayMode = "1";
@@ -111,7 +109,6 @@ public class TypeOfMode extends AppCompatActivity {
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
 
-
         //Checks what mode the the heatingcontrollers are set to.
         //All heatingcontrollolers are set to the same mode
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
@@ -149,13 +146,6 @@ public class TypeOfMode extends AppCompatActivity {
                 holidayBtn.setChecked(false);
                 break;
         }
-
-        sharedpreferences = getSharedPreferences(holidayTime, Context.MODE_PRIVATE);
-        int yYear = sharedpreferences.getInt("year", 1992);
-        int yMonth = sharedpreferences.getInt("month", 1992);
-        int yDay = sharedpreferences.getInt("day", 1992);
-        int hHour = sharedpreferences.getInt("hour", 1992);
-        int hMin = sharedpreferences.getInt("minute", 1992);
     }
 
     /**
@@ -241,7 +231,6 @@ public class TypeOfMode extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
 
     /**
@@ -252,6 +241,11 @@ public class TypeOfMode extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Method that formats the time to be more presentable
+     * @param nightDay the time that is being formatted
+     * @return the formatted time
+     */
     public String testForTimeValues(int nightDay) {
         sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
         int dayH = sharedpreferences.getInt("dayhour", 0);
@@ -742,7 +736,6 @@ public class TypeOfMode extends AppCompatActivity {
         All these commands are temporary. All commands will be sent to the same three lights in the
         democase. This will be the case until all lighst and dimmers is installed in the
         smarthhome.
-
          */
 
         switch (s1){
@@ -1141,8 +1134,8 @@ public class TypeOfMode extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
         sendVent1Command(dMode);
         sendVent2Command(dMode);
-
     }
+
     /**
      * Method that is called when the user presses the away button.
      * This method sets the current mode of the dwelling unit to away and send all the
@@ -1376,7 +1369,6 @@ public class TypeOfMode extends AppCompatActivity {
         }
 
         sharedpreferences=getSharedPreferences(savedTemp2, Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor2 = sharedpreferences.edit();
         editor2.putString("mode",holidayMode);
         editor2.commit();
@@ -1428,7 +1420,6 @@ public class TypeOfMode extends AppCompatActivity {
         }
 
         sharedpreferences=getSharedPreferences(savedTemp4, Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor4 = sharedpreferences.edit();
         editor4.putString("mode",holidayMode);
         editor4.commit();
@@ -1454,7 +1445,6 @@ public class TypeOfMode extends AppCompatActivity {
         }
 
         sharedpreferences=getSharedPreferences(savedTemp5, Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor5 = sharedpreferences.edit();
         editor5.putString("mode",holidayMode);
         editor5.commit();

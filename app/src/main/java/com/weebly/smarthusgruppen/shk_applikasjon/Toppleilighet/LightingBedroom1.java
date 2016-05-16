@@ -90,6 +90,7 @@ public class LightingBedroom1 extends AppCompatActivity {
         setupGUI();
         displayLight();
     }
+
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
@@ -170,6 +171,7 @@ public class LightingBedroom1 extends AppCompatActivity {
             setContentView(v);
         }
     }
+
     /**
      * displays light settings dependent on which mode the house is in. saves all these variables
      * in sharedpreferences
@@ -206,7 +208,6 @@ public class LightingBedroom1 extends AppCompatActivity {
 
             int s1 = Integer.parseInt(modeStatus1);
 
-
             switch (s1){
                 case 0: //row 1 off
                     lightOffBtn.setChecked(true);
@@ -227,11 +228,11 @@ public class LightingBedroom1 extends AppCompatActivity {
                     lightOffBtn.setChecked(true);
                     break;
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -240,7 +241,6 @@ public class LightingBedroom1 extends AppCompatActivity {
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
-
         switch (iMode){
             case 1:
                 switch (row){
@@ -942,6 +942,7 @@ public class LightingBedroom1 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -963,6 +964,7 @@ public class LightingBedroom1 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -995,6 +997,7 @@ public class LightingBedroom1 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1027,6 +1030,7 @@ public class LightingBedroom1 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */

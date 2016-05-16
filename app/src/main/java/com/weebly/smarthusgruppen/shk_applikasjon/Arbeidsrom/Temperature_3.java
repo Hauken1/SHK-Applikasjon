@@ -67,7 +67,6 @@ public class Temperature_3 extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     public SharedPreferences tempSetting;
 
-
     /**
      * Method that is called when the View is created.
      * This method sets up the GUI, provides the user with valid
@@ -82,7 +81,6 @@ public class Temperature_3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperature_3);
 
-
         setUpTemperatureGUI();
         displayTemperature();
         update();
@@ -91,6 +89,7 @@ public class Temperature_3 extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+
     /**
      * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
      * which mode the house is in. Sets background color depending on user.
@@ -134,7 +133,6 @@ public class Temperature_3 extends AppCompatActivity {
                 upTemp1();
             }
         });
-
 
         // down temp button
         downBtn = (ImageButton) findViewById(R.id.adjust_down);
@@ -207,7 +205,6 @@ public class Temperature_3 extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
 
     /**
@@ -738,7 +735,6 @@ public class Temperature_3 extends AppCompatActivity {
         }
     }
 
-
     /**
      * Auto generated method that is called when the View is started.
      */
@@ -785,4 +781,3 @@ public class Temperature_3 extends AppCompatActivity {
         client.disconnect();
     }
 }
-

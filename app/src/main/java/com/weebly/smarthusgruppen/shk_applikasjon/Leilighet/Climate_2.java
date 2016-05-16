@@ -48,9 +48,8 @@ public class Climate_2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climate_2);
         setupGUI();
-
-
     }
+
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
@@ -120,7 +119,6 @@ public class Climate_2 extends AppCompatActivity {
                 goToHome();
             }
         });
-
     }
 
     /**
@@ -130,6 +128,7 @@ public class Climate_2 extends AppCompatActivity {
         Intent intent = new Intent(this, Temperature_2.class);
         startActivity(intent);
     }
+
     /**
      * sends the user to the ventilation view menu
      */
@@ -137,6 +136,7 @@ public class Climate_2 extends AppCompatActivity {
         Intent intent = new Intent(this, Ventilation_2.class);
         startActivity(intent);
     }
+
     /**
      * sends the user to the mainActivity view menu
      */
@@ -144,7 +144,4 @@ public class Climate_2 extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);
     }
-
-
-
 }

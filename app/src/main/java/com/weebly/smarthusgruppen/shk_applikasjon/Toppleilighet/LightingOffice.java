@@ -214,11 +214,6 @@ public class LightingOffice extends AppCompatActivity {
             switch (s1){
                 case 0: //row 1 off
                     lightOffBtn.setChecked(true);
-                    /*
-                    lmin = false;
-                    lmed = false;
-                    lmax = false;
-                    */
                     break;
                 case 1: //row 1 min
                     lmin = true;
@@ -236,7 +231,6 @@ public class LightingOffice extends AppCompatActivity {
                     lightOffBtn.setChecked(true);
                     break;
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -956,7 +950,6 @@ public class LightingOffice extends AppCompatActivity {
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
-    // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -973,10 +966,10 @@ public class LightingOffice extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
-    // all lights on minimum
     protected View.OnClickListener light_all_min = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -1004,10 +997,10 @@ public class LightingOffice extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
-    // all lights on medium
     protected View.OnClickListener light_all_med = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -1036,10 +1029,10 @@ public class LightingOffice extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */
-    // all lights on max
     protected View.OnClickListener light_all_Listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -1063,6 +1056,7 @@ public class LightingOffice extends AppCompatActivity {
             }
         }
     };
+
     /**
      * set all toggle buttons to off
      */
@@ -1169,7 +1163,6 @@ public class LightingOffice extends AppCompatActivity {
                 seekBarValue1 = progress + 30;
                 String dim = Integer.toString(seekBarValue1) + "%";
                 sb1Status.setText(dim);
-
             }
 
             /**
@@ -1310,6 +1303,4 @@ public class LightingOffice extends AppCompatActivity {
         Intent intent = new Intent(this, TypeOfMode.class);
         startActivity(intent);
     }
-
-
 }

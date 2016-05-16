@@ -102,7 +102,6 @@ public class LightingOffice_2 extends AppCompatActivity {
     ToggleButton lightMedBtn2;
     ToggleButton lightMaxBtn2;
 
-
     ImageButton homeBtn;
     
     @Override
@@ -929,7 +928,6 @@ public class LightingOffice_2 extends AppCompatActivity {
         }
     }
 
-
     /* first row */
     /**
      * turns off all lights and sets the other toggle buttons to off.
@@ -951,6 +949,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -984,6 +983,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1083,6 +1083,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1115,6 +1116,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1148,6 +1150,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1175,6 +1178,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * sets all toggle buttons to off
      */
@@ -1184,6 +1188,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         lightMaxBtn2.setChecked(false);
         lightOffBtn2.setChecked(false);
     }
+
     /**
      * sets all bool to false
      */
@@ -1220,6 +1225,7 @@ public class LightingOffice_2 extends AppCompatActivity {
 
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1262,6 +1268,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1305,6 +1312,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1343,6 +1351,7 @@ public class LightingOffice_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * saves light settings for all rows to SharedPreferences
      * @param value off, min, med or max value for the light
@@ -1559,6 +1568,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         lmed6 = false;
         lmax6 = false;
     }
+
     /**
      * sets all toggle buttons to off and all bool to false
      */
@@ -1785,6 +1795,7 @@ public class LightingOffice_2 extends AppCompatActivity {
         Intent intent = new Intent(this, TypeOfMode_2.class);
         startActivity(intent);
     }
+
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
@@ -1889,7 +1900,6 @@ public class LightingOffice_2 extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
 
     public void goToHome() {
