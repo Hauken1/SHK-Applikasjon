@@ -43,6 +43,7 @@ public class Ventilation extends AppCompatActivity {
     //Does matter what saved temp is used, all is set to the same mode
     public static final String savedTemp = "1SavedTemperature_1";
     public static final String savedColor = "SavedBackgroundColor_1";
+    public static final String savedHumidity = "SavedHumidity_1";
 
     SharedPreferences sharedpreferences;
     public SharedPreferences ventilationSettings;
@@ -66,6 +67,8 @@ public class Ventilation extends AppCompatActivity {
     public static final int iHOLIDAY = 1;
 
     TextView mode_View;
+    TextView fukt1;
+    TextView fukt2;
 
     /**
      * loads the GUI Setup and loads the current ventilation display status on start up.
@@ -676,7 +679,14 @@ public class Ventilation extends AppCompatActivity {
      */
     public void setupGUI() {
 
+        sharedpreferences = getSharedPreferences(savedHumidity,0);
         mode_View = (TextView) findViewById(R.id.mode_view);
+        fukt1 = (TextView) findViewById(R.id.fukt_soveRom);
+        fukt2 = (TextView) findViewById(R.id.fukt_Andre_Rom);
+        String humValue1 = sharedpreferences.getString("sensor1", "0") + " %";
+        String humValue2 = sharedpreferences.getString("sensor2", "0") + " %";
+        fukt1.setText(humValue1);
+        fukt2.setText(humValue2);
 
         try {
             tempSetting = getSharedPreferences(savedTemp, 0);

@@ -1,5 +1,6 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -21,6 +22,7 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 
 import com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.MainActivity_3;
@@ -52,7 +54,7 @@ public class LoginClient extends AppCompatActivity {
     TextView forgotPw;
 
     int serverPort = 12345;
-    String hostName= "192.168.38.110";
+    String hostName= "128.39.80.87";
 
     static BufferedWriter output;
     static BufferedReader input;

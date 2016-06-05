@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String savedTemp4 = "4SavedTemperature_1";
     public static final String savedTemp5 = "5SavedTemperature_1";
     public static final String savedTemp6 = "6SavedTemperature_1";
+    public static final String savedHumidity = "SavedHumidity_1";
     public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
@@ -601,6 +602,8 @@ public class MainActivity extends AppCompatActivity {
      * @param msg the message containing humidity information
      */
     public void humidityController(String msg) {
+        sharedpreferences = getSharedPreferences(savedHumidity, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
         String sensorID, humidity;
         if (msg.charAt(1) == 0) {
             if (msg.charAt(2) == 0) {
@@ -612,6 +615,17 @@ public class MainActivity extends AppCompatActivity {
         Log.d("id", "" + sensorID);
         humidity = msg.substring(4,6);
         Log.d("hum", "" + humidity);
+        switch(sensorID) {
+            case "19":
+                editor.putString("sensor1", humidity);
+                break;
+            case "20":
+                editor.putString("sensor2", humidity);
+                break;
+            case "21":
+                break;
+        }
+        editor.commit();
     }
 
     /**

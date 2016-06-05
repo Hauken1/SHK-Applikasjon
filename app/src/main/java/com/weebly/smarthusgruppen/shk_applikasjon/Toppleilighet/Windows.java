@@ -367,6 +367,7 @@ public class Windows extends AppCompatActivity {
                     public void run() {
                         try {
                             windowOpening(winOpeningTime3, 3, chk3);
+
                         }
                         catch(Exception e) {
                             e.printStackTrace();
@@ -441,7 +442,7 @@ public class Windows extends AppCompatActivity {
      */
     public void windowOpening(int window, final int id, boolean check) {
         sharedpreferences = getSharedPreferences(savedWindow, 0);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
+        final SharedPreferences.Editor editor = sharedpreferences.edit();
 
         for(int i = 0; i< 20; i++) {
             if((stopping1 && (id == 1)) || (stopping2 && (id == 2)) || (stopping3 && (id == 3))) {
@@ -584,6 +585,21 @@ public class Windows extends AppCompatActivity {
                 i = 20;     // viss stopp blir trykt
             }
         }
+        switch (id){
+
+            case 1:
+                editor.putString("window1status", Integer.toString(winOpeningTime1));
+                break;
+            case 2:
+                editor.putString("window2status", Integer.toString(winOpeningTime2));
+                break;
+            case 3:
+                editor.putString("window3status", Integer.toString(winOpeningTime3));
+                break;
+            default:
+                break;
+        }
+        editor.apply();
     }
 
     /**
