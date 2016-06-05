@@ -130,6 +130,7 @@ public class LightingFlat extends AppCompatActivity {
     ToggleButton lightMaxBtn6;
     ToggleButton lightMedBtn6;
     ImageButton homeBtn;
+
     /**
      * loads GUI settings on startup and displays light information from shared preferences
      * @param savedInstanceState
@@ -138,17 +139,16 @@ public class LightingFlat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_flat);
-
         setupGUI();
         displayLight();
     }
+
     /**
      * displays light settings dependent on which mode the house is in. saves all these variables
      * in sharedpreferences
      */
     public void displayLight() {
         try {
-
             lightSettings = getSharedPreferences(savedLight, 0);
             tempSetting = getSharedPreferences(savedTemp, 0);
             sMode = tempSetting.getString("mode", "2");
@@ -156,56 +156,32 @@ public class LightingFlat extends AppCompatActivity {
 
             allButtonOffKill();
 
-            String modeStatus1, modeStatus2, modeStatus3, modeStatus4, modeStatus5, modeStatsAll;
+            String modeStatus1, modeStatus2;
             switch (iMode) {
                 case 1:
                     modeStatus1 = lightSettings.getString("Hrow1status", "0");
                     modeStatus2 = lightSettings.getString("Hrow2status", "0");
-                    modeStatus3 = lightSettings.getString("Hrow3status", "0");
-                    modeStatus4 = lightSettings.getString("Hrow4status", "0");
-                    modeStatus5 = lightSettings.getString("Hrow5status", "0");
-                    modeStatsAll = lightSettings.getString("Hrowallstatus", "0");
                     break;
                 case 2:
                     modeStatus1 = lightSettings.getString("Drow1status", "0");
                     modeStatus2 = lightSettings.getString("Drow2status", "0");
-                    modeStatus3 = lightSettings.getString("Drow3status", "0");
-                    modeStatus4 = lightSettings.getString("Drow4status", "0");
-                    modeStatus5 = lightSettings.getString("Drow5status", "0");
-                    modeStatsAll = lightSettings.getString("Drowallstatus", "0");
                     break;
                 case 3:
                     modeStatus1 = lightSettings.getString("Nrow1status", "0");
                     modeStatus2 = lightSettings.getString("Nrow2status", "0");
-                    modeStatus3 = lightSettings.getString("Nrow3status", "0");
-                    modeStatus4 = lightSettings.getString("Nrow4status", "0");
-                    modeStatus5 = lightSettings.getString("Nrow5status", "0");
-                    modeStatsAll = lightSettings.getString("Nrowallstatus", "0");
                     break;
                 case 4:
                     modeStatus1 = lightSettings.getString("Arow1status", "0");
                     modeStatus2 = lightSettings.getString("Arow2status", "0");
-                    modeStatus3 = lightSettings.getString("Arow3status", "0");
-                    modeStatus4 = lightSettings.getString("Arow4status", "0");
-                    modeStatus5 = lightSettings.getString("Arow5status", "0");
-                    modeStatsAll = lightSettings.getString("Arowallstatus", "0");
                     break;
                 default:
                     modeStatus1 = "0";
                     modeStatus2 = "0";
-                    modeStatus3 = "0";
-                    modeStatus4 = "0";
-                    modeStatus5 = "0";
-                    modeStatsAll = "0";
                     break;
             }
 
-            int sAll = Integer.parseInt(modeStatsAll);
             int s1 = Integer.parseInt(modeStatus1);
             int s2 = Integer.parseInt(modeStatus2);
-            int s3 = Integer.parseInt(modeStatus3);
-            int s4 = Integer.parseInt(modeStatus4);
-            int s5 = Integer.parseInt(modeStatus5);
 
             switch (s1){
                 case 0: //row 1 off
@@ -248,13 +224,13 @@ public class LightingFlat extends AppCompatActivity {
                     lightOffBtn1.setChecked(true);
                     break;
             }
-
             lightOffBtn6.setChecked(true);
             loff6 = true;
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -263,7 +239,6 @@ public class LightingFlat extends AppCompatActivity {
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
-
         switch (iMode){
             case 1:
                 switch (row){
@@ -965,6 +940,7 @@ public class LightingFlat extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -983,9 +959,9 @@ public class LightingFlat extends AppCompatActivity {
                 lightMaxBtn.setChecked(false);
                 setLightSettingsForRow(row1, lightOff);
             }
-
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1020,6 +996,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1053,6 +1030,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1081,6 +1059,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * toggles all buttons to off
      */
@@ -1108,7 +1087,6 @@ public class LightingFlat extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     /* next 2nd row */
     /**
      * turns off all lights and sets the other toggle buttons to off.
@@ -1130,6 +1108,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1162,6 +1141,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1195,6 +1175,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1222,6 +1203,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * toggles all buttons to off
      */
@@ -1263,6 +1245,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * Turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1295,6 +1278,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * Turns light on to medium setting. Toggles off other buttons.
      * If already set turns off light
@@ -1329,6 +1313,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1356,6 +1341,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * toggles all buttons to off
      */
@@ -1396,6 +1382,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1428,6 +1415,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1461,6 +1449,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1488,6 +1477,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * toggles all buttons to off
      */
@@ -1528,6 +1518,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1560,6 +1551,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1593,6 +1585,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1620,6 +1613,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * toggles all buttons to off
      */
@@ -1638,6 +1632,7 @@ public class LightingFlat extends AppCompatActivity {
         lmed4 = false;
         lmax4 = false;
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param value off, min, med, or max value for the light.
@@ -1862,6 +1857,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1889,18 +1885,8 @@ public class LightingFlat extends AppCompatActivity {
 
                 lightMinBtn.setChecked(true);
                 lightMinBtn1.setChecked(true);
-                /*
-                lightMinBtn2.setChecked(true);
-                lightMinBtn3.setChecked(true);
-                lightMinBtn4.setChecked(true);
-                */
                 lmin = true;
                 lmin1 = true;
-                /*
-                lmin2 = true;
-                lmin3 = true;
-                lmin4 = true;
-                */
                 setLightSettingForAllRow(lightMin);
             } else if (lmin6) {
                 MainActivity_3.sendText("Command:000002117,1,0");     // all lights off
@@ -1938,18 +1924,8 @@ public class LightingFlat extends AppCompatActivity {
                 allButtonOffKill();
                 lightMedBtn.setChecked(true);
                 lightMedBtn1.setChecked(true);
-                /*
-                lightMedBtn2.setChecked(true);
-                lightMedBtn3.setChecked(true);
-                lightMedBtn4.setChecked(true);
-                */
                 lmed = true;
                 lmed1 = true;
-                /*
-                lmed2 = true;
-                lmed3 = true;
-                lmed4 = true;
-                */
                 setLightSettingForAllRow(lightMed);
             }
             else if (lmed6) {
@@ -1962,6 +1938,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */
@@ -1999,6 +1976,7 @@ public class LightingFlat extends AppCompatActivity {
             }
         }
     };
+
     /**
      * toggles all buttons to off
      */
@@ -2027,7 +2005,6 @@ public class LightingFlat extends AppCompatActivity {
 
         allBoolFalse();
         allBoolFalse1();
-
     }
 
     /**
@@ -2036,7 +2013,6 @@ public class LightingFlat extends AppCompatActivity {
     public void offSwitchoff() {
         lightOffBtn.setChecked(true);
         lightOffBtn1.setChecked(true);
-
     }
 
     /**
@@ -2248,6 +2224,7 @@ public class LightingFlat extends AppCompatActivity {
         Intent intent = new Intent(this, TypeOfMode_3.class);
         startActivity(intent);
     }
+
     /**
      * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
      * which mode the house is in. Sets background color depending on user.

@@ -37,7 +37,6 @@ public class LightingKitchen extends AppCompatActivity {
     public SharedPreferences savedLightSet;
     Button modeBtn;
 
-
     boolean lmin = false;
     boolean lmed = false;
     boolean lmax = false;
@@ -354,6 +353,7 @@ public class LightingKitchen extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -1064,10 +1064,10 @@ public class LightingKitchen extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
-    // all lights off
     protected View.OnClickListener light_all__off_Listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -1835,6 +1835,7 @@ public class LightingKitchen extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */

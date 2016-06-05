@@ -31,7 +31,6 @@ public class Measurement_3 extends AppCompatActivity {
         setContentView(R.layout.activity_measurement_3);
 
         setupGUI();
-
     }
     /**
      * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on

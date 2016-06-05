@@ -103,6 +103,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
     ToggleButton lightMedBtn6;
 
     ImageButton homeBtn;
+
     /**
      * loads GUI settings on startup and displays light information from shared preferences
      * @param savedInstanceState
@@ -111,7 +112,6 @@ public class LightingBathroom_3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_bathroom_3);
-
         setupGUI();
         displayLights();
     }
@@ -203,6 +203,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -211,7 +212,6 @@ public class LightingBathroom_3 extends AppCompatActivity {
     public void setLightSettingsForRow(int row, int value) {
         lightSettings = getSharedPreferences(savedLight, 0);
         SharedPreferences.Editor editor = lightSettings.edit();
-
         switch (iMode){
             case 1:
                 switch (row){
@@ -913,6 +913,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -926,7 +927,6 @@ public class LightingBathroom_3 extends AppCompatActivity {
                 lmed = false;
                 lmax = false;
 
-
                 lightMinBtn.setChecked(false);
                 lightMedBtn.setChecked(false);
                 lightMaxBtn.setChecked(false);
@@ -934,6 +934,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -966,6 +967,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -999,6 +1001,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1054,7 +1057,6 @@ public class LightingBathroom_3 extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     /* next 2nd row */
     /**
      * turns off all lights and sets the other toggle buttons to off.
@@ -1076,6 +1078,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1108,6 +1111,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1141,6 +1145,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1168,6 +1173,7 @@ public class LightingBathroom_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * toggles all buttons to off
      */
@@ -1187,13 +1193,12 @@ public class LightingBathroom_3 extends AppCompatActivity {
         lmax1 = false;
     }
 
-
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
     // all lights off
-protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
+    protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListener() {
     @Override
     public void onClick(View v) {
             MainActivity_3.sendText("Command:000002117,1,0");
@@ -1215,6 +1220,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
 
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1257,6 +1263,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1298,6 +1305,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1333,6 +1341,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
             }
         }
     };
+
     /**
      * toggles all buttons to off
      */
@@ -1486,7 +1495,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
             }
 
             /**
-             *
+             * Auto generated method
              * @param seekBar the seekbar
              */
             @Override
@@ -1495,7 +1504,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
             }
 
             /**
-             *
+             * Auto generated method
              * @param seekBar the seekbar
              */
             @Override
@@ -1525,7 +1534,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
             }
 
             /**
-             *
+             * Auto generated method
              * @param seekBar the seekbar
              */
             @Override
@@ -1534,7 +1543,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
             }
 
             /**
-             *
+             * Auto generated method
              * @param seekBar the seekbar
              */
             @Override
@@ -1604,6 +1613,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
         });
         settingsDialog.show();
     }
+
     /**
      * sends the user to the mode activity
      */
@@ -1611,6 +1621,7 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
         Intent intent = new Intent(this, TypeOfMode_3.class);
         startActivity(intent);
     }
+
     /**
      * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
      * which mode the house is in. Sets background color depending on user.
@@ -1713,8 +1724,5 @@ protected View.OnClickListener light_all__off_Listener6 = new View.OnClickListen
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
-
-
 }

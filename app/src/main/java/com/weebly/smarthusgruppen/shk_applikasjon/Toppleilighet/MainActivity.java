@@ -57,14 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
     static Socket connection;
 
-
-
     public static final String savedTemp1 = "1SavedTemperature_1";
     public static final String savedTemp2 = "2SavedTemperature_1";
     public static final String savedTemp3 = "3SavedTemperature_1";
     public static final String savedTemp4 = "4SavedTemperature_1";
     public static final String savedTemp5 = "5SavedTemperature_1";
     public static final String savedTemp6 = "6SavedTemperature_1";
+    public static final String savedHumidity = "SavedHumidity_1";
     public static final String savedColor = "SavedBackgroundColor_1";
 
     SharedPreferences sharedpreferences;
@@ -110,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.sendText("Command:007262112,4");
         MainActivity.sendText("Command:007262112,5");
         MainActivity.sendText("Command:007262112,6");
+        MainActivity.sendText("Monitor!");
 
     }
     /**
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
              * Method that is called the button is pressed.
              * @param v the button
              */
-            public void onClick(View v)  {
+            public void onClick(View v) {
                 goToWindowView();
             }
         });
@@ -252,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //sendText("Disconnect");
     }
 
     /**
@@ -311,8 +310,6 @@ public class MainActivity extends AppCompatActivity {
 
         final ImageView colorV = (ImageView)settingsDialog.findViewById(R.id.colorView);
         SeekBar seekBar1 = (SeekBar)settingsDialog.findViewById(R.id.seekBar1);
-        //seekBarValue1 = seekBar1.getProgress();
-
         seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             /**
@@ -351,8 +348,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         SeekBar seekBar2 = (SeekBar)settingsDialog.findViewById(R.id.seekBar2);
-
-        //seekBarValue2 = seekBar2.getProgress();
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             /**
              * Method that is called when the seekbar is moved.
@@ -390,7 +385,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         SeekBar seekBar3 = (SeekBar)settingsDialog.findViewById(R.id.seekBar3);
-        //seekBarValue3 = seekBar3.getProgress();
         seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             /**
@@ -404,7 +398,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-
                 seekBarValue3 = progress;
                 colorV.setBackgroundColor(Color.rgb(seekBarValue1,seekBarValue3, seekBarValue2));
             }
@@ -463,8 +456,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         settingsDialog.show();
-
-
     }
 
     /**
@@ -482,24 +473,16 @@ public class MainActivity extends AppCompatActivity {
                 while (true) {
                     Random rnd = new Random();
                     try {
-
                         if (input.ready()) {
                             String msg = input.readLine();
-
-                            Log.d("msg", ""+ msg);
-
                             if(msg.startsWith("TempInfo:")) {
                                 tempInfoController(msg.substring(8, msg.length()));
                             }
-
-                            else {
-
+                            else if(msg.startsWith("Humidity:")) {
+                                humidityController(msg.substring(9, msg.length()));
                             }
-
                         }
-
                     } catch (Exception e) {
-                        System.out.println("Error when reading msg");
                         //e.printStackTrace();
                     }
                     try {
@@ -521,30 +504,13 @@ public class MainActivity extends AppCompatActivity {
      * @param msg String containing temperatures
      */
     public void tempInfoController(String msg) {
-        // Sets the channel number
         String channel = msg.substring(1, 2);
-        Log.d("channel", channel);
-        // Sets the mode number
         String mode = msg.substring(2, 3);
-        Log.d("mode", mode);
-        // If the temperature is less than 10, set temp like int after 0, else set
-        // temp like int XX
         String holiday = (msg.charAt(3) == 0) ? msg.substring(4, 5) : msg.substring(3, 5);
-        Log.d("holiday", holiday);
-        // Will most likely be over 10
         String day = msg.substring(5, 7);
-        Log.d("day", day);
-        // Will most likely be over 10
         String night = msg.substring(7, 9);
-        Log.d("night", night);
-        // Will most likely be over 10
         String away = msg.substring(9, 11);
-        Log.d("away", away);
-        // Gets rest of the string, which will (presumably) be two integers.
         String currentTemp = msg.substring(11);
-        Log.d("current temp", currentTemp);
-
-
 
         int ch = Integer.parseInt(channel);
         switch (ch) {
@@ -629,9 +595,37 @@ public class MainActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
 
-
-
+    /**
+     * Method that process the humidity information received from server
+     * @param msg the message containing humidity information
+     */
+    public void humidityController(String msg) {
+        sharedpreferences = getSharedPreferences(savedHumidity, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        String sensorID, humidity;
+        if (msg.charAt(1) == 0) {
+            if (msg.charAt(2) == 0) {
+                sensorID = msg.substring(3,3);
+            }
+            else sensorID = msg.substring(2,3);
+        }
+        else sensorID = msg.substring(1,3);
+        Log.d("id", "" + sensorID);
+        humidity = msg.substring(4,6);
+        Log.d("hum", "" + humidity);
+        switch(sensorID) {
+            case "19":
+                editor.putString("sensor1", humidity);
+                break;
+            case "20":
+                editor.putString("sensor2", humidity);
+                break;
+            case "21":
+                break;
+        }
+        editor.commit();
     }
 
     /**
@@ -657,4 +651,3 @@ public class MainActivity extends AppCompatActivity {
         input = LoginClient.returnReader();
     }
 }
-

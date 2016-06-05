@@ -115,6 +115,7 @@ public class LightingHallway extends AppCompatActivity {
         setupGUI();
         displayLights();
     }
+
     /**
      * displays light settings dependent on which mode the house is in. saves all these variables
      * in sharedpreferences
@@ -203,6 +204,7 @@ public class LightingHallway extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -913,6 +915,7 @@ public class LightingHallway extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -933,6 +936,7 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -966,6 +970,7 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -998,6 +1003,7 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */
@@ -1075,6 +1081,7 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1108,6 +1115,7 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1140,6 +1148,7 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */
@@ -1186,8 +1195,6 @@ public class LightingHallway extends AppCompatActivity {
         lmax1 = false;
     }
 
-
-
           /* next 6th row CONTROL ALL ABOVE LIGHTS */
     /**
      * turns off all lights and toggle all buttons off
@@ -1215,6 +1222,7 @@ public class LightingHallway extends AppCompatActivity {
 
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1258,6 +1266,7 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1299,6 +1308,7 @@ public class LightingHallway extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */
@@ -1366,36 +1376,51 @@ public class LightingHallway extends AppCompatActivity {
         allBoolFalse1();
     }
 
+    /**
+     * Sets all lights in this room to off.
+     */
     public void setLightSettingsForAllOff() {
         setLightSettingsForRow(rowall, lightOff);
         setLightSettingsForRow(row1, lightOff);
         setLightSettingsForRow(row2, lightOff);
     }
 
+    /**
+     * Sets all lights in this room to min.
+     */
     public void setLightSettingsForAllMin() {
         setLightSettingsForRow(rowall, lightMin);
         setLightSettingsForRow(row1, lightMin);
         setLightSettingsForRow(row2, lightMin);
     }
 
+    /**
+     * Sets all lights in this room to med.
+     */
     public void setLightSettingsForAllMed() {
         setLightSettingsForRow(rowall, lightMed);
         setLightSettingsForRow(row1, lightMed);
         setLightSettingsForRow(row2, lightMed);
     }
 
+    /**
+     * Sets all lights in this room to max.
+     */
     public void setLightSettingsForAllMax() {
         setLightSettingsForRow(rowall, lightMax);
         setLightSettingsForRow(row1, lightMax);
         setLightSettingsForRow(row2, lightMax);
     }
 
+    /**
+     * Sets off button for all lights in this room except all lights to off.
+     */
     public void offSwitchoff() {
         lightOffBtn.setChecked(true);
         lightOffBtn1.setChecked(true);
 
-
     }
+
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
@@ -1462,9 +1487,6 @@ public class LightingHallway extends AppCompatActivity {
             }
         });
 
-
-
-
         lightOffBtn6 = (ToggleButton) findViewById(R.id.toggle_06);
         lightOffBtn6.setOnClickListener(light_all__off_Listener6);
 
@@ -1503,7 +1525,6 @@ public class LightingHallway extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
 
     /**

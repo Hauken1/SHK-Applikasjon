@@ -84,7 +84,6 @@ public class LightingBedroom1_2 extends AppCompatActivity {
     ToggleButton lightMaxBtn;
     ImageButton homeBtn;
 
-
     @Override
     /**
      * runs on startup and sets up gui and displays light settings dependent on current mode
@@ -381,13 +380,13 @@ public class LightingBedroom1_2 extends AppCompatActivity {
             setContentView(v);
         }
     }
+
     /**
      * displays light settings dependent on which mode the house is in. saves all these variables
      * in sharedpreferences
      */
     public void displayLight() {
         try {
-
             lightSettings = getSharedPreferences(savedLight, 0);
             tempSetting = getSharedPreferences(savedTemp, 0);
             sMode = tempSetting.getString("mode", "2");
@@ -417,7 +416,6 @@ public class LightingBedroom1_2 extends AppCompatActivity {
 
             int s1 = Integer.parseInt(modeStatus1);
 
-
             switch (s1){
                 case 0: //row 1 off
                     lightOffBtn.setChecked(true);
@@ -438,11 +436,11 @@ public class LightingBedroom1_2 extends AppCompatActivity {
                     lightOffBtn.setChecked(true);
                     break;
             }
-
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -1153,6 +1151,7 @@ public class LightingBedroom1_2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -1173,6 +1172,7 @@ public class LightingBedroom1_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1204,6 +1204,7 @@ public class LightingBedroom1_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1236,6 +1237,7 @@ public class LightingBedroom1_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1289,6 +1291,4 @@ public class LightingBedroom1_2 extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity_2.class);
         startActivity(intent);
     }
-
-
 }

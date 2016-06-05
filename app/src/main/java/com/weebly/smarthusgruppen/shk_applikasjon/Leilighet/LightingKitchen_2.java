@@ -143,6 +143,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
         setupGUI();
         displayLight();
     }
+
     /**
      * displays light settings dependent on which mode the house is in. saves all these variables
      * in sharedpreferences
@@ -318,6 +319,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -1028,6 +1030,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -1049,6 +1052,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
 
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1083,6 +1087,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1117,6 +1122,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1173,7 +1179,6 @@ public class LightingKitchen_2 extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     /* next 2nd row */
     /**
      * turns off all lights and sets the other toggle buttons to off.
@@ -1195,6 +1200,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1227,6 +1233,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1260,6 +1267,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1287,6 +1295,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * sets all toggle buttons to off
      */
@@ -1327,6 +1336,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1359,6 +1369,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1392,6 +1403,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1419,6 +1431,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * sets all toggle buttons to off
      */
@@ -1459,6 +1472,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1491,6 +1505,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1524,6 +1539,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1551,6 +1567,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * sets all toggle buttons to off
      */
@@ -1591,6 +1608,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1623,6 +1641,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1656,6 +1675,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1683,6 +1703,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * sets all toggle buttons to off
      */
@@ -1927,6 +1948,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1976,6 +1998,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -2025,6 +2048,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -2067,6 +2091,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * sets all toggle buttons to off
      */
@@ -2314,6 +2339,7 @@ public class LightingKitchen_2 extends AppCompatActivity {
         });
         settingsDialog.show();
     }
+
     /**
      * sends the user to the mode activity
      */
@@ -2465,6 +2491,5 @@ public class LightingKitchen_2 extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
 }

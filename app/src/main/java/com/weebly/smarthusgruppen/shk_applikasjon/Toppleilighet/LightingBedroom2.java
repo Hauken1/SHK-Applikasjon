@@ -79,7 +79,7 @@ public class LightingBedroom2 extends AppCompatActivity {
     TextView mode_View;
 
     /**
-     * runs on startup and sets up gui and displays light settings dependent on current mode
+     * runs on startup, sets up gui and displays light settings dependent on current mode
      * @param savedInstanceState
      */
     @Override
@@ -87,10 +87,9 @@ public class LightingBedroom2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lighting_bedroom2);
         setupGUI();
-
-
         displayLight();
     }
+
     /**
      * Setting up GUI. sets up all onClickListener buttons. Sets background depending on user
      * settings. SharedPreferences for each mode.
@@ -171,6 +170,7 @@ public class LightingBedroom2 extends AppCompatActivity {
             setContentView(v);
         }
     }
+
     /**
      * displays light settings dependent on which mode the house is in. saves all these variables
      * in sharedpreferences
@@ -233,6 +233,7 @@ public class LightingBedroom2 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -943,6 +944,7 @@ public class LightingBedroom2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -963,6 +965,7 @@ public class LightingBedroom2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -995,6 +998,7 @@ public class LightingBedroom2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1027,6 +1031,7 @@ public class LightingBedroom2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */

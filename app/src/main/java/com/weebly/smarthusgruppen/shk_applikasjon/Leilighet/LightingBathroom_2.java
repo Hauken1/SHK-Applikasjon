@@ -125,13 +125,13 @@ public class LightingBathroom_2 extends AppCompatActivity {
         setupGUI();
         displayLights();
     }
+
     /**
      * displays light settings dependent on which mode the house is in. saves all these variables
      * in sharedpreferences
      */
     public void displayLights() {
         try {
-
             lightSettings = getSharedPreferences(savedLight, 0);
             tempSetting = getSharedPreferences(savedTemp, 0);
             sMode = tempSetting.getString("mode", "2");
@@ -167,7 +167,6 @@ public class LightingBathroom_2 extends AppCompatActivity {
                     modeStatus3 = "0";
                     break;
             }
-
             int s1 = Integer.parseInt(modeStatus1);
             int s2 = Integer.parseInt(modeStatus2);
             int s3 = Integer.parseInt(modeStatus3);
@@ -240,6 +239,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -950,6 +950,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -963,7 +964,6 @@ public class LightingBathroom_2 extends AppCompatActivity {
                 lmed = false;
                 lmax = false;
 
-
                 lightMinBtn.setChecked(false);
                 lightMedBtn.setChecked(false);
                 lightMaxBtn.setChecked(false);
@@ -971,6 +971,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1003,6 +1004,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1036,6 +1038,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1090,7 +1093,6 @@ public class LightingBathroom_2 extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     /* next 2nd row */
     /**
      * turns off all lights and sets the other toggle buttons to off.
@@ -1112,6 +1114,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1145,6 +1148,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1178,6 +1182,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1278,6 +1283,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1311,6 +1317,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1384,6 +1391,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
 
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
@@ -1428,6 +1436,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
@@ -1471,6 +1480,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to max setting. toggles off other buttons. if already set turns off light
      */
@@ -1509,6 +1519,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * settings for all rows to set light to off
      */
@@ -1518,6 +1529,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
         setLightSettingsForRow(row2, lightOff);
         setLightSettingsForRow(row3, lightOff);
     }
+
     /**
      * settings for all rows to set light to minimum
      */
@@ -1527,6 +1539,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
         setLightSettingsForRow(row2, lightMin);
         setLightSettingsForRow(row3, lightMin);
     }
+
     /**
      * settings for all rows to set light to medium
      */
@@ -1536,6 +1549,7 @@ public class LightingBathroom_2 extends AppCompatActivity {
         setLightSettingsForRow(row2, lightMed);
         setLightSettingsForRow(row3, lightMed);
     }
+
     /**
      * settings for all rows to set light to maximum
      */
@@ -1913,8 +1927,5 @@ public class LightingBathroom_2 extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             this.setContentView(v);
         }
-
     }
-
-
 }

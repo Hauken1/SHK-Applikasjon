@@ -128,7 +128,6 @@ public class LightingLivingRoom extends AppCompatActivity {
      */
     public void displayLights() {
         try {
-
             lightSettings = getSharedPreferences(savedLight, 0);
             tempSetting = getSharedPreferences(savedTemp, 0);
             sMode = tempSetting.getString("mode", "2");
@@ -164,7 +163,6 @@ public class LightingLivingRoom extends AppCompatActivity {
                     modeStatus3 = "0";
                     break;
             }
-
             int s1 = Integer.parseInt(modeStatus1);
             int s2 = Integer.parseInt(modeStatus2);
             int s3 = Integer.parseInt(modeStatus3);
@@ -237,6 +235,7 @@ public class LightingLivingRoom extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Changing and saving value for light settings. Depending on the mode the house is in.
      * @param row the row in the grid layout. for which button is clicked
@@ -947,6 +946,7 @@ public class LightingLivingRoom extends AppCompatActivity {
                 break;
         }
     }
+
     /**
      * turns off all lights and sets the other toggle buttons to off.
      */
@@ -1380,10 +1380,10 @@ public class LightingLivingRoom extends AppCompatActivity {
 
         }
     };
+
     /**
      * turns light on to minimum setting. toggles off other buttons. if already set turns off light
      */
-    // all lights on minimum
     protected View.OnClickListener light_all_min6 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -1423,10 +1423,10 @@ public class LightingLivingRoom extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to medium setting. toggles off other buttons. if already set turns off light
      */
-    // all lights on medium
     protected View.OnClickListener light_all_med6 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -1466,10 +1466,10 @@ public class LightingLivingRoom extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns light on to maximum setting. toggles off other buttons. if already set turns off light
      */
-    // all lights on max
     protected View.OnClickListener light_all_Listener6 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

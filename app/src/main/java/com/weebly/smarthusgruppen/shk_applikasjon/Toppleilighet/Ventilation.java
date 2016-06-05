@@ -43,6 +43,7 @@ public class Ventilation extends AppCompatActivity {
     //Does matter what saved temp is used, all is set to the same mode
     public static final String savedTemp = "1SavedTemperature_1";
     public static final String savedColor = "SavedBackgroundColor_1";
+    public static final String savedHumidity = "SavedHumidity_1";
 
     SharedPreferences sharedpreferences;
     public SharedPreferences ventilationSettings;
@@ -66,6 +67,8 @@ public class Ventilation extends AppCompatActivity {
     public static final int iHOLIDAY = 1;
 
     TextView mode_View;
+    TextView fukt1;
+    TextView fukt2;
 
     /**
      * loads the GUI Setup and loads the current ventilation display status on start up.
@@ -92,7 +95,6 @@ public class Ventilation extends AppCompatActivity {
      * in that mode
      */
     public void displayVentilation() {
-
         try {
             ventilationSettings = getSharedPreferences(savedVent, 0);
             tempSetting = getSharedPreferences(savedTemp, 0);
@@ -373,8 +375,7 @@ public class Ventilation extends AppCompatActivity {
                 break;
         }
     }
-    // for bedrooms
-    // toggle level one
+
     /**
      * Toggles level 1 if level 1 is not activated. sends command to server to turn of lvl 2.
      * turn on lvl 1. in the action to toggle on level 1. If level one is toggled it will tell the
@@ -403,12 +404,12 @@ public class Ventilation extends AppCompatActivity {
             }
         }
     };
+
     /**
      * Toggles level 2 if level 2 is not activated. sends command to server to turn of lvl 1.
      * turn on lvl 2. in the action to toggle on level 2. If level one is toggled it will tell the
      * server to turn off level 2.turns off the other toggle buttons
      */
-    // toggle level 2
     protected View.OnClickListener toggle_level2 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -432,12 +433,12 @@ public class Ventilation extends AppCompatActivity {
             }
         }
     };
+
     /**
      * Toggles on level 3 by turning no level 1 and 2. toggles off 1 and 2. If one function is
      * not being used but the other is . the first is turned on to make sure both is on
      * so toggle 3 can be activated. If toggle 3 is activated already it turns off everything
      */
-    // toggle level 3
     protected View.OnClickListener toggle_level3 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -479,7 +480,6 @@ public class Ventilation extends AppCompatActivity {
     /**
      * turns off mode 1 and 2. Also toggles of all 3 other buttons.
      */
-    // turn off
     protected View.OnClickListener turn_off = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -526,14 +526,11 @@ public class Ventilation extends AppCompatActivity {
         turnOffBtn.setChecked(false);
     }
 
-
-
     /**
      * Toggles level 1 if level 1 is not activated. sends command to server to turn of lvl 2.
      * turn on lvl 1. in the action to toggle on level 1. If level one is toggled it will tell the
      * server to turn off level 1.turns off the other toggle buttons
      */
-    // toggle level one
     protected View.OnClickListener toggle_level11 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -557,12 +554,12 @@ public class Ventilation extends AppCompatActivity {
             }
         }
     };
+
     /**
      * Toggles level 2 if level 2 is not activated. sends command to server to turn of lvl 1.
      * turn on lvl 2. in the action to toggle on level 2. If level one is toggled it will tell the
      * server to turn off level 2.turns off the other toggle buttons
      */
-    // toggle level 2
     protected View.OnClickListener toggle_level21 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -592,7 +589,6 @@ public class Ventilation extends AppCompatActivity {
      * not being used but the other is . the first is turned on to make sure both is on
      * so toggle 3 can be activated. If toggle 3 is activated already it turns off everything
      */
-    // toggle level 3
     protected View.OnClickListener toggle_level31 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -629,10 +625,10 @@ public class Ventilation extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns off mode 1 and 2. Also toggles of all 3 other buttons.
      */
-    // turn off
     protected View.OnClickListener turn_off1 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -683,7 +679,14 @@ public class Ventilation extends AppCompatActivity {
      */
     public void setupGUI() {
 
+        sharedpreferences = getSharedPreferences(savedHumidity,0);
         mode_View = (TextView) findViewById(R.id.mode_view);
+        fukt1 = (TextView) findViewById(R.id.fukt_soveRom);
+        fukt2 = (TextView) findViewById(R.id.fukt_Andre_Rom);
+        String humValue1 = sharedpreferences.getString("sensor1", "0") + " %";
+        String humValue2 = sharedpreferences.getString("sensor2", "0") + " %";
+        fukt1.setText(humValue1);
+        fukt2.setText(humValue2);
 
         try {
             tempSetting = getSharedPreferences(savedTemp, 0);
@@ -762,5 +765,4 @@ public class Ventilation extends AppCompatActivity {
         level3 = 3;
 
     }
-
 }

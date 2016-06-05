@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.LightingBedroom2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/LightingBedroom2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="196" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.Climate" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/Climate.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="621" y="30"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.LightingBedroom1" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/LightingBedroom1.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1046" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.Measurement" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/Measurement.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1471" y="10"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" 
+    name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.TypeOfMode.TimeTextWatcher" project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/TypeOfMode.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1892" y="816"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.Windows" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/Windows.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2321" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.LightingHallway" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/LightingHallway.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2746" y="330"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.TypeOfMode" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/TypeOfMode.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1896" y="250"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.MainActivity" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/MainActivity.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3171" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.Ventilation" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/Ventilation.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3596" y="180"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.RoomList" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/RoomList.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4021" y="80"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.LightingLivingRoom" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/LightingLivingRoom.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4446" y="390"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.LightingKitchen" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/LightingKitchen.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4871" y="540"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.LightingBathroom" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/LightingBathroom.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5296" y="510"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.Temperature" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/Temperature.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5721" y="160"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Toppleilighet.LightingOffice" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Toppleilighet/LightingOffice.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="6146" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.LightingBedroom1_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/LightingBedroom1_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="172" y="1474"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.LightingOffice_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/LightingOffice_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="571" y="1634"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.Measurement_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/Measurement_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="970" y="1334"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.LightingBedroom2_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/LightingBedroom2_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1369" y="1474"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.LightingHallway_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/LightingHallway_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2167" y="1654"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" 
+    name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.TypeOfMode_2.TimeTextWatcher" project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/TypeOfMode_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1772" y="2086"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.Ventilation_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/Ventilation_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2566" y="1424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.RoomList_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/RoomList_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2965" y="1394"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.Temperature_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/Temperature_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3364" y="1464"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.Climate_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/Climate_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3763" y="1354"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.MainActivity_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/MainActivity_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4162" y="1464"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.TypeOfMode_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/TypeOfMode_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1768" y="1544"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.LightingKitchen_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/LightingKitchen_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4561" y="1804"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Leilighet.LightingBathroom_2" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Leilighet/LightingBathroom_2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="4960" y="1714"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.LightingFlat" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/LightingFlat.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="176" y="2984"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.Temperature_3" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/Temperature_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="594" y="2614"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.MainActivity_3" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/MainActivity_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1012" y="2644"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" 
+    name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.TypeOfMode_3.TimeTextWatcher" project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/TypeOfMode_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1430" y="3240"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.Measurement_3" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/Measurement_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1848" y="2514"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.RoomList_3" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/RoomList_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2266" y="2534"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.Climate_3" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/Climate_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2684" y="2534"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.Ventilation_3" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/Ventilation_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3102" y="2604"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.LightingBathroom_3" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/LightingBathroom_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3520" y="2834"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.TypeOfMode_3" 
+    project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Arbeidsrom/TypeOfMode_3.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1430" y="2714"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.LoginClient" project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/LoginClient.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="204" y="3900"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="com.weebly.smarthusgruppen.shk_applikasjon.Admin" project="SHK-Applikasjon" 
+    file="/SHK-Applikasjon/app/src/main/java/com/weebly/smarthusgruppen/shk_applikasjon/Admin.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="606" y="3742"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <nesting id="43">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </nesting>  
+  <nesting id="44">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="34"/>  
+  </nesting>  
+  <nesting id="45">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="22"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="true" private="true" static="false"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

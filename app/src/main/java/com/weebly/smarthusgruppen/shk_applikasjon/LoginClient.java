@@ -1,5 +1,6 @@
 package com.weebly.smarthusgruppen.shk_applikasjon;
 
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -21,6 +22,7 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 
 import com.weebly.smarthusgruppen.shk_applikasjon.Arbeidsrom.MainActivity_3;
@@ -52,16 +54,16 @@ public class LoginClient extends AppCompatActivity {
     TextView forgotPw;
 
     int serverPort = 12345;
-    String hostName= "128.39.142.118";
-    // 128.39.81.160 10.0.2.2
+    String hostName= "128.39.80.87";
+
     static BufferedWriter output;
     static BufferedReader input;
+    static Socket connection;
     String username;
     String password;
     Boolean loggedIn;
     Boolean connected;
     Boolean rememberMeBool;
-    static Socket connection;
     String pwChanged;
     Handler gHandler;
 
@@ -128,7 +130,6 @@ public class LoginClient extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
 
     /**
@@ -202,7 +203,6 @@ public class LoginClient extends AppCompatActivity {
                 public void onClick(final DialogInterface dialog, int which) {
                     try {
                         dialog.dismiss();
-
                         final String oP = oldPass.getText().toString();
                         final String newP = newPass.getText().toString();
                         final String confirmP = confirmPass.getText().toString();
@@ -212,11 +212,6 @@ public class LoginClient extends AppCompatActivity {
                         if (connected &&
                                 !newP.isEmpty() && !confirmP.isEmpty() && newP.equals(confirmP)) {
                             final String code = "ChangePW";
-/*
-                            gHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-*/
                             try {
                                 final ProgressDialog pDialog = new ProgressDialog(LoginClient.this);
                                 pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -242,8 +237,6 @@ public class LoginClient extends AppCompatActivity {
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
-                                       // thread.start();
-                                        //thread.join();
                                         pDialog.dismiss();
                                         gHandler.post(new Runnable() {
                                             @Override
@@ -310,9 +303,6 @@ public class LoginClient extends AppCompatActivity {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                                //}
-                          //  });
-
                         } else {
                             AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
                             add.setTitle("Feil");
@@ -383,7 +373,6 @@ public class LoginClient extends AppCompatActivity {
          */
         @Override
         public void onClick(View v) {
-
             if(!connected) {
                 AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
                 add.setTitle("Ikke tilkoblet");
@@ -423,7 +412,6 @@ public class LoginClient extends AppCompatActivity {
                     public void onClick(View v) {
                         final String forgot_user = user.getText().toString();
                         final String forgot_pw = pw.getText().toString();
-
                         if(!connected) {
                             AlertDialog.Builder add = new AlertDialog.Builder(LoginClient.this);
                             add.setTitle("Ikke tilkoblet");
@@ -460,18 +448,9 @@ public class LoginClient extends AppCompatActivity {
                                 public void run() {
                                     String eLogin = "EmergencyLogin";
                                     if (!forgot_user.isEmpty() && !forgot_pw.isEmpty() && !eLogin.isEmpty()) {
-
                                         if (connection.isConnected()) {
-
-                                            Log.d("ClientActivity", "C: Trying to log in.");
-                                            Random rnd = new Random();
-
                                             try {
                                                 sendLogin(eLogin, forgot_user, forgot_pw);
-                                                // Random rng = new Random();
-                                                //TimeUnit.MILLISECONDS.sleep(rng.nextInt(100) * 10);
-                                                // ProgressDialog dialog = ProgressDialog.show(LoginClient.this, "Loading", "Please wait...", true);
-
                                                 String read = "Ping";
                                                 int n =0;
                                                 while(read.contains("Ping") && read != null) {
@@ -480,14 +459,11 @@ public class LoginClient extends AppCompatActivity {
                                                     TimeUnit.MILLISECONDS.sleep(rng.nextInt(100));
                                                     if(n == 20) break;
                                                     n++;
-
                                                 }
                                                 fPwCounter = n;
                                                 pwChanged = read;
                                                 pDialog.dismiss();
                                                 settingsDialog.dismiss();
-                                                //dialog.dismiss();
-                                                //int ID = Integer.valueOf(input.readLine());
                                                 gHandler.post(new Runnable() {
                                                     /**
                                                      * Method that is called by the Handler. The
@@ -501,8 +477,6 @@ public class LoginClient extends AppCompatActivity {
                                                     public void run() {
                                                         if (fPwCounter != 20) {
                                                             int ID = Integer.parseInt(pwChanged);
-                                                            Log.d("ClientActivity", "C: logging in..." + ID);
-
                                                             if (ID != 0) {
                                                                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(LoginClient.this);
                                                                 alertDialog.setTitle("Bytt passord");
@@ -541,7 +515,6 @@ public class LoginClient extends AppCompatActivity {
                                                                             dialog.dismiss();
                                                                             final String newP = newPass.getText().toString();
                                                                             final String confirmP = confirmPass.getText().toString();
-
                                                                             if (connection.isConnected() &&
                                                                                     !newP.isEmpty() && !confirmP.isEmpty() && newP.equals(confirmP)) {
                                                                                 final String code = "ForgotPw";
@@ -713,13 +686,10 @@ public class LoginClient extends AppCompatActivity {
                                                         }
                                                     }
                                                 });
-                                                // når fleire brukarar og sider skal gå til ting kan vi bruke en switch her og
-                                                // sende med forskjellige ID
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
                                         }
-
                                     }
                                     pDialog.dismiss();
                                     settingsDialog.dismiss();
@@ -767,7 +737,6 @@ public class LoginClient extends AppCompatActivity {
                 connect();
             }
             else {
-
                 final ProgressDialog pDialog = new ProgressDialog(LoginClient.this);
                 pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 pDialog.setMessage("Logger inn..");
@@ -795,15 +764,11 @@ public class LoginClient extends AppCompatActivity {
                                 loginEditor.clear();
                                 loginEditor.commit();
                             }
-
                             if (connection.isConnected()) {
-
                                 Log.d("ClientActivity", "C: Trying to log in.");
                                 Random rnd = new Random();
-
                                 try {
                                     sendLogin(login, username, password);
-
                                     String read = "Ping";
                                     int n = 0;
                                     while(read.contains("Ping") && read != null) {
@@ -812,14 +777,12 @@ public class LoginClient extends AppCompatActivity {
                                         TimeUnit.MILLISECONDS.sleep(rng.nextInt(100));
                                         if(n == 20) break;
                                         n++;
-
                                     }
                                     pDialog.dismiss();
 
                                     if(n != 20) {
                                         int ID = Integer.parseInt(read);
                                         Log.d("ClientActivity", "C: logging in..." + ID);
-
                                        switch (ID) {
                                            case 1:
                                                    loggedIn = true;
@@ -840,12 +803,10 @@ public class LoginClient extends AppCompatActivity {
                                            default:
                                                failLogin();
                                                break;
-
                                        }
                                     }
                                     else {
                                         failLogin2();
-
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -875,7 +836,6 @@ public class LoginClient extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -1020,24 +980,14 @@ public class LoginClient extends AppCompatActivity {
      * Method that starts a thread which tries to connect the user to the server.
      */
     public void connect() {
-        /*
-        Thread cThread = new Thread(new ClientThread());
-        cThread.start();
-        */
         final Thread thread = new Thread((new Runnable() {
             /**
              * Run method of the thread. Tries to connect the user to the server.
              */
             @Override
             public void run() {
-                //try {
-
-                    Log.d("ClientActivity", "C: Connecting...");
-                    //while(!connected) {
-                        connectToServer();
-                     //   Thread.sleep(50);
-                   // }
-               //  } catch (InterruptedException e) {
+                Log.d("ClientActivity", "C: Connecting...");
+                connectToServer();
             }
         }));
         thread.start();

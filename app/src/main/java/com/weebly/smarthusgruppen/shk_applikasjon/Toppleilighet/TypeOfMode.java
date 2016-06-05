@@ -59,8 +59,6 @@ public class TypeOfMode extends AppCompatActivity {
     public static final String savedDayNight = "SavedDayNightSettings_1";
 
     SharedPreferences sharedpreferences;
-
-    SharedPreferences ventInfo;
     SharedPreferences lightSettings;
 
     private String holidayMode = "1";
@@ -111,7 +109,6 @@ public class TypeOfMode extends AppCompatActivity {
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
 
-
         //Checks what mode the the heatingcontrollers are set to.
         //All heatingcontrollolers are set to the same mode
         sharedpreferences = getSharedPreferences(savedTemp1, Context.MODE_PRIVATE);
@@ -149,13 +146,6 @@ public class TypeOfMode extends AppCompatActivity {
                 holidayBtn.setChecked(false);
                 break;
         }
-
-        sharedpreferences = getSharedPreferences(holidayTime, Context.MODE_PRIVATE);
-        int yYear = sharedpreferences.getInt("year", 1992);
-        int yMonth = sharedpreferences.getInt("month", 1992);
-        int yDay = sharedpreferences.getInt("day", 1992);
-        int hHour = sharedpreferences.getInt("hour", 1992);
-        int hMin = sharedpreferences.getInt("minute", 1992);
     }
 
     /**
@@ -241,7 +231,6 @@ public class TypeOfMode extends AppCompatActivity {
             v.setBackgroundColor(Color.rgb(value1, value3, value2));
             setContentView(v);
         }
-
     }
 
     /**
@@ -252,6 +241,11 @@ public class TypeOfMode extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Method that formats the time to be more presentable
+     * @param nightDay the time that is being formatted
+     * @return the formatted time
+     */
     public String testForTimeValues(int nightDay) {
         sharedpreferences = getSharedPreferences(savedDayNight, Context.MODE_PRIVATE);
         int dayH = sharedpreferences.getInt("dayhour", 0);
@@ -638,6 +632,9 @@ public class TypeOfMode extends AppCompatActivity {
         //changing lighting to day mode
         lightSettings = getSharedPreferences(savedLightKitchen, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
+
+        //Will not be used during presentation
+        /*
         lightSettings = getSharedPreferences(savedLightBathroom, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
         lightSettings = getSharedPreferences(savedLightBedroom1, Context.MODE_PRIVATE);
@@ -650,7 +647,7 @@ public class TypeOfMode extends AppCompatActivity {
         getAndSendLightCommand(dMode);
         lightSettings = getSharedPreferences(savedLightOffice, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
-
+        */
         //Changing ventilation to day mode
         sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
         sendVent1Command(dMode);
@@ -663,45 +660,53 @@ public class TypeOfMode extends AppCompatActivity {
      * @param mode the mode that is being changed to.
      */
     public void getAndSendLightCommand(int mode){
-
+        //Some of this code will not be used during presentation, therefore commented
         String modeStatus1, modeStatus2, modeStatus3, modeStatus4, modeStatus5,
                 modeStatus6, modeStatsAll;
         switch (mode) {
             case 1:
                 modeStatus1 = lightSettings.getString("Hrow1status", "0");
+                /*
                 modeStatus2 = lightSettings.getString("Hrow2status", "0");
                 modeStatus3 = lightSettings.getString("Hrow3status", "0");
                 modeStatus4 = lightSettings.getString("Hrow4status", "0");
                 modeStatus5 = lightSettings.getString("Hrow5status", "0");
                 modeStatus6 = lightSettings.getString("Hrow6status", "0");
                 modeStatsAll = lightSettings.getString("Hrowallstatus", "0");
+                */
                 break;
             case 2:
                 modeStatus1 = lightSettings.getString("Drow1status", "0");
+                /*
                 modeStatus2 = lightSettings.getString("Drow2status", "0");
                 modeStatus3 = lightSettings.getString("Drow3status", "0");
                 modeStatus4 = lightSettings.getString("Drow4status", "0");
                 modeStatus5 = lightSettings.getString("Drow5status", "0");
                 modeStatus6 = lightSettings.getString("Drow6status", "0");
                 modeStatsAll = lightSettings.getString("Drowallstatus", "0");
+                */
                 break;
             case 3:
                 modeStatus1 = lightSettings.getString("Nrow1status", "0");
+                /*
                 modeStatus2 = lightSettings.getString("Nrow2status", "0");
                 modeStatus3 = lightSettings.getString("Nrow3status", "0");
                 modeStatus4 = lightSettings.getString("Nrow4status", "0");
                 modeStatus5 = lightSettings.getString("Nrow5status", "0");
                 modeStatus6 = lightSettings.getString("Nrow6status", "0");
                 modeStatsAll = lightSettings.getString("Nrowallstatus", "0");
+                */
                 break;
             case 4:
                 modeStatus1 = lightSettings.getString("Arow1status", "0");
+                /*
                 modeStatus2 = lightSettings.getString("Arow2status", "0");
                 modeStatus3 = lightSettings.getString("Arow3status", "0");
                 modeStatus4 = lightSettings.getString("Arow4status", "0");
                 modeStatus5 = lightSettings.getString("Arow5status", "0");
                 modeStatus6 = lightSettings.getString("Arow6status", "0");
                 modeStatsAll = lightSettings.getString("Arowallstatus", "0");
+                */
                 break;
             default:
                 modeStatus1 = "0";
@@ -714,17 +719,39 @@ public class TypeOfMode extends AppCompatActivity {
                 break;
         }
 
-        int sAll = Integer.parseInt(modeStatsAll);
+        //int sAll = Integer.parseInt(modeStatsAll);
         int s1 = Integer.parseInt(modeStatus1);
+        /*
         int s2 = Integer.parseInt(modeStatus2);
         int s3 = Integer.parseInt(modeStatus3);
         int s4 = Integer.parseInt(modeStatus4);
         int s5 = Integer.parseInt(modeStatus5);
         int s6 = Integer.parseInt(modeStatus6);
-
-        sendLightCommand(s1,s2,s3,s4,s5,s6,sAll);
+        */
+        //sendLightCommand(s1,s2,s3,s4,s5,s6,sAll);
+        //Used in presentation
+        sendLightCommandPresentation(s1);
     }
 
+    public void sendLightCommandPresentation(int s1) {
+        switch (s1){
+            case 0: //row 1 off
+                MainActivity.sendText("Command:000002117,1,0");
+                break;
+            case 1: //row 1 min
+                MainActivity.sendText("Command:000002117,1,1");     // all lights minimum
+                break;
+            case 2: //row 2 med
+                MainActivity.sendText("Command:000002117,1,2");     // all lights medium
+                break;
+            case 3: //row 1 max
+                MainActivity.sendText("Command:000002117,1,3"); // all lights to max
+                break;
+            default:
+                MainActivity.sendText("Command:000002117,1,0");     // all lights off
+                break;
+        }
+    }
     /**
      * Method that sends light commands to the server, based on saved variables of the mode that the
      * user has changed to.
@@ -742,7 +769,6 @@ public class TypeOfMode extends AppCompatActivity {
         All these commands are temporary. All commands will be sent to the same three lights in the
         democase. This will be the case until all lighst and dimmers is installed in the
         smarthhome.
-
          */
 
         switch (s1){
@@ -1124,6 +1150,7 @@ public class TypeOfMode extends AppCompatActivity {
         //changing lighting to night mode
         lightSettings = getSharedPreferences(savedLightKitchen, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
+        /*
         lightSettings = getSharedPreferences(savedLightBathroom, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
         lightSettings = getSharedPreferences(savedLightBedroom1, Context.MODE_PRIVATE);
@@ -1136,13 +1163,13 @@ public class TypeOfMode extends AppCompatActivity {
         getAndSendLightCommand(dMode);
         lightSettings = getSharedPreferences(savedLightOffice, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
-
+        */
         //Changing ventilation to night mode
         sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
         sendVent1Command(dMode);
         sendVent2Command(dMode);
-
     }
+
     /**
      * Method that is called when the user presses the away button.
      * This method sets the current mode of the dwelling unit to away and send all the
@@ -1300,6 +1327,7 @@ public class TypeOfMode extends AppCompatActivity {
         //changing lighting to away mode
         lightSettings = getSharedPreferences(savedLightKitchen, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
+        /*
         lightSettings = getSharedPreferences(savedLightBathroom, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
         lightSettings = getSharedPreferences(savedLightBedroom1, Context.MODE_PRIVATE);
@@ -1312,7 +1340,7 @@ public class TypeOfMode extends AppCompatActivity {
         getAndSendLightCommand(dMode);
         lightSettings = getSharedPreferences(savedLightOffice, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
-
+        */
         //Changing ventilation to away mode
         sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);
         sendVent1Command(dMode);
@@ -1376,7 +1404,6 @@ public class TypeOfMode extends AppCompatActivity {
         }
 
         sharedpreferences=getSharedPreferences(savedTemp2, Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor2 = sharedpreferences.edit();
         editor2.putString("mode",holidayMode);
         editor2.commit();
@@ -1428,7 +1455,6 @@ public class TypeOfMode extends AppCompatActivity {
         }
 
         sharedpreferences=getSharedPreferences(savedTemp4, Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor4 = sharedpreferences.edit();
         editor4.putString("mode",holidayMode);
         editor4.commit();
@@ -1454,7 +1480,6 @@ public class TypeOfMode extends AppCompatActivity {
         }
 
         sharedpreferences=getSharedPreferences(savedTemp5, Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor5 = sharedpreferences.edit();
         editor5.putString("mode",holidayMode);
         editor5.commit();
@@ -1510,6 +1535,7 @@ public class TypeOfMode extends AppCompatActivity {
         //changing lighting to holiday mode
         lightSettings = getSharedPreferences(savedLightKitchen, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
+        /*
         lightSettings = getSharedPreferences(savedLightBathroom, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
         lightSettings = getSharedPreferences(savedLightBedroom1, Context.MODE_PRIVATE);
@@ -1522,6 +1548,7 @@ public class TypeOfMode extends AppCompatActivity {
         getAndSendLightCommand(dMode);
         lightSettings = getSharedPreferences(savedLightOffice, Context.MODE_PRIVATE);
         getAndSendLightCommand(dMode);
+        */
 
         //Changing ventilation to holiday mode
         sharedpreferences = getSharedPreferences(savedVent, Context.MODE_PRIVATE);

@@ -142,4 +142,53 @@
         android:checked="false"
         android:textOff="@string/off"
         android:textOn="@string/off" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Luktfuktighet soverom:"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/lvl11_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Luktfuktighet andre rom:"
+        android:id="@+id/textView16"
+        android:layout_below="@+id/textView15"
+        android:layout_toStartOf="@+id/txt2"
+        android:layout_marginTop="24dp"
+        android:layout_alignRight="@+id/lvl31_button"
+        android:layout_alignEnd="@+id/lvl31_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/fukt_soveRom"
+        android:layout_alignTop="@+id/textView15"
+        android:layout_alignLeft="@+id/lvl41_button"
+        android:layout_alignStart="@+id/lvl41_button"
+        android:gravity="center"
+        android:layout_alignRight="@+id/lvl41_button"
+        android:layout_alignEnd="@+id/lvl41_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/fukt_Andre_Rom"
+        android:layout_alignTop="@+id/textView16"
+        android:layout_alignRight="@+id/fukt_soveRom"
+        android:layout_alignEnd="@+id/fukt_soveRom"
+        android:gravity="center"
+        android:layout_alignLeft="@+id/fukt_soveRom"
+        android:layout_alignStart="@+id/fukt_soveRom" />
+
+
 </RelativeLayout>

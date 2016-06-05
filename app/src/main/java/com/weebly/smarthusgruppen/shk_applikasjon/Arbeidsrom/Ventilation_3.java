@@ -68,6 +68,7 @@ public class Ventilation_3 extends AppCompatActivity {
         setupGUI();
         displayVentilation();
     }
+
     /**
      * Sets up onClickListeners for all buttons. loads settings from sharedpreferences based on
      * which mode the house is in. Sets background color depending on user.
@@ -138,12 +139,12 @@ public class Ventilation_3 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Displays ventilation status on screen. Sets buttons toggle on/off to what was saved
      * in that mode
      */
     public void displayVentilation() {
-
         try {
             ventilationSettings = getSharedPreferences(savedVent, 0);
             tempSetting = getSharedPreferences(savedTemp, 0);
@@ -167,7 +168,6 @@ public class Ventilation_3 extends AppCompatActivity {
                     modeStatus1 = "0";
                     break;
             }
-
             int s1 = Integer.parseInt(modeStatus1);
 
             switch (s1){
@@ -195,6 +195,7 @@ public class Ventilation_3 extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     /**
      * Saves ventilation status to sharedpreferences for each mode.
      * @param i used to determine which mode the house is in
@@ -295,6 +296,7 @@ public class Ventilation_3 extends AppCompatActivity {
                 break;
         }
     }
+
     // toggle level one
     /**
      * Toggles level 1 if level 1 is not activated. sends command to server to turn of lvl 2.
@@ -324,6 +326,7 @@ public class Ventilation_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * Toggles level 2 if level 2 is not activated. sends command to server to turn of lvl 1.
      * turn on lvl 2. in the action to toggle on level 2. If level one is toggled it will tell the
@@ -353,6 +356,7 @@ public class Ventilation_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * Toggles on level 3 by turning no level 1 and 2. toggles off 1 and 2. If one function is
      * not being used but the other is . the first is turned on to make sure both is on
@@ -393,6 +397,7 @@ public class Ventilation_3 extends AppCompatActivity {
             }
         }
     };
+
     /**
      * turns off mode 1 and 2. Also toggles of all 3 other buttons.
      */
